@@ -1,0 +1,19 @@
+/*윤정현 커스텀*/
+@font-face {
+  font-family: "BBTreeGB";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGB.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.container-1 {
+  margin-top: 20%;
+  margin-bottom: 20%;
+  font-family: "BBTreeGB";
+}
+
+.mb-6 {
+  margin-bottom: 4rem;
+}
+/*여기까지*/
