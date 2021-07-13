@@ -57,11 +57,37 @@
   margin-bottom: 4rem;
 }
 
+/*faq*/
+
+.col-sm-6 {
+  margin: auto;
+}
+.faq-title {
+  margin-top: 10%;
+  font-family: "NanumSquare";
+  text-align: center;
+}
+
+.title {
+  display: inline-block;
+}
+
+.panel-heading .panel-title {
+  font-family: "NanumSquare";
+  font-size: 16px;
+}
+
+.panel-body {
+  font-family: "NanumSquare";
+  font-size: 16px;
+}
+
 .accordion_one .panel .panel-heading a.collapsed {
   color: #999999;
   display: block;
   padding: 12px 30px;
-  border-top: 0px;
+  margin-bottom: -5px;
+  border-top: 1px solid #f1f1f1;
 }
 
 .accordion_one .panel .panel-heading a {
@@ -111,8 +137,8 @@ a:link {
 }
 
 h4 {
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 12px;
+  line-height: 20px;
 }
 
 .img-accordion {
@@ -130,7 +156,7 @@ h4 {
 
 .accordion_one .panel .panel-heading a:after,
 .accordion_one .panel .panel-heading a.collapsed:after {
-  font-family: "FontAwesome";
+  font-family: "NanumSquare";
   font-size: 15px;
   width: 36px;
   line-height: 48px;
@@ -138,7 +164,7 @@ h4 {
   background: #f1f1f1;
   float: left;
   margin-left: -31px;
-  margin-top: -12px;
+  margin-top: -13px;
   margin-right: 15px;
 }
 
@@ -148,15 +174,15 @@ h4 {
 
 .accordion_one .panel .panel-heading a:after,
 .accordion_one .panel .panel-heading a.collapsed:after {
-  font-family: "FontAwesome";
+  /*버튼*/
+  font-family: "NanumSquare";
   font-size: 15px;
   width: 36px;
-  height: 48px;
+  height: 44px;
   line-height: 48px;
   text-align: center;
   background: #f1f1f1;
   float: left;
   margin-left: -31px;
-  margin-top: -12px;
   margin-right: 15px;
 }

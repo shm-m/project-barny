@@ -20,17 +20,20 @@
 	<!--네비-->
 	<!--사이드-->
 	<!--faq-->
+	<div class="faq-title">
+		<h2 class="title">자주 묻는 질문!</h2>
+	</div>
 	<div class="col-sm-6 accordion_one">
 		<div class="panel-group" id="accordionFourLeft">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion_oneLeft" href="#collapseFiveLeftone" aria-expanded="false" class="collapsed"> 1. 왜 눌렀는데 자스가 작동을 안할까요? </a> </h4>
+					<h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion_oneLeft" href="#collapseFiveLeftone" aria-expanded="false" class="collapsed"> 나의 구독 내역을 어떻게 확인하나요? </a> </h4>
 				</div>
 				<div id="collapseFiveLeftone" class="panel-collapse collapse" aria-expanded="false" role="tablist" style="height: 0px;">
 					<div class="panel-body">
 						<div class="img-accordion"> <img src="https://img.icons8.com/color/81/000000/person-female.png" alt=""> </div>
 						<div class="text-accordion">
-							<p> 그것은 제이쿼리가 부트스트랩 아래 있기 때문입니다! </p>
+							<p> 마이페이지 -> 구독 정보 확인에서 확인하실 수 있습니다 </p>
 						</div>
 					</div> <!-- end of panel-body -->
 				</div>
@@ -61,9 +64,26 @@
 					</div> <!-- end of panel-body -->
 				</div>
 			</div> <!-- /.panel-default -->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#accordion_oneLeft" href="#collapseFiveLeftFour" aria-expanded="false"> 3. 이걸 제가 포기해야 할까요? </a> </h4>
+				</div>
+				<div id="collapseFiveLeftFour" class="panel-collapse collapse" aria-expanded="false" role="tablist">
+					<div class="panel-body">
+						<div class="img-accordion"> <img src="https://img.icons8.com/color/81/000000/person-female.png" alt=""> </div>
+						<div class="text-accordion">
+							<p> 맘대로 하시긔 ㅋ </p>
+						</div>
+					</div> <!-- end of panel-body -->
+				</div>
+			</div> <!-- /.panel-default -->
 		</div>
 		<!--end of /.panel-group-->
 	</div>
 	<!--푸터-->
+
+	
+
+	  
 </body>
 </html>
