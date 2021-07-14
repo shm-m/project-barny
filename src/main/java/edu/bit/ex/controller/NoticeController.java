@@ -15,9 +15,9 @@ public class NoticeController {
     @Autowired
     private NoticeService noticeService;
 
-    // not paging list
-    @GetMapping("/list")
-    public ModelAndView list(ModelAndView mav) {
+    // list
+    @GetMapping("/main")
+    public ModelAndView list(Criteria cri, ModelAndView mav) {
         mav.setViewName("notice/notice_list"); // notice/notice_list.jsp
         mav.addObject("list", noticeService.getList()); // 여기서 정한게 jsp items
 
