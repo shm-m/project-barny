@@ -40,13 +40,14 @@
 			</div> <!-- /.panel-default -->
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#accordion_oneLeft" href="#collapseFiveLeftTwo" aria-expanded="false"> 2. 좃같죠? </a> </h4>
+					<h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#accordion_oneLeft" href="#collapseFiveLeftTwo" aria-expanded="false"> 주문한 상품을 취소하고 싶은데 주문 취소가 안됩니다. 어떻게 해야 하나요? </a> </h4>
 				</div>
 				<div id="collapseFiveLeftTwo" class="panel-collapse collapse" aria-expanded="false" role="tablist" style="height: 0px;">
 					<div class="panel-body">
 						<div class="img-accordion"> <img src="https://img.icons8.com/color/81/000000/person-female.png" alt=""> </div>
 						<div class="text-accordion">
-							<p> 아 그럼 쓰지말던가 ㅋㅋ </p>
+							<p> 결제 완료 상태의 경우에는 바로 주문취소가 됩니다.
+								주문 취소가 되지 않거나 특이사항이 있을 경우 고객센터(1666-2096)에 문의를 주시면 보다 정확히 확인 가능합니다. </p>
 						</div>
 					</div> <!-- end of panel-body -->
 				</div>
