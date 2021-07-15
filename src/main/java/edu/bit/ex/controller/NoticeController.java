@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import edu.bit.ex.page.Criteria;
+import edu.bit.ex.page.PageVO;
 import edu.bit.ex.service.NoticeService;
 
 @RestController
@@ -19,7 +21,10 @@ public class NoticeController {
     @GetMapping("/main")
     public ModelAndView list(Criteria cri, ModelAndView mav) {
         mav.setViewName("notice/notice_list"); // notice/notice_list.jsp
-        mav.addObject("list", noticeService.getList()); // 여기서 정한게 jsp items
+        mav.addObject("list", noticeService.getList(cri)); // 여기서 정한게 jsp items
+
+        int total = noticeService.getTotal(cri);
+        mav.addObject("pageMaker", new PageVO(cri, total)); // 1,10 넘어가서 여기에 만들어짐
 
         return mav;
     }

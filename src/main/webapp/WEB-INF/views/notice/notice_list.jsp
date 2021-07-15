@@ -27,5 +27,23 @@
 			<td colspan="3"> <a href="write_view">글작성</a> </td>
 		</tr>
 	</table>
+
+	<c:if test="${pageMaker.prev}">
+		<!-- 얘가 트루이면 아래 실행하라고 -->
+		<a href="main${pageMaker.makeQuery(pageMaker.startPage - 1) }">«</a>
+	</c:if>
+
+	<c:forEach var="idx" begin="${pageMaker.startPage }"
+		end="${pageMaker.endPage }">
+		<!--<c:out value="${pageMaker.cri.pageNum == idx?'':''}" />-->
+		<a href="main${pageMaker.makeQuery(idx)}">${idx}</a>
+	</c:forEach>
+	<!-- 페이지 메이커에 링크 걸어줌 -->
+
+	<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+		<a href="main${pageMaker.makeQuery(pageMaker.endPage +1) }"> » </a>
+	</c:if>
+	<br>
+
 </body>
 </html>

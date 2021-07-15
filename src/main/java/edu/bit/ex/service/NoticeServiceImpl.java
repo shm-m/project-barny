@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.bit.ex.mapper.NoticeMapper;
+import edu.bit.ex.page.Criteria;
 import edu.bit.ex.vo.NoticeVO;
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,6 +20,16 @@ public class NoticeServiceImpl implements NoticeService {
     public List<NoticeVO> getList() {
         log.info("getList()...");
         return noticeMapper.getList();
+    }
+
+    @Override
+    public int getTotal(Criteria cri) {
+        return noticeMapper.getTotalCount();
+    }
+
+    @Override
+    public List<NoticeVO> getList(Criteria cri) {
+        return noticeMapper.getListWithPaging(cri);
     }
 
 }
