@@ -15,6 +15,18 @@ public class HomeController {
 	@Autowired
 	private ProductMainService productMainService;
 
+	// 메인 페이지
+	@GetMapping("/main")
+	public String main_page() {
+		return "main_page";
+	}
+
+	// 헤더 테스트, 모두 확인 시 삭제
+	@GetMapping("/test")
+	public String test() {
+		return "header_test";
+	}
+
 	// 브랜드 스토리
 	@GetMapping("/story")
 	public String story() { // jvm이 가장 먼저 실행함
