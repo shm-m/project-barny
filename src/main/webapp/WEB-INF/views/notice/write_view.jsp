@@ -14,7 +14,15 @@
         text-align: center;
     }
 </style>
-
+<script type="text/javascript">
+     function func_confirm() {
+        if (confirm("공지를 등록하시겠습니까?")) {
+            alert("등록되었습니다.");
+        } else {
+            alert("작업이 취소되었습니다.");
+        }
+    }
+</script>
     
     <title>글 작성하기</title>
 </head>
@@ -34,21 +42,10 @@
                 <input type="text" class="form-control" name="b_content" placeholder="내용을 입력하세요">
             </div>
             <a href="main" role="button" class="btn btn-secondary">취소</a>
-            <input type="submit" class="btn btn-primary" value="등록" onclick="submit();"></input>
+            <input type="submit" class="btn btn-primary" value="등록" onclick="func_confirm()"></input>
         </form>
     </div>
 </div>
-<script language="javascript">
-    function submit() {
-    var result = confirm("등록하시겠습니까?");
 
-    if (result) {
-        document.write("<h1> 공지사항이 등록되었습니다 </h1>");
-    }
-    else {
-        document.write("<h1> 취소합니다. </h1>");
-        }
-    }
-</script>
 </body>
 </html>

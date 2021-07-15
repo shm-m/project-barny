@@ -1,5 +1,7 @@
 package edu.bit.ex.controller;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,12 +37,12 @@ public class NoticeController {
 
     // write
     @PostMapping("/write")
-    public String write(NoticeVO noticeVO, HttpServletResponse response) {
+    public void write(NoticeVO noticeVO, HttpServletResponse response) throws IOException {
 
         noticeService.write(noticeVO);
         String redirect_uri = "http://localhost:8282/notice/main";
+        response.sendRedirect(redirect_uri);
 
-        return redirect_uri; // 리스트 다시 보여주기
     }
 
     @GetMapping("/write_view")
