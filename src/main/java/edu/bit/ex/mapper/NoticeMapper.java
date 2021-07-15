@@ -11,8 +11,11 @@ import edu.bit.ex.vo.NoticeVO;
 public interface NoticeMapper {
     List<NoticeVO> getList();
 
+    void write(NoticeVO noticeVO);
+
     // 페이징 처리 함수
     int getTotalCount();
 
     List<NoticeVO> getListWithPaging(Criteria cri);
+
 }

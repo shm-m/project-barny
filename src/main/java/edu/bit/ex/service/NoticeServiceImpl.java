@@ -32,4 +32,10 @@ public class NoticeServiceImpl implements NoticeService {
         return noticeMapper.getListWithPaging(cri);
     }
 
+    @Override
+    public void write(NoticeVO noticeVO) {
+        noticeMapper.write(noticeVO);
+
+    }
+
 }

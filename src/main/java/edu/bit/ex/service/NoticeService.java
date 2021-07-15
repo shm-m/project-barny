@@ -8,6 +8,8 @@ import edu.bit.ex.vo.NoticeVO;
 public interface NoticeService {
     List<NoticeVO> getList();
 
+    void write(NoticeVO noticeVO);
+
     // paging
     public int getTotal(Criteria cri);
 
