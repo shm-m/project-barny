@@ -24,7 +24,7 @@
 		</tr>
 		</c:forEach>
 		<tr>
-			<td colspan="3"> <a href="write_view">글작성</a> </td>
+			<td><button type="button" title="글쓰기" onclick="location.href='write_view'">글쓰기</button></td>
 		</tr>
 	</table>
 

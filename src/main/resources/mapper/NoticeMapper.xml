@@ -29,4 +29,11 @@
         ]]>
     </select>
 
+    <insert id="write">
+        <![CDATA[
+        INSERT INTO barny_board (board_id, b_date, b_title, b_content, board_type_id, member_idx, b_group) 
+        VALUES(board_id_seq.NEXTVAL, sysdate, #{b_title}, #{b_content}, 0, 1, board_id_seq.currval)
+        ]]>
+    </insert>
+
 </mapper>
