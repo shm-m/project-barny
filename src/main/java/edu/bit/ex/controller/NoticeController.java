@@ -29,6 +29,12 @@ public class NoticeController {
         return mav;
     }
 
+    // write
+
+    // update
+
+    // delete
+
     // FAQ
     @GetMapping("/faq")
     public ModelAndView faq(ModelAndView mav) {
