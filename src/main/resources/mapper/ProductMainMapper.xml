@@ -3,11 +3,18 @@
 <mapper namespace="edu.bit.ex.mapper.ProductMainMapper">
     <select id="getList" resultType="edu.bit.ex.vo.ProductMainVO">
         <![CDATA[
-        SELECT DISTINCT I.IMAGE_ID, P.PRODUCT_NAME, P.PRICE, P.CATEGORY_NUM
-		FROM PRODUCT P, IMAGE I
-		WHERE I.PRODUCT_ID = P.PRODUCT_ID AND CATEGORY_NUM = '1'
-		ORDER BY IMAGE_ID ASC
+			select product_id, product_name, price 
+			from product 
+			where category_num = 1
         ]]>
+    </select>
+    
+    <select id="read" resultType="edu.bit.ex.vo.ProductMainVO"> 
+    	<![CDATA[
+      		select product_id, product_name, price 
+      		from product 
+      		where product_id = #{product_id}
+    	]]>
     </select>
 
 </mapper>

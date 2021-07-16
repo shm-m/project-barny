@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import edu.bit.ex.service.ProductMainService;
+import edu.bit.ex.vo.ProductMainVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -28,7 +29,17 @@ public class HomeController {
 		log.info("product_main()..");
 		model.addAttribute("product_main", productMainService.getList());
 
-		return "product_main";
+		return "product/product_main";
+	}
+	
+	// 상품상세보기
+	@GetMapping("/product_view")
+	public String product_view(ProductMainVO productMainVO, Model model) {
+
+		log.info("product_view()..");
+		model.addAttribute("product_view", productMainService.get(productMainVO.getProduct_id()));
+
+		return "product/product_view";
 	}
 
 }

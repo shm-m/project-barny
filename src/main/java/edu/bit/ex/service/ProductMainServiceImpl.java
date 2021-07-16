@@ -21,4 +21,11 @@ public class ProductMainServiceImpl implements ProductMainService {
         return productMainMapper.getList();
     }
 
+	@Override
+	public ProductMainVO get(int product_id) {
+		log.info("service:get()..");
+		
+		return productMainMapper.read(product_id);
+	}
+
 }
