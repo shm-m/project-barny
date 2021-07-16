@@ -33,7 +33,7 @@
 					if(result == "SUCCESS"){
 						//list로 
 						// 똑같은거 밑에꺼가 제이슨 windows.location.href= '${pageContext.request.contextPath}/restful/board/'
-						$(location).attr('href', '${pageContext.request.contextPath}/notice/main/')				      	       
+						$(location).attr('href', '${pageContext.request.contextPath}/notice/main')				      	       
 					}					        
 			    },
 			    error: function (e) {
@@ -67,7 +67,7 @@
 				<td> <textarea rows="10" id="b_content" name="content" >${content_view.b_content}</textarea></td>
 			</tr>
 			<tr >
-				<td colspan="2"> <input type="submit" value="수정"> &nbsp;&nbsp; <a href="${pageContext.request.contextPath}/notice/main/">목록보기</a> &nbsp;&nbsp; <a id="a-delete">삭제</a></td>
+				<td colspan="2"> <input type="submit" value="수정"> &nbsp;&nbsp; <a href="${pageContext.request.contextPath}/notice/main">목록보기</a> &nbsp;&nbsp; <a id="a-delete">삭제</a></td>
 			</tr>
 		</form>
 	</table>

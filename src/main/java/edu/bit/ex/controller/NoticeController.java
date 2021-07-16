@@ -19,9 +19,7 @@ import edu.bit.ex.page.Criteria;
 import edu.bit.ex.page.PageVO;
 import edu.bit.ex.service.NoticeService;
 import edu.bit.ex.vo.NoticeVO;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @RestController
 @RequestMapping("/notice/*")
 public class NoticeController {
