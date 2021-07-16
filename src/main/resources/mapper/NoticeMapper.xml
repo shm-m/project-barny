@@ -48,4 +48,11 @@
         ]]>
     </update>
 
+    <delete id="delete">
+        <!-- 함수 이름 -->
+        <![CDATA[
+           delete from barny_board where board_id = #{board_id}
+        ]]>
+    </delete>
+
 </mapper>
