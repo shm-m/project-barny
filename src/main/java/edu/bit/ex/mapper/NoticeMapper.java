@@ -13,6 +13,8 @@ public interface NoticeMapper {
 
     void write(NoticeVO noticeVO);
 
+    void update(NoticeVO noticeVO);
+
     NoticeVO read(int board_id);
 
     // 페이징 처리 함수

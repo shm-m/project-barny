@@ -12,6 +12,8 @@ public interface NoticeService {
 
     NoticeVO get(int board_id);
 
+    void modify(NoticeVO noticeVO);
+
     // paging
     public int getTotal(Criteria cri);
 

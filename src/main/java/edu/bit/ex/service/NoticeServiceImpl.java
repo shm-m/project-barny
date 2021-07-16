@@ -44,4 +44,10 @@ public class NoticeServiceImpl implements NoticeService {
         return noticeMapper.read(board_id);
     }
 
+    @Override
+    public void modify(NoticeVO noticeVO) {
+        noticeMapper.update(noticeVO);
+
+    }
+
 }
