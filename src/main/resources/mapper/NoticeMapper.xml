@@ -7,4 +7,51 @@
         ]]>
     </select>
 
+    <select id="getTotalCount" resultType="int">
+        <![CDATA[
+           select count(*) from barny_board where board_type_id = 0
+        ]]>
+    </select>
+
+    <select id="getListWithPaging" resultType="edu.bit.ex.vo.NoticeVO">
+        <!-- ROWNUM: sql이 실행된 결과에 넘버링을 해줌 -->
+        <![CDATA[
+            SELECT * FROM ( 
+                   SELECT ROWNUM AS RNUM, A.* FROM (
+                            SELECT
+                        board_id, b_title, b_content, board_type_id, b_date
+                              FROM
+                            barny_board 
+                where board_type_id = 0 order by board_id desc                  
+                ) A WHERE ROWNUM <= #{pageNum} * #{amount}
+              ) WHERE RNUM > (#{pageNum}-1) * #{amount}
+     
+        ]]>
+    </select>
+
+    <insert id="write">
+        <![CDATA[
+        INSERT INTO barny_board (board_id, b_date, b_title, b_content, board_type_id, member_idx, b_group) 
+        VALUES(board_id_seq.NEXTVAL, sysdate, #{b_title}, #{b_content}, 0, 1, board_id_seq.currval)
+        ]]>
+    </insert>
+
+    <select id="read" resultType="edu.bit.ex.vo.NoticeVO">
+        <![CDATA[
+           select * from barny_board where board_id = #{board_id}
+        ]]>
+    </select>
+
+    <update id="update">
+        <![CDATA[
+           update barny_board set b_date = sysdate, b_title = #{b_title}, b_content = #{b_content} where board_id = #{board_id}
+        ]]>
+    </update>
+
+    <delete id="delete">
+        <![CDATA[
+           delete from barny_board where board_id = #{board_id}
+        ]]>
+    </delete>
+
 </mapper>
