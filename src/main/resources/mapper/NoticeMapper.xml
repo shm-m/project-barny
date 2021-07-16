@@ -36,4 +36,16 @@
         ]]>
     </insert>
 
+    <select id="read" resultType="edu.bit.ex.vo.NoticeVO">
+        <![CDATA[
+           select * from barny_board where board_id = #{board_id}
+        ]]>
+    </select>
+
+    <update id="update">
+        <![CDATA[
+           update barny_board set b_date = sysdate, b_title = #{b_title}, b_content = #{b_content} where board_id = #{board_id}
+        ]]>
+    </update>
+
 </mapper>
