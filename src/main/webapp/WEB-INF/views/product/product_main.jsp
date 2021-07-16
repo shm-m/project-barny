@@ -108,13 +108,6 @@
     </li>
     <li class="nav-item">
       <a class="nav-link" href="product_main_food">안주</a>
-        <a class="nav-link active" href="#">구독패키지</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">술</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">안주</a>
     </li>
     <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -141,33 +134,6 @@
     </div>
 </div>
 
-
-<!--    <div class="col-4">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="barny.png"></a>
-          <div class="card-body">
-            <h2>${dto.product_name}</h2>
-            <p>${dto.price}</p>
-            <p><a class="btn btn-secondary" href="#">상품보러가기</a></p>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="col-4">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="barny.png"></a>
-          <div class="card-body">
-            <h2>${dto.product_name}</h2>
-            <p>${dto.price}</p>
-            <p><a class="btn btn-secondary" href="#">상품보러가기</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-
 <!-- 구독하기 버튼 -->
 
 <div class="text-center mb-5 mt-5">
@@ -192,17 +158,8 @@
             <h2>안주1</h2>
             <p>10,000 원</p>
           </div>
-          
-        <div class="col-4">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top width=100" src="barny.png"></a>
-                <div class="card-body">
-                    <h2>안주1</h2>
-                    <p>10,000 원</p>
-                    <p><a class="btn btn-secondary" href="#">상품보러가기</a></p>
-                </div>
-            </div>
         </div>
+      </div>
 
       <div class="col-4">
         <div class="card h-100">
@@ -211,17 +168,9 @@
             <h2>안주2</h2>
             <p>20,000 원</p>
           </div>
-
-        <div class="col-4">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="barny.png"></a>
-                <div class="card-body">
-                    <h2>안주2</h2>
-                    <p>20,000 원</p>
-                    <p><a class="btn btn-secondary" href="#">상품보러가기</a></p>
-                </div>
-            </div>
         </div>
+      </div>
+
 
       <div class="col-4">
         <div class="card h-100">
@@ -230,21 +179,12 @@
             <h2>안주3</h2>
             <p>30,000 원</p>
           </div>
-          
-        <div class="col-4">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="barny.png"></a>
-                <div class="card-body">
-                    <h2>안주3</h2>
-                    <p>30,000 원</p>
-                    <p><a class="btn btn-secondary" href="#">상품보러가기</a></p>
-                </div>
-            </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
 
-<div class="container mt-4 text-center">
+  <div class="container mt-4 text-center">
     <div class="row">
       <div class="col-4">
         <div class="card h-100">
@@ -253,17 +193,8 @@
             <h2>술1</h2>
             <p>5,000 원</p>
           </div>
-          
-        <div class="col-4">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top width=100" src="barny.png"></a>
-                <div class="card-body">
-                    <h2>술1</h2>
-                    <p>5,000 원</p>
-                    <p><a class="btn btn-secondary" href="#">상품보러가기</a></p>
-                </div>
-            </div>
         </div>
+      </div>
 
       <div class="col-4">
         <div class="card h-100">
@@ -272,16 +203,9 @@
             <h2>술2</h2>
             <p>4,000 원</p>
           </div>
-        <div class="col-4">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="barny.png"></a>
-                <div class="card-body">
-                    <h2>술2</h2>
-                    <p>4,000 원</p>
-                    <p><a class="btn btn-secondary" href="#">상품보러가기</a></p>
-                </div>
-            </div>
         </div>
+      </div>
+
 
       <div class="col-4">
         <div class="card h-100">
@@ -290,18 +214,10 @@
             <h2>술3</h2>
             <p>6,000 원</p>
           </div>
-        <div class="col-4">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="barny.png"></a>
-                <div class="card-body">
-                    <h2>술3</h2>
-                    <p>6,000 원</p>
-                    <p><a class="btn btn-secondary" href="#">상품보러가기</a></p>
-                </div>
-            </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
 
 <!-- 상품 더보기 버튼 -->
 
