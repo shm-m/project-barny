@@ -48,4 +48,10 @@
         ]]>
     </update>
 
+    <delete id="delete">
+        <![CDATA[
+           delete from barny_board where board_id = #{board_id}
+        ]]>
+    </delete>
+
 </mapper>

@@ -50,4 +50,10 @@ public class NoticeServiceImpl implements NoticeService {
 
     }
 
+    @Override
+    public int remove(int board_id) {
+
+        return noticeMapper.delete(board_id);
+    }
+
 }

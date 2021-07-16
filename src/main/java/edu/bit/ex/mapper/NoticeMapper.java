@@ -17,6 +17,8 @@ public interface NoticeMapper {
 
     NoticeVO read(int board_id);
 
+    int delete(int board_id);
+
     // 페이징 처리 함수
     int getTotalCount();
 

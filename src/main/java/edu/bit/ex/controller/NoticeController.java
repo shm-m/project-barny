@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +21,9 @@ import edu.bit.ex.page.Criteria;
 import edu.bit.ex.page.PageVO;
 import edu.bit.ex.service.NoticeService;
 import edu.bit.ex.vo.NoticeVO;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestController
 @RequestMapping("/notice/*")
 public class NoticeController {
@@ -75,6 +79,26 @@ public class NoticeController {
     }
 
     // delete
+    @DeleteMapping("/content/{board_id}")
+    public ResponseEntity<String> delete(@PathVariable("board_id") int board_id) {
+        ResponseEntity<String> entity = null;
+
+        log.info("restDelete() ..");
+        log.info("board_id..:" + board_id);
+        try {
+            int re = noticeService.remove(board_id);
+            log.info("delete result:" + re);
+            // 삭제가 성공하면 성공 상태메시지 저장
+            entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            // 삭제가 실패하면 실패 상태메시지 저장
+            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+        // 삭제 처리 HTTP 상태 메시지 리턴
+        return entity;
+    }
 
     // content view
     @GetMapping("/content/{board_id}")
