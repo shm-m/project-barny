@@ -90,13 +90,13 @@
 
   <ul class="nav justify-content-center navbar-expand-lg navbar-light bg-light">
     <li class="nav-item">
-      <a class="nav-link active" href="#">구독패키지</a>
+      <a class="nav-link" href="product_main">구독패키지</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">술</a>
+      <a class="nav-link active" href="product_main_liquor">술</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">안주</a>
+      <a class="nav-link" href="product_main_food">안주</a>
     </li>
     <form class="d-flex">
       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -108,7 +108,7 @@
 
   	<div class="container mt-4 text-center">
    	 <div class="row">  	   
-	  <c:forEach items="${product_main}" var="dto">
+	  <c:forEach items="${product_main_liquor}" var="dto">
       <div class="col-4">
         <div class="card h-100">
           <a href="#"><img class="card-img-top width=100" src="barny.png"></a>
@@ -148,105 +148,7 @@
       </div>
     </div>
   </div> -->
-  
- 
 
-  <!-- 구독하기 버튼 -->
-
-    <div class="text-center mb-5 mt-5">
-      <button type="button" class="btn btn-outline-dark btn-lg mt-5">구독하기</button>
-    </div>
-
-  <div style="height: auto; width: 100%; border:1px solid hsl(0, 4%, 33%);" />
-  <div class="container-2">
-    <div class="text-center mb-5 mt-5">
-      <h3 class="display-4 mb-5">이런 상품은 어떠세요?</h3>
-      <h6>구독패키지 구매 후 구매가능</h6>
-    </div>
-  </div>
-
-  <!-- 추천 상품보기-->
-  <div class="container mt-4 text-center">
-    <div class="row">
-      <div class="col-4">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top width=100" src="barny.png"></a>
-          <div class="card-body">
-            <h2>안주1</h2>
-            <p>10,000 원</p>
-            <p><a class="btn btn-secondary" href="#">상품보러가기</a></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-4">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="barny.png"></a>
-          <div class="card-body">
-            <h2>안주2</h2>
-            <p>20,000 원</p>
-            <p><a class="btn btn-secondary" href="#">상품보러가기</a></p>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="col-4">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="barny.png"></a>
-          <div class="card-body">
-            <h2>안주3</h2>
-            <p>30,000 원</p>
-            <p><a class="btn btn-secondary" href="#">상품보러가기</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="container mt-4 text-center">
-    <div class="row">
-      <div class="col-4">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top width=100" src="barny.png"></a>
-          <div class="card-body">
-            <h2>술1</h2>
-            <p>5,000 원</p>
-            <p><a class="btn btn-secondary" href="#">상품보러가기</a></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-4">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="barny.png"></a>
-          <div class="card-body">
-            <h2>술2</h2>
-            <p>4,000 원</p>
-            <p><a class="btn btn-secondary" href="#">상품보러가기</a></p>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="col-4">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="barny.png"></a>
-          <div class="card-body">
-            <h2>술3</h2>
-            <p>6,000 원</p>
-            <p><a class="btn btn-secondary" href="#">상품보러가기</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 상품 더보기 버튼 -->
-
-  <div class="text-center mb-5 mt-5">
-    <button type="button" class="btn btn-outline-dark btn-lg mt-5">상품 더 보러가기!</button>
-  </div>
 	
 	
 </body>

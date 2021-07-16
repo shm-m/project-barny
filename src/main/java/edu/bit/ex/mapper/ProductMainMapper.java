@@ -8,6 +8,9 @@ import edu.bit.ex.vo.ProductMainVO;
 
 @Mapper
 public interface ProductMainMapper {
-    List<ProductMainVO> getList();
-    ProductMainVO read(int product_id);
+    List<ProductMainVO> getList(); // 상품보기 메인(구독패키지)
+    List<ProductMainVO> getList1(); // 상품보기 - 술
+    List<ProductMainVO> getList2(); // 상품보기 - 안주
+    
+    ProductMainVO read(int product_id); // 상품 상세보기
 }

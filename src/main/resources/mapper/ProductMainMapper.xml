@@ -9,10 +9,26 @@
         ]]>
     </select>
     
+    <select id="getList1" resultType="edu.bit.ex.vo.ProductMainVO">
+        <![CDATA[
+			select product_id, product_name, price 
+			from product 
+			where category_num = 2
+        ]]>
+    </select>
+    
+        <select id="getList2" resultType="edu.bit.ex.vo.ProductMainVO">
+        <![CDATA[
+			select product_id, product_name, price 
+			from product 
+			where category_num = 3
+        ]]>
+    </select>
+    
     <select id="read" resultType="edu.bit.ex.vo.ProductMainVO"> 
     	<![CDATA[
       		select product_id, product_name, price 
-      		from product 
+      		from product
       		where product_id = #{product_id}
     	]]>
     </select>
