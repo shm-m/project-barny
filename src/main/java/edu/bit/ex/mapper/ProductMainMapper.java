@@ -9,4 +9,5 @@ import edu.bit.ex.vo.ProductMainVO;
 @Mapper
 public interface ProductMainMapper {
     List<ProductMainVO> getList();
+    ProductMainVO read(int product_id);
 }
