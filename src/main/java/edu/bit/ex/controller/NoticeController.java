@@ -86,7 +86,8 @@ public class NoticeController {
         log.info("restDelete() ..");
         log.info("board_id..:" + board_id);
         try {
-
+            int re = noticeService.remove(board_id);
+            log.info("delete result:" + re);
             // 삭제가 성공하면 성공 상태메시지 저장
             entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
 

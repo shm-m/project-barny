@@ -14,28 +14,40 @@
 		  //prevendDefault()는 href로 연결해 주지 않고 단순히 click에 대한 처리를 하도록 해준다.
 		  event.preventDefault();
 		  console.log("ajax 호출전"); 
-		  //해당 tr제거
-		  var trObj =  $(this).parent().parent();
+
+		  var aObj = this;
+		  func_confirm(aObj);
+
+	    });
+	 });   
+ </script>
+ <script type="text/javascript">
+	function func_confirm(aObj) {
+	   if (confirm("글을 삭제하시겠습니까? \n(삭제한 글은 복구가 불가능합니다.)")) {
+		   		  //해당 tr제거
+		  var trObj =  $(aObj).parent().parent();
 		  
-		  $.ajax({
+		   $.ajax({
 			  type : "DELETE",
-			  url : $(this).attr("href"),
+			  url : $(aObj).attr("href"),
 			  success: function (result) {       
 				  console.log(result); 
 				if(result == "SUCCESS"){
 					 //getList();
 				   $(trObj).remove();  
-							 
+				   alert("삭제되었습니다.");
 				}                       
 			  },
 			  error: function (e) {
+				alert("작업이 취소되었습니다.");
 				  console.log(e);
 			  }
 		  })
-		   
-	   });
-	});   
- </script>
+	   } else {
+		alert("작업이 취소되었습니다.");
+	   }
+   }
+</script>
 <body>
 	
 	<table width="500" cellpadding="0" cellspacing="0" border="1">
