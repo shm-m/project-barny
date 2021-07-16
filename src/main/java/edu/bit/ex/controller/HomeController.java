@@ -44,6 +44,26 @@ public class HomeController {
 		return "product/product_main";
 	}
 	
+	// 상품 - 술
+	@GetMapping("/product_main_liquor")
+	public String product_main_liquor(Model model) {
+
+		log.info("product_main_liquor()..");
+		model.addAttribute("product_main_liquor", productMainService.getList1());
+
+		return "product/product_main_liquor";
+	}
+	
+	// 상품 - 안주
+	@GetMapping("/product_main_food")
+	public String product_main_food(Model model) {
+
+		log.info("product_main_food()..");
+		model.addAttribute("product_main_food", productMainService.getList2());
+
+		return "product/product_main_food";
+	}
+	
 	// 상품상세보기
 	@GetMapping("/product_view")
 	public String product_view(ProductMainVO productMainVO, Model model) {
