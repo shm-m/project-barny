@@ -19,7 +19,7 @@
 		<tr>
 			<td>${vo.board_id}</td>
 			<td>
-				<a href="content_view?bid=${vo.board_id}">${vo.b_title}</a></td>
+				<a href="${pageContext.request.contextPath}/notice/content/${vo.board_id}">${vo.b_title}</a></td>
 			<td>${vo.b_date}</td>
 		</tr>
 		</c:forEach>

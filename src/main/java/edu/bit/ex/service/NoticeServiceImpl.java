@@ -38,4 +38,10 @@ public class NoticeServiceImpl implements NoticeService {
 
     }
 
+    @Override
+    public NoticeVO get(int board_id) {
+
+        return noticeMapper.read(board_id);
+    }
+
 }

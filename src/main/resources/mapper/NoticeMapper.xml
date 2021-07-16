@@ -36,4 +36,10 @@
         ]]>
     </insert>
 
+    <select id="read" resultType="edu.bit.ex.vo.NoticeVO">
+        <![CDATA[
+           select * from barny_board where board_id = #{board_id}
+        ]]>
+    </select>
+
 </mapper>

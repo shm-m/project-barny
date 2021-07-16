@@ -10,6 +10,8 @@ public interface NoticeService {
 
     void write(NoticeVO noticeVO);
 
+    NoticeVO get(int board_id);
+
     // paging
     public int getTotal(Criteria cri);
 
