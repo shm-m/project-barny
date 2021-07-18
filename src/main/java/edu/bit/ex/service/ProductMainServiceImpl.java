@@ -15,10 +15,33 @@ public class ProductMainServiceImpl implements ProductMainService {
     @Autowired
     private ProductMainMapper productMainMapper;
 
+    // 상품보기 메인(구독패키지)
     @Override
     public List<ProductMainVO> getList() {
         log.info("getList()...");
         return productMainMapper.getList();
     }
+    
+    // 상품보기 - 술
+    @Override
+    public List<ProductMainVO> getList1() {
+        log.info("getList1()...");
+        return productMainMapper.getList1();
+    }
+    
+    // 상품보기 - 안주
+    @Override
+    public List<ProductMainVO> getList2() {
+        log.info("getList2()...");
+        return productMainMapper.getList2();
+    }
+
+    // 상품 상세보기
+	@Override
+	public ProductMainVO get(int product_id) {
+		log.info("service:get()..");
+		
+		return productMainMapper.read(product_id);
+	}
 
 }
