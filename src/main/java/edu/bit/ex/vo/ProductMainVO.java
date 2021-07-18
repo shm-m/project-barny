@@ -14,9 +14,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class ProductMainVO {
-    private int image_id;
+    private int product_id;
     private String product_name;
     private int price;
-    private int category_num;
 
 }
