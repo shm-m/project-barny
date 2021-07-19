@@ -5,7 +5,8 @@
 <html>
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Barny:: 찾아가는 Bar</title>
 </head>
 <script type="text/javascript">
@@ -49,8 +50,8 @@
    }
 </script>
 <body>
-	
-	<table width="500" cellpadding="0" cellspacing="0" border="1">
+	<div class="col-md-6">
+	<table class="table table-bordered">
 		<tr>
 			<td>공지사항 번호</td>
 			<td>공지 제목</td>
@@ -70,7 +71,7 @@
 			<td><button type="button" title="글쓰기" onclick="location.href='write_view'">글쓰기</button></td>
 		</tr>
 	</table>
-
+</div>
 	<c:if test="${pageMaker.prev}">
 		<!-- 얘가 트루이면 아래 실행하라고 -->
 		<a href="main${pageMaker.makeQuery(pageMaker.startPage - 1) }">«</a>
