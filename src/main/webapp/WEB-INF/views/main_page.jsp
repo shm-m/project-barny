@@ -10,7 +10,7 @@
   <meta name="author" content="" />
   <title>Find your drink, Barny</title>
   <!-- Favicon-->
-  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="/static/main_page/assets/favicon.ico" />
   <!-- Font Awesome icons (free version)-->
   <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
   <!-- Google fonts-->
@@ -32,7 +32,7 @@
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
   <div class="container">
-    <a class="navbar-brand" href="#page-top"><img src="/static/main_page/assets/img/logo4.png" alt="바니 로고 1" /></a>
+    <a class="navbar-brand" href="/main"><img src="/static/main_page/assets/img/logo4.png" alt="바니 로고 1" /></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       Menu
       <i class="fas fa-bars ms-1"></i>
@@ -76,39 +76,39 @@
   <div class="container">
     <div class="masthead-subheading">당신만을 위한 맞춤형 바텐더</div>
     <div class="masthead-heading text-uppercase">지금 당신의 취향을 찾아보세요</div>
-    <a class="btn btn-primary btn-xl text-uppercase" href="#services">취향테스트</a>
+    <a class="btn btn-primary btn-xl text-uppercase" href="/drink_test">취향테스트</a>
   </div>
 </header>
 <!-- Services-->
 <section class="page-section" id="services">
   <div class="container">
     <div class="text-center">
-      <h2 class="section-heading text-uppercase">Services</h2>
+      <h2 class="section-heading text-uppercase">바니와 시작하세요</h2>
       <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
     </div>
     <div class="row text-center">
       <div class="col-md-4">
                         <span class="fa-stack fa-4x">
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
+                            <i class="fas fa-poll-h fa-stack-1x fa-inverse"></i>
                         </span>
-        <h4 class="my-3">E-Commerce</h4>
+        <h4 class="my-3">취향 찾기</h4>
         <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
       </div>
       <div class="col-md-4">
                         <span class="fa-stack fa-4x">
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
+                            <i class="fas fa-shipping-fast fa-stack-1x fa-inverse"></i>
                         </span>
-        <h4 class="my-3">Responsive Design</h4>
+        <h4 class="my-3">정기 구독</h4>
         <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
       </div>
       <div class="col-md-4">
                         <span class="fa-stack fa-4x">
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
+                            <i class="fas fa-gifts fa-stack-1x fa-inverse"></i>
                         </span>
-        <h4 class="my-3">Web Security</h4>
+        <h4 class="my-3">다양한 구성</h4>
         <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
       </div>
     </div>
@@ -219,7 +219,7 @@
 <section class="page-section" id="about">
   <div class="container">
     <div class="text-center">
-      <h2 class="section-heading text-uppercase">About</h2>
+      <h2 class="section-heading text-uppercase">많은 분들이 바니를 즐기고 계십니다</h2>
       <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
     </div>
     <ul class="timeline">
@@ -404,23 +404,25 @@
     </form>
   </div>
 </section>
+
 <!-- Footer-->
 <footer class="footer py-4">
   <div class="container">
     <div class="row align-items-center">
-      <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2021</div>
+      <div class="col-lg-4 text-lg-start"><b>주식회사 바니</b> <br> 서울특별시 종로구 종로 69 YMCA빌딩 7층
+        <br>Copyright &copy; Barny Inc. All rights reserved. </div>
       <div class="col-lg-4 my-3 my-lg-0">
         <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
+        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-instagram"></i></a>
       </div>
       <div class="col-lg-4 text-lg-end">
-        <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
-        <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+        <a class="link-dark text-decoration-none me-3" href="#!">개인정보처리방침</a>
+        <a class="link-dark text-decoration-none" href="#!">이용약관</a>
       </div>
     </div>
   </div>
 </footer>
+
 <!-- Portfolio Modals-->
 <!-- Portfolio item 1 modal popup-->
 <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">

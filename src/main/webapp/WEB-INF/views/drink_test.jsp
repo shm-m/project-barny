@@ -10,7 +10,7 @@
   <meta name="author" content="" />
   <title>Find your drink, Barny</title>
   <!-- Favicon-->
-  <link rel="icon" type="image/x-icon" href="/static/main_page/assets/favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
   <!-- Font Awesome icons (free version)-->
   <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
   <!-- Google fonts-->
@@ -20,11 +20,13 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
   <!-- Core theme CSS (includes Bootstrap)-->
   <link href="/static/main_page/css/styles.css" rel="stylesheet" />
+  <link rel="stylesheet" href="static/main_page/css/drink_test.css" />
   <!-- Bootstrap core JS-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Core theme JS-->
   <script src="/static/main_page/js/scripts.js"></script>
   <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
 
 </head>
 <body id="page-top">
@@ -70,63 +72,46 @@
   </div>
 </nav>
 
-<!--메인 헤더-->
-<div class="first-img">
-  <img class="header-img" style="width: 100%; height: auto;" src="/static/img/first.jpg">
-</div>
-
-<!--소개-->
-<div class="container-1">
-  <div class="text-center mb-5 mt-5">
-    <H1 class="display-4 mb-5" >당신을 찾아가는 Bar</H1>
-    <h5>Barny는 전국 각지의 대중화 되지 않은 전통주와 해외 주류를 포함한 다양한 주류를 입고하여<br>
-      집까지 배송해드리는 정기구독 시스템입니다.</br>
-    </h5>
-  </div>
-</div>
-<!--두번째 사진-->
-<div class="second-img">
-  <img class="header-img" style="width: 100%; height: auto;" src="/static/img/second.jpg">
-</div>
-<!--소개2-->
-<div class="container-1">
-  <div class="text-center mb-5 mt-5">
-    <H1 class="display-4 mb-5" >당신과 함께하는 Bar</H1>
-    <h5>특별한 사람들과 함께 집에서 안전하고 편안하게 자신이 원하는 주류를<br>접할 수 있도록 하기 위해
-      도입하게 되었습니다.
-      </br>
-    </h5>
-  </div>
-</div>
-<!--두번째 사진-->
-<div class="third-img">
-  <img class="header-img" style="width: 100%; height: auto;" src="/static/img/third.jpg">
-</div>
-<!--소개3-->
-<div class="container-1">
-  <div class="text-center mb-5 mt-5">
-    <H1 class="display-4 mb-5" >합리적인 가격으로 지금 시작해보세요</H1>
-    <button type="button" class="btn btn-outline-dark btn-lg mt-5">구독 하기</button>
-  </div>
-</div>
-
-<!-- Footer-->
-<footer class="footer py-4">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-4 text-lg-start"><b>주식회사 바니</b> <br> 서울특별시 종로구 종로 69 YMCA빌딩 7층
-        <br>Copyright &copy; Barny Inc. All rights reserved. </div>
-      <div class="col-lg-4 my-3 my-lg-0">
-        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-instagram"></i></a>
-      </div>
-      <div class="col-lg-4 text-lg-end">
-        <a class="link-dark text-decoration-none me-3" href="#!">개인정보처리방침</a>
-        <a class="link-dark text-decoration-none" href="#!">이용약관</a>
+<%--test page--%>
+<div id = "drink_test_body" class="container shadow bg-body rounded">
+  <section id="main" class="mx-auto my-3">
+    <h1>바니와 함께 인생 술 찾기</h1>
+    <div class="col-lg-6 col-md-8 col-sm-10 col-12 mx-auto">
+      <img src="static/img/test_main.png" alt="mainImage" class="img-fluid">
+    </div>
+    <p>
+      아래 시작하기 버튼을 통해 몰랐던 나의 술 취향을 찾아보세요!
+    </p>
+    <button type="button" class="rButton mt-3 py-2 px-3" onclick="js:begin()">시작하기</button>
+  </section>
+  <section id="qna" class="mx-auto my-3">
+    <div class="status mx-auto mt-3">
+      <div class="statusBar">
       </div>
     </div>
-  </div>
-</footer>
+    <div class="qBox my-5 py-3 mx-auto">
 
+    </div>
+    <div class="answerBox">
+
+    </div>
+  </section>
+  <section id="result" class="mx-auto my-3 py-5 px-3">
+    <h4>당신의 취향은...</h4>
+    <div class="resultname">
+
+    </div>
+    <div id="resultImg" class="my-3 col-lg-6 col-md-8 col-sm-10 col-12 mx-auto">
+
+    </div>
+    <div class="resultDesc">
+
+    </div>
+    <button type="button" class="rButton mt-3 py-2 px-3" onclick="">구독하기</button>
+    <br>
+    <button type="button" class="rButton mt-3 py-2 px-3" onclick="">결과 공유하기</button>
+  </section>
+  <script src="static/main_page/js/dTest.js" charset="utf-8"></script>
+</div>
 </body>
 </html>
