@@ -51,7 +51,7 @@
 </script>
 <body>
 	<div class="col-md-6">
-	<table class="table table-bordered">
+	<table class="table table-sm">
 		<tr>
 			<td>공지사항 번호</td>
 			<td>공지 제목</td>
