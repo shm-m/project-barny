@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.bit.ex.mapper.BoardMapper">
+	
+	<select id="getList" resultType="edu.bit.ex.vo.BoardVO">
+	<![CDATA[
+		select board_id, b_date, b_title, b_content, board_type_id, member_idx, b_hit, b_group, b_indent, b_step from barny_board where board_type_id = 3 order by b_Group desc, b_Step asc
+	]]>
+	</select>
+	
+	
+	<select id="read" resultType="edu.bit.ex.vo.BoardVO">
+	<![CDATA[
+		select * from barny_board where board_id = #{board_id}
+	]]>
+	</select>
+	
+	<update id="update">
+	<![CDATA[
+		update barny_board set b_title = #{b_title}, b_content = #{b_content} where board_id = #{board_id}
+	]]>
+	</update>
+	
+	<delete id="delete">
+	<![CDATA[
+		delete from barny_board where board_id = #{board_id}
+	]]>
+	</delete>
+	
+	
+	
+	
+	<select id="getMemberList" resultType="edu.bit.ex.vo.BoardVO">
+	<![CDATA[
+		select board_id, b_date, b_title, b_content, board_type_id, member_idx, b_hit, b_group, b_indent, b_step 
+		from barny_board where member_idx = #{member_idx} order by b_Group desc, b_Step asc
+	]]>
+	</select>
+	
+	<select id="getReviewList" resultType="edu.bit.ex.vo.BoardVO">
+	<![CDATA[
+		select*from barny_board where member_idx = #{42} and board_type_id ='2';
+	]]>
+	</select>
+	
+		
+</mapper>
