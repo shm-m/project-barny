@@ -29,6 +29,11 @@
 	<dependencies>
 		<!-- 오라클 라이브러리 추가 -->
 		<!-- 오라클 JDBC 드라이버 -->
+		<dependency>
+			<groupId>oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>11.2.0.3</version>
+		</dependency>
 		<!-- 오라클 JDBC 드라이버 -->
 		
 
@@ -141,7 +146,7 @@
 						</exclude>
 					</excludes>
 				</configuration>
-			</plugin><plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-compiler-plugin</artifactId><configuration><source>8</source><target>8</target></configuration></plugin>
+			</plugin><plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-compiler-plugin</artifactId></plugin>
 		</plugins>
 	</build>
 
