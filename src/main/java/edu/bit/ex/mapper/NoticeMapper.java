@@ -20,7 +20,7 @@ public interface NoticeMapper {
     int delete(int board_id);
 
     // 페이징 처리 함수
-    int getTotalCount();
+    int getTotalCount(Criteria cri);
 
     List<NoticeVO> getListWithPaging(Criteria cri);
 
