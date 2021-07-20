@@ -20,7 +20,6 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
   <!-- Core theme CSS (includes Bootstrap)-->
   <link href="/static/main_page/css/styles.css" rel="stylesheet" />
-  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
   <link rel="stylesheet" href="/static/css/styles.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -32,7 +31,7 @@
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav_2">
   <div class="container">
-    <a class="navbar-brand" href="/main"><img src="/static/main_page/assets/img/logo4.png" alt="바니 로고 1" /></a>
+    <a class="navbar-brand" href="/main"><img src="/static/main_page/assets/img/logo.png" alt="바니 로고 1" /></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       Menu
       <i class="fas fa-bars ms-1"></i>
@@ -70,12 +69,10 @@
   </div>
 </nav>
 
-<!--메인 헤더-->
+<!--이하 절취선 까지는 기능이 제대로 돌아가는 지 확인하기 위함으로 안가져가셔도 됩니다.-->
 <div class="first-img">
   <img class="header-img" style="width: 100%; height: auto;" src="/static/img/first.jpg">
 </div>
-
-<!--소개-->
 <div class="container-1">
   <div class="text-center mb-5 mt-5">
     <H1 class="display-4 mb-5" >당신을 찾아가는 Bar</H1>
@@ -84,11 +81,9 @@
     </h5>
   </div>
 </div>
-<!--두번째 사진-->
 <div class="second-img">
   <img class="header-img" style="width: 100%; height: auto;" src="/static/img/second.jpg">
 </div>
-<!--소개2-->
 <div class="container-1">
   <div class="text-center mb-5 mt-5">
     <H1 class="display-4 mb-5" >당신과 함께하는 Bar</H1>
@@ -98,20 +93,24 @@
     </h5>
   </div>
 </div>
-<!--두번째 사진-->
 <div class="third-img">
   <img class="header-img" style="width: 100%; height: auto;" src="/static/img/third.jpg">
 </div>
-<!--소개3-->
 <div class="container-1">
   <div class="text-center mb-5 mt-5">
     <H1 class="display-4 mb-5" >합리적인 가격으로 지금 시작해보세요</H1>
     <button type="button" class="btn btn-outline-dark btn-lg mt-5">구독 하기</button>
   </div>
 </div>
+<!-- --------------------------------------------------------------------------------------------- -->
 
 <!--top-button-->
-<button onclick="topFunction()" title="Go to top"><img id ="myBtn" src="static/main_page/assets/top-btn.png">Top</button>
+<img id="myBtn" src="static/main_page/assets/top-btn.png" onclick="topFunction()">
+
+<!--kakao-chat-->
+<a href="javascript:void kakaoChatStart()" class="kakaoChatPc hidden-md hidden-sm hidden-xs" id="kakao-chat">
+  <img src="/static/main_page/assets/kakao-chat.png" width="50px" height="50px">
+</a>
 
 <!-- Footer-->
 <footer class="footer py-4">
@@ -136,5 +135,14 @@
 <!-- Core theme JS-->
 <script src="/static/main_page/js/scripts.js"></script>
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script type='text/javascript'>
+  Kakao.init('dab10012c7e15e9d67728cf3d50faa8a'); // 사용할 앱의 JavaScript키를 입력해 주세요.
+  function kakaoChatStart() {
+    Kakao.Channel.chat({
+      channelPublicId: '601802' // 카카오톡 채널 홈 URL에 명시된 ID를 입력합니다.
+    });
+  }
+</script>
 </body>
 </html>

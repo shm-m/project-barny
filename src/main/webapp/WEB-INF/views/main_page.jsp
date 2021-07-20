@@ -119,7 +119,7 @@
 </section>
 
 
-<!-- Portfolio Grid-->
+<!--Product Grid-->
 <section class="page-section bg-light" id="portfolio">
     <div class="container">
         <div class="text-center">
@@ -131,7 +131,7 @@
                 <div class="col-lg-4 col-sm-6 mb-4">
                     <div class="card">
                         <a href="#"><img class="card-img-top" src="/static/img/image-0.png"></a>
-                        <div class ="card-title mt-4">심플함을 원할 땐</div>
+                        <div class="card-title mt-4">심플함을 원할 땐</div>
                         <div class="card-body">
                             <h5>A 패키지</h5>
                         </div>
@@ -140,7 +140,7 @@
                 <div class="col-lg-4 col-sm-6 mb-5">
                     <div class="card">
                         <a href="#"><img class="card-img-top" src="/static/img/image-1.png"></a>
-                        <div class ="card-title mt-4">주당을 위한</div>
+                        <div class="card-title mt-4">주당을 위한</div>
                         <div class="card-body">
                             <h5>B 패키지</h5>
                         </div>
@@ -149,7 +149,7 @@
                 <div class="col-lg-4 col-sm-6 mb-4">
                     <div class="card">
                         <a href="#"><img class="card-img-top" src="/static/img/image-2.png"></a>
-                        <div class ="card-title mt-4">새로운 영역으로 가기위한</div>
+                        <div class="card-title mt-4">새로운 영역으로 가기위한</div>
                         <div class="card-body">
                             <h5>C 패키지</h5>
                         </div>
@@ -270,11 +270,24 @@
 <!--top-button-->
 <img id="myBtn" src="static/main_page/assets/top-btn.png" onclick="topFunction()">
 
-S
+<!--kakao-chat-->
+<a href="javascript:void kakaoChatStart()" class="kakaoChatPc hidden-md hidden-sm hidden-xs" id="kakao-chat">
+    <img src="/static/main_page/assets/kakao-chat.png" width="50px" height="50px">
+</a>
+
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 <script src="/static/main_page/js/scripts.js"></script>
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script type='text/javascript'>
+    Kakao.init('dab10012c7e15e9d67728cf3d50faa8a'); // 사용할 앱의 JavaScript키를 입력해 주세요.
+    function kakaoChatStart() {
+        Kakao.Channel.chat({
+            channelPublicId: '601802' // 카카오톡 채널 홈 URL에 명시된 ID를 입력합니다.
+        });
+    }
+</script>
 </body>
 </html>
