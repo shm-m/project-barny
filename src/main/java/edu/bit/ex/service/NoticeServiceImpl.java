@@ -24,7 +24,7 @@ public class NoticeServiceImpl implements NoticeService {
 
     @Override
     public int getTotal(Criteria cri) {
-        return noticeMapper.getTotalCount();
+        return noticeMapper.getTotalCount(cri);
     }
 
     @Override
