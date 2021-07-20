@@ -111,7 +111,7 @@
                             <i class="fas fa-gifts fa-stack-1x fa-inverse"></i>
                         </span>
                 <h4 class="my-3">다양한 구성</h4>
-                <p class="text-muted">주류를 포함한 밀키트, 매번 바뀌는 깜짝 구성품까지</p>
+                <p class="text-muted">주류를 포함한 밀키트, 특별 구성품까지</p>
             </div>
         </div>
 
