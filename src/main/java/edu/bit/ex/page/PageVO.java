@@ -56,7 +56,7 @@ public class PageVO {
 
     public String makeQuery(int page) { // 겟방식에 키벨류 설정해주는거
         UriComponents uriComponentsBuilder = UriComponentsBuilder.newInstance().queryParam("pageNum", page) // pageNum =
-                                                                                                            // 3
+                // 3
                 .queryParam("amount", cri.getAmount()) // pageNum=3&amount=10 어마운트 무조건 10
                 .build(); // ?pageNum=3&amount=10
         return uriComponentsBuilder.toUriString(); // ?pageNum=3&amount=10 리턴
