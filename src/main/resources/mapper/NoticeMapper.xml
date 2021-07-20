@@ -9,7 +9,13 @@
 
     <select id="getTotalCount" resultType="int">
         <![CDATA[
-           select count(*) from barny_board where board_type_id = 0
+           select count(*) from barny_board where
+           ]]>
+        <if test="keyword != null">
+            <include refid="criteria"></include>
+        </if>
+        <![CDATA[  
+           board_type_id = 0
         ]]>
     </select>
 
@@ -22,11 +28,17 @@
                         board_id, b_title, b_content, board_type_id, b_date
                               FROM
                             barny_board 
-                where board_type_id = 0 order by board_id desc                  
+                where
+                ]]>
+        <if test="keyword != null">
+            <include refid="criteria"></include>
+        </if>
+        <![CDATA[ 
+                board_type_id = 0 order by board_id desc                  
                 ) A WHERE ROWNUM <= #{pageNum} * #{amount}
               ) WHERE RNUM > (#{pageNum}-1) * #{amount}
-     
-        ]]>
+              ]]>
+
     </select>
 
     <insert id="write">
@@ -53,5 +65,22 @@
            delete from barny_board where board_id = #{board_id}
         ]]>
     </delete>
+    <!-- 검색 조건문 -->
+    <sql id="criteria">
+        <trim prefix="(" suffix=") AND" prefixOverrides="OR">
+            <foreach collection="typeArr" item="type">
+                <trim prefix="OR">
+                    <choose>
+                        <when test="type == 'T'.toString()">
+                        b_title like '%'||#{keyword}||'%' 
+                    </when>
+                        <when test="type == 'C'.toString()">
+                        b_content like '%'||#{keyword}||'%' 
+                    </when>
+                    </choose>
+                </trim>
+            </foreach>
+        </trim>
 
+    </sql>
 </mapper>
