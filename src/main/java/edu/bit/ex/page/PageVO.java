@@ -58,6 +58,8 @@ public class PageVO {
         UriComponents uriComponentsBuilder = UriComponentsBuilder.newInstance().queryParam("pageNum", page) // pageNum =
                 // 3
                 .queryParam("amount", cri.getAmount()) // pageNum=3&amount=10 어마운트 무조건 10
+                .queryParam("type", cri.getType()) // 검색 추가
+                .queryParam("keyword", cri.getKeyword()) // 검색 추가
                 .build(); // ?pageNum=3&amount=10
         return uriComponentsBuilder.toUriString(); // ?pageNum=3&amount=10 리턴
     }
