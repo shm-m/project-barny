@@ -1,22 +1,17 @@
 package edu.bit.ex.controller;
 
-import edu.bit.ex.mapper.MemberMapper;
+
+import edu.bit.ex.service.member.MemberService;
 import edu.bit.ex.vo.MemberVO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
 public class AccountController {
 
-
-    private final MemberMapper memberMapper;
-    private final PasswordEncoder passwordEncoder;
+    private final MemberService memberService;
 
 
     /*@GetMapping({"","/"})
@@ -43,17 +38,24 @@ public class AccountController {
 
     @GetMapping("/joinForm")
     public String joinForm() {
+
         return "account/joinForm";
     }
 
-
+    @ResponseBody
     @PostMapping("/join")
-    public String join(@ModelAttribute MemberVO memberVO) {
-        String rawPassword = memberVO.getPw();
-        String encodedPassword = passwordEncoder.encode(rawPassword);
-        memberVO.setPw(encodedPassword);
-        memberMapper.insertUser(memberVO);
-        return "redirect:/loginForm";
+    public int join(@ModelAttribute MemberVO memberVO) {
+
+        //== 아이디 중복검사 ==//
+        MemberVO vo = memberService.idCheck(memberVO.getMember_id());
+        if (vo == null) {
+            // == 회원가입 ==//
+            memberService.addUser(memberVO);
+        } else {
+            return 1;
+        }
+        return 0;
+
     }
 
 
