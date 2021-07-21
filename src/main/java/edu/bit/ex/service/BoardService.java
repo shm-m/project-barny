@@ -15,7 +15,8 @@ public interface BoardService {
 	public void remove(int board_id);
 	public void writeBoard(BoardVO boardVO);
 	
+	//1:1게시판 회원 마이페이지
 	public List<BoardVO> getMemberList(BoardVO boardVO);
-
+	//후기게시판 회원 마이페이지
 	public List<BoardVO> getReviewList(BoardVO boardVO);
 }

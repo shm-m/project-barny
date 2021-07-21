@@ -52,6 +52,7 @@ public class BoardServiceImpl implements BoardService {
 		
 		return  boardMapper.getMemberList(boardVO);
 	}
+	
 	@Override
 	public List<BoardVO> getReviewList(BoardVO boardVO) {
 		return  boardMapper.getReviewList(boardVO);

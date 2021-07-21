@@ -42,7 +42,7 @@
 	
 	<select id="getReviewList" resultType="edu.bit.ex.vo.BoardVO">
 	<![CDATA[
-		select*from barny_board where member_idx = #{42} and board_type_id ='2';
+		select*from barny_board where member_idx = #{member_idx} and board_type_id ='2'
 	]]>
 	</select>
 	

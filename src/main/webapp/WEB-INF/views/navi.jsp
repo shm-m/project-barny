@@ -98,13 +98,14 @@
            
             <li>마이페이지${member.id}</li>
             
-            <li><a href="#1">회원정보수정</a>
+            <li><a href="user_view?member_id=zbwopkpeya">회원정보수정</a>
+            <ul>
+                    <li><a href="#">회원탈퇴</a></li>
+                </ul>
             </li>
             
             <li><a href="#2">구독정보</a>
-            	<ul>
-                    <li><a href="#">회원탈퇴</a></li>
-                </ul>
+            	
             </li>
             
             <li><a href="#3">구매내역</a>
@@ -112,11 +113,11 @@
             </li>
            <li><a href="#4">1:1문의내역</a>
            		 <ul>
-                    <li><a href="my_view?member_idx=42">내문의</a></li>
+                    <li><a href="my_view?member_id=zbwopkpeya">내문의</a></li>
                  </ul>
             </li>
             
-            <li><a href="my_review?member_idx=42">후기</a>
+            <li><a href="my_review?member_idx=42 ">후기</a>
             	
             </li>
             
