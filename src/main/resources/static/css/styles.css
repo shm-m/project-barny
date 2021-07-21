@@ -57,6 +57,40 @@
   margin-bottom: 4rem;
 }
 
+.subs-container {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("/static/main_page/assets/img/main_img3.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: relative;
+  text-align: center;
+}
+
+.contents {
+  font-family: "BBTreeGB";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.contents p {
+  color: #fff;
+  font-size: x-large;
+}
+
+a.btn-outline-yellow {
+  color: #ffc107;
+  border-color: #ffc107;
+  border-radius: 0 !important;
+}
+a.btn-outline-yellow:hover {
+  color: #fff;
+  background-color: #ffc107;
+  border-color: #ffc107;
+}
+
 /*faq*/
 
 .col-sm-6 {

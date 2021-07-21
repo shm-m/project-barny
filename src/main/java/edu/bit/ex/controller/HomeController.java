@@ -36,8 +36,14 @@ public class HomeController {
 
 	// 브랜드 스토리
 	@GetMapping("/story")
-	public String story() { // jvm이 가장 먼저 실행함
+	public String story() {
 		return "brandstory";
+	}
+
+	// 구독
+	@GetMapping("/subscribe")
+	public String subscribe() {
+		return "subs";
 	}
 
 	// 상품보기
@@ -49,7 +55,7 @@ public class HomeController {
 
 		return "product/product_main";
 	}
-	
+
 	// 상품 - 술
 	@GetMapping("/product_main_liquor")
 	public String product_main_liquor(Model model) {
@@ -59,7 +65,7 @@ public class HomeController {
 
 		return "product/product_main_liquor";
 	}
-	
+
 	// 상품 - 안주
 	@GetMapping("/product_main_food")
 	public String product_main_food(Model model) {
@@ -69,7 +75,7 @@ public class HomeController {
 
 		return "product/product_main_food";
 	}
-	
+
 	// 상품상세보기
 	@GetMapping("/product_view")
 	public String product_view(ProductMainVO productMainVO, Model model) {
