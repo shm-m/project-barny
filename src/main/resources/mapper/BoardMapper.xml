@@ -46,5 +46,38 @@
 	]]>
 	</select>
 	
+	<insert id="insertBoard">
+	<![CDATA[
+		insert into barny_board (board_id, b_date, b_title, b_content, board_type_id, member_idx, b_hit, b_group, b_indent, b_step) 
+		values (barny_board_seq.nextval, #{board_id}, #{btitle}, #{bcontent}, 0, barny_board_seq.currval, 0, 0)
+	]]>
+	</insert>
+	
+	<insert id="insertBoard1">
+	<![CDATA[
+		insert into barny_board (board_id, b_date, b_title, b_content, board_type_id, member_idx, b_hit, b_group, b_indent, b_step) 
+		values (barny_board_seq.nextval, #{board_id}, #{btitle}, #{bcontent}, 0, barny_board_seq.currval, 0, 0)
+	]]>
+	</insert>
+	
+	<insert id="insertBoard2">
+	<![CDATA[
+		insert into barny_board (board_id, b_date, b_title, b_content, board_type_id, member_idx, b_hit, b_group, b_indent, b_step) 
+		values (barny_board_seq.nextval, #{board_id}, #{b_title}, #{b_content}, 0, barny_board_seq.currval, 0, 0)
+	]]>
+	</insert>
+	
+	<update id="my_update">
+	<![CDATA[
+		update barny_board set b_title = #{b_title}, b_content = #{b_content} where board_id = #{board_id}
+	]]>
+	</update>
+	
+	<delete id="my_delete">
+	<![CDATA[
+		delete from barny_board where board_id = #{board_id}
+	]]>
+	</delete>
+	
 		
 </mapper>

@@ -18,4 +18,15 @@ public interface BoardMapper {
 	//회원마이페이지 게시글들
 	public List<BoardVO> getMemberList(BoardVO boardVO);
 	public List<BoardVO> getReviewList(BoardVO boardVO);
+	
+	//회원1:1문의 게시글
+	public void insertBoard1(BoardVO boardVO);
+	//회원1:1문의게시글 수정
+	public void my_update(BoardVO boardVO);
+	//회원1:1문의글게시글 삭제
+	public void my_delete(int board_id);
+	
+	//회원 후기게시글
+	public void insertBoard2(BoardVO boardVO);
+	
 }

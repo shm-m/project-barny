@@ -5,9 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import edu.bit.ex.service.BoardService;
 import edu.bit.ex.vo.BoardVO;
+import lombok.experimental.ExtensionMethod;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -66,7 +68,7 @@ public class BoardController {
 	public String write_my_view(BoardVO boardVO) {
 		log.info("write_my_view()");
 
-		boardService.writeBoard(boardVO);
+		boardService.writeBoard1(boardVO);
 
 		return "redirect:my_view";
 	}
@@ -76,10 +78,30 @@ public class BoardController {
 	public String write_my_review(BoardVO boardVO) {
 		log.info("write_my_review()");
 
-		boardService.writeBoard(boardVO);
+		boardService.writeBoard2(boardVO);
 
 		return "redirect:my_review";
 	}
+	
+	// 회원 1:1문의 주문내역 게시판 수정
+		@PostMapping("/board/my_modify")
+		public String my_modify(BoardVO boardVO, Model model) {
+			log.info("my_modify()..");
+
+			boardService.my_modify(boardVO);
+
+			return "redirect:my_view";
+		}
+
+		// 회원 1:1문의 주문내역 게시판 삭제
+		@GetMapping("/board/my_delete")
+		public String my_delete(BoardVO boardVO, Model model) {
+			log.info("my_delete()..");
+
+			boardService.my_remove(boardVO.getBoard_id());
+
+			return "redirect:my_view";
+		}
 
 	// 관리자 주문내역 리스트
 	@GetMapping("/board/list")
