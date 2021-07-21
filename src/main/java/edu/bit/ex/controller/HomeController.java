@@ -29,6 +29,12 @@ public class HomeController {
 		return "header_test";
 	}
 
+	// 취향 테스트
+	@GetMapping("/drink_test")
+	public String drink_test() {
+		return "drink_test";
+	}
+
 	// 브랜드 스토리
 	@GetMapping("/story")
 	public String story() { // jvm이 가장 먼저 실행함
