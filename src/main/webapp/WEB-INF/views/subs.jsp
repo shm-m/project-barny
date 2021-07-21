@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<brㅠㄱ%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,60 +76,104 @@
   <!--메인 구독 버튼-->
   <div class="subs-container" id="main">
     <div class="contents">
-      <p>매일 밤, 찾아오는 Bar는 어떠세요?</p>
+      <p class="contents1">매일 밤, 찾아오는 Bar는 어떠세요?</p>
+      <p class="contents2">술&안주 정기구독 서비스</p>
+      <p class="contents3">특별한 가격으로 나만의 Bar를 꾸려보세요</p>
+      
       <a class="btn btn-outline-yellow btn-lg text-uppercase" href="/product_main">구독하기</a>
     </div>
   </div>
 
   <!--Product Grid-->
-<section class="page-section bg-light" id="portfolio">
+<section class="page-section bg-light">
   <div class="container">
       <div class="text-center">
           <div class="text-center" style="margin-bottom: 5rem;">
               <h4 class="section-heading text-uppercase">바니만의 특별한 패키지</h4>
           </div>
-
-          <div class="row">
-              <div class="col-lg-4 col-sm-6 mb-4">
-                  <div class="card">
-                      <a href="#"><img class="card-img-top" src="/static/img/image-0.png"></a>
-                      <div class="card-title mt-4">심플함을 원할 땐</div>
-                      <div class="card-body">
-                          <h5>A 패키지</h5>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-4 col-sm-6 mb-5">
-                  <div class="card">
-                      <a href="#"><img class="card-img-top" src="/static/img/image-1.png"></a>
-                      <div class="card-title mt-4">주당을 위한</div>
-                      <div class="card-body">
-                          <h5>B 패키지</h5>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-4 col-sm-6 mb-4">
-                  <div class="card">
-                      <a href="#"><img class="card-img-top" src="/static/img/image-2.png"></a>
-                      <div class="card-title mt-4">새로운 영역으로 가기위한</div>
-                      <div class="card-body">
-                          <h5>C 패키지</h5>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <br>
-          <a class="btn btn-secondary btn-xl text-uppercase" href="/#">상품 정보 더보기</a>
       </div>
+
+      <div class="col-12 produce">
+        <div class="col-4 package-img">
+          <div class="packge-img" >
+            <img src="/static/img/image-0.png" style="flex-shrink: 0; width: 80%;">
+          </div>
+        </div>
+        <div class="col-8 package-text">
+          <div class="packge-text" >
+            <H3 class="packge-title" style="margin-bottom: 30px !important;">부담없이 마실 수 있는 A 패키지</H3>
+            <p>가장 기본적인 아이템이자, 부담없이 즐길 수 있는 친구들로 구성되어 있습니다.<br>
+              모두가 좋아하는 맥주와 안주, barny의 choice를 믿어보세요!<br>
+              <br>
+              구성품: 맥주, 감자칩, 머시기 저시기
+            </p>
+            <br>
+            <br>
+            <h3>29,900원</h3>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-12 produce">
+        <div class="col-4 package-img">
+          <div class="packge-img" >
+            <img src="/static/img/image-1.png" style="flex-shrink: 0; width: 80%;">
+          </div>
+        </div>
+        <div class="col-8 package-text">
+          <div class="packge-text" >
+            <H3 class="packge-title" style="margin-bottom: 30px !important;">남들이 모르는 우리 술 B 패키지</H3>
+            <p>전국의 장인들이 만든 술을 합리적인 가격에 맛보세요.<br>
+              Barny가 자랑하는 유통 시스템, barny의 choice를 믿어보세요!<br>
+              <br>
+              구성품: 이달의 장인 술, 머시기 저시기
+            </p>
+            <br>
+            <br>
+            <h3>39,900원</h3>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-12 produce">
+        <div class="col-4 package-img">
+          <div class="packge-img" >
+            <img src="/static/img/image-2.png" style="flex-shrink: 0; width: 80%;">
+          </div>
+        </div>
+        <div class="col-8 package-text">
+          <div class="packge-text" >
+            <H3 class="packge-title" style="margin-bottom: 30px !important;">술 하나로 전세계를 돌아다니는 C 패키지</H3>
+            <p>집에 앉아서 세계 일주를 할 수 있어요.<br>
+              전세계의 맛있는 와인을 추천해드려요. barny의 choice를 믿어보세요!<br>
+              <br>
+              구성품: 이달의 와인, 머시기 저시기
+            </p>
+            <br>
+            <br>
+            <h3>49,900원</h3>
+          </div>
+        </div>
+
+      </div>
+      
   </div>
 </section>
 
 <!--달력-->
+<section class="page-section bg-white">
+  <div class="container-fluid">
+    
+  </div>
+
+</section>
 
 
 <!--푸터-->
 <!--top-button-->
-<img id="myBtn" src="static/main_page/assets/top-btn.png" onclick="topFunction()">
+<img id="myBtn" src="/static/main_page/assets/top-btn.png" onclick="topFunction()">
 
 <!--kakao-chat-->
 <a href="javascript:void kakaoChatStart()" class="kakaoChatPc hidden-md hidden-sm hidden-xs" id="kakao-chat">
