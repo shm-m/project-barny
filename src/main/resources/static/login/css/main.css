@@ -7,12 +7,12 @@
 
 @font-face {
   font-family: Ubuntu-Regular;
-  src: url('../fonts/ubuntu/Ubuntu-Regular.ttf'); 
+  src: url('../fonts/ubuntu/Ubuntu-Regular.ttf');
 }
 
 @font-face {
   font-family: Ubuntu-Bold;
-  src: url('../fonts/ubuntu/Ubuntu-Bold.ttf'); 
+  src: url('../fonts/ubuntu/Ubuntu-Bold.ttf');
 }
 
 @font-face {
@@ -28,8 +28,8 @@
 [ RESTYLE TAG ]*/
 
 * {
-	margin: 0px; 
-	padding: 0px; 
+	margin: 0px;
+	padding: 0px;
 	box-sizing: border-box;
 }
 
@@ -40,8 +40,9 @@ body, html {
 
 /*---------------------------------------------*/
 a {
-	font-family: NanumSquare;
+	font-family: BBTreeGB;
 	font-size: 15px;
+  text-decoration: none;
 	line-height: 1.7;
 	color: #666666;
 	margin: 0px;
@@ -126,8 +127,6 @@ iframe {
 
 
 
-
-
 /*//////////////////////////////////////////////////////////////////
 [ login ]*/
 
@@ -137,7 +136,7 @@ iframe {
 }
 
 .container-login100 {
-  width: 100%;  
+  width: 100%;
   min-height: 100vh;
   display: -webkit-box;
   display: -webkit-flex;
@@ -148,7 +147,7 @@ iframe {
   justify-content: center;
   align-items: center;
   padding: 15px;
-  
+
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;;
@@ -199,8 +198,8 @@ iframe {
 
 /*---------------------------------------------*/
 .input100 {
-  font-family: NanumSquare;
-  color: #ff9935;
+  font-family: BBTreeGB;
+  color: #666666;
   line-height: 1.2;
   font-size: 15px;
 
@@ -270,7 +269,7 @@ iframe {
 }
 
 .label-checkbox100 {
-  font-family: NanumSquare;
+  font-family: BBTreeGB;
   font-size: 15px;
   color: #666666;
   line-height: 1.2;
@@ -325,8 +324,11 @@ iframe {
   display: flex;
   flex-wrap: wrap;
   border : solid 1px;
+  border-radius: 3px;
   border-color: #EBC24B;
 }
+
+
 
 .login100-form-btn {
   font-family: BBTreeGB;

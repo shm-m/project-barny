@@ -11704,6 +11704,8 @@ header.masthead .masthead-heading {
   text-align: center;
   font-size: 0.9rem;
   font-family: "NanumSquare";
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 #myBtn {

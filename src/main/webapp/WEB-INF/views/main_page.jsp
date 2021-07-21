@@ -249,7 +249,7 @@
 </section>
 
 <!-- Footer-->
-<footer class="footer py-5">
+<footer class="footer">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-4 text-lg-start"><b>주식회사 바니</b> <br> 서울특별시 종로구 종로 69 YMCA빌딩 7층
