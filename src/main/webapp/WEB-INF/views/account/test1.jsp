@@ -18,8 +18,6 @@
 			integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
 			crossorigin="anonymous"></script>
 
-	<!-- Favicon-->
-	<link rel="icon" type="image/x-icon" href="/static/main_page/assets/favicon.ico"/>
 	<!-- Font Awesome icons (free version)-->
 	<script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
 	<!-- Google fonts-->
