@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @Controller
 @RequiredArgsConstructor
 public class AccountController {
@@ -44,7 +46,7 @@ public class AccountController {
 
     @ResponseBody
     @PostMapping("/join")
-    public int join(@ModelAttribute MemberVO memberVO) {
+    public int join(@Valid @ModelAttribute MemberVO memberVO) {
 
         //== 아이디 중복검사 ==//
         MemberVO vo = memberService.idCheck(memberVO.getMember_id());

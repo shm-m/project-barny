@@ -20,19 +20,11 @@
 
     <img class="mb-4" src="https://getbootstrap.com/docs/4.5/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"></a>
     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <div c:if="${param.error}" class="alert alert-danger" role="alert">
-        아이디와 비밀번호가 잘못되었습니다.
-    </div>
-    <div c:if="${param.logout}" class="alert alert-primary" role="alert">
-        로그아웃 하였습니다.
 
-        <!-- <c:if test="${param.error != null}">
+         <c:if test="${param.error != null}">
                 <p>아이디와 비밀번호가 잘못되었습니다.</p>
             </c:if>
-            <c:if test="${param.logout != null}">
-                <p>로그아웃 하였습니다.</p>
-            </c:if>-->
-    </div>
+
     <label for="username" class="sr-only">Username</label>
     <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
     <label for="inputPassword" class="sr-only">Password</label>

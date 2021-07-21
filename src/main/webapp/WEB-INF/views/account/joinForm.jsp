@@ -69,6 +69,7 @@
     <p>
         <label>아이디</label>
         <input type="text" id="member_id" name="member_id"/>
+            <form:errors path="member_id" />
     <div class="check_font" id="idCheck">중복확인
     </div>
 
