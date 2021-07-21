@@ -58,5 +58,10 @@ public class AccountController {
 
     }
 
+    @GetMapping("/test1")
+    public String test1() {
+        return "account/test1";
+    }
+
 
 }
