@@ -242,13 +242,13 @@
           <div class="list">
             <div class="day-event" date-month="12" date-day="5">
               <a class="close fontawesome-remove"></a>
-              <h2 class="title">월 초 정기배송</h2>
+              <h2 class="title">월 초 정기배송일</h2>
               <p class="text">결제일을 기준으로 오는 가장 빠른 정기배송일에 Barny가 찾아갑니다!</p>
               
             </div>
             <div class="day-event" date-month="12" date-day="20">
               <a class="close fontawesome-remove"></a>
-              <h2 class="title">월 말 정기배송</h2>
+              <h2 class="title">월 말 정기배송일</h2>
               <p class="text">결제일을 기준으로 오는 가장 빠른 정기배송일에 Barny가 찾아갑니다!</p>
             </div>
             
