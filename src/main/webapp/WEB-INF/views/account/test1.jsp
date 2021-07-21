@@ -20,12 +20,10 @@
 
 	<!-- Font Awesome icons (free version)-->
 	<script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
-	<!-- Google fonts-->
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"/>
-	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css"/>
-	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
+
 	<!-- naver fonts -->
 	<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+
 	<!-- Core theme CSS (includes Bootstrap)-->
 	<link href="/static/main_page/css/styles.css" rel="stylesheet"/>
 
@@ -33,8 +31,6 @@
 
 	<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="/static/login/images/icons/favicon.ico"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/static/login/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/static/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
@@ -57,40 +53,35 @@
 <body id="page-top">
 
 <!-- Navigation-->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav_2">
 	<div class="container">
-		<a class="navbar-brand" href="/main"><img src="/static/main_page/assets/img/logo.png" alt="바니 로고 1"/></a>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-				aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+		<a class="navbar-brand" href="/main"><img src="/static/main_page/assets/img/logo.png" alt="바니 로고 1" /></a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 			Menu
 			<i class="fas fa-bars ms-1"></i>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-				<li class="nav-item"><a class="nav-link" href=/subs>구독</a></li>
-				<li class="nav-item"><a class="nav-link" href="/story">브랜드 스토리</a></li>
+				<li class="nav-item"><a class="nav-link" href="#services">구독</a></li>
+				<li class="nav-item"><a class="nav-link" href="#portfolio">브랜드 스토리</a></li>
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
-					   data-bs-toggle="dropdown" aria-expanded="false">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 						상품 보기
 					</a>
 					<ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-						<li></li>
-						<a class="dropdown-item" href="#">패키지</a></li>
+						<li></li><a class="dropdown-item" href="#">패키지</a></li>
 						<li><a class="dropdown-item" href="#">술</a></li>
 						<li><a class="dropdown-item" href="#">안주</a></li>
 					</ul>
 				</li>
 				<li class="nav-item"><a class="nav-link" href="#team">이벤트</a></li>
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
-					   data-bs-toggle="dropdown" aria-expanded="false">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 						고객센터
 					</a>
 					<ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-						<li></li>
-						<a class="dropdown-item" href="/notice_list">공지사항</a></li>
-						<li><a class="dropdown-item" href="/faq">자주 묻는 질문</a></li>
+						<li></li><a class="dropdown-item" href="#">공지사항</a></li>
+						<li><a class="dropdown-item" href="#">자주 묻는 질문</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -108,17 +99,17 @@
 			<div class="wrap-login100 p-t-50 p-b-90">
 				<form class="login100-form validate-form flex-sb flex-w" action="/login" method="POST">
 					<span class="login100-form-title p-b-51">
-						Login
+						로그인
 					</span>
 					
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "Username is required">
-						<input class="input100" type="text" id="username" name="username" placeholder="Username">
+					<div class="wrap-input100 validate-input m-b-16" data-validate = "아이디를 입력해주세요.">
+						<input class="input100" type="text" id="username" name="username" placeholder="아이디를 입력해주세요">
 						<span class="focus-input100"></span>
 					</div>
 					
 					
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
-						<input class="input100" type="password" name="password" placeholder="Password">
+					<div class="wrap-input100 validate-input m-b-16" data-validate = "비밀번호를 입력해주세요.">
+						<input class="input100" type="password" name="password" placeholder="비밀번호를 입력해주세요">
 						<span class="focus-input100"></span>
 					</div>
 					
@@ -126,20 +117,30 @@
 						<div class="contact100-form-checkbox">
 							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
 							<label class="label-checkbox100" for="ckb1">
-								Remember me
+								아이디 저장
 							</label>
 						</div>
 
 						<div>
-							<a href="#" class="txt1">
-								Forgot?
+							<a href="#">
+								아이디/비밀번호 찾기
 							</a>
 						</div>
 					</div>
 
 					<div class="container-login100-form-btn m-t-17">
 						<button class="login100-form-btn">
-							Login
+							로그인
+						</button>
+					</div>
+					<div class="container-login100-form-btn m-t-17">
+						<button class="other_login100-form-btn">
+							KAKAO로 로그인
+						</button>
+					</div>
+					<div class="container-login100-form-btn m-t-17">
+						<button class="other_login100-form-btn">
+							NAVAR로 로그인
 						</button>
 					</div>
 

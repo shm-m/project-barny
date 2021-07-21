@@ -3735,11 +3735,11 @@ fieldset:disabled .btn {
 .dropdown-toggle {
   white-space: nowrap;
 }
-/* .dropdown-toggle::after {
+.dropdown-toggle::after {
   display: inline-block;
   margin-left: 0.255em;
   vertical-align: 0.255em;
-  content: "";
+  content: none;
   border-top: 0.3em solid;
   border-right: 0.3em solid transparent;
   border-bottom: 0;
@@ -3747,7 +3747,7 @@ fieldset:disabled .btn {
 }
 .dropdown-toggle:empty::after {
   margin-left: 0;
-} */
+}
 
 .dropdown-menu {
   position: absolute;
