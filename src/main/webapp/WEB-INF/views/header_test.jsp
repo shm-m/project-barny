@@ -108,7 +108,7 @@
 <img id="myBtn" src="static/main_page/assets/top-btn.png" onclick="topFunction()">
 
 <!--kakao-chat-->
-<a href="javascript:void kakaoChatStart()" class="kakaoChatPc hidden-md hidden-sm hidden-xs" id="kakao-chat">
+<a href ="https://pf.kakao.com/_WDxjSs/chat" class="kakaoChatPc hidden-md hidden-sm hidden-xs" id=kakao-chat">
   <img src="/static/main_page/assets/kakao-chat.png" width="50px" height="50px">
 </a>
 
@@ -136,13 +136,5 @@
 <script src="/static/main_page/js/scripts.js"></script>
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-<script type='text/javascript'>
-  Kakao.init('dab10012c7e15e9d67728cf3d50faa8a'); // 사용할 앱의 JavaScript키를 입력해 주세요.
-  function kakaoChatStart() {
-    Kakao.Channel.chat({
-      channelPublicId: '601802' // 카카오톡 채널 홈 URL에 명시된 ID를 입력합니다.
-    });
-  }
-</script>
 </body>
 </html>
