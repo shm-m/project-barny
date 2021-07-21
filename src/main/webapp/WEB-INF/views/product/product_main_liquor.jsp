@@ -5,106 +5,88 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Product_main</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Product_main_liquor</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css"/>
+    <!-- naver fonts -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/static/main_page/css/styles.css" rel="stylesheet"/>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="/static/main_page/js/scripts.js"></script>
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 </head>
 <body>
 
-	 <!-- 헤더 네비게이션 바 -->
-
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<!-- 헤더 네비게이션 바 -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav_2">
     <div class="container">
-      <a class="navbar-brand" href="#">Barny</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#">브랜드스토리
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">구독</a>
-          </li>
-          <li class="nav-item dropdown active">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              상품보기
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">구독패키지</a>
-              <a class="dropdown-item" href="#">술</a>
-              <a class="dropdown-item" href="#">안주</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">후기</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">이벤트</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">고객센터</a>
-          </li>
-        </ul>
-      </div>
+        <a class="navbar-brand" href="#page-top"><img src="/static/main_page/assets/img/logo4.png" alt="바니 로고 1" /></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars ms-1"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                <li class="nav-item"><a class="nav-link" href="#services">구독</a></li>
+                <li class="nav-item"><a class="nav-link" href="#portfolio">브랜드 스토리</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        상품 보기
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                        <li></li><a class="dropdown-item" href="#">패키지</a></li>
+                        <li><a class="dropdown-item" href="#">술</a></li>
+                        <li><a class="dropdown-item" href="#">안주</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#team">이벤트</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        고객센터
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                        <li></li><a class="dropdown-item" href="#">공지사항</a></li>
+                        <li><a class="dropdown-item" href="#">자주 묻는 질문</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                <li class="nav-item"><a class="nav-link" href="#services">로그인</a></li>
+                <li class="nav-item"><a class="nav-link" href="#services">장바구니</a></li>
+            </ul>
+        </div>
     </div>
-  </nav>
+</nav>
 
-  <!--슬라이더바-->
-
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img class="d-block w-100" src="static/img/first.jpg" alt="First slide">
-      </div>
-      <div class="carousel-item">
-        <img class="d-block w-100" src="static/img/second.jpg" alt="Second slide">
-      </div>
-      <div class="carousel-item">
-        <img class="d-block w-100" src="static/img/third.jpg" alt="Third slide">
-      </div>
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-
-  <!-- 네비게이션 탭 -->
-
-  <ul class="nav justify-content-center navbar-expand-lg navbar-light bg-light">
+<!-- 네비게이션 탭 -->
+<ul class="nav justify-content-center navbar-expand-lg navbar-light bg-light">
     <li class="nav-item">
-      <a class="nav-link" href="product_main">구독패키지</a>
+      <a class="nav-link active" href="product_main">구독패키지</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link active" href="product_main_liquor">술</a>
+      <a class="nav-link" href="product_main_liquor">술</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="product_main_food">안주</a>
     </li>
-    <form class="d-flex">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-  </ul>
 
-<!-- 패키지 상품 보기 -->
+    <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+</ul>
+
+<!-- 술 상품 보기 -->
 
   	<div class="container mt-4 text-center">
    	 <div class="row">  	   
@@ -123,33 +105,6 @@
      </div>
     </div>
     
-
-    <!--    <div class="col-4">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="barny.png"></a>
-          <div class="card-body">
-            <h2>${dto.product_name}</h2>
-            <p>${dto.price}</p>
-            <p><a class="btn btn-secondary" href="#">상품보러가기</a></p>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="col-4">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="barny.png"></a>
-          <div class="card-body">
-            <h2>${dto.product_name}</h2>
-            <p>${dto.price}</p>
-            <p><a class="btn btn-secondary" href="#">상품보러가기</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-	
 	
 </body>
 </html>
