@@ -5,6 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import edu.bit.ex.page.Criteria;
+import edu.bit.ex.page.PageVO;
+import edu.bit.ex.service.EventService;
 import edu.bit.ex.service.ProductMainService;
 import edu.bit.ex.vo.ProductMainVO;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +18,10 @@ public class HomeController {
 	// 상품보기
 	@Autowired
 	private ProductMainService productMainService;
+
+	// event service
+	@Autowired
+	private EventService eventService;
 
 	// 메인 페이지
 	@GetMapping("/main")
@@ -84,6 +91,19 @@ public class HomeController {
 		model.addAttribute("product_view", productMainService.get(productMainVO.getProduct_id()));
 
 		return "product/product_view";
+	}
+
+	// event list
+	@GetMapping("/event")
+	public String event_main(Model model, Criteria cri) {
+
+		log.info("product_main()..");
+		model.addAttribute("event_list", eventService.getList());
+
+		int total = eventService.getTotal(cri);
+		model.addAttribute("pageMaker", new PageVO(cri, total));
+
+		return "event/m_event_list";
 	}
 
 }
