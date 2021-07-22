@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.bit.ex.mapper.MemberMapper">
+
+    <!-- 1:N처리 -->
+    <resultMap id="memberMap" type="edu.bit.ex.vo.MemberVO">
+        <result property="member_idx" column="member_idx"/>
+        <!-- 컬럼명 sql 똑같이 해주기/ 프로퍼티는 함수 -> 내부적으로는 setUsername이다. -->
+        <result property="member_id" column="member_id"/>
+        <result property="member_name" column="member_name"/>
+        <result property="nickname" column="nickname"/>
+        <result property="pw" column="pw"/>
+        <result property="email" column="email"/>
+        <result property="payment" column="payment"/>
+        <result property="tel" column="tel"/>
+        <result property="address" column="address"/>
+        <result property="date_of_birth" column="date_of_birth"/>
+        <result property="point" column="point"/>
+
+        <collection property="authList" resultMap="authMap"></collection>
+        <!-- 콜렉션은 알아서 123 매칭(map)시켜준다.(콜렉션 프레임) -->
+    </resultMap>
+
+    <resultMap id="authMap" type="edu.bit.ex.vo.account.AuthVO">
+        <result property="member_idx" column="member_idx"/>
+        <result property="role" column="role"/>
+        <result property="active" column="active"/>
+
+    </resultMap>
+    <!--option + command + l-->
+    <select id="getMember" resultMap="memberMap">
+      <![CDATA[
+        select m.member_id,
+               m.member_idx,
+               m.pw,
+               m.member_name,
+               m.nickname,
+               m.email,
+               m.payment,
+               m.tel,
+               m.address,
+               m.date_of_birth,
+               m.point,
+               a.role
+        from member m
+                 left outer join auth a on m.member_idx = a.member_idx
+        where m.member_id = #{member_id}
+        ]]>
+    </select>
+
+
+    <insert id="insertUser">
+       <![CDATA[
+        insert into member(member_id, member_idx, pw, member_name, nickname, email, payment, tel, address,
+                           date_of_birth, point)
+        values (#{member_id}, BARNY_member_SEQ.NEXTVAL, #{pw}, #{member_name}, #{nickname}, #{email}, null, #{tel},
+                #{address}, #{date_of_birth}, 0)
+        ]]>
+    </insert>
+
+    <!--아이디 중복검사-->
+    <select id = "checkOverId" resultType="edu.bit.ex.vo.MemberVO">
+        <![CDATA[ select * from member where member_id =#{member_id}]]>
+    </select>
+
+
+</mapper>

@@ -11,4 +11,6 @@ public class OriginController {
         return "Hello , World";
     }
 
+    // 제일 처음 부트스트랩 돌아갈때 뜨는 화면입니다 나중에 메인 만들어지면 삭제해주세용
+
 }
