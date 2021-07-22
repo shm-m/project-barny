@@ -19,7 +19,7 @@
         ]]>
     </select>
 
-    <select id="getListWithPaging" resultType="edu.bit.ex.vo.NoticeVO">
+    <select id="getListWithPaging" resultType="edu.bit.ex.vo.EventVO">
         <!-- ROWNUM: sql이 실행된 결과에 넘버링을 해줌 -->
         <![CDATA[
             SELECT * FROM ( 
@@ -41,14 +41,14 @@
 
     </select>
 
-    <!-- <insert id="write">
+    <insert id="write">
         <![CDATA[
         INSERT INTO barny_board (board_id, b_date, b_title, b_content, board_type_id, member_idx, b_group) 
-        VALUES(board_id_seq.NEXTVAL, sysdate, #{b_title}, #{b_content}, 0, 1, board_id_seq.currval)
+        VALUES(board_id_seq.NEXTVAL, sysdate, #{b_title}, #{b_content}, 1, 1, board_id_seq.currval)
         ]]>
     </insert>
 
-    <select id="read" resultType="edu.bit.ex.vo.NoticeVO">
+    <select id="read" resultType="edu.bit.ex.vo.EventVO">
         <![CDATA[
            select * from barny_board where board_id = #{board_id}
         ]]>
@@ -64,7 +64,7 @@
         <![CDATA[
            delete from barny_board where board_id = #{board_id}
         ]]>
-    </delete> -->
+    </delete>
     <!-- 검색 조건문 -->
     <sql id="criteria">
         <trim prefix="(" suffix=") AND" prefixOverrides="OR">

@@ -35,4 +35,26 @@ public class EventServiceImpl implements EventService {
 
     }
 
+    @Override
+    public EventVO get(int board_id) {
+        return eventMapper.read(board_id);
+    }
+
+    @Override
+    public void write(EventVO eventVO) {
+        eventMapper.write(eventVO);
+
+    }
+
+    @Override
+    public void modify(EventVO eventVO) {
+        eventMapper.update(eventVO);
+
+    }
+
+    @Override
+    public int remove(int board_id) {
+        return eventMapper.delete(board_id);
+    }
+
 }

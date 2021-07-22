@@ -10,6 +10,46 @@
 <title>Barny:: 찾아가는 Bar</title>
 </head>
 <script type="text/javascript">
+	$(document).ready(function (){
+	   $('.a-delete').click(function(event){
+		  //prevendDefault()는 href로 연결해 주지 않고 단순히 click에 대한 처리를 하도록 해준다.
+		  event.preventDefault();
+		  console.log("ajax 호출전"); 
+
+		  var aObj = this;
+		  func_confirm(aObj);
+
+	    });
+	 });   
+ </script>
+ <script type="text/javascript">
+	function func_confirm(aObj) {
+	   if (confirm("글을 삭제하시겠습니까? \n(삭제한 글은 복구가 불가능합니다.)")) {
+		   		  //해당 tr제거
+		  var trObj =  $(aObj).parent().parent();
+		  
+		   $.ajax({
+			  type : "DELETE",
+			  url : $(aObj).attr("href"),
+			  success: function (result) {       
+				  console.log(result); 
+				if(result == "SUCCESS"){
+					 //getList();
+				   $(trObj).remove();  
+				   alert("삭제되었습니다.");
+				}                       
+			  },
+			  error: function (e) {
+				alert("작업이 취소되었습니다.");
+				  console.log(e);
+			  }
+		  })
+	   } else {
+		alert("작업이 취소되었습니다.");
+	   }
+   }
+</script>
+<script type="text/javascript">
 	$(document).ready(function(){
 		
 		var searchForm = $("#searchForm");
@@ -39,14 +79,16 @@
 				<td>이벤트 번호</td>
 				<td>이벤트 제목</td>
 				<td>게시 날짜</td>
+				<td>삭제</td>
 			</tr>
 			<c:forEach items="${event_list}" var="vo">
 				<tr>
 					<td>${vo.board_id}</td>
 					<td>
-						<a href="${pageContext.request.contextPath}/event/content/${vo.board_id}">${vo.b_title}</a>
+						<a href="${pageContext.request.contextPath}/admin/event/content/${vo.board_id}">${vo.b_title}</a>
 					</td>
 					<td>${vo.b_date}</td>
+					<td><a class="a-delete" data-board_id='${vo.board_id}' href="${pageContext.request.contextPath}/admin/event/content/${vo.board_id}">삭제</a></td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -54,7 +96,7 @@
 
 
 	<div class="col-lg-12">
-		<form id='searchForm' action="/event" method='get'>
+		<form id='searchForm' action="/admin/event" method='get'>
 			<select name='type'>
 				<option value=""<c:out value="${pageMaker.cri.type == null?'selected':''}"/>>--</option>
 				<option value="T"<c:out value="${pageMaker.cri.type eq 'T'?'selected':''}"/>>제목</option>

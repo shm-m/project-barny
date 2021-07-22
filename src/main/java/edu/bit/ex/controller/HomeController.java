@@ -9,6 +9,7 @@ import edu.bit.ex.page.Criteria;
 import edu.bit.ex.page.PageVO;
 import edu.bit.ex.service.EventService;
 import edu.bit.ex.service.ProductMainService;
+import edu.bit.ex.vo.EventVO;
 import edu.bit.ex.vo.ProductMainVO;
 import lombok.extern.slf4j.Slf4j;
 
@@ -97,13 +98,21 @@ public class HomeController {
 	@GetMapping("/event")
 	public String event_main(Model model, Criteria cri) {
 
-		log.info("product_main()..");
 		model.addAttribute("event_list", eventService.getList(cri));
 
 		int total = eventService.getTotal(cri);
 		model.addAttribute("pageMaker", new PageVO(cri, total));
 
 		return "event/m_event_list";
+	}
+
+	// event list view
+	@GetMapping("/event/content/{board_id}") // 뒤에 보드 아이디 달아줘야 찾아감!
+	public String content_view(EventVO eventVO, Model model) {
+
+		model.addAttribute("content_view", eventService.get(eventVO.getBoard_id()));
+
+		return "event/m_content_view";
 	}
 
 }
