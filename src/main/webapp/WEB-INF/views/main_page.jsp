@@ -271,13 +271,21 @@
 <!--top-button-->
 <img id="myBtn" src="static/main_page/assets/top-btn.png" onclick="topFunction()">
 
+
 <!--kakao-chat-->
-<a href="https://pf.kakao.com/_WDxjSs/chat" class="kakaoChatPc hidden-md hidden-sm hidden-xs" id="kakao-chat" >
+<a href="javascript:void kakaoChatStart()" class="kakaoChatPc hidden-md hidden-sm hidden-xs" id="kakao-chat">
     <img src="/static/main_page/assets/kakao-chat.png" width="50px" height="50px">
 </a>
 
-
-<!---->
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script type='text/javascript'>
+    Kakao.init('7e53e24ce9a07956bfb5ac4930333caa');
+    function kakaoChatStart() {
+        Kakao.Channel.chat({
+            channelPublicId: '_WDxjSs'
+        });
+    }
+</script>
 
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

@@ -3957,6 +3957,7 @@ fieldset:disabled .btn {
 
 .dropdown-item {
   display: block;
+  font-family: NanumSquare;
   width: 100%;
   padding: 0.25rem 1rem;
   clear: both;
@@ -11280,18 +11281,12 @@ p {
 #mainNav .navbar-toggler {
   padding: 0.75rem;
   font-size: 0.75rem;
-  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   text-transform: uppercase;
   font-weight: 700;
 }
 
 #mainNav .navbar-brand {
   color: #ffc800;
-  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 700;
   letter-spacing: 0.0625em;
   text-transform: uppercase;
@@ -11302,7 +11297,7 @@ p {
   height: 1.5rem;
 }
 #mainNav .navbar-nav .nav-item .nav-link {
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: NanumSquare;
   font-weight: 700;
   font-size: 1rem;
   text-align: center;
@@ -11312,7 +11307,7 @@ p {
 }
 
 #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link {
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: NanumSquare;
   font-weight: 700;
   font-size: 1rem;
   text-align: center;
@@ -11370,18 +11365,12 @@ p {
 #mainNav_2 .navbar-toggler {
   padding: 0.75rem;
   font-size: 0.75rem;
-  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
-  Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-  "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   text-transform: uppercase;
   font-weight: 700;
 }
 
 #mainNav_2 .navbar-brand {
   color: #ffc800;
-  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
-  Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-  "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 700;
   letter-spacing: 0.0625em;
   text-transform: uppercase;
@@ -11392,9 +11381,9 @@ p {
   height: 1.5rem;
 }
 #mainNav_2 .navbar-nav .nav-item .nav-link {
-  font-family: "BBTreeGB";
+  font-family: NanumSquare;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 700;
   text-align: center;
   text-shadow: 0px 0px 0px gray;
   color: black;
@@ -11402,10 +11391,10 @@ p {
 }
 
 #mainNav_2.navbar-shrink .navbar-nav .nav-item .nav-link {
-  font-family: "BBTreeGB";
+  font-family: NanumSquare;
   font-size: 1rem;
   text-align: center;
-  font-weight: 500;
+  font-weight: 700;
   text-shadow: 0px 0px 0px gray;
   color: black;
   letter-spacing: 0.0625em;
@@ -11499,11 +11488,11 @@ header.masthead .masthead-heading {
   }
 }
 #outro{
-  /*padding-top: 10.5rem;*/
-  /*padding-bottom: 6rem;*/
+  padding-top: 6rem;
+  padding-bottom: 6rem;
   text-align: right;
   color: #fff;
-  background-image: url("/static/main_page/assets/img/outro_img.jpg");
+  background-image: url("/static/main_page/assets/img/outro_img.png");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
