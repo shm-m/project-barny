@@ -105,7 +105,7 @@
 <!-- --------------------------------------------------------------------------------------------- -->
 
 <!--top-button-->
-<img id="myBtn" src="static/main_page/assets/top-btn.png" onclick="topFunction()">
+<img id="myBtn" src="/static/main_page/assets/top-btn.png" onclick="topFunction()">
 
 <!--kakao-chat-->
 <a href ="https://pf.kakao.com/_WDxjSs/chat" class="kakaoChatPc hidden-md hidden-sm hidden-xs" id=kakao-chat">

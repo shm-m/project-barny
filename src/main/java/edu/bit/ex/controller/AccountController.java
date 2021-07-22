@@ -7,17 +7,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+
+
 @Controller
 @RequiredArgsConstructor
 public class AccountController {
 
     private final MemberService memberService;
-
-
-    /*@GetMapping({"","/"})
-    public @ResponseBody String index(){
-        return"index";
-    }*/
 
     @GetMapping("/user")
     public @ResponseBody
@@ -38,7 +34,6 @@ public class AccountController {
 
     @GetMapping("/joinForm")
     public String joinForm() {
-
         return "account/joinForm";
     }
 
@@ -58,10 +53,10 @@ public class AccountController {
 
     }
 
-    @GetMapping("/test1")
-    public String test1() {
-        return "account/test1";
-    }
+    //TODO: VALIDATE CONTROLLER 생성
+
+
+
 
 
 }
