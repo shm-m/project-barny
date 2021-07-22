@@ -22,6 +22,8 @@ public interface BoardService {
 	
 	//1:1 회원 글쓰기
 	public void writeBoard1(BoardVO boardVO);
+	//내글 상세보기
+	public BoardVO get1(int board_id);
 	//1:1회원 글수정
 	public void my_modify(BoardVO boardVO);
 	//1:1회원 글 삭제

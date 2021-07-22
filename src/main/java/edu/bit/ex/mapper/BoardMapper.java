@@ -21,6 +21,8 @@ public interface BoardMapper {
 	
 	//회원1:1문의 게시글
 	public void insertBoard1(BoardVO boardVO);
+	//내 게시글 읽기
+	public BoardVO read1(int board_id);
 	//회원1:1문의게시글 수정
 	public void my_update(BoardVO boardVO);
 	//회원1:1문의글게시글 삭제

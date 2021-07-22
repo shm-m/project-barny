@@ -59,6 +59,13 @@ public class BoardServiceImpl implements BoardService {
 		return boardMapper.getMemberList(boardVO);
 	}
 
+	// 1:1문의 게시판 하나 읽기
+	@Override
+	public BoardVO get1(int board_id) {
+		log.info("service:get()..");
+		return boardMapper.read1(board_id);
+	}
+	
 	// 1:1문의글쓰기
 	@Override
 	public void writeBoard1(BoardVO boardVO) {

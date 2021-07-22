@@ -19,10 +19,11 @@
 				<td> 내용 </td>
 				<td> <textarea rows="10" name="b_content" ></textarea></td>
 			</tr>
-			<tr >
 			
+			<tr>
 				<td colspan="2"> <input type="submit" value="입력"> &nbsp;&nbsp; <a href="my_view">목록보기</a></td>
 			</tr>
+			
 		</form>
 	</table>	
 		

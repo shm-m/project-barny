@@ -31,6 +31,14 @@
 	</delete>
 	
 	
+	<insert id="insertBoard">
+	<![CDATA[
+		insert into barny_board (board_id, b_date, b_title, b_content, board_type_id, member_idx, b_hit, b_group, b_indent, b_step) 
+		values (barny_board_seq.nextval, #{board_id}, #{btitle}, #{bcontent}, 0, barny_board_seq.currval, 0, 0)
+	]]>
+   </insert>
+	
+	
 	
 	
 	<select id="getMemberList" resultType="edu.bit.ex.vo.BoardVO">
@@ -40,32 +48,19 @@
 	]]>
 	</select>
 	
-	<select id="getReviewList" resultType="edu.bit.ex.vo.BoardVO">
-	<![CDATA[
-		select*from barny_board where member_idx = #{member_idx} and board_type_id ='2'
-	]]>
-	</select>
-	
-	<insert id="insertBoard">
-	<![CDATA[
-		insert into barny_board (board_id, b_date, b_title, b_content, board_type_id, member_idx, b_hit, b_group, b_indent, b_step) 
-		values (barny_board_seq.nextval, #{board_id}, #{btitle}, #{bcontent}, 0, barny_board_seq.currval, 0, 0)
-	]]>
-	</insert>
-	
 	<insert id="insertBoard1">
 	<![CDATA[
-		insert into barny_board (board_id, b_date, b_title, b_content, board_type_id, member_idx, b_hit, b_group, b_indent, b_step) 
-		values (barny_board_seq.nextval, #{board_id}, #{btitle}, #{bcontent}, 0, barny_board_seq.currval, 0, 0)
+	
+		Insert into BARNY_BOARD (BOARD_ID,B_DATE,B_TITLE,B_CONTENT,BOARD_TYPE_ID,MEMBER_IDX,B_HIT,B_GROUP,B_INDENT,B_STEP,PRODUCT_ID) 
+        values (BOARD_ID_SEQ.nextval,sysdate,#{b_title},#{b_content},0,42,0,BOARD_ID_SEQ.currval,0,0,null)
 	]]>
 	</insert>
 	
-	<insert id="insertBoard2">
+	<select id="read1" resultType="edu.bit.ex.vo.BoardVO">
 	<![CDATA[
-		insert into barny_board (board_id, b_date, b_title, b_content, board_type_id, member_idx, b_hit, b_group, b_indent, b_step) 
-		values (barny_board_seq.nextval, #{board_id}, #{b_title}, #{b_content}, 0, barny_board_seq.currval, 0, 0)
+		select * from barny_board where board_id = #{board_id}
 	]]>
-	</insert>
+	</select>
 	
 	<update id="my_update">
 	<![CDATA[
@@ -79,5 +74,21 @@
 	]]>
 	</delete>
 	
-		
+	
+	
+	
+	<select id="getReviewList" resultType="edu.bit.ex.vo.BoardVO">
+	<![CDATA[
+		select*from barny_board where member_idx = #{member_idx} and board_type_id ='2'
+	]]>
+	</select>
+	
+	<insert id="insertBoard2">
+	<![CDATA[
+		insert into barny_board (board_id, b_date, b_title, b_content, board_type_id, member_idx, b_hit, b_group, b_indent, b_step) 
+		values (barny_board_seq.nextval, #{board_id}, #{b_title}, #{b_content}, 0, barny_board_seq.currval, 0, 0)
+	]]>
+	</insert>
+	
+	
 </mapper>

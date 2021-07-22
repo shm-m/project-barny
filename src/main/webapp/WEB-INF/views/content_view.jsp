@@ -31,6 +31,7 @@
 				<td> 제목 </td>
 				<td> <input type="text" name="b_title" value="${content_view.b_title}"></td>
 			</tr>
+			
 			<tr>
 				<td> 내용 </td>
 				<td> <textarea rows="10" name="b_content" >${content_view.b_content}</textarea></td>

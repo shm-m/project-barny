@@ -22,9 +22,10 @@
          <td>${dto.board_id}</td>
          <td>${dto.member_idx}</td>
          
+         
          <td>
             <c:forEach begin="1" end="${dto.b_indent}">-</c:forEach>
-            <a href="my_view?board_id=${dto.board_id}">${dto.b_title}</a></td>
+            <a href="my_content_view?board_id=${dto.board_id}">${dto.b_title}</a></td>
          <td>${dto.b_date}</td>
       </tr>
       </c:forEach>

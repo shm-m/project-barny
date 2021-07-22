@@ -33,7 +33,7 @@ public class BoardController {
 		return "my_view";
 	}
 
-	// 마이페이지 (후기)
+	// 마이페이지 (후기)리스트
 	@GetMapping("/board/my_review")
 	public String my_review(BoardVO boardVO, Model model) {
 
@@ -46,7 +46,20 @@ public class BoardController {
 
 		return "my_review";
 	}
+	
+	@GetMapping("/board/my_content_view")
+	public String my_content_view(BoardVO boardVO, Model model) {
+		log.info("my_content_view()..");
+		log.info("my_content_view()..boardVO" + boardVO);
 
+		model.addAttribute("", boardService.get(boardVO.getBoard_id()));
+		
+		log.info(" my_content_view boardVO_Get " + boardService.get(boardVO.getBoard_id()));
+		
+		
+		return "my_view";
+	}
+	
 	// 회원 마이페이지 1:1문의 글쓰기 입력폼
 	@GetMapping("/board/my_view_write")
 	public String my_view_write() {
@@ -68,9 +81,11 @@ public class BoardController {
 	public String write_my_view(BoardVO boardVO) {
 		log.info("write_my_view()");
 
+		log.info("boardVO :" + boardVO);
+
 		boardService.writeBoard1(boardVO);
 
-		return "redirect:my_view";
+		return "redirect:/board/my_view";
 	}
 
 	// 회원 마이페이지 후기 글작성 후 입력누르면 넘어가는 입력버튼
