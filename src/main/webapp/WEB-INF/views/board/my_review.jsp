@@ -6,7 +6,7 @@
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>my_review</title>
+<title>my_review list</title>
 </head>
 <body>
 	<table width="500" cellpadding="0" cellspacing="0" border="1">
@@ -15,7 +15,7 @@
          <td>회원번호</td>
          <td>제목</td>
          <td>날짜</td>
-         
+         <td>좋아요</td>         
       </tr>
       <c:forEach items="${my_review}" var="dto">
       <tr>
@@ -24,12 +24,13 @@
          
          <td>
             <c:forEach begin="1" end="${dto.b_indent}">-</c:forEach>
-            <a href="my_review?board_id=${dto.board_id}">${dto.b_title}</a></td>
+            <a href="review_content_view?board_id=${dto.board_id}">${dto.b_title}</a></td>
          <td>${dto.b_date}</td>
+         <td>${dto.like_count}</td>
       </tr>
       </c:forEach>
       <tr>
-         <td colspan="5"> <a href="my_review_write">글작성</a> </td>
+         <td colspan="5"> <a href="/board/my_review_write">글작성</a> </td>
       </tr>
    </table>
 

@@ -6,7 +6,7 @@
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>my_view</title>
+<title>my_view list</title>
 </head>
 <body>
 	   <table width="500" cellpadding="0" cellspacing="0" border="1">
@@ -30,7 +30,7 @@
       </tr>
       </c:forEach>
       <tr>
-         <td colspan="5"> <a href="my_view_write">글작성</a> </td>
+         <td colspan="5"> <a href="/board/my_view_write">글작성</a> </td>
       </tr>
    </table>
 

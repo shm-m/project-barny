@@ -2,37 +2,60 @@ package edu.bit.ex.service;
 
 import java.util.List;
 
-
 import edu.bit.ex.vo.BoardVO;
 
-
 public interface BoardService {
-	
-	public List <BoardVO> getList();
-	
+	// 관리자리스트
+	public List<BoardVO> getList();
+
+	// 관리자주문내역읽기
 	public BoardVO get(int board_id);
+
+	// 관리자주문내역 수정
 	public void modify(BoardVO boardVO);
+
+	// 관리자주문내역삭제
 	public void remove(int board_id);
+
+	// 관리자주문내역글쓰기
 	public void writeBoard(BoardVO boardVO);
 	
-	//1:1게시판 회원 마이페이지
-	public List<BoardVO> getMemberList(BoardVO boardVO);
-	//후기게시판 회원 마이페이지
-	public List<BoardVO> getReviewList(BoardVO boardVO);
 	
-	//1:1 회원 글쓰기
+	
+	
+	
+	
+
+	// 1:1게시판 회원 마이페이지
+	public List<BoardVO> getMemberList(BoardVO boardVO);
+
+	// 1:1 회원 글쓰기
 	public void writeBoard1(BoardVO boardVO);
-	//내글 상세보기
+
+	// 1:1 회원 내글 상세보기
 	public BoardVO get1(int board_id);
-	//1:1회원 글수정
+
+	// 1:1회원 글수정
 	public void my_modify(BoardVO boardVO);
-	//1:1회원 글 삭제
+
+	// 1:1회원 글 삭제
 	public void my_remove(int board_id);
 	
-	//후기 회원 글쓰기
-	public void writeBoard2(BoardVO boardVO);
-
-
 	
+
+	// 후기게시판 회원 마이페이지
+	public List<BoardVO> getReviewList(BoardVO boardVO);
+
+	// 후기 회원 글쓰기
+	public void writeBoard2(BoardVO boardVO);
+	
+	// 후기 회원 내글 상세보기
+	public BoardVO get2(int board_id);
+	
+	// 후기 회원 글수정
+	public void review_modify(BoardVO boardVO);
+	
+	// 후기 회원 글 삭제
+	public void review_remove(int board_id);
 
 }

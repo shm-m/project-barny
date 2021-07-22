@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 @Controller
-public class UserController1 {
+public class UserController {
 
 	@GetMapping("/board/updateForm")
 	public String updateForm() {

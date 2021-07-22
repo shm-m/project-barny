@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>mypage_barny</title>
+<title>admin_mypage list</title>
 </head>
 <body>
 	

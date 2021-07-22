@@ -7,7 +7,7 @@
 
     <header>
          <div style=" height: auto; width: 300%; margin-top:70px; float:">
-        <h2><a href = "./board/mypage">마이페이지${member.id}</a></h2>
+        <h2><a href = "${pageContext.request.contextPath}/board/my_page">마이페이지</a></h2>
     	<hr width = "100%" color = "#DCDCDC" ></hr>
     	<img class = "profile2" style= " width: 230px; height: auto; margin-top:0px; float:left; " src="/static/img/BARNY3.png" />
     	
@@ -33,7 +33,7 @@
     	</header>
     	
     	
-        <title>barny</title>
+        <title>mypage</title>
         <style type="text/css">
             * {margin:0; padding:0; font-size:30px;font-family:"BBTreeGB";}
             ul, li, ol {list-style-type : none;}
@@ -98,7 +98,7 @@
            
             <li>마이페이지${member.id}</li>
             
-            <li><a href="user_view?member_id=zbwopkpeya">회원정보수정</a>
+            <li><a href="user_view?member_id">회원정보수정</a>
             <ul>
                     <li><a href="#">회원탈퇴</a></li>
                 </ul>
@@ -113,11 +113,11 @@
             </li>
            <li><a href="#4">1:1문의내역</a>
            		 <ul>
-                    <li><a href="my_view?member_id=zbwopkpeya">내문의</a></li>
+                    <li><a href="my_view?member_idx=${42}">내문의</a></li>
                  </ul>
             </li>
             
-            <li><a href="my_review?member_idx=42 ">후기</a>
+            <li><a href="my_review?member_idx=${42}">후기</a>
             	
             </li>
             

@@ -45,7 +45,7 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.delete(board_id);
 
 	}
-
+	//관리자 주문문의글쓰기
 	@Override
 	public void writeBoard(BoardVO boardVO) {
 		boardMapper.insertBoard(boardVO);
@@ -86,6 +86,8 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.my_delete(board_id);
 
 	}
+	
+	
 
 	//후기리스트
 	@Override
@@ -98,6 +100,25 @@ public class BoardServiceImpl implements BoardService {
 	public void writeBoard2(BoardVO boardVO) {
 		boardMapper.insertBoard2(boardVO);
 
+	}
+	//후기 상세보기
+	@Override
+	public BoardVO get2(int board_id) {
+		log.info("service:get()..");
+		return boardMapper.read2(board_id);
+	}
+	// 후기 회원 수정
+	@Override
+	public void review_modify(BoardVO boardVO) {
+		log.info("service:review_modify()..");
+		boardMapper.review_update(boardVO);
+		
+	}
+	//회원 후기 삭제
+	@Override
+	public void review_remove(int board_id) {
+		log.info("service:review_remove()..");
+		boardMapper.review_delete(board_id);
 	}
 
 }

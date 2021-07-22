@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>write view</title>
+<title>1:1 write view</title>
 </head>
 <body>
 	<table id="list-table" width="500" cellpadding="0" cellspacing="0" border="1">
-		<form action="my_view_write" method="post">
+		<form action="write_my_view" method="post">
 			
 			<tr>
 				<td> 제목 </td>
@@ -19,11 +19,11 @@
 				<td> 내용 </td>
 				<td> <textarea rows="10" name="b_content" ></textarea></td>
 			</tr>
-			<tr >
 			
-<!-- 			?물움표뒤에오는것은(?는 get방식) 주소값 get방식인지post방식인지 알수있다   &nbsp;&nbsp :스페이스 두칸--->
-				<td colspan="2"> <input type="submit" value="입력"> &nbsp;&nbsp; <a href="my_view">목록보기</a></td>
+			<tr>
+				<td colspan="2"> <input type="submit" value="입력"> &nbsp;&nbsp; <a href="/board/my_view">목록보기</a></td>
 			</tr>
+			
 		</form>
 	</table>	
 		
