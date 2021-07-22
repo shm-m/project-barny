@@ -191,3 +191,13 @@ h4 {
 /* div .col-md-12 .col-md-4 {
   margin: auto;
 } */
+
+
+.sub_nav {
+	padding-top:75px;
+}
+
+.btn-outline-success {
+    color: #EBC24B;
+    border-color: #EBC24B;
+}

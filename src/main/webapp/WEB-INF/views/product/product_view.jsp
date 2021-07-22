@@ -4,7 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Product_main</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<title>product_view</title>
 </head>
 <body>
    <table id="list-table" width="500" cellpadding="0" cellspacing="0" border="1">
@@ -21,6 +26,11 @@
          </tr>
 
       </form>
+      <div class="btn">
+         <p><a class="btn btn-outline-dark btn-sm" href="#">장바구니에 담기</a></p>
+         <p><a class="btn btn-outline-dark btn-sm" href="/payment">바로 구매하기</a></p>
+      </div>
+
    </table>   
 
 </body>
