@@ -11,17 +11,26 @@
   <link rel="stylesheet" href="/static/css/5.0bootstrap.min.css">
   <link rel="stylesheet" href="/static/css/styles.css">
   <link href="/static/main_page/css/styles.css" rel="stylesheet"/>
+  
+  
   <!-- Google fonts-->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
   <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
-
+  
   <!-- Favicon-->
   <link rel="icon" type="image/x-icon" href="/static/main_page/assets/favicon-2.ico" />
   <!-- Font Awesome icons (free version)-->
   <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
-
+  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  
+  <!--달력-->
+  <link href="/static/css/calendarstyle.css" rel="stylesheet" />
+  <script src="/static/js/simplecalendar.js"></script>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700">
+  <link rel="stylesheet" href="http://weloveiconfonts.com/api/?family=fontawesome">
+  <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 
   <style>
     body {
@@ -43,7 +52,7 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
         <li class="nav-item"><a class="nav-link" href="#main">구독</a></li>
-        <li class="nav-item"><a class="nav-link" href="#portfolio">브랜드 스토리</a></li>
+        <li class="nav-item"><a class="nav-link" href="/story">브랜드 스토리</a></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             상품 보기
@@ -165,7 +174,90 @@
 <!--달력-->
 <section class="page-section bg-white">
   <div class="container-fluid">
-    
+    <div class="text-center">
+      <div class="text-center" style="margin-bottom: 5rem;">
+        <h4 class="section-heading text-uppercase">정기 배송 달력</h4>
+      </div>
+      <div class="calendar-container">
+        <div class="calendar">
+          <header>
+            <h2 class="month"></h2>
+          </header>
+          <table>
+            <thead>
+              <tr>
+                <td>월</td>
+                <td>화</td>
+                <td>수</td>
+                <td>목</td>
+                <td>금</td>
+                <td>토</td>
+                <td>일</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td date-month="12" date-day="1">1</td>
+                <td date-month="12" date-day="2">2</td>
+                <td date-month="12" date-day="3">3</td>
+                <td date-month="12" date-day="4">4</td>
+                <td date-month="12" date-day="5">5</td>
+                <td date-month="12" date-day="6">6</td>
+                <td date-month="12" date-day="7">7</td>
+              </tr>
+              <tr>
+                <td date-month="12" date-day="8">8</td>
+                <td date-month="12" date-day="9">9</td>
+                <td date-month="12" date-day="10">10</td>
+                <td date-month="12" date-day="11">11</td>
+                <td date-month="12" date-day="12">12</td>
+                <td date-month="12" date-day="13">13</td>
+                <td date-month="12" date-day="14">14</td>
+              </tr>
+              <tr>
+                <td date-month="12" date-day="15">15</td>
+                <td date-month="12" date-day="16">16</td>
+                <td date-month="12" date-day="17">17</td>
+                <td date-month="12" date-day="18">18</td>
+                <td date-month="12" date-day="19">19</td>
+                <td date-month="12" date-day="20">20</td>
+                <td date-month="12" date-day="21">21</td>
+              </tr>
+              <tr>
+                <td date-month="12" date-day="22">22</td>
+                <td date-month="12" date-day="23">23</td>
+                <td date-month="12" date-day="24">24</td>
+                <td date-month="12" date-day="25">25</td>
+                <td date-month="12" date-day="26">26</td>
+                <td date-month="12" date-day="27">27</td>
+                <td date-month="12" date-day="28">28</td>
+              </tr>
+              <tr>
+                <td date-month="12" date-day="29">29</td>
+                <td date-month="12" date-day="30">30</td>
+                <td date-month="12" date-day="31">31</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="list">
+            <div class="day-event" date-month="12" date-day="5">
+              <a class="close fontawesome-remove"></a>
+              <h2 class="title">월 초 정기배송일</h2>
+              <p class="text">결제일을 기준으로 오는 가장 빠른 정기배송일에 Barny가 찾아갑니다!</p>
+              
+            </div>
+            <div class="day-event" date-month="12" date-day="20">
+              <a class="close fontawesome-remove"></a>
+              <h2 class="title">월 말 정기배송일</h2>
+              <p class="text">결제일을 기준으로 오는 가장 빠른 정기배송일에 Barny가 찾아갑니다!</p>
+            </div>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
 </section>
@@ -212,7 +304,6 @@
     });
   }
 </script>
-
 
 </body>
 </html>
