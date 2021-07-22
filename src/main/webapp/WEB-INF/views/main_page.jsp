@@ -276,15 +276,8 @@
     <img src="/static/main_page/assets/kakao-chat.png" width="50px" height="50px">
 </a>
 
-<div>
-<button id="myBtn2" >modal test </button>
 
-<div id="myModal" class="modal2">
-    <span class="close">&times;</span>
-    <iframe src="http://kin.naver.com" width=50% height="50%"></iframe>
-</div>
-</div>
-
+<!---->
 
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
