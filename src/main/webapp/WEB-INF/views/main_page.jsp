@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@200;300;400;500;600&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
     <!-- naver fonts -->
     <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
     <!-- Core theme CSS (includes Bootstrap)-->
@@ -249,7 +250,7 @@
 </section>
 
 <!-- Footer-->
-<footer class="footer py-5">
+<footer class="footer">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-4 text-lg-start"><b>주식회사 바니</b> <br> 서울특별시 종로구 종로 69 YMCA빌딩 7층
@@ -271,9 +272,19 @@
 <img id="myBtn" src="static/main_page/assets/top-btn.png" onclick="topFunction()">
 
 <!--kakao-chat-->
-<a href="javascript:void kakaoChatStart()" class="kakaoChatPc hidden-md hidden-sm hidden-xs" id="kakao-chat">
+<a href="https://pf.kakao.com/_WDxjSs/chat" class="kakaoChatPc hidden-md hidden-sm hidden-xs" id="kakao-chat" >
     <img src="/static/main_page/assets/kakao-chat.png" width="50px" height="50px">
 </a>
+
+<div>
+<button id="myBtn2" >modal test </button>
+
+<div id="myModal" class="modal2">
+    <span class="close">&times;</span>
+    <iframe src="http://kin.naver.com" width=50% height="50%"></iframe>
+</div>
+</div>
+
 
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -281,13 +292,5 @@
 <script src="/static/main_page/js/scripts.js"></script>
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-<script type='text/javascript'>
-    Kakao.init('dab10012c7e15e9d67728cf3d50faa8a'); // 사용할 앱의 JavaScript키를 입력해 주세요.
-    function kakaoChatStart() {
-        Kakao.Channel.chat({
-            channelPublicId: '601802' // 카카오톡 채널 홈 URL에 명시된 ID를 입력합니다.
-        });
-    }
-</script>
 </body>
 </html>
