@@ -98,7 +98,7 @@ public class HomeController {
 	public String event_main(Model model, Criteria cri) {
 
 		log.info("product_main()..");
-		model.addAttribute("event_list", eventService.getList());
+		model.addAttribute("event_list", eventService.getList(cri));
 
 		int total = eventService.getTotal(cri);
 		model.addAttribute("pageMaker", new PageVO(cri, total));
