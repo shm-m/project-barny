@@ -5571,8 +5571,8 @@ fieldset:disabled .btn {
   left: 0;
   z-index: 1060;
   display: none;
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  height: 50%;
   overflow-x: hidden;
   overflow-y: auto;
   outline: 0;
@@ -7694,7 +7694,7 @@ fieldset:disabled .btn {
 
 .text-uppercase {
   text-transform: uppercase !important;
-  font-family: "BBTreeGB";
+  font-family: "Nanum Gothic";
 }
 
 .text-capitalize {
@@ -11302,7 +11302,8 @@ p {
   height: 1.5rem;
 }
 #mainNav .navbar-nav .nav-item .nav-link {
-  font-family: "BBTreeGB";
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 700;
   font-size: 1rem;
   text-align: center;
   text-shadow: 2px 2px 6px gray;
@@ -11311,10 +11312,10 @@ p {
 }
 
 #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link {
-  font-family: "BBTreeGB";
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 700;
   font-size: 1rem;
   text-align: center;
-  font-weight: 500;
   text-shadow: 0px 0px 0px gray;
   color: black;
   letter-spacing: 0.0625em;
@@ -11726,4 +11727,41 @@ header.masthead .masthead-heading {
   z-index: 999;
   right: 20px; /* 화면 오른쪽으로부터의 거리, 숫자만 입력 */
   bottom: 80px; /* 화면 아래쪽으로부터의 거리, 숫자만 입력 */
+}
+
+.modal2 {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: none;
+  background-color: white;
+}
+
+.myBtn2 {
+  position: fixed;
+  z-index: 999;
+  right: 20px; /* 화면 오른쪽으로부터의 거리, 숫자만 입력 */
+  bottom: 100px; /* 화면 아래쪽으로부터의 거리, 숫자만 입력 */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 40px;
+  font-weight: bold;
+  position: fixed;
+  right: 16;
+  top: 0;
+  background-color: #f0f0f0;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
