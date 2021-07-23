@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import edu.bit.ex.page.Criteria;
 import edu.bit.ex.page.PageVO;
 import edu.bit.ex.service.EventService;
+import edu.bit.ex.service.NoticeService;
 import edu.bit.ex.service.ProductMainService;
 import edu.bit.ex.vo.EventVO;
 import edu.bit.ex.vo.ProductMainVO;
@@ -23,6 +24,10 @@ public class HomeController {
 	// event service
 	@Autowired
 	private EventService eventService;
+
+	// notice sercie
+	@Autowired
+	private NoticeService noticeService;
 
 	// 메인 페이지
 	@GetMapping("/main")
@@ -114,5 +119,19 @@ public class HomeController {
 
 		return "event/m_content_view";
 	}
+
+	// notice list
+	@GetMapping("/notice")
+	public String notice(Model model, Criteria cri) {
+
+		model.addAttribute("list", noticeService.getList(cri));
+
+		int total = noticeService.getTotal(cri);
+		model.addAttribute("pageMaker", new PageVO(cri, total));
+
+		return "notice/m_main";
+	}
+
+	// notice list view
 
 }
