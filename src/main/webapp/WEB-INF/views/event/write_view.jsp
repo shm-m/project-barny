@@ -14,16 +14,7 @@
         text-align: center;
     }
 </style>
-<script type="text/javascript">
-     function func_confirm() {
-        if (confirm("게시글을 등록하시겠습니까?")) {
-            alert("등록되었습니다.");
-        } else {
-            alert("작업이 취소되었습니다.");
-        }
-    }
-</script>
-    
+
     <title>글 작성하기</title>
 </head>
 <body>
@@ -31,7 +22,7 @@
 
 <div class="col-md-12">
     <div class="col-md-4 mx-auto">
-        <form action="write" method="post">
+        <form action="write" method="post" onsubmit="return confirm('게시글을 등록하시겠습니까?')">
             <div class="form-group">
                 <label for="title">이벤트 제목</label>
                 <input type="text" class="form-control" name="b_title" placeholder="제목을 입력하세요">
@@ -41,7 +32,7 @@
                 <input type="text" class="form-control" name="b_content" placeholder="내용을 입력하세요">
             </div>
             <a href="main" role="button" class="btn btn-secondary">취소</a>
-            <input type="submit" class="btn btn-primary" value="등록" onclick="func_confirm()"></input>
+            <input type="submit" class="btn btn-primary" value="등록"></input>
         </form>
     </div>
 </div>
