@@ -85,9 +85,9 @@
 		<tr>
 			<td>${vo.board_id}</td>
 			<td>
-				<a href="${pageContext.request.contextPath}/notice/content/${vo.board_id}">${vo.b_title}</a></td>
+				<a href="${pageContext.request.contextPath}/admin/notice/content/${vo.board_id}">${vo.b_title}</a></td>
 			<td>${vo.b_date}</td>
-			<td><a class="a-delete" data-board_id='${vo.board_id}' href="${pageContext.request.contextPath}/notice/content/${vo.board_id}">삭제</a></td>
+			<td><a class="a-delete" data-board_id='${vo.board_id}' href="${pageContext.request.contextPath}/admin/notice/content/${vo.board_id}">삭제</a></td>
 		</tr>
 		</c:forEach>
 		<tr>
@@ -98,7 +98,7 @@
 
 
 	<div class="col-lg-12">
-		<form id='searchForm' action="/notice/main" method='get'>
+		<form id='searchForm' action="/admin/notice/main" method='get'>
 			<select name='type'>
 				<option value=""<c:out value="${pageMaker.cri.type == null?'selected':''}"/>>--</option>
 				<option value="T"<c:out value="${pageMaker.cri.type eq 'T'?'selected':''}"/>>제목</option>
