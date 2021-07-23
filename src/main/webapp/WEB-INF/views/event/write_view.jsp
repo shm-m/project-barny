@@ -14,22 +14,21 @@
         text-align: center;
     }
 </style>
-    
+
     <title>글 작성하기</title>
 </head>
 <body>
-    <!-- <div></div> -->
-    <h1>공지사항 등록</h1>
+    <h1>게시글 등록</h1>
 
 <div class="col-md-12">
     <div class="col-md-4 mx-auto">
         <form action="write" method="post" onsubmit="return confirm('게시글을 등록하시겠습니까?')">
             <div class="form-group">
-                <label for="title">공지사항 제목</label>
+                <label for="title">이벤트 제목</label>
                 <input type="text" class="form-control" name="b_title" placeholder="제목을 입력하세요">
             </div>
             <div class="form-group">
-                <label for="author"> 공지 내용 </label>
+                <label for="author"> 이벤트 게시글 내용 </label>
                 <input type="text" class="form-control" name="b_content" placeholder="내용을 입력하세요">
             </div>
             <a href="main" role="button" class="btn btn-secondary">취소</a>
