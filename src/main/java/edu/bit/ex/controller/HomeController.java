@@ -11,6 +11,7 @@ import edu.bit.ex.service.EventService;
 import edu.bit.ex.service.NoticeService;
 import edu.bit.ex.service.ProductMainService;
 import edu.bit.ex.vo.EventVO;
+import edu.bit.ex.vo.NoticeVO;
 import edu.bit.ex.vo.ProductMainVO;
 import lombok.extern.slf4j.Slf4j;
 
@@ -133,5 +134,18 @@ public class HomeController {
 	}
 
 	// notice list view
+	@GetMapping("/notice/content/{board_id}") // 뒤에 보드 아이디 달아줘야 찾아감!
+	public String notice_content_view(NoticeVO noticeVO, Model model) {
+
+		model.addAttribute("content_view", eventService.get(noticeVO.getBoard_id()));
+
+		return "notice/m_content_view";
+	}
+
+	// FAQ
+	@GetMapping("/notice/faq")
+	public String faq(Model model) {
+		return "notice/faq";
+	}
 
 }
