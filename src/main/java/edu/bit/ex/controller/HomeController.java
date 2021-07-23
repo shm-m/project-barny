@@ -10,7 +10,6 @@ import edu.bit.ex.page.PageVO;
 import edu.bit.ex.service.EventService;
 import edu.bit.ex.service.NoticeService;
 import edu.bit.ex.service.ProductMainService;
-import edu.bit.ex.vo.EventVO;
 import edu.bit.ex.vo.NoticeVO;
 import edu.bit.ex.vo.ProductMainVO;
 import lombok.extern.slf4j.Slf4j;
@@ -112,14 +111,14 @@ public class HomeController {
 		return "event/m_event_list";
 	}
 
-	// event list view
-	@GetMapping("/event/content/{board_id}") // 뒤에 보드 아이디 달아줘야 찾아감!
-	public String content_view(EventVO eventVO, Model model) {
+	// // event list view
+	// @GetMapping("/event/content/{board_id}") // 뒤에 보드 아이디 달아줘야 찾아감!
+	// public String content_view(EventVO eventVO, Model model) {
 
-		model.addAttribute("content_view", eventService.get(eventVO.getBoard_id()));
+	// model.addAttribute("content_view", eventService.get(eventVO.getBoard_id()));
 
-		return "event/m_content_view";
-	}
+	// return "event/m_content_view";
+	// }
 
 	// notice list
 	@GetMapping("/notice")
