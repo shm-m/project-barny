@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,13 +66,24 @@
                     </ul>
                 </li>
             </ul>
+
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link" href="#services">로그인</a></li>
+
+                <sec:authorize access="isAnonymous()">
+                    <li class="nav-item"><a class="nav-link" href="/loginForm">로그인</a></li>
+                </sec:authorize>
+                <sec:authorize access="isAuthenticated()">
+                    <li class="nav-item"><a class="nav-link" href=#services">마이페이지</a></li>
+                </sec:authorize>
                 <li class="nav-item"><a class="nav-link" href="#services">장바구니</a></li>
+                <sec:authorize access="isAuthenticated()">
+                    <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
+                </sec:authorize>
             </ul>
         </div>
     </div>
 </nav>
+
 
 
 <!-- Masthead-->
