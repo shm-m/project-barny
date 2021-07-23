@@ -74,31 +74,32 @@
 </script>
 <body>
 	<div class="col-md-6">
-	<table class="table table-sm">
-		<tr>
-			<td>공지사항 번호</td>
-			<td>공지 제목</td>
-			<td>게시 날짜</td>
-			<td>삭제</td>
-		</tr>
-		<c:forEach items="${list}" var="vo">
-		<tr>
-			<td>${vo.board_id}</td>
-			<td>
-				<a href="${pageContext.request.contextPath}/admin/notice/content/${vo.board_id}">${vo.b_title}</a></td>
-			<td>${vo.b_date}</td>
-			<td><a class="a-delete" data-board_id='${vo.board_id}' href="${pageContext.request.contextPath}/admin/notice/content/${vo.board_id}">삭제</a></td>
-		</tr>
-		</c:forEach>
-		<tr>
-			<td><button type="button" title="글쓰기" onclick="location.href='write_view'">글쓰기</button></td>
-		</tr>
-	</table>
-</div>
+		<table class="table table-sm">
+			<tr>
+				<td>이벤트 번호</td>
+				<td>이벤트 제목</td>
+				<td>게시 날짜</td>
+				<td>삭제</td>
+			</tr>
+			<c:forEach items="${event_list}" var="vo">
+				<tr>
+					<td>${vo.board_id}</td>
+					<td>
+						<a href="${pageContext.request.contextPath}/admin/event/content/${vo.board_id}">${vo.b_title}</a>
+					</td>
+					<td>${vo.b_date}</td>
+					<td><a class="a-delete" data-board_id='${vo.board_id}' href="${pageContext.request.contextPath}/admin/event/content/${vo.board_id}">삭제</a></td>
+				</tr>
+			</c:forEach>
+			<tr>
+				<td colspan="4"><button type="button" title="글쓰기" onclick="location.href='write_view'">글쓰기</button></td>
+			</tr>
+		</table>
+	</div>
 
-
+<!--search-->
 	<div class="col-lg-12">
-		<form id='searchForm' action="/admin/notice/main" method='get'>
+		<form id='searchForm' action="/admin/event" method='get'>
 			<select name='type'>
 				<option value=""<c:out value="${pageMaker.cri.type == null?'selected':''}"/>>--</option>
 				<option value="T"<c:out value="${pageMaker.cri.type eq 'T'?'selected':''}"/>>제목</option>
@@ -111,7 +112,7 @@
 		</form>
 	</div>
 
-
+<!--paging-->
 	<nav aria-label="Page navigation example">
 		<ul class="pagination">
 			<c:if test="${pageMaker.prev}">

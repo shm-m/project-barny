@@ -19,55 +19,66 @@ import org.springframework.web.servlet.ModelAndView;
 
 import edu.bit.ex.page.Criteria;
 import edu.bit.ex.page.PageVO;
-import edu.bit.ex.service.NoticeService;
-import edu.bit.ex.vo.NoticeVO;
+import edu.bit.ex.service.EventService;
+import edu.bit.ex.vo.EventVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-@RequestMapping("/admin/notice/**")
-public class NoticeController {
+@RequestMapping("/admin/event/**")
+public class EventController {
 
     @Autowired
-    private NoticeService noticeService;
+    EventService eventService;
 
-    // list
+    // admin event list
     @GetMapping("/main")
-    public ModelAndView list(Criteria cri, ModelAndView mav) {
-        mav.setViewName("notice/main"); // notice/main.jsp
-        mav.addObject("list", noticeService.getList(cri)); // 여기서 정한게 jsp items
+    public ModelAndView event_main(Criteria cri, ModelAndView mav) {
+        log.info("event_main");
+        mav.setViewName("event/event_list");
+        mav.addObject("event_list", eventService.getList(cri));
 
-        int total = noticeService.getTotal(cri);
-        mav.addObject("pageMaker", new PageVO(cri, total)); // 1,10 넘어가서 여기에 만들어짐
+        int total = eventService.getTotal(cri);
+        mav.addObject("pageMaker", new PageVO(cri, total));
+
+        return mav;
+    }
+
+    // list content view
+    @GetMapping("/content/{board_id}")
+    public ModelAndView content_view(EventVO eventVO, ModelAndView mav) {
+        log.info("/content/{board_id}.. ");
+        mav.setViewName("event/content_view");
+        mav.addObject("content_view", eventService.get(eventVO.getBoard_id()));
 
         return mav;
     }
 
     // write
     @PostMapping("/write")
-    public void write(NoticeVO noticeVO, HttpServletResponse response) throws IOException {
+    public void write(EventVO eventVO, HttpServletResponse response) throws IOException {
 
-        noticeService.write(noticeVO);
-        String redirect_uri = "http://localhost:8282/admin/notice/main";
+        eventService.write(eventVO);
+        String redirect_uri = "http://localhost:8282/admin/event/main";
         response.sendRedirect(redirect_uri);
 
     }
 
     @GetMapping("/write_view")
     public ModelAndView write_view(ModelAndView mav) {
-        mav.setViewName("notice/write_view"); // notice/write_view.jsp
+        mav.setViewName("event/write_view");
         return mav;
     }
 
     // update
     @PutMapping("/content/{board_id}")
-    public ResponseEntity<String> update(@RequestBody NoticeVO noticeVO, ModelAndView mav) {
+    public ResponseEntity<String> update(@RequestBody EventVO eventVO, ModelAndView mav) {
 
         ResponseEntity<String> entity = null;
 
         try {
 
-            noticeService.modify(noticeVO);
+            eventService.modify(eventVO);
             entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
 
         } catch (Exception e) {
@@ -85,7 +96,7 @@ public class NoticeController {
 
         log.info("board_id..:" + board_id);
         try {
-            int re = noticeService.remove(board_id);
+            int re = eventService.remove(board_id);
             log.info("delete result:" + re);
             // 삭제가 성공하면 성공 상태메시지 저장
             entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
@@ -97,15 +108,6 @@ public class NoticeController {
         }
         // 삭제 처리 HTTP 상태 메시지 리턴
         return entity;
-    }
-
-    // content view
-    @GetMapping("/content/{board_id}")
-    public ModelAndView content_view(NoticeVO noticeVO, ModelAndView mav) {
-        mav.setViewName("notice/content_view");
-        mav.addObject("content_view", noticeService.get(noticeVO.getBoard_id()));
-
-        return mav;
     }
 
 }
