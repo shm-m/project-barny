@@ -34,6 +34,7 @@ public class AccountController {
 
     @GetMapping("/joinForm")
     public String joinForm() {
+
         return "account/joinForm";
     }
 
@@ -53,7 +54,13 @@ public class AccountController {
 
     }
 
-    //TODO: VALIDATE CONTROLLER 생성
+
+
+    @GetMapping("/test1")
+    public String test1() {
+        return "account/test1";
+    }
+
 
 
 
