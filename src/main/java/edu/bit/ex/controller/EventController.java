@@ -59,7 +59,7 @@ public class EventController {
     public void write(EventVO eventVO, HttpServletResponse response) throws IOException {
 
         eventService.write(eventVO);
-        String redirect_uri = "http://localhost:8282/admin/event";
+        String redirect_uri = "http://localhost:8282/admin/event/main";
         response.sendRedirect(redirect_uri);
 
     }

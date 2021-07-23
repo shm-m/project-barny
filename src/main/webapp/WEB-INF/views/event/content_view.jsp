@@ -27,7 +27,7 @@
 				<td> <textarea rows="10" id="b_content" name="content" >${content_view.b_content}</textarea></td>
 			</tr>
 			<tr >
-				<td colspan="2"><a href="${pageContext.request.contextPath}/admin/event">목록보기</a></td>
+				<td colspan="2"><a href="${pageContext.request.contextPath}/admin/event/main">목록보기</a></td>
 			</tr>
 		</form>
 	</table>

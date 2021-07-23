@@ -91,10 +91,13 @@
 					<td><a class="a-delete" data-board_id='${vo.board_id}' href="${pageContext.request.contextPath}/admin/event/content/${vo.board_id}">삭제</a></td>
 				</tr>
 			</c:forEach>
+			<tr>
+				<td colspan="4"><button type="button" title="글쓰기" onclick="location.href='write_view'">글쓰기</button></td>
+			</tr>
 		</table>
 	</div>
 
-
+<!--search-->
 	<div class="col-lg-12">
 		<form id='searchForm' action="/admin/event" method='get'>
 			<select name='type'>
@@ -109,12 +112,12 @@
 		</form>
 	</div>
 
-
+<!--paging-->
 	<nav aria-label="Page navigation example">
 		<ul class="pagination">
 			<c:if test="${pageMaker.prev}">
 				<li class="page-item">
-					<a class="page-link" href="event${pageMaker.makeQuery(pageMaker.startPage - 1) }" aria-label="Previous">
+					<a class="page-link" href="main${pageMaker.makeQuery(pageMaker.startPage - 1) }" aria-label="Previous">
 						<span aria-hidden="true">&laquo;</span>
 						<span class="sr-only">Previous</span>
 					</a>
@@ -122,7 +125,7 @@
 			</c:if>
 		
 			<c:forEach var="idx" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
-				<li class="page-item "><a class="page-link" href="event${pageMaker.makeQuery(idx)}">
+				<li class="page-item "><a class="page-link" href="main${pageMaker.makeQuery(idx)}">
 					${idx}
 				</a>
 				</li>
@@ -131,7 +134,7 @@
 		
 			<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 				<li class="page-item">
-					<a class="page-link" aria-label="Next" href="event${pageMaker.makeQuery(pageMaker.endPage +1) }">
+					<a class="page-link" aria-label="Next" href="main${pageMaker.makeQuery(pageMaker.endPage +1) }">
 						<span aria-hidden="true">&raquo;</span>
 	        			<span class="sr-only">Next</span>
 					</a>
