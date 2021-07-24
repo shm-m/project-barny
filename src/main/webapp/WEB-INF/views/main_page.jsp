@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +19,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@200;300;400;500;600&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
     <!-- naver fonts -->
     <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
     <!-- Core theme CSS (includes Bootstrap)-->
@@ -64,14 +67,29 @@
                     </ul>
                 </li>
             </ul>
+
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+<<<<<<< HEAD
                 <li class="nav-item"><a class="nav-link" href="#services">로그인</a></li>
                 
+=======
+
+                <sec:authorize access="isAnonymous()">
+                    <li class="nav-item"><a class="nav-link" href="/loginForm">로그인</a></li>
+                </sec:authorize>
+                <sec:authorize access="isAuthenticated()">
+                    <li class="nav-item"><a class="nav-link" href=#services">마이페이지</a></li>
+                </sec:authorize>
+>>>>>>> 5e83e3df7123fad5c8aeb1cadbf9608d6f6fd6db
                 <li class="nav-item"><a class="nav-link" href="#services">장바구니</a></li>
+                <sec:authorize access="isAuthenticated()">
+                    <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
+                </sec:authorize>
             </ul>
         </div>
     </div>
 </nav>
+
 
 
 <!-- Masthead-->
@@ -272,9 +290,19 @@
 <img id="myBtn" src="static/main_page/assets/top-btn.png" onclick="topFunction()">
 
 <!--kakao-chat-->
-<a href ="https://pf.kakao.com/_WDxjSs/chat" class="kakaoChatPc hidden-md hidden-sm hidden-xs" id=kakao-chat">
-<img src="/static/main_page/assets/kakao-chat.png" width="50px" height="50px">
+<a href="https://pf.kakao.com/_WDxjSs/chat" class="kakaoChatPc hidden-md hidden-sm hidden-xs" id="kakao-chat" >
+    <img src="/static/main_page/assets/kakao-chat.png" width="50px" height="50px">
 </a>
+
+<div>
+<button id="myBtn2" >modal test </button>
+
+<div id="myModal" class="modal2">
+    <span class="close">&times;</span>
+    <iframe src="http://kin.naver.com" width=50% height="50%"></iframe>
+</div>
+</div>
+
 
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

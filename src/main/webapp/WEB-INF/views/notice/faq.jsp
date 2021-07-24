@@ -42,8 +42,8 @@
 	  </button>
 	  <div class="collapse navbar-collapse" id="navbarResponsive">
 		<ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-		  <li class="nav-item"><a class="nav-link" href="#main">구독</a></li>
-		  <li class="nav-item"><a class="nav-link" href="#portfolio">브랜드 스토리</a></li>
+		  <li class="nav-item"><a class="nav-link" href="/subscribe">구독</a></li>
+		  <li class="nav-item"><a class="nav-link" href="/story">브랜드 스토리</a></li>
 		  <li class="nav-item dropdown">
 			<a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 			  상품 보기
@@ -74,6 +74,7 @@
   </nav>
 	<!--사이드-->
 	<!--faq-->
+	<section class="page-section bg-light">
 	<div class="faq-title">
 		<h2 class="title">자주 묻는 질문!</h2>
 	</div>
@@ -136,6 +137,7 @@
 		</div>
 		<!--end of /.panel-group-->
 	</div>
+</section>
 	<!--푸터-->
 <!--top-button-->
 <img id="myBtn" src="/static/main_page/assets/top-btn.png" onclick="topFunction()">

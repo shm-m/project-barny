@@ -27,6 +27,12 @@
 				<td> 날짜 </td>
 				<td>${my_content_view.b_date}</td>
 			</tr>
+			
+			<tr>
+				<td> 좋아요 </td>
+				<td>${my_content_view.like_count}</td>
+			</tr>
+			
 			<tr>
 				<td> 제목 </td>
 				<td> <input type="text" name="b_title" value="${my_content_view.b_title}"></td>

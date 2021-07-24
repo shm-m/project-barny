@@ -108,7 +108,7 @@
             	
             </li>
             
-            <li><a href="#3">구매내역</a>
+            <li><a href="purchase_list?member_idx=${44}">구매내역</a>
                 
             </li>
            <li><a href="#4">1:1문의내역</a>
