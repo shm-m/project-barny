@@ -53,7 +53,7 @@
 
 
 	<div class="col-lg-12">
-		<form id='searchForm' action="/notice/main" method='get'>
+		<form id='searchForm' action="/notice" method='get'>
 			<select name='type'>
 				<option value=""<c:out value="${pageMaker.cri.type == null?'selected':''}"/>>--</option>
 				<option value="T"<c:out value="${pageMaker.cri.type eq 'T'?'selected':''}"/>>제목</option>
