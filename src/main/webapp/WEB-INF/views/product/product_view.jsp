@@ -43,7 +43,7 @@
                   <td>
                      <a href="${pageContext.request.contextPath}/notice/content/${vo.board_id}">${vo.b_title}</a>
                   </td>
-                  <td>${vo.nick_name}</td>
+                  <td>${vo.nickname}</td>
                   <td>${vo.b_date}</td>
                   <td>${vo.like_count}</td>
                   <td>${vo.b_hit}</td>

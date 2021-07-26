@@ -26,7 +26,7 @@ public class ProductMainVO {
     private int board_type_id;
     private int b_hit;
     private int like_count;
-    private String nick_name;
+    private String nickname;
     private int member_idx;
 
 }
