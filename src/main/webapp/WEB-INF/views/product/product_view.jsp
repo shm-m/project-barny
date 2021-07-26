@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/styles.css">
 </head>
 <body>
    <table id="list-table" width="500" cellpadding="0" cellspacing="0" border="1">
@@ -38,18 +39,18 @@
                <td>좋아요</td>
                <td>조회</td>
             </tr>
-            <c:forEach items="${list}" var="vo">
-               <tr data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseOne">
+            <c:forEach items="${list}" var="vo" varStatus="status">
+               <tr data-toggle="collapse" data-target="#collapse${status.index}" aria-expanded="false" aria-controls="collapse${status.index}" class="collapsed">
                   <td>${vo.board_id}</td>
                   <td>${vo.b_title}</td>
                   <td>${vo.nickname}</td>
                   <td>${vo.b_date}</td>
                   <td>${vo.like_count}</td>
                   <td>${vo.b_hit}</td>
-                  <i class="fa" aria-hidden="true"></i>
+                  <i class="fa" aria-hidden="false"></i>
                </tr>
                <tr>
-                  <td colspan="6" id="collapse" class="collapse show acc" data-parent="#accordion">
+                  <td colspan="6" id="collapse${status.index}" class="collapse acc" data-parent="#accordion" aria-expanded="false">
                      <p>${vo.b_content}</p>
                   </td>
                </tr>

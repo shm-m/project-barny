@@ -253,3 +253,11 @@ h4.section-heading {
 .card {
   margin-right: 3rem !important;
 }
+
+/*product*/
+.collapsing {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.05s ease;
+}
