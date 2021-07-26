@@ -27,8 +27,8 @@
 
       </form>
       <div class="btn">
-         <p><a class="btn btn-outline-dark btn-sm" href="#">장바구니에 담기</a></p>
-         <p><a class="btn btn-outline-dark btn-sm" href="/payment">바로 구매하기</a></p>
+         <p><a class="btn btn-outline-dark btn-sm" href="/user/cart3">장바구니에 담기</a></p>
+         <p><a class="btn btn-outline-dark btn-sm" href="/user/order">바로 구매하기</a></p>
       </div>
 
    </table>   

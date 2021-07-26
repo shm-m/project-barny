@@ -46,7 +46,7 @@
          </tr>
       </form>
       
-      <form action="#" method="get">
+      <form action="#" method="post">
         받으시는 분 : <input type="text" name="uname" /><br />
         연락처 : <input type="text" name="uphone1" size="5" /> - 
         		<input type="text" name="uphone2" size="5" /> - 

@@ -23,8 +23,8 @@
  }); */
 
  
-		function getList() {
-			var url = "${pageContext.request.contextPath}/rest/after.json";
+		function cart() {
+			var url = "${pageContext.request.contextPath}/cart.json";
 			// 컨텍스트명 + rest/after로 들어오면 list로 들어와라
 			
 			$.ajax({
@@ -36,14 +36,14 @@
 				dataType : 'json', // 데이터 타입은 무조건 json으로 꼭 해야함.
 				success : function(result) { // 통신
 					var htmls = "";
-					$("#list_table").html("") // html 초기화 시키겠다.
+					$("#cart").html("") // html 초기화 시키겠다.
 					
 		               $("<tr>" , {
 		                   html : "<td>" + "상품이름" + "</td>"+  // 컬럼명들
 		                         "<td>" + "수량" + "</td>"+
 		                         "<td>" + "가격" + "</td>"+		                                     		                        
 		                         "<td>" + "삭제" + "</td>"
-		                }).appendTo("#list_table") // 이것을 테이블에붙임
+		                }).appendTo("#cart") // 이것을 테이블에붙임
 					
 		                if(result.length < 1) { // 1보다 작다는 얘기는 할게없다.
 		                	html.push("장바구니가 비었습니다.");
@@ -72,12 +72,12 @@
 		                	}); // each end
 
 		                      htmls+='<tr>';
-		                      htmls+='<td colspan="5"> <a href="${pageContext.request.contextPath}/write_view">글작성</a> </td>';                         
+		                      htmls+='<td colspan="5"> <a href="${pageContext.request.contextPath}/order">주문하기</a> </td>';                         
 		                      htmls+='</tr>';
 
 		              }
 					
-					 $("#list_table").append(htmls);
+					 $("#cart").append(htmls);
 				}
 				
 				
@@ -97,7 +97,7 @@
 		// 3만 수정하고싶으면 다시 전체 불러올 필요없이 3만 수정하고 할수있기때문에 
 		// ajax를 쓴다.
 		
-		$(document).ready(function (){
+	  	/* $(document).ready(function (){
       
 			 // 정적인 것. 한마디로 동적인 것은 클릭이벤트 먹지 않음.
 			 // a-delete만 가져온다.
@@ -133,7 +133,7 @@
 	         })
 	          
 	      });
-	   });   
+	   });    */ 
 	
 	</script>
 	
