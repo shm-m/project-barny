@@ -17,5 +17,6 @@ public class NoticeVO {
     private String b_content;
     private Date b_date;
     private int board_type_id;
+    private int b_hit;
 
 }
