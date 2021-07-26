@@ -133,6 +133,18 @@ public class HomeController {
 		return "notice/m_main";
 	}
 
+	// notice list for test
+	@GetMapping("/notice_test")
+	public String notice_test(Model model, Criteria cri) {
+
+		model.addAttribute("list", noticeService.getList(cri));
+
+		int total = noticeService.getTotal(cri);
+		model.addAttribute("pageMaker", new PageVO(cri, total));
+
+		return "notice/m_main_test";
+	}
+
 	// notice list view
 	@GetMapping("/notice/content/{board_id}") // 뒤에 보드 아이디 달아줘야 찾아감!
 	public String notice_content_view(NoticeVO noticeVO, Model model) {
