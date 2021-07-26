@@ -139,7 +139,7 @@
                 </div>
                 <div class="container-login100-form-btn m-t-17">
                     <button class="other_login100-form-btn">
-                        NAVAR로 로그인
+                        NAVER로 로그인
                     </button>
                 </div>
 
