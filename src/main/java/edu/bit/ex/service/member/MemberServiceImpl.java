@@ -64,11 +64,32 @@ public class MemberServiceImpl implements MemberService {
 
     }
 
+    @Override
+    public boolean checkValidatePw(String pw) {
+        return pw.matches("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,20}$");
+    }
+
+    @Override
+    public boolean emailCheck(String email) {
+        return memberMapper.checkEmail(email) ==0;
+    }
+
+    @Override
+    public boolean checkValidateId(String member_id) {
+        return member_id.matches("^[A-Za-z0-9]{6,12}$");
+    }
+
+    @Override
+    public boolean checkValidateNickname(String nickname) {
+        return memberMapper.checkNickname(nickname)==0;
+    }
+
     //==  id 중복검사 구현 ==//
     @Override
-    public MemberVO idCheck(String member_id) {
+    public boolean checkDuplicateId(String member_id) {
 
-        return memberMapper.checkOverId(member_id);
+        return memberMapper.checkOverId(member_id) == 0;
     }
 
 }
+

@@ -19,7 +19,10 @@ public interface MemberMapper {
     @Select("select m.member_idx from Member m where m.member_id =#{member_id}")
     public int getMemberIdx(MemberVO memberVO);
 
-    public MemberVO checkOverId(String member_id);
+    public int checkOverId(String member_id);
 
 
+    int checkEmail(String email);
+
+    int checkNickname(String nickname);
 }
