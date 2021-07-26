@@ -7,37 +7,75 @@
     <!-- Required meta tags -->
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>공지사항</title>
 
     <!--font-->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet"/>
-
     <link rel="stylesheet" href="fonts/icomoon/style.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
     <link rel="stylesheet" href="/static/table/css/owl.carousel.min.css"/>
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <!-- Style -->
-    <link rel="stylesheet" href="/static/table/css/style.css"/>
-    <title>공지사항</title>
 
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="/static/main_page/assets/favicon-2.ico"/>
+
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
 
     <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" href="/static/table/css/style.css"/>
     <link href="/static/main_page/css/styles.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/static/css/styles.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
 </head>
 
-
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav_2">
+    <div class="container">
+        <a class="navbar-brand" href="/main"><img src="/static/main_page/assets/img/logo.png" alt="바니 로고 1"/></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars ms-1"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                <li class="nav-item"><a class="nav-link" href="#services">구독</a></li>
+                <li class="nav-item"><a class="nav-link" href="#portfolio">브랜드 스토리</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        상품 보기
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                        <li></li>
+                        <a class="dropdown-item" href="#">패키지</a></li>
+                        <li><a class="dropdown-item" href="#">술</a></li>
+                        <li><a class="dropdown-item" href="#">안주</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#team">이벤트</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        고객센터
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                        <li></li>
+                        <a class="dropdown-item" href="#">공지사항</a></li>
+                        <li><a class="dropdown-item" href="#">자주 묻는 질문</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                <li class="nav-item"><a class="nav-link" href="#services">로그인</a></li>
+                <li class="nav-item"><a class="nav-link" href="#services">장바구니</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 <body>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav_2">
@@ -91,7 +129,7 @@
         <div class="board_name">공지사항
             <a class="board_name_small">바니의 새로운 소식과 정보를 확인하세요.</a>
         </div>
-        <div class="table-responsive pb-3" id="outline">
+        <div class="table-responsive outline pb-3">
             <table class="table custom-table">
                 <thead style="border-bottom: solid 1px;">
                 <tr>
@@ -111,7 +149,7 @@
                 </thead>
                 <tbody>
                 <c:forEach items="${list}" var="vo">
-                    <tr>
+                    <tr style ="font-weight: 400;">
                         <td>${vo.board_id}</td>
                         <td style="text-align: left; padding-left: 2rem">
                             <a class="board_title" href="${pageContext.request.contextPath}/notice/content/${vo.board_id}">${vo.b_title}</a></td>
@@ -151,15 +189,23 @@
             </ul>
         </nav>
 
-        <div class="table-responsive pt-4" id="outline">
-            <%--searching button--%>
-            <form class="d-flex mb-3" style="float: right;">
-                <input class="form-control me-2" type="search" aria-label="Search">
+        <%--searching button--%>
+        <div class="table-responsive outline pt-4">
+            <form class="d-flex mb-3" id ="searchForm" action="/notice" method='get' style="float: right;">
+                <select name='type' class = "searching_option">
+                    <option value=""<c:out value="${pageMaker.cri.type == null?'selected':''}"/>>--</option>
+                    <option value="T"<c:out value="${pageMaker.cri.type eq 'T'?'selected':''}"/>>제목</option>
+                    <option value="C"<c:out value="${pageMaker.cri.type eq 'C'?'selected':''}"/>>내용</option>
+                </select>
+                <input class="form-control_2 me-2" type='text' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>'/>
+                <input class="form-control_2 me-2" type='hidden' name='pageNum' value='<c:out value="${pageMaker.cri.pageNum}"/>'/>
+                <input class="form-control_2 me-2" type='hidden' name='amount' value='<c:out value="${pageMaker.cri.amount}"/>'/>
                 <button class="searching_btn btn-outline-search" type="submit">검색</button>
             </form>
         </div>
     </div>
 </div>
+
 
 <!-- Footer-->
 <footer class="footer">
@@ -203,11 +249,33 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 <script src="/static/table/js/main.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
 <!-- Core theme JS-->
 <script src="/static/main_page/js/scripts.js"></script>
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        var searchForm = $("#searchForm");
+        $("#searchForm button").on("click", function(e){
+            if(!searchForm.find("option:selected").val()){
+                alert("검색 종류를 선택하세요");
+                return false;
+            }
+            if(!searchForm.find("input[name='keyword']").val()){
+                alert("키워드를 입력하세요");
+                return false;
+            }
+            searchForm.find("input[name='pageNum']").val("1");
+            e.preventDefault();
+            searchForm.submit();
+
+        });
+    });
+</script>
 
 </body>
 </html>
