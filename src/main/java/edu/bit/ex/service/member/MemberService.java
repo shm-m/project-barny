@@ -10,8 +10,15 @@ public interface MemberService {
 //    int getMemberIdx(MemberVO memberVO);
 //    int memberIdCheck(MemberVO memberVO);
 
-    MemberVO idCheck(String member_id);
+    boolean checkDuplicateId(String member_id);
     void addUser(MemberVO memberVO);
 
 
+    boolean checkValidatePw(String pw);
+
+    boolean emailCheck(String email);
+
+    boolean checkValidateId(String member_id);
+
+    boolean checkValidateNickname(String nickname);
 }

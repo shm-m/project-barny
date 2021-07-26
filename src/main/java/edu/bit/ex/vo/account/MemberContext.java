@@ -13,6 +13,7 @@ public class MemberContext extends User {
     private final MemberVO memberVO;
 
 
+
     public MemberContext(MemberVO memberVO, Collection<? extends GrantedAuthority> authorities) {
         super(memberVO.getMember_id(), memberVO.getPw(), authorities);
         this.memberVO = memberVO;
