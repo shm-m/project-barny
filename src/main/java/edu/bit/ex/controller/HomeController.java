@@ -95,6 +95,7 @@ public class HomeController {
 
 		log.info("product_view()..");
 		model.addAttribute("product_view", productMainService.get(productMainVO.getProduct_id()));
+		model.addAttribute("list", productMainService.getListReview(productMainVO.getProduct_id()));
 
 		return "product/product_view";
 	}
