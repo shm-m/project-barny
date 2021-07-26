@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,13 +67,26 @@
                     </ul>
                 </li>
             </ul>
+
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                 <li class="nav-item"><a class="nav-link" href="loginForm">로그인</a></li>
                 <li class="nav-item"><a class="nav-link" href="/cart3">장바구니</a></li>
+
+                <sec:authorize access="isAnonymous()">
+                    <li class="nav-item"><a class="nav-link" href="/loginForm">로그인</a></li>
+                </sec:authorize>
+                <sec:authorize access="isAuthenticated()">
+                    <li class="nav-item"><a class="nav-link" href=#services">마이페이지</a></li>
+                </sec:authorize>
+                <li class="nav-item"><a class="nav-link" href="#services">장바구니</a></li>
+                <sec:authorize access="isAuthenticated()">
+                    <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
+                </sec:authorize>
             </ul>
         </div>
     </div>
 </nav>
+
 
 
 <!-- Masthead-->
@@ -271,20 +286,21 @@
 <!--top-button-->
 <img id="myBtn" src="static/main_page/assets/top-btn.png" onclick="topFunction()">
 
+
 <!--kakao-chat-->
-<a href="https://pf.kakao.com/_WDxjSs/chat" class="kakaoChatPc hidden-md hidden-sm hidden-xs" id="kakao-chat" >
+<a href="javascript:void kakaoChatStart()" class="kakaoChatPc hidden-md hidden-sm hidden-xs" id="kakao-chat">
     <img src="/static/main_page/assets/kakao-chat.png" width="50px" height="50px">
 </a>
 
-<div>
-<button id="myBtn2" >modal test </button>
-
-<div id="myModal" class="modal2">
-    <span class="close">&times;</span>
-    <iframe src="http://kin.naver.com" width=50% height="50%"></iframe>
-</div>
-</div>
-
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script type='text/javascript'>
+    Kakao.init('7e53e24ce9a07956bfb5ac4930333caa');
+    function kakaoChatStart() {
+        Kakao.Channel.chat({
+            channelPublicId: '_WDxjSs'
+        });
+    }
+</script>
 
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

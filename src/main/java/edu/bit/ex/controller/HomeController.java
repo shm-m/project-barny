@@ -6,7 +6,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import edu.bit.ex.page.Criteria;
+import edu.bit.ex.page.PageVO;
+import edu.bit.ex.service.EventService;
+import edu.bit.ex.service.NoticeService;
 import edu.bit.ex.service.ProductMainService;
+import edu.bit.ex.vo.NoticeVO;
 import edu.bit.ex.vo.ProductMainVO;
 import lombok.extern.slf4j.Slf4j;
 
@@ -16,6 +21,14 @@ public class HomeController {
 	// 상품보기
 	@Autowired
 	private ProductMainService productMainService;
+
+	// event service
+	@Autowired
+	private EventService eventService;
+
+	// notice sercie
+	@Autowired
+	private NoticeService noticeService;
 
 	// 메인 페이지
 	@GetMapping("/main")
@@ -85,6 +98,66 @@ public class HomeController {
 		model.addAttribute("product_view", productMainService.get(productMainVO.getProduct_id()));
 
 		return "product/product_view";
+	}
+
+	// event list
+	@GetMapping("/event")
+	public String event_main(Model model, Criteria cri) {
+
+		model.addAttribute("event_list", eventService.getList(cri));
+
+		int total = eventService.getTotal(cri);
+		model.addAttribute("pageMaker", new PageVO(cri, total));
+
+		return "event/m_event_list";
+	}
+
+	// // event list view
+	// @GetMapping("/event/content/{board_id}") // 뒤에 보드 아이디 달아줘야 찾아감!
+	// public String content_view(EventVO eventVO, Model model) {
+
+	// model.addAttribute("content_view", eventService.get(eventVO.getBoard_id()));
+
+	// return "event/m_content_view";
+	// }
+
+	// notice list
+	@GetMapping("/notice")
+	public String notice(Model model, Criteria cri) {
+
+		model.addAttribute("list", noticeService.getList(cri));
+
+		int total = noticeService.getTotal(cri);
+		model.addAttribute("pageMaker", new PageVO(cri, total));
+
+		return "notice/m_main";
+	}
+
+	// notice list for test
+	@GetMapping("/notice_test")
+	public String notice_test(Model model, Criteria cri) {
+
+		model.addAttribute("list", noticeService.getList(cri));
+
+		int total = noticeService.getTotal(cri);
+		model.addAttribute("pageMaker", new PageVO(cri, total));
+
+		return "notice/m_main_test";
+	}
+
+	// notice list view
+	@GetMapping("/notice/content/{board_id}") // 뒤에 보드 아이디 달아줘야 찾아감!
+	public String notice_content_view(NoticeVO noticeVO, Model model) {
+
+		model.addAttribute("content_view", eventService.get(noticeVO.getBoard_id()));
+
+		return "notice/m_content_view";
+	}
+
+	// FAQ
+	@GetMapping("/notice/faq")
+	public String faq(Model model) {
+		return "notice/faq";
 	}
 
 }

@@ -5,64 +5,108 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>회원가입</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
 </head>
 
 <script>
-    $(document).ready(function () {
-        // 아이디 유효성 검사(1 = 중복 / 0 != 중복)
-        $("#member_id").blur(function () {
-            // id = "id_reg" / name = "userId"
-            var member_id = $('#member_id').val();
-            $.ajax({
-                url: '/join',
-                type: 'POST',//보내는 기준
-                data: {"member_id": member_id},
-                success: function (data) {
-                    console.log("1 = 중복o 0 = 중복x : " + data);
 
-                    if (data == 1) {
-                        // 1 : 아이디가 중복되는 문구
-                        $("#idCheck").text("이미 사용중인 계정입니다.");
-                        $("#idCheck").css("color", "red");
-                        $("#join_submit").attr("disabled", true);
 
-                    } else if (data == 0) {
-                        //0 : 회원가입 성공 시 회원가입 성공페이지로 이동하는데 지금은 페이지가 없어서 로그인폼으로
-                        window.location.href = "/loginForm";
-                    }/*else {
-                        if (idJ.test(user_id)) {
-                            // 0 : 아이디 길이 / 문자열 검사
-                            $("#idCheck").text("");
-                            $("#join_submit").attr("disabled", false);
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict'
 
-                        } else if (user_id == "") {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
 
-                            $('#idCheck').text('아이디를 입력해주세요 :)');
-                            $('#idCheck').css('color', 'red');
-                            $("#join_submit").attr("disabled", true);
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
 
-                        } else {
-
-                            $('#idCheck').text("아이디는 소문자와 숫자 4~12자리만 가능합니다 :) :)");
-                            $('#idCheck').css('color', 'red');
-                            $("#join_submit").attr("disabled", true);
-                        }
-
-                    }*/
-                }, error: function () {
-                    console.log("실패");
-                }
-            });
-        });
-    });
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
 </script>
 
-<body>
 
-<h1>회원가입</h1>
+
+<body>
+<form class="row g-3 needs-validation" novalidate>
+    <div class="col-md-4">
+        <label for="validationCustom01" class="form-label">First name</label>
+        <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+        <div class="valid-feedback">
+            Looks good!
+        </div>
+    </div>
+    <div class="col-md-4">
+        <label for="validationCustom02" class="form-label">Last name</label>
+        <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
+        <div class="valid-feedback">
+            Looks good!
+        </div>
+    </div>
+    <div class="col-md-4">
+        <label for="validationCustomUsername" class="form-label">Username</label>
+        <div class="input-group has-validation">
+            <span class="input-group-text" id="inputGroupPrepend">@</span>
+            <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+            <div class="invalid-feedback">
+                Please choose a username.
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <label for="validationCustom03" class="form-label">City</label>
+        <input type="text" class="form-control" id="validationCustom03" required>
+        <div class="invalid-feedback">
+            Please provide a valid city.
+        </div>
+    </div>
+    <div class="col-md-3">
+        <label for="validationCustom04" class="form-label">State</label>
+        <select class="form-select" id="validationCustom04" required>
+            <option selected disabled value="">Choose...</option>
+            <option>...</option>
+        </select>
+        <div class="invalid-feedback">
+            Please select a valid state.
+        </div>
+    </div>
+    <div class="col-md-3">
+        <label for="validationCustom05" class="form-label">Zip</label>
+        <input type="text" class="form-control" id="validationCustom05" required>
+        <div class="invalid-feedback">
+            Please provide a valid zip.
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+            <label class="form-check-label" for="invalidCheck">
+                Agree to terms and conditions
+            </label>
+            <div class="invalid-feedback">
+                You must agree before submitting.
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <button class="btn btn-primary" type="submit">Submit form</button>
+    </div>
+</form>
+<!--<h1>회원가입</h1>
 
 <p>${addUserUrl}</p>
 <form:form name="frmMember" action="/join" method="POST">
@@ -106,7 +150,7 @@
     </p>
 
     <button type="submit" class="btn">가입하기</button>
-</form:form>
+</form:form>-->
 
 </body>
 </html>
