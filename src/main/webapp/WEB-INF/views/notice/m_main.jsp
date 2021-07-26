@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-		 pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -53,7 +53,7 @@
 
 
 	<div class="col-lg-12">
-		
+		<form id='searchForm' action="/notice" method='get'>
 			<select name='type'>
 				<option value=""<c:out value="${pageMaker.cri.type == null?'selected':''}"/>>--</option>
 				<option value="T"<c:out value="${pageMaker.cri.type eq 'T'?'selected':''}"/>>제목</option>
