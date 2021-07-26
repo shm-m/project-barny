@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
 </head>
 <body>
    <table id="list-table" width="500" cellpadding="0" cellspacing="0" border="1">
@@ -23,8 +24,8 @@
       </form>
    </table>
    <br>
-   <div>
-      <table id="list-table" width="500" cellpadding="0" cellspacing="0" border="1">
+   <div class="table-wrap">
+      <table class="table myaccordion table-hover" id="accordion">
          <form role="form" method="post">
             <input type="hidden" name="product_id" value="${product_view.product_id}">
 
@@ -38,22 +39,29 @@
                <td>조회</td>
             </tr>
             <c:forEach items="${list}" var="vo">
-               <tr>
+               <tr data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseOne">
                   <td>${vo.board_id}</td>
-                  <td>
-                     <a href="${pageContext.request.contextPath}/notice/content/${vo.board_id}">${vo.b_title}</a>
-                  </td>
+                  <td>${vo.b_title}</td>
                   <td>${vo.nickname}</td>
                   <td>${vo.b_date}</td>
                   <td>${vo.like_count}</td>
                   <td>${vo.b_hit}</td>
-
+                  <i class="fa" aria-hidden="true"></i>
+               </tr>
+               <tr>
+                  <td colspan="6" id="collapse" class="collapse show acc" data-parent="#accordion">
+                     <p>${vo.b_content}</p>
+                  </td>
                </tr>
             </c:forEach>
             
          </form>
       </table>
    </div>
+
+   <script src="/static/js/jquery.min.js"></script>
+   <script src="/static/js/popper.js"></script>
+   <script src="/static/js/bootstrap.min.js"></script>
 
 </body>
 </html>
