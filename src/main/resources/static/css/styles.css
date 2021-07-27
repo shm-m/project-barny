@@ -245,6 +245,21 @@ h4 {
   margin-right: 15px;
 }
 
+/*form*/
+/* div .col-md-12 .col-md-4 {
+  margin: auto;
+} */
+
+
+.sub_nav {
+	padding-top:75px;
+}
+
+.btn-outline-success {
+    color: #EBC24B;
+    border-color: #EBC24B;
+}
+
 /*event*/
 h4.section-heading {
   font-family: "NanumSquare";
@@ -253,3 +268,4 @@ h4.section-heading {
 .card {
   margin-right: 3rem !important;
 }
+
