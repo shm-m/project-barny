@@ -4,9 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="/static/css/bootstrap.min.css">
 <link rel="stylesheet" href="/static/css/styles.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<title>product_view</title>
 </head>
 <body>
    <table id="list-table" width="500" cellpadding="0" cellspacing="0" border="1">
@@ -23,7 +26,12 @@
          </tr>
 
       </form>
-   </table>
+      <div class="btn">
+         <p><a class="btn btn-outline-dark btn-sm" href="/user/cart3">장바구니에 담기</a></p>
+         <p><a class="btn btn-outline-dark btn-sm" href="/user/order">바로 구매하기</a></p>
+      </div>
+
+   </table>   
    <br>
    <div class="table-wrap">
       <table class="table myaccordion table-hover" id="accordion">
@@ -63,6 +71,7 @@
    <script src="/static/js/jquery.min.js"></script>
    <script src="/static/js/popper.js"></script>
    <script src="/static/js/bootstrap.min.js"></script>
+      
 
 </body>
 </html>

@@ -49,9 +49,9 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
                         <li></li>
-                        <a class="dropdown-item" href="#">패키지</a></li>
-                        <li><a class="dropdown-item" href="#">술</a></li>
-                        <li><a class="dropdown-item" href="#">안주</a></li>
+                        <a class="dropdown-item" href="product_main">패키지</a></li>
+                        <li><a class="dropdown-item" href="product_main_liquor">술</a></li>
+                        <li><a class="dropdown-item" href="product_main_food">안주</a></li>
                     </ul>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="#team">이벤트</a></li>
@@ -69,6 +69,8 @@
             </ul>
 
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                <li class="nav-item"><a class="nav-link" href="loginForm">로그인</a></li>
+                <li class="nav-item"><a class="nav-link" href="/cart3">장바구니</a></li>
 
                 <sec:authorize access="isAnonymous()">
                     <li class="nav-item"><a class="nav-link" href="/loginForm">로그인</a></li>
@@ -171,7 +173,7 @@
                 </div>
             </div>
             <br>
-            <a class="btn btn-secondary btn-xl text-uppercase" href="/#">상품 정보 더보기</a>
+            <a class="btn btn-secondary btn-xl text-uppercase" href="/product_main">상품 정보 더보기</a>
         </div>
     </div>
 </section>
