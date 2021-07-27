@@ -273,5 +273,5 @@ h4.section-heading {
   position: relative;
   height: 0;
   overflow: hidden;
-  transition: height 0.05s ease;
+  transition: height ease !important;
 }
