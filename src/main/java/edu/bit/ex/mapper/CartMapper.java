@@ -15,6 +15,7 @@ public interface CartMapper {
     
 	int countCart(int member_idx, String product_name); // 장바구니 동일상품 확인
 	void updateCart(CartVO cartVO); // 장바구니 동일상품 확인 시 수량수정
-	
+
+    void addProduct(CartVO cartVO);
 	List<CartVO> read(int member_idx);
 }
