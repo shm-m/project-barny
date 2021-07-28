@@ -53,8 +53,6 @@
 	<![CDATA[
 		select * from cart where member_idx = #{member_idx}
 	]]>
-	</select>
+	</select>	 
 
-
-
-
+</mapper>

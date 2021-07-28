@@ -62,11 +62,6 @@ public class CartServiceImpl implements CartService {
 		return cartMapper.read(member_idx);
 	}
        
-	// 담기 2
-	@Override
-	public void addProduct(CartVO cartVO) {
-		cartMapper.addProduct(cartVO);
 
-	}
 
 }
