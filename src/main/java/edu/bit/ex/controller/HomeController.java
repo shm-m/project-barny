@@ -1,10 +1,16 @@
 package edu.bit.ex.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import edu.bit.ex.page.Criteria;
 import edu.bit.ex.page.PageVO;
@@ -101,6 +107,42 @@ public class HomeController {
 		return "product/product_view";
 	}
 
+	// update hit
+	@PutMapping("/product_view?product_id={product_id}")
+	public ResponseEntity<String> updateHit(@RequestBody ProductMainVO productMainVO, ModelAndView mav) {
+
+		ResponseEntity<String> entity = null;
+
+		try {
+
+			productMainService.updateHit(productMainVO);
+			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+
+		return entity;
+	}
+
+	// 후기 write
+	@PostMapping("/review/write")
+	public String writeReview(ProductMainVO productMainVO) {
+
+		productMainService.writeReview(productMainVO);
+
+		return "redirect:product_view?product_id={product_id}";
+	}
+
+	@GetMapping("/user/review/write_view/**")
+	public String write_view(Model model, ProductMainVO productMainVO) {
+
+		log.info("write_view()..");
+		model.addAttribute("product_view", productMainService.get(productMainVO.getProduct_id()));
+		return "user/write_view";
+	}
+
 	// event list
 	@GetMapping("/event")
 	public String event_main(Model model, Criteria cri) {
@@ -113,15 +155,6 @@ public class HomeController {
 		return "event/m_event_list";
 	}
 
-	// // event list view
-	// @GetMapping("/event/content/{board_id}") // 뒤에 보드 아이디 달아줘야 찾아감!
-	// public String content_view(EventVO eventVO, Model model) {
-
-	// model.addAttribute("content_view", eventService.get(eventVO.getBoard_id()));
-
-	// return "event/m_content_view";
-	// }
-
 	// notice list
 	@GetMapping("/notice")
 	public String notice(Model model, Criteria cri) {
@@ -132,18 +165,6 @@ public class HomeController {
 		model.addAttribute("pageMaker", new PageVO(cri, total));
 
 		return "notice/m_main";
-	}
-
-	// notice list for test
-	@GetMapping("/notice_test")
-	public String notice_test(Model model, Criteria cri) {
-
-		model.addAttribute("list", noticeService.getList(cri));
-
-		int total = noticeService.getTotal(cri);
-		model.addAttribute("pageMaker", new PageVO(cri, total));
-
-		return "notice/m_main_test";
 	}
 
 	// notice list view
