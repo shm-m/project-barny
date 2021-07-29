@@ -4,6 +4,9 @@ package edu.bit.ex.controller;
 import edu.bit.ex.service.member.MemberService;
 import edu.bit.ex.vo.MemberVO;
 import lombok.RequiredArgsConstructor;
+
+import java.security.Principal;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -60,10 +63,12 @@ public class AccountController {
     public String test1() {
         return "account/test1";
     }
-
-
-
-
-
+    
+//    @GetMapping
+//    public String getMyinfo(Principal principal) {
+//    	
+//        return principal.toString();
+//    }
+//    
 
 }

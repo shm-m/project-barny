@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.bit.ex.service.BoardService;
 import edu.bit.ex.vo.BoardVO;
+import edu.bit.ex.vo.OrderVO;
+import edu.bit.ex.vo.ProductMainVO;
 import lombok.experimental.ExtensionMethod;
 import lombok.extern.slf4j.Slf4j;
 
@@ -25,6 +27,33 @@ public class BoardController {
 
 		return "/board/my_page";
 	}
+
+	// 마이페이지 (구매내역)리스트
+	@GetMapping("/board/mypag")
+	public String purchase_list(OrderVO orderVO, Model model) {
+
+		orderVO.setMember_idx(44);
+
+		log.info("purchase_list");
+		log.info("purchase_list()..: orderVO" + orderVO);
+
+		model.addAttribute("purchase_list", boardService.getOrderList(orderVO));
+
+		return "/board/purchase_list";
+	}
+	
+		// 마이페이지 구매내역 상세보기
+		@PostMapping("/board/purchase_view")
+		public String purchase_view(ProductMainVO productMainVO, Model model) {
+			log.info("purchase_view()..");
+			log.info("purchase_view()..productMainVO" + productMainVO);
+
+			model.addAttribute("purchase_view", boardService.get(productMainVO.getProduct_id()));
+
+			log.info("purchase_view _Get " + boardService.get(productMainVO.getProduct_id()));
+
+			return "redirect:/product/product_view";
+		}
 
 	// 마이페이지 (1:1문의내역)리스트
 	@GetMapping("/board/my_view")
@@ -124,7 +153,6 @@ public class BoardController {
 		return "/board/my_review_write";
 	}
 
-
 	// 회원 마이페이지 후기 글작성 후 입력누르면 넘어가는 입력버튼
 	@PostMapping("/board/write_my_review")
 	public String write_my_review(BoardVO boardVO) {
@@ -134,27 +162,26 @@ public class BoardController {
 
 		return "redirect:/board/my_review";
 	}
-	
+
 	// 회원 후기 수정
-		@PostMapping("/board/review_modify")
-		public String review_modify(BoardVO boardVO, Model model) {
-			log.info("review_modify()..");
+	@PostMapping("/board/review_modify")
+	public String review_modify(BoardVO boardVO, Model model) {
+		log.info("review_modify()..");
 
-			boardService.review_modify(boardVO);
+		boardService.review_modify(boardVO);
 
-			return "redirect:/board/my_review";
-		}
+		return "redirect:/board/my_review";
+	}
 
-		// 회원 후기 게시판 삭제
-		@GetMapping("/board/review_delete")
-		public String review_delete(BoardVO boardVO, Model model) {
-			log.info("review_delete()..");
+	// 회원 후기 게시판 삭제
+	@GetMapping("/board/review_delete")
+	public String review_delete(BoardVO boardVO, Model model) {
+		log.info("review_delete()..");
 
-			boardService.review_remove(boardVO.getBoard_id());
+		boardService.review_remove(boardVO.getBoard_id());
 
-			return "redirect:/board/my_review";
-		}
-
+		return "redirect:/board/my_review";
+	}
 
 	// 관리자 주문내역 리스트
 	@GetMapping("/board/list")

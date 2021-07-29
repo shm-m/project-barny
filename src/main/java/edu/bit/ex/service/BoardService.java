@@ -3,6 +3,8 @@ package edu.bit.ex.service;
 import java.util.List;
 
 import edu.bit.ex.vo.BoardVO;
+import edu.bit.ex.vo.OrderVO;
+import edu.bit.ex.vo.ProductMainVO;
 
 public interface BoardService {
 	// 관리자리스트
@@ -57,5 +59,14 @@ public interface BoardService {
 	
 	// 후기 회원 글 삭제
 	public void review_remove(int board_id);
+	
+
+
+	//주문내역/구매내역
+	public List<OrderVO> getOrderList(OrderVO orderVO);
+	// 주문내역 회원 내글 상세보기
+	public ProductMainVO getOrder(int product_id);
+	
+	
 
 }

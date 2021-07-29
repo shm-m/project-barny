@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import edu.bit.ex.vo.BoardVO;
+import edu.bit.ex.vo.OrderVO;
+import edu.bit.ex.vo.ProductMainVO;
 
 @Mapper
 public interface BoardMapper {
@@ -41,5 +43,10 @@ public interface BoardMapper {
 	public void review_update(BoardVO boardVO);
 	// 회원 후기 삭제
 	public void review_delete(int board_id);
+	
+	// 회원 구매내역
+	public List<OrderVO> getOrderList(OrderVO orderVO);
+	// 회원 구매내역 상세보기
+	public ProductMainVO orderRead(int product_id);
 	
 }

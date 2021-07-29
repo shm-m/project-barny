@@ -99,9 +99,6 @@ public class HomeController {
 		return "product/product_view";
 	}
 
-<<<<<<< HEAD
-}
-=======
 	// event list
 	@GetMapping("/event")
 	public String event_main(Model model, Criteria cri) {
@@ -151,4 +148,3 @@ public class HomeController {
 	}
 
 }
->>>>>>> 5e83e3df7123fad5c8aeb1cadbf9608d6f6fd6db

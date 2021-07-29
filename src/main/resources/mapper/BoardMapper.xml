@@ -44,7 +44,9 @@
 	<select id="getMemberList" resultType="edu.bit.ex.vo.BoardVO">
 	<![CDATA[
 		select board_id, b_date, b_title, b_content, board_type_id, member_idx, b_hit, b_group, b_indent, b_step 
-		from barny_board where member_idx = #{member_idx} order by b_Group desc, b_Step asc
+		from barny_board where member_idx = '42' and board_type_id in ('3','4','5','6')
+		order by b_Group desc, b_Step asc
+
 	]]>
 	</select>
 	
@@ -107,6 +109,20 @@
 		delete from barny_board where board_id = #{board_id}
 	]]>
 	</delete>
+	
+	
+	
+	<select id="getOrderList" resultType="edu.bit.ex.vo.OrderVO">
+	<![CDATA[
+		select order_id, order_date, total_price, member_idx from orders where member_idx = #{member_idx} 
+	]]>
+	</select>
+	
+	<select id="orderRead" resultType="edu.bit.ex.vo.ProductMainVO">
+	<![CDATA[
+		select * from product where product_id = #{product_id}
+	]]>
+	</select>
 	
 	
 </mapper>

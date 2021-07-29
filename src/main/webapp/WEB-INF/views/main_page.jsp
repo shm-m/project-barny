@@ -69,18 +69,15 @@
             </ul>
 
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-<<<<<<< HEAD
-                <li class="nav-item"><a class="nav-link" href="#services">로그인</a></li>
-                
-=======
+ 
 
                 <sec:authorize access="isAnonymous()">
                     <li class="nav-item"><a class="nav-link" href="/loginForm">로그인</a></li>
                 </sec:authorize>
                 <sec:authorize access="isAuthenticated()">
-                    <li class="nav-item"><a class="nav-link" href=#services">마이페이지</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/board/my_page">마이페이지</a></li>
                 </sec:authorize>
->>>>>>> 5e83e3df7123fad5c8aeb1cadbf9608d6f6fd6db
+
                 <li class="nav-item"><a class="nav-link" href="#services">장바구니</a></li>
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
@@ -89,8 +86,6 @@
         </div>
     </div>
 </nav>
-
-
 
 <!-- Masthead-->
 <header class="masthead">

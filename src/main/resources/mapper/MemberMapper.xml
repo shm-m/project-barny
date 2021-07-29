@@ -65,6 +65,8 @@
     <select id = "checkOverId" resultType="edu.bit.ex.vo.MemberVO">
         <![CDATA[ select * from member where member_id =#{member_id}]]>
     </select>
+    
+
 
 
 </mapper>
