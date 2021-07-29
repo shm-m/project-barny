@@ -11,13 +11,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class OrderVO {
-	// 장바구니 정보
-	private int member_idx;
-    private String product_name;
-    private int product_qty;
-    private int price;
-
+public class OrderPaymentVO {
     // 주문자 정보(회원정보)
     private String member_id;
     private String member_name;

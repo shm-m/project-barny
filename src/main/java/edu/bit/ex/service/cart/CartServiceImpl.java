@@ -17,9 +17,9 @@ public class CartServiceImpl implements CartService {
 
     // 장바구니 리스트
     @Override
-    public List<CartVO> getList() {
-        log.info("getList()...");
-        return cartMapper.getList();
+    public List<CartVO> cartList(int member_idx) {
+        log.info("cartList()...");
+        return cartMapper.cartList(member_idx);
     }
 
     // 장바구니 담기
@@ -56,11 +56,11 @@ public class CartServiceImpl implements CartService {
 		
 	}
 
-	@Override
-	public List<CartVO> read(int member_idx) {
-		log.info("read()..");
-		return cartMapper.read(member_idx);
-	}
+	/*
+	 * @Override public List<CartVO> read(int member_idx) { 
+	 * log.info("read()..");
+	 * return cartMapper.read(member_idx); }
+	 */
        
 
 

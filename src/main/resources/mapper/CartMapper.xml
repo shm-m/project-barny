@@ -3,11 +3,11 @@
 <mapper namespace="edu.bit.ex.mapper.CartMapper">
 
 <!-- 장바구니 목록 출력 -->
-    <select id="getList" resultType="edu.bit.ex.vo.cart.CartVO">
+    <select id="cartList" resultType="edu.bit.ex.vo.cart.CartVO">
         <![CDATA[
-			SELECT DISTINCT M.MEMBER_IDX, P.PRODUCT_NAME, P.PRICE, C.PRODUCT_QTY
+			SELECT M.MEMBER_IDX, P.PRODUCT_NAME, P.PRICE, C.PRODUCT_QTY
 			FROM MEMBER M, PRODUCT P, CART C
-			WHERE M.MEMBER_IDX = C.MEMBER_IDX AND P.PRODUCT_ID = C.PRODUCT_ID AND M.MEMBER_ID = #{MEMBER_ID}
+			WHERE M.MEMBER_IDX = C.MEMBER_IDX AND P.PRODUCT_ID = C.PRODUCT_ID AND M.MEMBER_IDX = #{MEMBER_ID}
 			ORDER BY MEMBER_IDX ASC
         ]]>
     </select>      
