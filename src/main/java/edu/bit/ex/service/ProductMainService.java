@@ -15,4 +15,8 @@ public interface ProductMainService {
 
     List<ProductMainVO> getListReview(int product_id); // 후기 리스트
 
+    void updateHit(ProductMainVO productMainVO);
+
+    void writeReview(ProductMainVO productMainVO);
+
 }
