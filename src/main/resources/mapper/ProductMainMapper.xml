@@ -39,5 +39,19 @@
         select DISTINCT b.board_id, b.b_date, b.b_title, b.b_content, b.b_hit, l.like_count, m.nickname from barny_board b, product p, b_like l, member m where b.product_id= #{product_id} and l.board_id = b.board_id and m.member_idx = b.member_idx
         ]]>
     </select>
+    <!--후기 히트 업뎃-->
+    <update id="updateHit">
+        <![CDATA[
+           update barny_board set b_hit = b_hit + 1 where board_id = #{board_id}
+        ]]>
+    </update>
+    <!--후기 쓰기-->
+    <insert id="writeReview">
+        <![CDATA[
+        INSERT INTO barny_board (board_id, b_date, b_title, b_content, board_type_id, member_idx, b_group, product_id) 
+        VALUES(board_id_seq.NEXTVAL, sysdate, #{b_title}, #{b_content}, 2, #{member_idx}, board_id_seq.currval, #{product_id})
+        ]]>
+    </insert>
+
 
 </mapper>
