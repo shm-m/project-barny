@@ -1,10 +1,18 @@
 package edu.bit.ex.controller;
 
 
+import edu.bit.ex.controller.validator.MemberValidator;
 import edu.bit.ex.service.member.MemberService;
 import edu.bit.ex.vo.MemberVO;
 import lombok.RequiredArgsConstructor;
+
+import java.security.Principal;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -14,6 +22,12 @@ import org.springframework.web.bind.annotation.*;
 public class AccountController {
 
     private final MemberService memberService;
+    private final MemberValidator memberValidator;
+
+    @InitBinder("memberVO")
+    public void memberValidatorInitBinder(WebDataBinder binder) {
+        binder.addValidators(memberValidator);
+    }
 
     @GetMapping("/user")
     public @ResponseBody
@@ -32,31 +46,36 @@ public class AccountController {
         return "account/loginForm";
     }
 
+    @GetMapping("/success_join_page")
+    public String success_join_page() {
+
+        return "account/success_join_page";
+    }
+
+    @PostMapping("/join")
+    public String join(@ModelAttribute @Validated MemberVO memberVO, Errors errors, Model model) {
+
+        if (errors.hasErrors()) {
+            return "account/joinForm";
+        }
+
+        memberService.addUser(memberVO);
+        return "redirect:/success_join_page";
+    }
+
+
     @GetMapping("/joinForm")
-    public String joinForm() {
+    public String joinForm(Model model) {
+        MemberVO memberVO = new MemberVO();
+        model.addAttribute("memberVO", memberVO);
         return "account/joinForm";
     }
-
-    @ResponseBody
-    @PostMapping("/join")
-    public int join(@ModelAttribute MemberVO memberVO) {
-
-        //== 아이디 중복검사 ==//
-        MemberVO vo = memberService.idCheck(memberVO.getMember_id());
-        if (vo == null) {
-            // == 회원가입 ==//
-            memberService.addUser(memberVO);
-        } else {
-            return 1;
-        }
-        return 0;
-
-    }
-
-    //TODO: VALIDATE CONTROLLER 생성
-
-
-
-
+    
+//    @GetMapping
+//    public String getMyinfo(Principal principal) {
+//    	
+//        return principal.toString();
+//    }
+//    
 
 }

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.bit.ex.service.BoardService;
 import edu.bit.ex.vo.BoardVO;
+import edu.bit.ex.vo.OrderVO;
+import edu.bit.ex.vo.ProductMainVO;
 import lombok.experimental.ExtensionMethod;
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,7 +21,41 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 
-	// 마이페이지 (1:1문의내역)
+	// 마이페이지
+	@GetMapping("/board/my_page")
+	public String my_page() {
+
+		return "/board/my_page";
+	}
+
+	// 마이페이지 (구매내역)리스트
+	@GetMapping("/board/mypag")
+	public String purchase_list(OrderVO orderVO, Model model) {
+
+		orderVO.setMember_idx(44);
+
+		log.info("purchase_list");
+		log.info("purchase_list()..: orderVO" + orderVO);
+
+		model.addAttribute("purchase_list", boardService.getOrderList(orderVO));
+
+		return "/board/purchase_list";
+	}
+	
+		// 마이페이지 구매내역 상세보기
+		@PostMapping("/board/purchase_view")
+		public String purchase_view(ProductMainVO productMainVO, Model model) {
+			log.info("purchase_view()..");
+			log.info("purchase_view()..productMainVO" + productMainVO);
+
+			model.addAttribute("purchase_view", boardService.get(productMainVO.getProduct_id()));
+
+			log.info("purchase_view _Get " + boardService.get(productMainVO.getProduct_id()));
+
+			return "redirect:/product/product_view";
+		}
+
+	// 마이페이지 (1:1문의내역)리스트
 	@GetMapping("/board/my_view")
 	public String my_view(BoardVO boardVO, Model model) {
 
@@ -30,50 +66,28 @@ public class BoardController {
 
 		model.addAttribute("my_view", boardService.getMemberList(boardVO));
 
-		return "my_view";
+		return "/board/my_view";
 	}
 
-	// 마이페이지 (후기)리스트
-	@GetMapping("/board/my_review")
-	public String my_review(BoardVO boardVO, Model model) {
-
-		boardVO.setMember_idx(42);
-
-		log.info("my_review()..");
-		log.info("my_review()..: boardVO" + boardVO);
-
-		model.addAttribute("my_review", boardService.getReviewList(boardVO));
-
-		return "my_review";
-	}
-	
+	// 1:1문의상세보기
 	@GetMapping("/board/my_content_view")
 	public String my_content_view(BoardVO boardVO, Model model) {
 		log.info("my_content_view()..");
 		log.info("my_content_view()..boardVO" + boardVO);
 
-		model.addAttribute("", boardService.get(boardVO.getBoard_id()));
-		
-		log.info(" my_content_view boardVO_Get " + boardService.get(boardVO.getBoard_id()));
-		
-		
-		return "my_view";
+		model.addAttribute("my_content_view", boardService.get(boardVO.getBoard_id()));
+
+		log.info("my_content_view boardVO_Get " + boardService.get(boardVO.getBoard_id()));
+
+		return "/board/my_content_view";
 	}
-	
+
 	// 회원 마이페이지 1:1문의 글쓰기 입력폼
 	@GetMapping("/board/my_view_write")
 	public String my_view_write() {
 		log.info("my_view_write");
 
-		return "my_view_write";
-	}
-
-	// 회원 마이페이지 후기 글쓰기 입력폼
-	@GetMapping("/board/my_review_write")
-	public String my_review_write() {
-		log.info("my_review_write");
-
-		return "my_review_write";
+		return "/board/my_view_write";
 	}
 
 	// 회원 마이페이지 1:1문의 글작성 후 입력누르면 넘어가는 입력버튼
@@ -88,6 +102,57 @@ public class BoardController {
 		return "redirect:/board/my_view";
 	}
 
+	// 회원 1:1문의 주문내역 게시판 수정
+	@PostMapping("/board/my_modify")
+	public String my_modify(BoardVO boardVO, Model model) {
+		log.info("my_modify()..");
+
+		boardService.my_modify(boardVO);
+
+		return "redirect:/board/my_view";
+	}
+
+	// 회원 1:1문의 주문내역 게시판 삭제
+	@GetMapping("/board/my_delete")
+	public String my_delete(BoardVO boardVO, Model model) {
+		log.info("my_delete()..");
+
+		boardService.my_remove(boardVO.getBoard_id());
+
+		return "redirect:/board/my_view";
+	}
+
+	// 마이페이지 (후기)리스트
+	@GetMapping("/board/my_review")
+	public String my_review(BoardVO boardVO, Model model) {
+
+		boardVO.setMember_idx(42);
+
+		log.info("my_review()..");
+		log.info("my_review()..: boardVO" + boardVO);
+
+		model.addAttribute("my_review", boardService.getReviewList(boardVO));
+
+		return "/board/my_review";
+	}
+
+	// 회원후기상세보기
+	@GetMapping("/board/review_content_view")
+	public String review_content_view(BoardVO boardVO, Model model) {
+		log.info("review_content_view()..");
+
+		model.addAttribute("review_content_view", boardService.get(boardVO.getBoard_id()));
+		return "/board/review_content_view";
+	}
+
+	// 회원 마이페이지 후기 글쓰기 입력폼
+	@GetMapping("/board/my_review_write")
+	public String my_review_write() {
+		log.info("my_review_write");
+
+		return "/board/my_review_write";
+	}
+
 	// 회원 마이페이지 후기 글작성 후 입력누르면 넘어가는 입력버튼
 	@PostMapping("/board/write_my_review")
 	public String write_my_review(BoardVO boardVO) {
@@ -95,28 +160,28 @@ public class BoardController {
 
 		boardService.writeBoard2(boardVO);
 
-		return "redirect:my_review";
+		return "redirect:/board/my_review";
 	}
-	
-	// 회원 1:1문의 주문내역 게시판 수정
-		@PostMapping("/board/my_modify")
-		public String my_modify(BoardVO boardVO, Model model) {
-			log.info("my_modify()..");
 
-			boardService.my_modify(boardVO);
+	// 회원 후기 수정
+	@PostMapping("/board/review_modify")
+	public String review_modify(BoardVO boardVO, Model model) {
+		log.info("review_modify()..");
 
-			return "redirect:my_view";
-		}
+		boardService.review_modify(boardVO);
 
-		// 회원 1:1문의 주문내역 게시판 삭제
-		@GetMapping("/board/my_delete")
-		public String my_delete(BoardVO boardVO, Model model) {
-			log.info("my_delete()..");
+		return "redirect:/board/my_review";
+	}
 
-			boardService.my_remove(boardVO.getBoard_id());
+	// 회원 후기 게시판 삭제
+	@GetMapping("/board/review_delete")
+	public String review_delete(BoardVO boardVO, Model model) {
+		log.info("review_delete()..");
 
-			return "redirect:my_view";
-		}
+		boardService.review_remove(boardVO.getBoard_id());
+
+		return "redirect:/board/my_review";
+	}
 
 	// 관리자 주문내역 리스트
 	@GetMapping("/board/list")
@@ -125,7 +190,7 @@ public class BoardController {
 		log.info("list()..");
 		model.addAttribute("list", boardService.getList());
 
-		return "list";
+		return "/board/list";
 	}
 
 	// 관리자주문내역읽기
@@ -134,7 +199,7 @@ public class BoardController {
 		log.info("content_view()..");
 
 		model.addAttribute("content_view", boardService.get(boardVO.getBoard_id()));
-		return "content_view";
+		return "/board/content_view";
 	}
 
 	// 관리자 주문내역 게시판 수정
@@ -144,7 +209,7 @@ public class BoardController {
 
 		boardService.modify(boardVO);
 
-		return "redirect:list";
+		return "redirect:/board/list";
 	}
 
 	// 관리자 주문내역 게시판 삭제
@@ -154,7 +219,7 @@ public class BoardController {
 
 		boardService.remove(boardVO.getBoard_id());
 
-		return "redirect:list";
+		return "redirect:/board/list";
 	}
 
 	// 관리자 주문내역 게시판 글쓰기폼
@@ -162,7 +227,7 @@ public class BoardController {
 	public String write_view() {
 		log.info("write_view");
 
-		return "write_view";
+		return "/board/write_view";
 	}
 
 	// 관리자 주문내역 게시판 글쓰기 입력버튼 누르는거
@@ -172,7 +237,7 @@ public class BoardController {
 
 		boardService.writeBoard(boardVO);
 
-		return "redirect:list";
+		return "redirect:/board/list";
 	}
 
 }

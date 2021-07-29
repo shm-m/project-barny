@@ -33,8 +33,8 @@
 	
 	<insert id="insertBoard">
 	<![CDATA[
-		insert into barny_board (board_id, b_date, b_title, b_content, board_type_id, member_idx, b_hit, b_group, b_indent, b_step) 
-		values (barny_board_seq.nextval, #{board_id}, #{btitle}, #{bcontent}, 0, barny_board_seq.currval, 0, 0)
+		Insert into BARNY_BOARD (BOARD_ID,B_DATE,B_TITLE,B_CONTENT,BOARD_TYPE_ID,MEMBER_IDX,B_HIT,B_GROUP,B_INDENT,B_STEP,PRODUCT_ID) 
+        values (BOARD_ID_SEQ.nextval,sysdate,#{b_title},#{b_content},0,42,0,BOARD_ID_SEQ.currval,0,0,null)
 	]]>
    </insert>
 	
@@ -44,7 +44,9 @@
 	<select id="getMemberList" resultType="edu.bit.ex.vo.BoardVO">
 	<![CDATA[
 		select board_id, b_date, b_title, b_content, board_type_id, member_idx, b_hit, b_group, b_indent, b_step 
-		from barny_board where member_idx = #{member_idx} order by b_Group desc, b_Step asc
+		from barny_board where member_idx = '42' and board_type_id in ('3','4','5','6')
+		order by b_Group desc, b_Step asc
+
 	]]>
 	</select>
 	
@@ -76,19 +78,51 @@
 	
 	
 	
-	
+	<!--		select*from barny_board where member_idx = #{member_idx} and board_type_id ='2'-->
 	<select id="getReviewList" resultType="edu.bit.ex.vo.BoardVO">
-	<![CDATA[
-		select*from barny_board where member_idx = #{member_idx} and board_type_id ='2'
+	<![CDATA[		
+		select * from b_like b, barny_board d where board_type_id ='2' and b.board_id = d.board_id and d.member_idx  = 42
 	]]>
 	</select>
 	
 	<insert id="insertBoard2">
 	<![CDATA[
-		insert into barny_board (board_id, b_date, b_title, b_content, board_type_id, member_idx, b_hit, b_group, b_indent, b_step) 
-		values (barny_board_seq.nextval, #{board_id}, #{b_title}, #{b_content}, 0, barny_board_seq.currval, 0, 0)
+		Insert into BARNY_BOARD (BOARD_ID,B_DATE,B_TITLE,B_CONTENT,BOARD_TYPE_ID,MEMBER_IDX,B_HIT,B_GROUP,B_INDENT,B_STEP,PRODUCT_ID) 
+        values (BOARD_ID_SEQ.nextval,sysdate,#{b_title},#{b_content},0,42,0,BOARD_ID_SEQ.currval,0,0,null)
 	]]>
 	</insert>
+	
+	<select id="read2" resultType="edu.bit.ex.vo.BoardVO">
+	<![CDATA[
+		select * from barny_board where board_id = #{board_id}
+	]]>
+	</select>
+	
+	<update id="review_update">
+	<![CDATA[
+		update barny_board set b_title = #{b_title}, b_content = #{b_content} where board_id = #{board_id}
+	]]>
+	</update>
+	
+	<delete id="review_delete">
+	<![CDATA[
+		delete from barny_board where board_id = #{board_id}
+	]]>
+	</delete>
+	
+	
+	
+	<select id="getOrderList" resultType="edu.bit.ex.vo.OrderVO">
+	<![CDATA[
+		select order_id, order_date, total_price, member_idx from orders where member_idx = #{member_idx} 
+	]]>
+	</select>
+	
+	<select id="orderRead" resultType="edu.bit.ex.vo.ProductMainVO">
+	<![CDATA[
+		select * from product where product_id = #{product_id}
+	]]>
+	</select>
 	
 	
 </mapper>

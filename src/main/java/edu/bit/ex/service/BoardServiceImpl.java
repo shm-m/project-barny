@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import edu.bit.ex.mapper.BoardMapper;
 import edu.bit.ex.vo.BoardVO;
+import edu.bit.ex.vo.OrderVO;
+import edu.bit.ex.vo.ProductMainVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
@@ -46,6 +48,7 @@ public class BoardServiceImpl implements BoardService {
 
 	}
 
+	// 관리자 주문문의글쓰기
 	@Override
 	public void writeBoard(BoardVO boardVO) {
 		boardMapper.insertBoard(boardVO);
@@ -65,7 +68,7 @@ public class BoardServiceImpl implements BoardService {
 		log.info("service:get()..");
 		return boardMapper.read1(board_id);
 	}
-	
+
 	// 1:1문의글쓰기
 	@Override
 	public void writeBoard1(BoardVO boardVO) {
@@ -87,7 +90,7 @@ public class BoardServiceImpl implements BoardService {
 
 	}
 
-	//후기리스트
+	// 후기리스트
 	@Override
 	public List<BoardVO> getReviewList(BoardVO boardVO) {
 		return boardMapper.getReviewList(boardVO);
@@ -98,6 +101,41 @@ public class BoardServiceImpl implements BoardService {
 	public void writeBoard2(BoardVO boardVO) {
 		boardMapper.insertBoard2(boardVO);
 
+	}
+
+	// 후기 상세보기
+	@Override
+	public BoardVO get2(int board_id) {
+		log.info("service:get()..");
+		return boardMapper.read2(board_id);
+	}
+
+	// 후기 회원 수정
+	@Override
+	public void review_modify(BoardVO boardVO) {
+		log.info("service:review_modify()..");
+		boardMapper.review_update(boardVO);
+
+	}
+
+	// 회원 후기 삭제
+	@Override
+	public void review_remove(int board_id) {
+		log.info("service:review_remove()..");
+		boardMapper.review_delete(board_id);
+	}
+
+	// 회원구매내역
+	@Override
+	public List<OrderVO> getOrderList(OrderVO orderVO) {
+		return boardMapper.getOrderList(orderVO);
+	}
+
+	// 구매 상세 보기
+	@Override
+	public ProductMainVO getOrder(int product_id) {
+		log.info("service:get()..");
+		return boardMapper.orderRead(product_id);
 	}
 
 }

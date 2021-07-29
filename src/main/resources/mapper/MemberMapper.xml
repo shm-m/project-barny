@@ -62,9 +62,31 @@
     </insert>
 
     <!--아이디 중복검사-->
-    <select id = "checkOverId" resultType="edu.bit.ex.vo.MemberVO">
-        <![CDATA[ select * from member where member_id =#{member_id}]]>
+    <select id="checkOverId"  resultType="int"  >
+        <![CDATA[
+        select count(member_id)
+        from member
+        where member_id = #{member_id}
+        ]]>
     </select>
+
+    <select id="checkEmail" resultType="int"  >
+            <![CDATA[
+        select count(email)
+        from member
+        where email = #{email}
+        ]]>
+    </select>
+
+    <select id="checkNickname"  resultType="int" >
+        <![CDATA[
+        select count(nickname)
+        from member
+        where nickname = #{nickname}
+        ]]>
+    </select>
+    
+
 
 
 </mapper>
