@@ -23,12 +23,16 @@
 
 <div class="col-md-12">
     <div class="col-md-4 mx-auto">
-        <form action="writeReview" method="post" onsubmit="return confirm('게시글을 등록하시겠습니까?')" role="form">
+        <form action="/review/write" method="post" onsubmit="return confirm('게시글을 등록하시겠습니까?')" role="form">
             <input type="hidden" name="product_id" value="${product_view.product_id}">
-            <!--로그인한 아이디를 여기에 불러와야함-->
+            <input type="hidden" name="member_idx" value="${member_idx}"><!--접근한 회원 번호-->
             <div class="form-group">
                 <td> 상품 이름 </td>
 				<td> ${product_view.product_name} </td>
+            </div>
+            <div class="form-group">
+                <td> 상품 번호 </td>
+				<td> ${product_view.product_id} </td>
             </div>
             <div class="form-group">
                 <label for="title">후기 제목</label>

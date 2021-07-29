@@ -1,8 +1,11 @@
 package edu.bit.ex.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +22,7 @@ import edu.bit.ex.service.NoticeService;
 import edu.bit.ex.service.ProductMainService;
 import edu.bit.ex.vo.NoticeVO;
 import edu.bit.ex.vo.ProductMainVO;
+import edu.bit.ex.vo.account.MemberContext;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -132,13 +136,18 @@ public class HomeController {
 
 		productMainService.writeReview(productMainVO);
 
-		return "redirect:product_view?product_id={product_id}";
+		return "redirect:/product_main"; // 다이렉트로 특정 상품 리스트로 가게
 	}
 
 	@GetMapping("/user/review/write_view/**")
-	public String write_view(Model model, ProductMainVO productMainVO) {
+	public String write_view(Model model, ProductMainVO productMainVO, Principal principal,
+			@AuthenticationPrincipal MemberContext ctx) {
+
+		log.info("Principal" + principal.getName());
+		log.info("Principal" + ctx.getMemberVO().getMember_idx());
 
 		log.info("write_view()..");
+		model.addAttribute("member_idx", ctx.getMemberVO().getMember_idx()); // 회원 번호를 jsp에 쓸때
 		model.addAttribute("product_view", productMainService.get(productMainVO.getProduct_id()));
 		return "user/write_view";
 	}
