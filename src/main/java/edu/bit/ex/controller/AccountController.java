@@ -1,6 +1,7 @@
 package edu.bit.ex.controller;
 
 
+import edu.bit.ex.controller.validator.MemberValidator;
 import edu.bit.ex.service.member.MemberService;
 import edu.bit.ex.vo.MemberVO;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +9,10 @@ import lombok.RequiredArgsConstructor;
 import java.security.Principal;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -17,6 +22,12 @@ import org.springframework.web.bind.annotation.*;
 public class AccountController {
 
     private final MemberService memberService;
+    private final MemberValidator memberValidator;
+
+    @InitBinder("memberVO")
+    public void memberValidatorInitBinder(WebDataBinder binder) {
+        binder.addValidators(memberValidator);
+    }
 
     @GetMapping("/user")
     public @ResponseBody
@@ -35,33 +46,29 @@ public class AccountController {
         return "account/loginForm";
     }
 
-    @GetMapping("/joinForm")
-    public String joinForm() {
+    @GetMapping("/success_join_page")
+    public String success_join_page() {
 
-        return "account/joinForm";
+        return "account/success_join_page";
     }
 
-    @ResponseBody
     @PostMapping("/join")
-    public int join(@ModelAttribute MemberVO memberVO) {
+    public String join(@ModelAttribute @Validated MemberVO memberVO, Errors errors, Model model) {
 
-        //== 아이디 중복검사 ==//
-        MemberVO vo = memberService.idCheck(memberVO.getMember_id());
-        if (vo == null) {
-            // == 회원가입 ==//
-            memberService.addUser(memberVO);
-        } else {
-            return 1;
+        if (errors.hasErrors()) {
+            return "account/joinForm";
         }
-        return 0;
 
+        memberService.addUser(memberVO);
+        return "redirect:/success_join_page";
     }
 
 
-
-    @GetMapping("/test1")
-    public String test1() {
-        return "account/test1";
+    @GetMapping("/joinForm")
+    public String joinForm(Model model) {
+        MemberVO memberVO = new MemberVO();
+        model.addAttribute("memberVO", memberVO);
+        return "account/joinForm";
     }
     
 //    @GetMapping

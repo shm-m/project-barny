@@ -3,7 +3,7 @@
 <mapper namespace="edu.bit.ex.mapper.NoticeMapper">
     <select id="getList" resultType="edu.bit.ex.vo.NoticeVO">
         <![CDATA[
-        select board_id, b_title, b_content, board_type_id, b_date from barny_board where board_type_id = 0 order by board_id desc
+        select board_id, b_title, b_content, board_type_id, b_date, b_hit from barny_board where board_type_id = 0 order by board_id desc
         ]]>
     </select>
 
