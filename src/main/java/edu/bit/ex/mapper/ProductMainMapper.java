@@ -17,4 +17,8 @@ public interface ProductMainMapper {
     ProductMainVO read(int product_id); // 상품 상세보기
 
     List<ProductMainVO> getListReview(int product_id); // 상품 당 후기
+
+    void updateHit(ProductMainVO productMainVO);
+
+    void writeReview(ProductMainVO productMainVO);
 }
