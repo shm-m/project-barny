@@ -22,6 +22,7 @@
 	                b_content: b_content,
 					board_id: $("#board_id").val()					
 	        };
+	        
 		    //dataType: 'json',
 	        $.ajax({
 			    type : "PUT",

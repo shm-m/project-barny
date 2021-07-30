@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.bit.ex.service.BoardService;
@@ -29,7 +30,7 @@ public class BoardController {
 	}
 
 	// 마이페이지 (구매내역)리스트
-	@GetMapping("/board/mypag")
+	@GetMapping("/board/purchase_list")
 	public String purchase_list(OrderVO orderVO, Model model) {
 
 		orderVO.setMember_idx(44);
@@ -41,19 +42,19 @@ public class BoardController {
 
 		return "/board/purchase_list";
 	}
-	
-		// 마이페이지 구매내역 상세보기
-		@PostMapping("/board/purchase_view")
-		public String purchase_view(ProductMainVO productMainVO, Model model) {
-			log.info("purchase_view()..");
-			log.info("purchase_view()..productMainVO" + productMainVO);
 
-			model.addAttribute("purchase_view", boardService.get(productMainVO.getProduct_id()));
+	// 마이페이지 구매내역 상세보기
+	@GetMapping("/board/purchase_view")
+	public String purchase_view(ProductMainVO productMainVO, Model model) {
+		log.info("purchase_view()..");
+		log.info("purchase_view()..productMainVO" + productMainVO);
 
-			log.info("purchase_view _Get " + boardService.get(productMainVO.getProduct_id()));
+		model.addAttribute("purchase_view", boardService.get(productMainVO.getProduct_id()));
 
-			return "redirect:/product/product_view";
-		}
+		log.info("purchase_view _Get " + boardService.get(productMainVO.getProduct_id()));
+
+		return "redirect:/product/product_view";
+	}
 
 	// 마이페이지 (1:1문의내역)리스트
 	@GetMapping("/board/my_view")

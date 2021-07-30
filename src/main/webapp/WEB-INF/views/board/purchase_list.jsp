@@ -9,7 +9,7 @@
 <title>purchase_list</title>
 </head>
 <body>
-	   <table width="500" cellpadding="0" cellspacing="0" border="1">
+      <table width="500" cellpadding="0" cellspacing="0" border="1">
       <tr>
          <td>주문번호</td>
          <td>주문날짜</td>
@@ -23,12 +23,12 @@
          <td>${dto.order_date}</td>
           
           <td>
-            <a href="purchase_view=${dto.order_id}">${dto.total_price}</a></td>
+            <a href="/board/purchase_view?product_id=${dto.order_id}">${dto.total_price}</a></td>
       </tr>
       </c:forEach>
    </table>
 
-		
+      
 
 </body>
 </html>

@@ -100,7 +100,7 @@
 	</h2>
 	<hr width="100%" color="#DCDCDC"></hr>
 	<img class="profile2"
-		style="width: 230px; height: auto; margin-top: 0px; float: left;"
+		style="width: 200px; height: auto; margin-left:100px; float: left;"
 		src="/static/img/BARNY3.png" />
 
 
@@ -243,9 +243,9 @@ a:link, a:visited, a:active, a:hover {
 }
 </style>
 
-<script type="text/javascript"
+	<script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-<script type="text/javascript">
+	<script type="text/javascript">
 	$(document).ready(function() {
 		var lastEvent = null;
 		var slide = "#nav > li > ul";
@@ -294,7 +294,7 @@ a:link, a:visited, a:active, a:hover {
 		<li><a href="#2">구독정보</a></li>
 
 		<li><a href="purchase_list?member_idx=${44}">구매내역</a></li>
-		<li><a href="#4">1:1문의내역</a>
+		<li><a href="">1:1문의내역</a>
 			<ul>
 				<li><a href="my_view?member_idx=${42}">내문의</a></li>
 			</ul></li>
