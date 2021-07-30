@@ -4,10 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 <title>product_view</title>
 <style>
    .collapsing {
@@ -26,6 +29,7 @@
 
    });
 </script>
+
 </head>
 <body>
    <table id="list-table" width="500" cellpadding="0" cellspacing="0" border="1">
@@ -49,17 +53,23 @@
 
    </table>   
    <br>
-   <div class="table-wrap">
-      <table class="table myaccordion table-hover" id="accordion">
+   <!--후기 list-->
+
+   
+   <div class="table-wrap col-8">
+      <table class="table myaccordion table-hover review" id="accordion">
          <form role="form" method="post" id="reviewForm" action="${pageContext.request.contextPath}/product_view?product_id=${product_view.product_id}">
-            <tr>
-               <td>글번호</td>
-               <td>제목</td>
-               <td>작성자</td>
-               <td>작성일</td>
-               <td>좋아요</td>
-               <td>조회</td>
-            </tr>
+            <thead>
+               <tr>
+                  <th class="th-sm">글번호</th>
+                  <th class="th-sm">제목</th>
+                  <th class="th-sm">작성자</th>
+                  <th class="th-sm">작성일</th>
+                  <th class="th-sm">좋아요</th>
+                  <th class="th-sm">조회</th>
+               </tr>
+            </thead>
+            <tbody>
             <c:forEach items="${list}" var="vo" varStatus="status">
                <script type="text/javascript">
                   function fnc_updateHit(aObj) {
@@ -95,7 +105,7 @@
 
                   }
                </script>
-               <tr data-toggle="collapse" data-target="#collapse${status.index}" aria-expanded="false" aria-controls="collapse${status.index}" class="collapsed${status.index}" >
+               <tr data-toggle="collapse" data-target="#collapse${status.index}" aria-expanded="true" aria-controls="collapse${status.index}" class="collapsed" >
                   <td id="board_id${status.index}" value="${vo.board_id}">${vo.board_id}</td>
                   <td>${vo.b_title}</td>
                   <td>${vo.nickname}</td>
@@ -110,18 +120,16 @@
                   </td>
                </tr>
             </c:forEach>
+         </tbody>
             
          </form>
          <button type="button" onclick="location.href='/user/review/write_view/product_view?product_id=${product_view.product_id}'">후기 등록</button>
       </table>
    </div>
 
-   <script src="/static/js/jquery.min.js"></script>
    <script src="/static/js/popper.js"></script>
-   <script src="/static/js/bootstrap.min.js"></script>
-  
 
    
-
+      
 </body>
 </html>
