@@ -68,17 +68,9 @@
 
                         event.preventDefault(); //실행했을때 나머지 이벤은 내가 컨트롤 하겠다
 
-                        var b_hit = $("#b_hit${status.index}").val();
-
-                        console.log(b_hit);
                         console.log($(aObj).attr("action"));
 
-                        if (typeof b_hit === 'undefined') {
-                           console.log("1. undefined");
-                        } 
-
                         var form = {
-                           b_hit: b_hit+1,
                            board_id: $("#board_id${status.index}").val()					
                           };
 
