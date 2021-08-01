@@ -19,6 +19,8 @@ public interface NoticeMapper {
 
     int delete(int board_id);
 
+    void delete2(String board_id);
+
     // 페이징 처리 함수
     int getTotalCount(Criteria cri);
 

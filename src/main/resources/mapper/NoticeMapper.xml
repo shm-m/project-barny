@@ -83,4 +83,11 @@
         </trim>
 
     </sql>
+
+    <delete id="delete2">
+        <![CDATA[
+        delete from barny_board where board_id = #{board_id}
+        ]]>
+    </delete>
+
 </mapper>

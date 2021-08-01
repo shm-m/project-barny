@@ -156,6 +156,7 @@
                         <td>Barny</td>
                         <td>${vo.b_date}</td>
                         <td>${vo.b_hit}</td>
+                    </tr>
                 </c:forEach>
                 </tbody>
             </table>

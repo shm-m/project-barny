@@ -125,7 +125,10 @@ h4 {
 }
 
 .resultDesc {
-  font-size: 20px;
+  font-size: 18px;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  line-height: 2.5rem;
 }
 
 .rButton {

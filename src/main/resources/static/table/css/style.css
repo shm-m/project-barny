@@ -205,12 +205,13 @@ h2 {
 
 .control:hover input ~ .control__indicator,
 .control input:focus ~ .control__indicator {
-  border: 2px solid #007bff;
+  border: 2px solid #ff9935;
 }
 
 .control input:checked ~ .control__indicator {
-  border: 2px solid #007bff;
-  background: #007bff;
+  border: 2px solid #ff9935;
+  background: #ff9935;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
 }
 
 .control input:disabled ~ .control__indicator {
@@ -220,12 +221,12 @@ h2 {
   border: 2px solid #ccc;
 }
 
-.control__indicator:after {
-  font-family: "icomoon";
-  content: "\e5ca";
-  position: absolute;
-  display: none;
-}
+/*.control__indicator:after {*/
+/*  font-family: "icomoon";*/
+/*  content: "\e5ca";*/
+/*  position: absolute;*/
+/*  display: none;*/
+/*}*/
 
 .control input:checked ~ .control__indicator:after {
   display: block;
@@ -388,4 +389,36 @@ h2 {
   font-weight: 600;
 }
 
+.btn-basic {
+  font-family: BBTreeGB;
+  font-size : 15px;
+  background-color: #EBC24B;
+  color: #fff;
+  padding: 7px;
+  border-radius: 3px;
+  text-align: center;
+}
 
+.btn-basic:hover {
+  color: #fff;
+  box-shadow: 0 0 0 0.25rem rgba(255, 208, 38, 0.5);
+}
+
+.btn-basic:focus {
+  color: #fff;
+  box-shadow: 0 0 0 0.25rem rgba(255, 208, 38, 0.5);
+}
+
+.post {
+  font-size: 14px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  float: right;
+  margin-bottom: 3px;
+}
+
+.selection {
+  font-family: BBTreeGB;
+  font-size: 14px;
+  color: black;
+}

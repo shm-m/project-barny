@@ -17,9 +17,6 @@ public class MemberContext extends User {
    
 
     public MemberContext(MemberVO memberVO, List<CartVO> cartList, Collection<? extends GrantedAuthority> authorities) {
-
-
-    public MemberContext(MemberVO memberVO, Collection<? extends GrantedAuthority> authorities) {
         super(memberVO.getMember_id(), memberVO.getPw(), authorities);
         this.memberVO = memberVO;
         this.cartList = cartList;

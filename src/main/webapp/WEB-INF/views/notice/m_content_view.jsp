@@ -97,7 +97,7 @@
                         <td colspan="4" style="padding-top: 5rem; padding-bottom: 5rem;">${content_view.b_content}</td>
                     </tr>
                     <tr>
-                        <td colspan="4" style="text-align: right"><a href="${pageContext.request.contextPath}/notice">목록보기</a></td>
+                        <td colspan="4" class ="py-3" style="text-align: right"><a class="btn-basic text-uppercase" href="${pageContext.request.contextPath}/notice">목록보기</a></td>
                     </tr>
                 </form>
             </table>

@@ -18,5 +18,4 @@ public class NoticeVO {
     private Date b_date;
     private int board_type_id;
     private int b_hit;
-
 }

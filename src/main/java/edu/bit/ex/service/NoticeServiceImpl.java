@@ -56,4 +56,9 @@ public class NoticeServiceImpl implements NoticeService {
         return noticeMapper.delete(board_id);
     }
 
+    @Override
+    public void delete2(String board_id) {
+
+        noticeMapper.delete2(board_id);
+    }
 }
