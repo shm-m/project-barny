@@ -57,5 +57,29 @@
         ]]>
     </insert>
 
+    <!--후기 페이징-->
+
+    <select id="getTotalCount" resultType="int" parameterType="map">
+        <![CDATA[
+        select count(DISTINCT b.board_id) from barny_board b, product p, b_like l, member m where b.product_id= 5 and l.board_id = b.board_id and m.member_idx = b.member_idx
+           ]]>
+    </select>
+
+    <select id="getListWithPaging" resultType="edu.bit.ex.vo.ProductMainVO" parameterType="map">
+        <!-- ROWNUM: sql이 실행된 결과에 넘버링을 해줌 -->
+        <![CDATA[
+            SELECT * FROM ( 
+                   SELECT ROWNUM AS RNUM, A.* FROM (
+                            SELECT
+                            DISTINCT b.board_id, b.b_date, b.b_title, b.b_content, b.b_hit, l.like_count, m.nickname
+                              FROM
+                              barny_board b, product p, b_like l, member m
+                where b.product_id= #{product_id} and l.board_id = b.board_id and m.member_idx = b.member_idx order by b.b_date desc                  
+                ) A WHERE ROWNUM <= #{cri.pageNum} * #{cri.amount}
+              ) WHERE RNUM > (#{cri.pageNum}-1) * #{cri.amount}
+              ]]>
+
+    </select>
+
 
 </mapper>

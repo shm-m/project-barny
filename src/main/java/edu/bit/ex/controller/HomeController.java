@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -102,11 +103,14 @@ public class HomeController {
 
 	// 상품상세보기
 	@GetMapping("/product_view")
-	public String product_view(ProductMainVO productMainVO, Model model) {
-
+	public String product_view(ProductMainVO productMainVO, Model model, Criteria cri) {
+		log.info("product" + productMainVO);
 		log.info("product_view()..");
 		model.addAttribute("product_view", productMainService.get(productMainVO.getProduct_id()));
-		model.addAttribute("list", productMainService.getListReview(productMainVO.getProduct_id()));
+		model.addAttribute("list", productMainService.getListReview(cri, productMainVO.getProduct_id()));
+
+		int total = productMainService.getTotal(cri, productMainVO.getProduct_id());
+		model.addAttribute("pageMaker", new PageVO(cri, total));
 
 		return "product/product_view";
 	}
