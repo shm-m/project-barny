@@ -59,30 +59,26 @@ $(document).ready(function () {
     }
     var BackLength = $(".back").length; //선택된 카드 정렬 길이
 
-    // if (!check && CSS != "success") {
-    // } else {
-    // }
-
     if (BackLength == 2) {
       //두개 선택됐을때 정렬이 찼을때
       var FirstB = $(".back").eq(0).attr("class"); //class="card1 back(0)"
       var SecondB = $(".back").eq(1).attr("class"); //class="card2 back(1)"
 
-      var FirstBCheck = $(FirstB).hasClass("card1");
-      var SecondBCheck = $(SecondB).hasClass("card1");
+      var CSSCheck = $(".back").hasClass("card1");
 
       if (FirstB != SecondB) {
         setTimeout(function () {
           $(".back").attr("src", "./img/backimg.jpg"); //clas="back"인 애의 src 요소를 저걸로 바꿔라(다시 덮어라)
           $("img").removeClass("back"); //깟다는 클래스 지워라
-        }, 500);
-      } else if (FirstBCheck && SecondBCheck == false) {
+        }, 200);
+      } else if (CSSCheck == false) {
         setTimeout(function () {
           $(".back").attr("src", "./img/backimg.jpg"); //clas="back"인 애의 src 요소를 저걸로 바꿔라(다시 덮어라)
           $("img").removeClass("back"); //깟다는 클래스 지워라
-        }, 500);
+        }, 200);
       } else {
         alert("바니 찾기 성공!");
+        return;
       }
       BackLength = 0;
     }

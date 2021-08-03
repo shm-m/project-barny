@@ -102,7 +102,6 @@ public class HomeController {
 	// 상품상세보기
 	@GetMapping("/product_view")
 	public String product_view(ProductMainVO productMainVO, Model model, Criteria cri) {
-		log.info("product" + productMainVO);
 		log.info("product_view()..");
 		model.addAttribute("product_view", productMainService.get(productMainVO.getProduct_id()));
 		model.addAttribute("list", productMainService.getListReview(cri, productMainVO.getProduct_id()));
