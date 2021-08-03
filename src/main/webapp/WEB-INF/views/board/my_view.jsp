@@ -11,11 +11,10 @@
 <body>
 	   <table width="500" cellpadding="0" cellspacing="0" border="1">
       <tr>
-         <td>글번호</td>
-         <td>회원</td>
-         <td>제목</td>
-         <td>날짜</td>
-         <td>좋아요</td>
+         <td>글번호 : <sec:authentication property="principal.boardVO.board_id"/></td>
+         <td>회원 : <sec:authentication property="principal.boardVO.member_idx"/></td>
+         <td>제목 : <sec:authentication property="principal.boardVO.b_title"/></td>
+         <td>날짜 : <sec:authentication property="principal.boardVO.b_date"/></td>
          
       </tr>
       <c:forEach items="${my_view}" var="dto">
@@ -28,7 +27,6 @@
             <c:forEach begin="1" end="${dto.b_indent}">-</c:forEach>
             <a href="my_content_view?board_id=${dto.board_id}">${dto.b_title}</a></td>
          <td>${dto.b_date}</td>
-         <td>${dto.like_count}</td>
       </tr>
       </c:forEach>
       <tr>

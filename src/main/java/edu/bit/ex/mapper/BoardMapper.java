@@ -21,7 +21,7 @@ public interface BoardMapper {
 	
 	
 	//회원마이페이지 게시글들
-	public List<BoardVO> getMemberList(BoardVO boardVO);
+	public List<BoardVO> getMemberList(int member_idx);
 	
 	//회원1:1문의 게시글
 	public void insertBoard1(BoardVO boardVO);
@@ -34,7 +34,7 @@ public interface BoardMapper {
 	
 	
 	// 회원 내후기 리스트
-	public List<BoardVO> getReviewList(BoardVO boardVO);
+	public List<BoardVO> getReviewList(int member_idx);
 	// 회원 후기게시글쓰기
 	public void insertBoard2(BoardVO boardVO);
 	// 내 후기 게시글 읽기

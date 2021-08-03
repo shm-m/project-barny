@@ -293,13 +293,13 @@ a:link, a:visited, a:active, a:hover {
 
 		<li><a href="#2">구독정보</a></li>
 
-		<li><a href="purchase_list?member_idx=${44}">구매내역</a></li>
+		<li><a href="purchase_list">구매내역</a></li>
 		<li><a href="">1:1문의내역</a>
 			<ul>
-				<li><a href="my_view?member_idx=${42}">내문의</a></li>
+				<li><a href="my_view">내문의</a></li>
 			</ul></li>
 
-		<li><a href="my_review?member_idx=${42}">후기</a></li>
+		<li><a href="my_review">후기</a></li>
 
 		<li><a href="#6">적립금</a></li>
 </body>
