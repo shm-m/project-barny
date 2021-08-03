@@ -35,7 +35,7 @@ public class NoticeController {
     // list
     @GetMapping("/main")
     public ModelAndView list(Criteria cri, ModelAndView mav) {
-        mav.setViewName("notice/main_test2"); // notice/main.jsp
+        mav.setViewName("notice/main"); // notice/main.jsp
         mav.addObject("list", noticeService.getList(cri)); // 여기서 정한게 jsp items
 
         int total = noticeService.getTotal(cri);
@@ -114,6 +114,7 @@ public class NoticeController {
     public String deleteByCheckbox(HttpServletRequest request) throws Exception {
         String[] deleteByCheckbox = request.getParameterValues("valueArr");
         int size = deleteByCheckbox.length;
+        log.info("deleted notice number: " + size);
         for(int i=0; i<size; i++) {
             noticeService.delete2(deleteByCheckbox[i]);
         }

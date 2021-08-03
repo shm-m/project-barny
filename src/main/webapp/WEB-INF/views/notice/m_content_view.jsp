@@ -5,7 +5,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>공지사항</title>
     <!--font-->
-    <link rel="stylesheet" href="fonts/icomoon/style.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
 
     <!-- Bootstrap -->
@@ -76,7 +75,7 @@
 <!--Content -->
 <div class="container">
     <div class="custom-container2">
-        <div class="board_name">공지사항
+        <div class="board_name" style="text-align: center">공지사항  <br>
             <a class="board_name_small">바니의 새로운 소식과 정보를 확인하세요.</a>
         </div>
         <div class="table-responsive outline pt-3">

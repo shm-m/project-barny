@@ -21,9 +21,12 @@ public interface NoticeMapper {
 
     void delete2(String board_id);
 
+    public void updateHit(int board_id);
+
     // 페이징 처리 함수
     int getTotalCount(Criteria cri);
 
     List<NoticeVO> getListWithPaging(Criteria cri);
+
 
 }

@@ -138,13 +138,6 @@
                     <th scope="col">작성자</th>
                     <th scope="col">작성일</th>
                     <th scope="col">조회</th>
-                    <!-- 관리자 전용 체크박스 -->
-                    <!-- <th scope="col">
-                      <label class="control control--checkbox">
-                        <input type="checkbox" class="js-check-all" />
-                        <div class="control__indicator"></div>
-                      </label>
-                    </th> -->
                 </tr>
                 </thead>
                 <tbody>

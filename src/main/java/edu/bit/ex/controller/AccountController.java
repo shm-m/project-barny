@@ -5,6 +5,9 @@ import edu.bit.ex.controller.validator.MemberValidator;
 import edu.bit.ex.service.member.MemberService;
 import edu.bit.ex.vo.MemberVO;
 import lombok.RequiredArgsConstructor;
+
+import java.security.Principal;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -67,10 +70,12 @@ public class AccountController {
         model.addAttribute("memberVO", memberVO);
         return "account/joinForm";
     }
-
-
-
-
-
+    
+//    @GetMapping
+//    public String getMyinfo(Principal principal) {
+//    	
+//        return principal.toString();
+//    }
+//    
 
 }

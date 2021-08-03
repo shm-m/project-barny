@@ -17,6 +17,7 @@ public class ProductMainVO {
     private int product_id;
     private String product_name;
     private int price;
+    private int category_num;
 
     // 아래는 후기
     private int board_id;

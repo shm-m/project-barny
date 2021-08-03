@@ -1,10 +1,15 @@
 package edu.bit.ex.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import edu.bit.ex.page.Criteria;
 import edu.bit.ex.page.PageVO;
@@ -13,6 +18,7 @@ import edu.bit.ex.service.NoticeService;
 import edu.bit.ex.service.ProductMainService;
 import edu.bit.ex.vo.NoticeVO;
 import edu.bit.ex.vo.ProductMainVO;
+import edu.bit.ex.vo.account.MemberContext;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -101,6 +107,47 @@ public class HomeController {
 		return "product/product_view";
 	}
 
+	// update hit
+	@PutMapping("/product_view?product_id={product_id}")
+	public ResponseEntity<String> updateHit(@RequestBody ProductMainVO productMainVO, ModelAndView mav) {
+
+		ResponseEntity<String> entity = null;
+
+		try {
+
+			productMainService.updateHit(productMainVO);
+			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+
+		return entity;
+	}
+
+	// 후기 write
+	@PostMapping("/review/write")
+	public String writeReview(ProductMainVO productMainVO) {
+
+		productMainService.writeReview(productMainVO);
+
+		return "redirect:/product_main"; // 다이렉트로 특정 상품 리스트로 가게
+	}
+
+	@GetMapping("/user/review/write_view/**")
+	public String write_view(Model model, ProductMainVO productMainVO, Principal principal,
+			@AuthenticationPrincipal MemberContext ctx) {
+
+		log.info("Principal" + principal.getName());
+		log.info("Principal" + ctx.getMemberVO().getMember_idx());
+
+		log.info("write_view()..");
+		model.addAttribute("member_idx", ctx.getMemberVO().getMember_idx()); // 회원 번호를 jsp에 쓸때
+		model.addAttribute("product_view", productMainService.get(productMainVO.getProduct_id()));
+		return "user/write_view";
+	}
+
 	// event list
 	@GetMapping("/event")
 	public String event_main(Model model, Criteria cri) {
@@ -112,15 +159,6 @@ public class HomeController {
 
 		return "event/m_event_list";
 	}
-
-	// // event list view
-	// @GetMapping("/event/content/{board_id}") // 뒤에 보드 아이디 달아줘야 찾아감!
-	// public String content_view(EventVO eventVO, Model model) {
-
-	// model.addAttribute("content_view", eventService.get(eventVO.getBoard_id()));
-
-	// return "event/m_content_view";
-	// }
 
 	// notice list
 	@GetMapping("/notice")
@@ -134,12 +172,11 @@ public class HomeController {
 		return "notice/m_main";
 	}
 
-
 	// notice list view
 	@GetMapping("/notice/content/{board_id}") // 뒤에 보드 아이디 달아줘야 찾아감!
 	public String notice_content_view(NoticeVO noticeVO, Model model) {
 
-		model.addAttribute("content_view", eventService.get(noticeVO.getBoard_id()));
+		model.addAttribute("content_view", noticeService.get(noticeVO.getBoard_id()));
 
 		return "notice/m_content_view";
 	}

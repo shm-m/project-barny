@@ -49,4 +49,16 @@ public class ProductMainServiceImpl implements ProductMainService {
         return productMainMapper.getListReview(product_id);
     }
 
+    @Override
+    public void updateHit(ProductMainVO productMainVO) {
+        productMainMapper.updateHit(productMainVO);
+
+    }
+
+    @Override
+    public void writeReview(ProductMainVO productMainVO) {
+        productMainMapper.writeReview(productMainVO);
+
+    }
+
 }
