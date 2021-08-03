@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.bit.ex.mapper.ProductMainMapper;
+import edu.bit.ex.page.Criteria;
 import edu.bit.ex.vo.ProductMainVO;
 import lombok.extern.slf4j.Slf4j;
 
@@ -59,6 +60,16 @@ public class ProductMainServiceImpl implements ProductMainService {
     public void writeReview(ProductMainVO productMainVO) {
         productMainMapper.writeReview(productMainVO);
 
+    }
+
+    @Override
+    public int getTotal(Criteria cri, int product_id) {
+        return productMainMapper.getTotalCount(cri, product_id);
+    }
+
+    @Override
+    public List<ProductMainVO> getListReview(Criteria cri, int product_id) {
+        return productMainMapper.getListWithPaging(cri, product_id);
     }
 
 }
