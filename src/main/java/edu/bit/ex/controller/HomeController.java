@@ -9,8 +9,11 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.ModelAndView;
-
 import edu.bit.ex.page.Criteria;
 import edu.bit.ex.page.PageVO;
 import edu.bit.ex.service.EventService;
@@ -98,11 +101,13 @@ public class HomeController {
 
 	// 상품상세보기
 	@GetMapping("/product_view")
-	public String product_view(ProductMainVO productMainVO, Model model) {
-
+	public String product_view(ProductMainVO productMainVO, Model model, Criteria cri) {
 		log.info("product_view()..");
 		model.addAttribute("product_view", productMainService.get(productMainVO.getProduct_id()));
-		model.addAttribute("list", productMainService.getListReview(productMainVO.getProduct_id()));
+		model.addAttribute("list", productMainService.getListReview(cri, productMainVO.getProduct_id()));
+
+		int total = productMainService.getTotal(cri, productMainVO.getProduct_id());
+		model.addAttribute("pageMaker", new PageVO(cri, total));
 
 		return "product/product_view";
 	}
@@ -131,8 +136,9 @@ public class HomeController {
 	public String writeReview(ProductMainVO productMainVO) {
 
 		productMainService.writeReview(productMainVO);
-
-		return "redirect:/product_main"; // 다이렉트로 특정 상품 리스트로 가게
+		String redirect = "redirect:/product_view?product_id=" + productMainVO.getProduct_id();
+		// http://localhost:8282/product_view?product_id=6
+		return redirect; // 다이렉트로 특정 상품 리스트로 가게
 	}
 
 	@GetMapping("/user/review/write_view/**")
