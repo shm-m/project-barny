@@ -25,7 +25,7 @@
             SELECT * FROM ( 
                    SELECT ROWNUM AS RNUM, A.* FROM (
                             SELECT
-                        board_id, b_title, b_content, board_type_id, b_date
+                        board_id, b_title, b_content, board_type_id, b_date, b_hit
                               FROM
                             barny_board 
                 where
@@ -65,6 +65,7 @@
            delete from barny_board where board_id = #{board_id}
         ]]>
     </delete>
+
     <!-- 검색 조건문 -->
     <sql id="criteria">
         <trim prefix="(" suffix=") AND" prefixOverrides="OR">
@@ -83,4 +84,17 @@
         </trim>
 
     </sql>
+
+    <delete id="delete2">
+        <![CDATA[
+        delete from barny_board where board_id = #{board_id}
+        ]]>
+    </delete>
+
+    <update id="updateHit">
+        <![CDATA[
+        update barny_board set b_hit = b_hit + 1 where board_id = #{board_id}
+        ]]>
+    </update>
+
 </mapper>

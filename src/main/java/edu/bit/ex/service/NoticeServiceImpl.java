@@ -35,12 +35,11 @@ public class NoticeServiceImpl implements NoticeService {
     @Override
     public void write(NoticeVO noticeVO) {
         noticeMapper.write(noticeVO);
-
     }
 
     @Override
     public NoticeVO get(int board_id) {
-
+        noticeMapper.updateHit(board_id);
         return noticeMapper.read(board_id);
     }
 
@@ -54,6 +53,16 @@ public class NoticeServiceImpl implements NoticeService {
     public int remove(int board_id) {
 
         return noticeMapper.delete(board_id);
+    }
+
+    @Override
+    public void delete2(String board_id) {
+        noticeMapper.delete2(board_id);
+    }
+
+    @Override
+    public void updateHit(int board_id) {
+        noticeMapper.updateHit(board_id);
     }
 
 }
