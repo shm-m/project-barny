@@ -8,12 +8,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.ModelAndView;
-
 import edu.bit.ex.page.Criteria;
 import edu.bit.ex.page.PageVO;
 import edu.bit.ex.service.EventService;
@@ -182,7 +182,7 @@ public class HomeController {
 	@GetMapping("/notice/content/{board_id}") // 뒤에 보드 아이디 달아줘야 찾아감!
 	public String notice_content_view(NoticeVO noticeVO, Model model) {
 
-		model.addAttribute("content_view", eventService.get(noticeVO.getBoard_id()));
+		model.addAttribute("content_view", noticeService.get(noticeVO.getBoard_id()));
 
 		return "notice/m_content_view";
 	}

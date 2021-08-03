@@ -2,6 +2,7 @@ package edu.bit.ex.controller;
 
 import java.io.IOException;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -108,4 +109,15 @@ public class NoticeController {
         return mav;
     }
 
+    // delete by checkbox
+    @RequestMapping(value = "/delete_")
+    public String deleteByCheckbox(HttpServletRequest request) throws Exception {
+        String[] deleteByCheckbox = request.getParameterValues("valueArr");
+        int size = deleteByCheckbox.length;
+        log.info("deleted notice number: " + size);
+        for(int i=0; i<size; i++) {
+            noticeService.delete2(deleteByCheckbox[i]);
+        }
+        return "redirect:/main";
+    }
 }
