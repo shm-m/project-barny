@@ -1,18 +1,21 @@
 package edu.bit.ex.controller;
 
+import java.security.Principal;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import edu.bit.ex.service.BoardService;
+import edu.bit.ex.service.ProductMainService;
 import edu.bit.ex.vo.BoardVO;
 import edu.bit.ex.vo.OrderVO;
 import edu.bit.ex.vo.ProductMainVO;
-import lombok.experimental.ExtensionMethod;
+import edu.bit.ex.vo.account.MemberContext;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -21,11 +24,18 @@ public class BoardController {
 
 	@Autowired
 	private BoardService boardService;
+	
+	@Autowired
+	private ProductMainService productMainService;
+	
+	
 
 	// 마이페이지
 	@GetMapping("/board/my_page")
-	public String my_page() {
-
+	public String my_page(Principal principal) {
+		
+		log.info("User name=======" + principal.getName());
+		
 		return "/board/my_page";
 	}
 
@@ -45,30 +55,37 @@ public class BoardController {
 
 	// 마이페이지 구매내역 상세보기
 	@GetMapping("/board/purchase_view")
-	public String purchase_view(ProductMainVO productMainVO, Model model) {
-		log.info("purchase_view()..");
-		log.info("purchase_view()..productMainVO" + productMainVO);
+	public String product_view(ProductMainVO productMainVO, Model model) {
+		log.info("product_view()..");
+		log.info("product_view()..productMainVO" + productMainVO);
 
-		model.addAttribute("purchase_view", boardService.get(productMainVO.getProduct_id()));
+		model.addAttribute("product_view", productMainService.get(productMainVO.getProduct_id()));
 
-		log.info("purchase_view _Get " + boardService.get(productMainVO.getProduct_id()));
+		log.info("product_view_Get " + productMainService.get(productMainVO.getProduct_id()));
 
-		return "redirect:/product/product_view";
+		return "/product/product_view";
 	}
 
 	// 마이페이지 (1:1문의내역)리스트
 	@GetMapping("/board/my_view")
-	public String my_view(BoardVO boardVO, Model model) {
+	public String my_view(Model model, Principal principal, @AuthenticationPrincipal MemberContext ctx) {
 
-		boardVO.setMember_idx(42);
 
-		log.info("my_view()..");
-		log.info("my_view()..: boardVO" + boardVO);
+		log.info("my_view() Principal.." + principal.getName());
+		log.info("my_view()..: Principal" + ctx.getMemberVO().getMember_idx());
+		
+		log.info("Principal" + ctx.getMemberVO().getMember_idx());
+		
+		List<BoardVO> boardList = boardService.getMemberList(ctx.getMemberVO().getMember_idx());
 
-		model.addAttribute("my_view", boardService.getMemberList(boardVO));
+		model.addAttribute("my_view", boardList);
+		
+		log.info("List<boardVO> boardList"+boardList);
 
 		return "/board/my_view";
 	}
+
+	
 
 	// 1:1문의상세보기
 	@GetMapping("/board/my_content_view")
@@ -93,14 +110,19 @@ public class BoardController {
 
 	// 회원 마이페이지 1:1문의 글작성 후 입력누르면 넘어가는 입력버튼
 	@PostMapping("/board/write_my_view")
-	public String write_my_view(BoardVO boardVO) {
+	public String write_my_view(BoardVO boardVO,@AuthenticationPrincipal MemberContext ctx) {
 		log.info("write_my_view()");
 
+		boardVO.setMember_idx(ctx.getMemberVO().getMember_idx());
+		//boardVO.setBoard_type_id();
+		
 		log.info("boardVO :" + boardVO);
-
+		
+		
 		boardService.writeBoard1(boardVO);
 
 		return "redirect:/board/my_view";
+		
 	}
 
 	// 회원 1:1문의 주문내역 게시판 수정
@@ -125,14 +147,20 @@ public class BoardController {
 
 	// 마이페이지 (후기)리스트
 	@GetMapping("/board/my_review")
-	public String my_review(BoardVO boardVO, Model model) {
+	public String my_review(Model model, Principal principal, @AuthenticationPrincipal MemberContext ctx) {
+		
+		log.info("my_review() Principal.." + principal.getName());
+		
+		log.info("my_review()..: Principal" + ctx.getMemberVO().getMember_idx());
+		
+		log.info("Principal" + ctx.getMemberVO().getMember_idx());
+		
+		List<BoardVO> reviewList = boardService.getReviewList(ctx.getMemberVO().getMember_idx());
 
-		boardVO.setMember_idx(42);
+		model.addAttribute("my_review", reviewList);
+		
+		log.info("List<boardVO> reviewList" + reviewList);
 
-		log.info("my_review()..");
-		log.info("my_review()..: boardVO" + boardVO);
-
-		model.addAttribute("my_review", boardService.getReviewList(boardVO));
 
 		return "/board/my_review";
 	}
@@ -156,9 +184,14 @@ public class BoardController {
 
 	// 회원 마이페이지 후기 글작성 후 입력누르면 넘어가는 입력버튼
 	@PostMapping("/board/write_my_review")
-	public String write_my_review(BoardVO boardVO) {
+	public String write_my_review(BoardVO boardVO,@AuthenticationPrincipal MemberContext ctx) {
 		log.info("write_my_review()");
 
+		boardVO.setMember_idx(ctx.getMemberVO().getMember_idx());
+		
+		log.info("boardVO :" + boardVO);
+		
+		
 		boardService.writeBoard2(boardVO);
 
 		return "redirect:/board/my_review";

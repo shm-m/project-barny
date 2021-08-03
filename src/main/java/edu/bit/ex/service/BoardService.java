@@ -29,7 +29,7 @@ public interface BoardService {
 	
 
 	// 1:1게시판 회원 마이페이지
-	public List<BoardVO> getMemberList(BoardVO boardVO);
+	public List<BoardVO> getMemberList(int member_idx);
 
 	// 1:1 회원 글쓰기
 	public void writeBoard1(BoardVO boardVO);
@@ -46,7 +46,7 @@ public interface BoardService {
 	
 
 	// 후기게시판 회원 마이페이지
-	public List<BoardVO> getReviewList(BoardVO boardVO);
+	public List<BoardVO> getReviewList(int member_idx);
 
 	// 후기 회원 글쓰기
 	public void writeBoard2(BoardVO boardVO);
@@ -66,6 +66,9 @@ public interface BoardService {
 	public List<OrderVO> getOrderList(OrderVO orderVO);
 	// 주문내역 회원 내글 상세보기
 	public ProductMainVO getOrder(int product_id);
+
+
+
 	
 	
 

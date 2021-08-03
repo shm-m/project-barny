@@ -19,55 +19,45 @@
 			}
 		}); */
 
-		function getList() {
-			var url = "${pageContext.request.contextPath}/rest/after.json";
+		function getMemberList() {
 
 			$.ajax({
 	            type: 'GET',
-	            url: url,
+	            url: "board/press",
 	            cache : false, // 이걸 안쓰거나 true하면 수정해도 값반영이 잘안댐
 	            dataType: 'json',// 데이터 타입을 제이슨 꼭해야함, 다른방법도 2가지있음
 		        success: function(result) {
 
 					var htmls="";
 					
-		        	$("#list-table").html("");	
+		        	$("#press").html("");	
 
 					$("<tr>" , {
-						html : "<td>" + "번호" + "</td>"+  // 컬럼명들
-								"<td>" + "이름" + "</td>"+
-								"<td>" + "제목" + "</td>"+
+								"<td>" + "아이디" + "</td>"+
+								"<td>" + "구독" + "</td>"+
 								"<td>" + "날짜" + "</td>"+				
-								"<td>" + "히트" + "</td>"+
-								"<td>" + "삭제" + "</td>"
-					}).appendTo("#list-table") // 이것을 테이블에붙임
+					}).appendTo("#press") // 이것을 테이블에붙임
 
 					if(result.length < 1){
-						htmls.push("등록된 댓글이 없습니다.");
+						htmls.push("구독된 정보가 없습니다");
 					} else {
 
 		                    $(result).each(function(){			                    			                    
 			                    htmls += '<tr>';
-			                    htmls += '<td>'+ this.bid + '</td>';
-			                    htmls += '<td>'+ this.bname + '</td>';
+			                    htmls += '<td>'+ this.member_idx+ '</td>';
+			                    htmls += '<td>'+ this.product_id + '</td>';
 			                    htmls += '<td>'
-			         			for(var i=0; i < this.bindent; i++) { //for 문은 시작하는 숫자와 종료되는 숫자를 적고 증가되는 값을 적어요. i++ 은 1씩 증가 i+2 는 2씩 증가^^
-			         				htmls += '-'	
-			        			}
-			                    htmls += '<a href="${pageContext.request.contextPath}/content_view?bId=' + this.bid + '">' + this.btitle + '</a></td>';
- 			                    htmls += '<td>'+ this.bdate + '</td>'; 
-			                    htmls += '<td>'+ this.bhit + '</td>';
-			                    htmls += '<td>'+ '<a class="a-delete" data-bid="${dto.bid}" href="${pageContext.request.contextPath}/ajax/delete?bid=' + this.bid +'">' +'삭제</a>'  +'</td>';
+			         			
+// 			                    htmls += '<a href="${pageContext.request.contextPath}/content_view?product_id=' + this.product_id + '">' + this.product_name + '</a></td>';
+ 			                    htmls += '<td>'+ this.order_date + '</td>'; 
+			                    htmls += '<td>'+ '<a class="a-delete" data-product_id="${dto.product_id}" href="${pageContext.request.contextPath}/board/delete?product_id=' + this.product_id +'">' +'삭제</a>'  +'</td>';
 			                    htmls += '</tr>';			                    		                   
 		                	});	//each end
 
-		                	htmls+='<tr>';
-		                	htmls+='<td colspan="5"> <a href="${pageContext.request.contextPath}/write_view">글작성</a> </td>';		                	
-		                	htmls+='</tr>';
 		                	
 					}
 
-					$("#list-table").append(htmls);
+					$("#press").append(htmls);
 					
 		        }
 
@@ -81,7 +71,7 @@
 		$(document).on("click",".a-delete",function(event){
 			//prevendDefault()는 href로 연결해 주지 않고 단순히 click에 대한 처리를 하도록 해준다.
 			event.preventDefault();
-			console.log("ajax 호출전"); 
+			console.log("구독취소"); 
 			//해당 tr제거
 			var trObj =  $(this).parent().parent();
 			
@@ -106,7 +96,7 @@
 	</script>
 	<script>
 		$(document).ready(function(){
-			getList();
+			getMemberList();
 		});
 	</script>
 

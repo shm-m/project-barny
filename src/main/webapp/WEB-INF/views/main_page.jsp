@@ -62,13 +62,15 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
                         <li></li>
-                        <a class="dropdown-item" href="/notice">공지사항</a></li>
+                        <a class="dropdown-item" href="/notice_list">공지사항</a></li>
                         <li><a class="dropdown-item" href="/faq">자주 묻는 질문</a></li>
                     </ul>
                 </li>
             </ul>
 
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+ 
+                <li class="nav-item"><a class="nav-link" href="/cart3">장바구니</a></li>
 
                 <sec:authorize access="isAnonymous()">
                     <li class="nav-item"><a class="nav-link" href="/loginForm">로그인</a></li>

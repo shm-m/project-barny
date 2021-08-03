@@ -9,6 +9,9 @@
 <body>
 	<table id="list-table" width="500" cellpadding="0" cellspacing="0" border="1">
 		<form action="write_my_review" method="post">
+		<select name="board_type_id">
+			    <option value="2">후기</option>
+			</select>
 			
 			<tr>
 				<td> 제목 </td>

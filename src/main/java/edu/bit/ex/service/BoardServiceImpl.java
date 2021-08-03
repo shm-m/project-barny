@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import edu.bit.ex.mapper.BoardMapper;
 import edu.bit.ex.vo.BoardVO;
@@ -54,12 +52,14 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.insertBoard(boardVO);
 	}
 
+	
+	
 	// 회원 마이페이지 게시글 부분
 	// 1:1문의
 	@Override
-	public List<BoardVO> getMemberList(BoardVO boardVO) {
+	public List<BoardVO> getMemberList(int member_idx) {
 
-		return boardMapper.getMemberList(boardVO);
+		return boardMapper.getMemberList(member_idx);
 	}
 
 	// 1:1문의 게시판 하나 읽기
@@ -92,8 +92,8 @@ public class BoardServiceImpl implements BoardService {
 
 	// 후기리스트
 	@Override
-	public List<BoardVO> getReviewList(BoardVO boardVO) {
-		return boardMapper.getReviewList(boardVO);
+	public List<BoardVO> getReviewList(int member_idx) {
+		return boardMapper.getReviewList(member_idx);
 	}
 
 	// 후기글쓰기
