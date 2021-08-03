@@ -133,21 +133,21 @@
       <ul class="pagination justify-content-center">
           <c:if test="${pageMaker.prev}">
               <li class="page-item">
-                  <a class="page-link" href="product_view?product_id=${product_view.product_id}${pageMaker.makeQuery(pageMaker.startPage - 1) }" aria-label="Previous">
+                  <a class="page-link" href="${pageMaker.makeNum(pageMaker.startPage - 1)}&product_id=${product_view.product_id}" aria-label="Previous">
                       <span aria-hidden="true">&laquo;</span>
                       <span class="sr-only">Previous</span>
                   </a>
               </li>
           </c:if>
           <c:forEach var="idx" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
-              <li class="page-item "><a class="page-link" href="product_view?product_id=${product_view.product_id}${pageMaker.makeQuery(idx)}">
+              <li class="page-item "><a class="page-link" href="${pageMaker.makeNum(idx)}&product_id=${product_view.product_id}">
                       ${idx}
               </a>
               </li>
           </c:forEach>
           <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
               <li class="page-item">
-                  <a class="page-link" aria-label="Next" href="product_view?product_id=${product_view.product_id}${pageMaker.makeQuery(pageMaker.endPage +1) }">
+                  <a class="page-link" aria-label="Next" href="${pageMaker.makeQuery(pageMaker.endPage +1) }&product_id=${product_view.product_id}">
                       <span aria-hidden="true">&raquo;</span>
                       <span class="sr-only">Next</span>
                   </a>

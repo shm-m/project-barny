@@ -8,12 +8,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import edu.bit.ex.page.Criteria;
@@ -139,8 +137,9 @@ public class HomeController {
 	public String writeReview(ProductMainVO productMainVO) {
 
 		productMainService.writeReview(productMainVO);
-
-		return "redirect:/product_main"; // 다이렉트로 특정 상품 리스트로 가게
+		String redirect = "redirect:/product_view?product_id=" + productMainVO.getProduct_id();
+		// http://localhost:8282/product_view?product_id=6
+		return redirect; // 다이렉트로 특정 상품 리스트로 가게
 	}
 
 	@GetMapping("/user/review/write_view/**")
