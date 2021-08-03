@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <style>
     h1 {
         text-align: center;
@@ -23,7 +25,7 @@
 
 <div class="col-md-12">
     <div class="col-md-4 mx-auto">
-        <form action="/review/write" method="post" onsubmit="return confirm('게시글을 등록하시겠습니까?')" role="form">
+        <form action="/review/write" method="post" onsubmit="return confirm('게시글을 등록하시겠습니까?')" role="form" enctype="multipart/form-data">
             <input type="hidden" name="product_id" value="${product_view.product_id}">
             <input type="hidden" name="member_idx" value="${member_idx}"><!--접근한 회원 번호-->
             <div class="form-group">
@@ -42,11 +44,24 @@
                 <label for="author"> 후기 내용 </label>
                 <input type="text" class="form-control" name="b_content" placeholder="내용을 입력하세요">
             </div>
-            <a href="javascript:history.back()" role="button" class="btn btn-secondary">취소</a>
+            <div class="form-group">
+                <label for="inputFile" class="col-form-label">첨부 파일</label>
+                    <div class="custom-file" id="inputFile">
+                        <input name="file" type="file" class="custom-file-input" id="customFile">
+                        <label class="custom-file-label" for="customFile">파일을 선택해 주세요.</label>
+                    </div>
+            </div>
+            <a href="/product_view?product_id=${product_view.product_id}" role="button" class="btn btn-secondary">취소</a>
             <input type="submit" class="btn btn-primary" value="등록"></input>
         </form>
     </div>
 </div>
+<script>
+    $(".custom-file-input").on("change", function() {
+      var fileName = $(this).val().split("\\").pop();
+      $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+    </script>
 
 </body>
 </html>
