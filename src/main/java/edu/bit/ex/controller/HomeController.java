@@ -82,20 +82,26 @@ public class HomeController {
 
 	// 상품 - 술
 	@GetMapping("/product_main_liquor")
-	public String product_main_liquor(Model model) {
+	public String product_main_liquor(Model model, Criteria cri) {
 
 		log.info("product_main_liquor()..");
-		model.addAttribute("product_main_liquor", productMainService.getList1());
+		model.addAttribute("product_main_liquor", productMainService.getList1(cri));
+		
+		int total = productMainService.getTotal1(cri);
+		model.addAttribute("pageMaker", new PageVO(cri, total));
 
 		return "product/product_main_liquor";
 	}
 
 	// 상품 - 안주
 	@GetMapping("/product_main_food")
-	public String product_main_food(Model model) {
+	public String product_main_food(Model model, Criteria cri) {
 
 		log.info("product_main_food()..");
-		model.addAttribute("product_main_food", productMainService.getList2());
+		model.addAttribute("product_main_food", productMainService.getList2(cri));
+		
+		int total = productMainService.getTotal2(cri);
+		model.addAttribute("pageMaker", new PageVO(cri, total));
 
 		return "product/product_main_food";
 	}

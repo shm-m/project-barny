@@ -6,37 +6,34 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Cart</title>
 </head>
 <body>
-      <tr>
+<%--       <tr>
       <td>사용자이름</td>
       <td>상품이름</td>
       <td>수량</td>
       <td>가격</td>
       </tr></br>
       
-      <tr>
-<!--  <p>사용자이름: <sec:authentication property="principal.memberVO.email"/></p>
-      <p>사용자이름: <sec:authentication property="principal.memberVO.member_name"/></p> 
-      <td><sec:authentication property="principal.username"/></td>
-      <td><sec:authentication property="principal.memberVO.member_id"/></td>-->
-      
+      <tr>      
       <td><sec:authentication property="principal.memberVO.member_id"/></td> 
-      <td><sec:authentication property="principal.cartList"/></td>
-             
-<%--  <td><sec:authentication property="principal.cartList" var="cartList"/></td>
-	  <c:forEach items="${cartList}" var="cart">
- 	  <td><sec:authentication property="principal.cartList.product_name"/></td>
-	  <td><sec:authentication property="principal.cartList.product_qty"/></td>
-	  <td><sec:authentication property="principal.cartList.price"/></td> 
-	  </c:forEach>--%>
+      <td><sec:authentication property="principal.cartList"/></td>     
+      </tr></br> --%>
+      
+    <h2>장바구니</h2>
+    <div class="row">
+        <div class="col-md-8">
+            <form action="<c:url value='/user/order' />" method="post">
+                <input name="member_idx" type="hidden" value="<sec:authentication property="principal.cartList"/>"> 
+                <td><sec:authentication property="principal.cartList"/></td>
+                <hr class="my-4">
+            </form>
+            <div class="order">
+                <p><a class="btn btn-outline-dark btn-sm" href="order">주문하기</a></p>
+            </div>
+        </div>
+    </div>
 
-      
-      </tr></br>
-      
-      <tr>
-         <td colspan="5"> <a href="order">주문하기</a> </td>		
-	  </tr>	 
 </body>
 </html>

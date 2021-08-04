@@ -28,26 +28,25 @@
 </script>
 </head>
 <body>
-   <table id="list-table" width="500" cellpadding="0" cellspacing="0" border="1">
-      <form role="form" method="post">
-         <input type="hidden" name="product_id" value="${product_view.product_id}">
-
-         <tr>
-            <td> 상품이름 </td>
-            <td> ${product_view.product_name} </td>
-         </tr>
-         <tr>
-            <td> 가격 </td>
-            <td> ${product_view.price} 원</td>
-         </tr>
-
-      </form>
-      <div class="btn">
-         <p><a class="btn btn-outline-dark btn-sm" href="/user/cart3">장바구니에 담기</a></p>
-         <p><a class="btn btn-outline-dark btn-sm" href="/user/order">바로 구매하기</a></p>
-      </div>
-
-   </table>   
+    <div class="row">
+        <div class="col-md-4">
+            <img class="card-img-top" src="barny.png" alt="상품이미지">
+        </div>
+        <div class="col-md-8">
+            <h3>${product_view.product_name}</h3>
+            <p>${product_view.price} 원</p>
+            <hr class="my-4">
+            <form action="<c:url value='/user/cart3' />" method="post">
+                <div class="form-group">
+                    <label>수량</label>
+                    <input name="amount" class="form-control" type="number" value="1" />
+                </div>
+                <input name="product_id" type="hidden" value="${product.id}">
+                <button type="submit" class="cart btn-outline-dark btn-sm" href="/user/cart3">장바구니</button>
+                <button type="submit" class="order btn-outline-dark btn-sm" href="/user/order">바로구매</button>
+            </form>
+        </div>
+    </div>
    <br>
    <div class="table-wrap">
       <table class="table myaccordion table-hover" id="accordion">

@@ -1,7 +1,5 @@
 package edu.bit.ex.controller;
 
-
-
 import java.security.Principal;
 import java.util.List;
 
@@ -24,48 +22,41 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import edu.bit.ex.service.cart.CartService;
+import edu.bit.ex.service.cart.OrderService;
 import edu.bit.ex.vo.MemberVO;
 import edu.bit.ex.vo.account.MemberContext;
 import edu.bit.ex.vo.cart.CartVO;
+import edu.bit.ex.vo.cart.OrderPaymentVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-public class CartController {
+public class OrderController {
 	
 	@Autowired
 	private CartService cartService;
+	@Autowired
+	private OrderService orderService;
 	
-	// 장바구니 리스트 
-	@GetMapping("user/cart3")
-	public String cart3(Model model, Principal principal,@AuthenticationPrincipal MemberContext ctx) {
+	// 장바구니, 주문자 리스트 
+	@GetMapping("user/order")
+	public String order(Model model, Principal principal,@AuthenticationPrincipal MemberContext ctx) {
 
 		log.info("Principal" + principal.getName());
 		log.info("Principal" + ctx.getMemberVO().getMember_idx());
-		
-      
-		log.info("Principal" + ctx.getMemberVO().getMember_idx());		
-		
+						
 		List<CartVO> cartList = cartService.cartList(ctx.getMemberVO().getMember_idx());
+		List<OrderPaymentVO> orderList = orderService.orderList(ctx.getMemberVO().getMember_idx());
 		
 		model.addAttribute("cartList", cartList);
+		model.addAttribute("orderList", orderList); 
 		
-		log.info("List<CartVO> cartList" +  cartList);		
+		log.info("List<CartVO> cartList" +  cartList);
+		log.info("List<OrderPaymentVO> orderList" +  orderList);
 		
 		
-		return "cart/cart3";
+		return "order/order";
 	}	
-	 	 	
-	// 장바구니 담기
-	 @RequestMapping("/user/cart3")
-	public String write(Model model, Principal principal, @AuthenticationPrincipal MemberContext ctx) {
-		
-		log.info("principal" + principal.getName());
-		log.info("principal" + ctx.getMemberVO().getMember_idx());
-		
+		 	 	
 
-		// cartService.write(cartVO);
-
-		return "redirect:product_view";
-	} 
 }

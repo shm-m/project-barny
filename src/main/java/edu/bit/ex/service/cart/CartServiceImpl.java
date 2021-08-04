@@ -42,6 +42,11 @@ public class CartServiceImpl implements CartService {
 		return cartMapper.delete(member_idx);
 	}
 	
+	/* @Override
+	public int remove(int product_id) {
+		return cartMapper.delete(product_id);
+	} */
+	
 	// 장바구니 동일상품 확인
 	 @Override
 	public int countCart(int member_idx, String product_name) {

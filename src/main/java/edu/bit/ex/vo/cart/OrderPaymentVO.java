@@ -13,9 +13,12 @@ import lombok.ToString;
 @ToString
 public class OrderPaymentVO {
     // 주문자 정보(회원정보)
+    private int member_idx;
     private String member_id;
     private String member_name;
     private String tel;
+    private String email;
     private String address;
+    private int point;
 
 }

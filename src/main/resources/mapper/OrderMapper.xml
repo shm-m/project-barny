@@ -13,11 +13,11 @@
     </select>      
 
 <!-- 주문자 정보 불러오기 -->
-    <select id="getList" resultType="edu.bit.ex.vo.cart.OrderVO">
+    <select id="orderList" resultType="edu.bit.ex.vo.cart.OrderPaymentVO">
         <![CDATA[
-			SELECT DISTINCT MEMBER_NAME, TEL, ADDRESS 
+			SELECT MEMBER_IDX, MEMBER_ID, MEMBER_NAME, TEL, EMAIL, ADDRESS, POINT 
 			FROM MEMBER
-			WHERE MEMBER_ID = #{MEMBER_ID}
+			WHERE MEMBER_IDX = #{MEMBER_IDX}
         ]]>
     </select>  
 
