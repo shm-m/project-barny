@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.bit.ex.mapper.SelectHitMapper">
+
+	<select id="getHit" resultType="int">
+		<![CDATA[
+      		select b_hit
+      		from barny_board
+      		where board_id = #{board_id}
+    	]]>
+	</select>
+
+</mapper>

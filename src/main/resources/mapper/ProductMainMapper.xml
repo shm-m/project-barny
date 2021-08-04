@@ -61,7 +61,7 @@
 
     <select id="getTotalCount" resultType="int" parameterType="map">
         <![CDATA[
-        select count(DISTINCT b.board_id) from barny_board b, product p, b_like l, member m where b.product_id= 5 and l.board_id = b.board_id and m.member_idx = b.member_idx
+        select count(DISTINCT b.board_id) from barny_board b, product p, b_like l, member m where b.product_id= #{product_id} and l.board_id = b.board_id and m.member_idx = b.member_idx
            ]]>
     </select>
 
