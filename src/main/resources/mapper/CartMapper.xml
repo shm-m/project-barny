@@ -13,7 +13,7 @@
     </select>    
 
 <!-- 장바구니 담기 -->   
-    <insert id="write">
+    <insert id="insert">
         <![CDATA[
         	INSERT INTO CART (member_idx, product_id, product_qty) 
         	VALUES(#{member_idx}, #{product_id}, #{product_qty})

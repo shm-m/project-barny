@@ -1,38 +1,20 @@
 package edu.bit.ex.controller;
 
-import java.security.Principal;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import edu.bit.ex.page.Criteria;
 import edu.bit.ex.page.PageVO;
 import edu.bit.ex.service.EventService;
 import edu.bit.ex.service.NoticeService;
-import edu.bit.ex.service.ProductMainService;
-import edu.bit.ex.service.SelectHitService;
 import edu.bit.ex.vo.NoticeVO;
-import edu.bit.ex.vo.ProductMainVO;
-import edu.bit.ex.vo.account.MemberContext;
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @Controller
 public class HomeController {
-	// 상품보기
-	@Autowired
-	private ProductMainService productMainService;
 
 	// event service
 	@Autowired
@@ -41,10 +23,6 @@ public class HomeController {
 	// notice sercie
 	@Autowired
 	private NoticeService noticeService;
-
-	// select hit
-	@Autowired
-	private SelectHitService selectHitService;
 
 	// 메인 페이지
 	@GetMapping("/main")
@@ -76,6 +54,7 @@ public class HomeController {
 		return "subs";
 	}
 
+<<<<<<< HEAD
 	// 상품보기
 	@GetMapping("/product_main")
 	public String product_main(Model model) {
@@ -171,6 +150,8 @@ public class HomeController {
 		return "user/write_view";
 	}
 
+=======
+>>>>>>> 34112a989e9552bb689da002c42775089b1261b1
 	// event list
 	@GetMapping("/event")
 	public String event_main(Model model, Criteria cri) {

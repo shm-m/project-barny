@@ -24,8 +24,8 @@ public class CartServiceImpl implements CartService {
 
     // 장바구니 담기
 	@Override
-	public void write(CartVO cartVO) {
-		cartMapper.write(cartVO);
+	public void writeCart(CartVO cartVO) {
+		cartMapper.insert(cartVO);
 		
 	}
 

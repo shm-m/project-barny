@@ -9,7 +9,7 @@ import edu.bit.ex.vo.cart.CartVO;
 @Mapper
 public interface CartMapper {
     List<CartVO> cartList(int member_idx); // 장바구니 리스트 불러오기
-    void write(CartVO cartVO); // 장바구니 담기
+    void insert(CartVO cartVO); // 장바구니 담기
     void update(CartVO cartVO); // 장바구니 수정
     int delete(int member_idx); // 장바구니 삭제
     // int delete(int product_id);

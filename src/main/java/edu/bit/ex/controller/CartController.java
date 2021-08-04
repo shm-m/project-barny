@@ -31,13 +31,14 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
+@RequestMapping("user/**")
 public class CartController {
 	
 	@Autowired
 	private CartService cartService;
 	
 	// 장바구니 리스트 
-	@GetMapping("user/cart3")
+	@GetMapping("/cart3")
 	public String cart3(Model model, Principal principal,@AuthenticationPrincipal MemberContext ctx) {
 
 		log.info("Principal" + principal.getName());
@@ -57,15 +58,16 @@ public class CartController {
 	}	
 	 	 	
 	// 장바구니 담기
-	 @RequestMapping("/user/cart3")
-	public String write(Model model, Principal principal, @AuthenticationPrincipal MemberContext ctx) {
+	@ResponseBody
+	@PostMapping("/cart3")
+	public String writeCart(Model model, Principal principal, @AuthenticationPrincipal MemberContext ctx) {
 		
 		log.info("principal" + principal.getName());
 		log.info("principal" + ctx.getMemberVO().getMember_idx());
 		
-
-		// cartService.write(cartVO);
-
-		return "redirect:product_view";
+		log.info("writeCart()..");
+		cartService.write(cartVO);
+		
+		return "SUCCESS";
 	} 
 }

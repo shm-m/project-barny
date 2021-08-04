@@ -6,7 +6,7 @@ import edu.bit.ex.vo.cart.CartVO;
 
 public interface CartService {
     List<CartVO> cartList(int member_idx); // 장바구니 리스트 보기    
-    void write(CartVO cartVO); // 장바구니 추가
+    void writeCart(CartVO cartVO); // 장바구니 추가
     void modify(CartVO cartVO);// 장바구니 수정
     int remove(int member_idx); // 장바구니 삭제
     // int remove(int product_id);

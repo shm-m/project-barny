@@ -7,6 +7,41 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Cart</title>
+<script>
+      $(".cart").click(function()) {
+    	  var product_name = $("#product_name").val();
+    	  var product_qty = $(".numBox").val();
+    	  var price = $("#price").val();
+    	  
+    	  console.log("product_name : " + product_name);
+    	  console.log("product_qty : " + product_qty);
+    	  console.log("price : " + price);
+    	  
+    	  var data = {
+    			  product_name : product_name,    			  
+    			  product_qty : product_qty,
+    			  price : price
+    	  };
+    	  
+    	  $.ajax({
+    		  url : "/cart/cart3",
+    		  type : "post",
+    		  data : data,
+    		  success : funtion(result) {
+    			  if(result == 1) {
+    			  	alert("장바구니 담기 성공");
+    			  	$(".numBox").val("1");  
+    			  } else {
+    				  alert("로그인 한 회원만 사용할 수 있습니다.")
+    				  $("numBox").val("1");
+    			  }
+    		  },
+    		  error : function() {
+    			  alert("장바구니 담기 실패");
+    		  }				    	      	  
+    	  });
+      });
+      </script>
 </head>
 <body>
 <%--       <tr>
