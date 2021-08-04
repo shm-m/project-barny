@@ -129,7 +129,6 @@
          var aObj = this;
 
          console.log($('#reviewForm').attr("action"));
-         console.log($(aObj).children('#board_id').val());
          console.log($(aObj).children('#board_id').text());
          
          
