@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Cart</title>
 <script>
-      $(".cart").click(function()) {
+/*       $(".cart").click(function()) {
     	  var product_name = $("#product_name").val();
     	  var product_qty = $(".numBox").val();
     	  var price = $("#price").val();
@@ -27,6 +27,7 @@
     		  url : "/cart/cart3",
     		  type : "post",
     		  data : data,
+    		  datatype : ,
     		  success : funtion(result) {
     			  if(result == 1) {
     			  	alert("장바구니 담기 성공");
@@ -40,7 +41,7 @@
     			  alert("장바구니 담기 실패");
     		  }				    	      	  
     	  });
-      });
+      }); */
       </script>
 </head>
 <body>

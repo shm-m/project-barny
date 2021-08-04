@@ -54,8 +54,7 @@ public class HomeController {
 		return "subs";
 	}
 
-<<<<<<< HEAD
-	// 상품보기
+/*	// 상품보기
 	@GetMapping("/product_main")
 	public String product_main(Model model) {
 
@@ -148,10 +147,9 @@ public class HomeController {
 		model.addAttribute("member_idx", ctx.getMemberVO().getMember_idx()); // 회원 번호를 jsp에 쓸때
 		model.addAttribute("product_view", productMainService.get(productMainVO.getProduct_id()));
 		return "user/write_view";
-	}
+	} */
 
-=======
->>>>>>> 34112a989e9552bb689da002c42775089b1261b1
+
 	// event list
 	@GetMapping("/event")
 	public String event_main(Model model, Criteria cri) {
