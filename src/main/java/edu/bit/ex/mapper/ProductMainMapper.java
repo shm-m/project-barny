@@ -3,6 +3,7 @@ package edu.bit.ex.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import edu.bit.ex.page.Criteria;
 import edu.bit.ex.vo.ProductMainVO;
@@ -31,4 +32,12 @@ public interface ProductMainMapper {
     // 안주
     int getTotalCount2(Criteria cri);
     List<ProductMainVO> getListWithPaging2(Criteria cri);
+    
+
+    // 후기 페이징
+
+    List<ProductMainVO> getListWithPaging(@Param("cri") Criteria cri, @Param("product_id") int product_id);
+
+    int getTotalCount(@Param("cri") Criteria cri, @Param("product_id") int product_id);
+
 }

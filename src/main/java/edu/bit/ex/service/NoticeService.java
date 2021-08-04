@@ -21,4 +21,9 @@ public interface NoticeService {
 
     public List<NoticeVO> getList(Criteria cri);
 
+    // delete by checkbox
+    public void delete2(String board_id);
+
+    // Update Hit Number
+    public void updateHit(int board_id);
 }

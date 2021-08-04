@@ -27,4 +27,9 @@ public interface ProductMainService {
     public int getTotal2(Criteria cri); // 안주
     public List<ProductMainVO> getList2(Criteria cri);
 
+    // 후기 페이징
+    public List<ProductMainVO> getListReview(Criteria cri, int product_id);
+
+    public int getTotal(Criteria cri, int product_id);
+
 }

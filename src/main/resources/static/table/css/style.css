@@ -205,12 +205,13 @@ h2 {
 
 .control:hover input ~ .control__indicator,
 .control input:focus ~ .control__indicator {
-  border: 2px solid #007bff;
+  border: 2px solid #ff9935;
 }
 
 .control input:checked ~ .control__indicator {
-  border: 2px solid #007bff;
-  background: #007bff;
+  border: 2px solid #ff9935;
+  background: #ff9935;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
 }
 
 .control input:disabled ~ .control__indicator {
@@ -220,12 +221,12 @@ h2 {
   border: 2px solid #ccc;
 }
 
-.control__indicator:after {
-  font-family: "icomoon";
-  content: "\e5ca";
-  position: absolute;
-  display: none;
-}
+/*.control__indicator:after {*/
+/*  font-family: "icomoon";*/
+/*  content: "\e5ca";*/
+/*  position: absolute;*/
+/*  display: none;*/
+/*}*/
 
 .control input:checked ~ .control__indicator:after {
   display: block;
@@ -276,7 +277,6 @@ h2 {
   font-size: 12px;
   font-weight: 500;
   display: block;
-  color: black;
   text-decoration: none;
   background-color: #fff;
   border: none;
@@ -386,6 +386,88 @@ h2 {
   border-right-color: #dee2e6;
   text-align: center;
   font-weight: 600;
+  vertical-align: middle;
 }
 
+.btn-basic {
+  font-family: BBTreeGB;
+  font-size : 15px;
+  background-color: #EBC24B;
+  color: #fff;
+  padding: 7px;
+  border-radius: 3px;
+  text-align: center;
+}
 
+.btn-basic:hover {
+  color: #fff;
+  box-shadow: 0 0 0 0.25rem rgba(255, 208, 38, 0.5);
+}
+
+.btn-basic:focus {
+  color: #fff;
+  box-shadow: 0 0 0 0.25rem rgba(255, 208, 38, 0.5);
+}
+
+.post {
+  font-size: 14px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  float: right;
+  margin-bottom: 3px;
+}
+
+.selection {
+  font-family: BBTreeGB;
+  font-size: 14px;
+  border: none;
+  background-color: transparent;
+  color: black;
+}
+
+.form-control_2 {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control_2:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #ffe480;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(255, 200, 0, 0.25);
+}
+
+input[type="submit" i] {
+  box-sizing: border-box;
+  padding: 0.10rem 6px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #EBC24B;
+  border-image: initial;
+}
+
+.textarea-custom {
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+
+.textarea-custom:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #ffe480;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(255, 200, 0, 0.25);
+}

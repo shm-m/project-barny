@@ -89,4 +89,14 @@ public class ProductMainServiceImpl implements ProductMainService {
 
     }
 
+    @Override
+    public int getTotal(Criteria cri, int product_id) {
+        return productMainMapper.getTotalCount(cri, product_id);
+    }
+
+    @Override
+    public List<ProductMainVO> getListReview(Criteria cri, int product_id) {
+        return productMainMapper.getListWithPaging(cri, product_id);
+    }
+
 }
