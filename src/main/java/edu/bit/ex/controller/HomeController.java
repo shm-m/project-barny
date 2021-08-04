@@ -1,5 +1,6 @@
 package edu.bit.ex.controller;
 
+import java.io.Console;
 import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +13,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import edu.bit.ex.mapper.SelectHitMapper;
 import edu.bit.ex.page.Criteria;
 import edu.bit.ex.page.PageVO;
 import edu.bit.ex.service.EventService;
 import edu.bit.ex.service.NoticeService;
 import edu.bit.ex.service.ProductMainService;
+import edu.bit.ex.service.SelectHitService;
 import edu.bit.ex.vo.NoticeVO;
 import edu.bit.ex.vo.ProductMainVO;
 import edu.bit.ex.vo.account.MemberContext;
@@ -38,6 +42,10 @@ public class HomeController {
 	// notice sercie
 	@Autowired
 	private NoticeService noticeService;
+
+	// select hit
+	@Autowired
+	private SelectHitService selectHitService;
 
 	// 메인 페이지
 	@GetMapping("/main")
@@ -113,15 +121,19 @@ public class HomeController {
 	}
 
 	// update hit
-	@PutMapping("/product_view?product_id={product_id}")
-	public ResponseEntity<String> updateHit(@RequestBody ProductMainVO productMainVO, ModelAndView mav) {
+	@ResponseBody
+	@PutMapping("/product_view")
+	public ResponseEntity<String> updateHit(@RequestBody ProductMainVO productMainVO) {
 
+		log.info("ProductMainVO:" + productMainVO);
 		ResponseEntity<String> entity = null;
 
 		try {
 
 			productMainService.updateHit(productMainVO);
-			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+
+			int b_hit = selectHitService.getHit(productMainVO.getBoard_id());
+			entity = new ResponseEntity<String>(String.valueOf(b_hit), HttpStatus.OK);
 
 		} catch (Exception e) {
 			e.printStackTrace();
