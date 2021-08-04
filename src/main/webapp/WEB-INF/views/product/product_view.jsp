@@ -75,15 +75,17 @@
                <tr>
                   <td colspan="6" id="collapse${status.index}" class="collapse acc" data-parent="#accordion" aria-expanded="false">
                      <p>${vo.b_content}</p>
+                     <button type="button">좋아요</button>
                   </td>
                </tr>
             </c:forEach>
          </tbody>
             
          </form>
-         <button type="button" onclick="location.href='/user/review/write_view/product_view?product_id=${product_view.product_id}'">후기 등록</button>
+        
       </table>
    </div>
+   <button type="button" onclick="location.href='/user/review/write_view/product_view?product_id=${product_view.product_id}'">후기 등록</button>
 <!--page-->
    <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
