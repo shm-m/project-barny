@@ -34,7 +34,7 @@ public class ReviewController {
 
     // update hit
     @ResponseBody
-    @PutMapping("/product_view")
+    @PutMapping("/product_view/updateHit")
     public ResponseEntity<String> updateHit(@RequestBody ProductMainVO productMainVO) {
 
         log.info("ProductMainVO:" + productMainVO);
@@ -46,6 +46,28 @@ public class ReviewController {
 
             int b_hit = selectHitService.getHit(productMainVO.getBoard_id());
             entity = new ResponseEntity<String>(String.valueOf(b_hit), HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+
+        return entity;
+    }
+
+    // update like
+    @ResponseBody
+    @PutMapping("/product_view/updateLike")
+    public ResponseEntity<String> updateLike(@RequestBody ProductMainVO productMainVO) {
+
+        ResponseEntity<String> entity = null;
+
+        try {
+
+            selectHitService.updateLike(productMainVO);
+
+            int b_like = selectHitService.getLike(productMainVO.getBoard_id());
+            entity = new ResponseEntity<String>(String.valueOf(b_like), HttpStatus.OK);
 
         } catch (Exception e) {
             e.printStackTrace();
