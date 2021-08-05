@@ -193,4 +193,9 @@ public class HomeController {
 		return "notice/faq";
 	}
 
+	// 임시 룰렛
+	@GetMapping("/event/roulette")
+	public String roulette_game(Model model) {
+		return "event/roulette_game";
+	}
 }
