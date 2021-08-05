@@ -30,7 +30,7 @@
 <!-- 헤더 네비게이션 바 -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav_2">
     <div class="container">
-        <a class="navbar-brand" href="#page-top"><img src="/static/main_page/assets/img/logo4.png" alt="바니 로고 1" /></a>
+        <a class="navbar-brand" href="#page-top"><img src="/static/main_page/assets/img/logo.png" alt="바니 로고 1" /></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fas fa-bars ms-1"></i>
@@ -38,15 +38,15 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                 <li class="nav-item"><a class="nav-link" href="#services">구독</a></li>
-                <li class="nav-item"><a class="nav-link" href="#portfolio">브랜드 스토리</a></li>
+                <li class="nav-item"><a class="nav-link" href="story">브랜드 스토리</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         상품 보기
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-                        <li></li><a class="dropdown-item" href="#">패키지</a></li>
-                        <li><a class="dropdown-item" href="#">술</a></li>
-                        <li><a class="dropdown-item" href="#">안주</a></li>
+                        <li></li><a class="dropdown-item" href="product_main">패키지</a></li>
+                        <li><a class="dropdown-item" href="product_main_liquor">술</a></li>
+                        <li><a class="dropdown-item" href="product_main_food">안주</a></li>
                     </ul>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="#team">이벤트</a></li>
@@ -61,8 +61,8 @@
                 </li>
             </ul>
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link" href="#services">로그인</a></li>
-                <li class="nav-item"><a class="nav-link" href="#services">장바구니</a></li>
+                <li class="nav-item"><a class="nav-link" href="loginForm">로그인</a></li>
+                <li class="nav-item"><a class="nav-link" href="/user/cart3">장바구니</a></li>
             </ul>
         </div>
     </div>
@@ -109,10 +109,14 @@
     <li class="nav-item">
       <a class="nav-link" href="product_main_food">안주</a>
     </li>
+
     <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
+        
+        <!-- !!!!!!!!!!!search 버튼 색 바꿔야합니다!!!!!!!!!! -->
     </form>
+    
 </ul>
 
 <!-- 패키지 상품 보기 -->
@@ -137,7 +141,8 @@
 <!-- 구독하기 버튼 -->
 
 <div class="text-center mb-5 mt-5">
-    <button type="button" class="btn btn-outline-dark btn-lg mt-5">구독하기</button>
+    <!-- <button type="button" class="btn btn-outline-dark btn-lg mt-5">구독하기</button> -->
+    <a class="btn btn-secondary btn-lg text-uppercase" href="/#">구독하기</a>
 </div>
 
 <div style="height: auto; width: 100%; border:1px solid hsl(0, 4%, 33%);"/>
@@ -149,14 +154,13 @@
 </div>
 
 <!-- 추천 상품보기-->
-<div class="container mt-4 text-center">
+ <div class="container mt-4 text-center">
     <div class="row">
       <div class="col-4">
         <div class="card h-100">
           <a href="#"><img class="card-img-top width=100" src="barny.png"></a>
           <div class="card-body">
-            <h2>안주1</h2>
-            <p>10,000 원</p>
+            <h2>술1</h2>
           </div>
         </div>
       </div>
@@ -165,8 +169,7 @@
         <div class="card h-100">
           <a href="#"><img class="card-img-top" src="barny.png"></a>
           <div class="card-body">
-            <h2>안주2</h2>
-            <p>20,000 원</p>
+            <h2>술2</h2>
           </div>
         </div>
       </div>
@@ -176,8 +179,7 @@
         <div class="card h-100">
           <a href="#"><img class="card-img-top" src="barny.png"></a>
           <div class="card-body">
-            <h2>안주3</h2>
-            <p>30,000 원</p>
+            <h2>술3</h2>
           </div>
         </div>
       </div>
@@ -190,8 +192,7 @@
         <div class="card h-100">
           <a href="#"><img class="card-img-top width=100" src="barny.png"></a>
           <div class="card-body">
-            <h2>술1</h2>
-            <p>5,000 원</p>
+            <h2>안주1</h2>
           </div>
         </div>
       </div>
@@ -200,8 +201,7 @@
         <div class="card h-100">
           <a href="#"><img class="card-img-top" src="barny.png"></a>
           <div class="card-body">
-            <h2>술2</h2>
-            <p>4,000 원</p>
+            <h2>안주2</h2>
           </div>
         </div>
       </div>
@@ -211,8 +211,7 @@
         <div class="card h-100">
           <a href="#"><img class="card-img-top" src="barny.png"></a>
           <div class="card-body">
-            <h2>술3</h2>
-            <p>6,000 원</p>
+            <h2>안주3</h2>
           </div>
         </div>
       </div>
@@ -222,7 +221,8 @@
 <!-- 상품 더보기 버튼 -->
 
 <div class="text-center mb-5 mt-5">
-    <button type="button" class="btn btn-outline-dark btn-lg mt-5">상품 더 보러가기!</button>
+    <!--  <button type="button" class="btn btn-outline-dark btn-lg mt-5">상품 더 보러가기!</button> -->
+    <a class="btn btn-secondary btn-lg text-uppercase" href="/product_main_liquor">상품 더 보러가기!</a>
 </div>
 
 

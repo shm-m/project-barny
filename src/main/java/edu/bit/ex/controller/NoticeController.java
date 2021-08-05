@@ -2,6 +2,7 @@ package edu.bit.ex.controller;
 
 import java.io.IOException;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-@RequestMapping("/notice/*")
+@RequestMapping("/admin/notice/**")
 public class NoticeController {
 
     @Autowired
@@ -48,7 +49,7 @@ public class NoticeController {
     public void write(NoticeVO noticeVO, HttpServletResponse response) throws IOException {
 
         noticeService.write(noticeVO);
-        String redirect_uri = "http://localhost:8282/notice/main";
+        String redirect_uri = "http://localhost:8282/admin/notice/main";
         response.sendRedirect(redirect_uri);
 
     }
@@ -83,7 +84,6 @@ public class NoticeController {
     public ResponseEntity<String> delete(@PathVariable("board_id") int board_id) {
         ResponseEntity<String> entity = null;
 
-        log.info("restDelete() ..");
         log.info("board_id..:" + board_id);
         try {
             int re = noticeService.remove(board_id);
@@ -109,12 +109,15 @@ public class NoticeController {
         return mav;
     }
 
-    // FAQ
-    @GetMapping("/faq")
-    public ModelAndView faq(ModelAndView mav) {
-        mav.setViewName("notice/faq"); // notice/notice_list.jsp
-
-        return mav;
+    // delete by checkbox
+    @RequestMapping(value = "/delete_")
+    public String deleteByCheckbox(HttpServletRequest request) throws Exception {
+        String[] deleteByCheckbox = request.getParameterValues("valueArr");
+        int size = deleteByCheckbox.length;
+        log.info("deleted notice number: " + size);
+        for(int i=0; i<size; i++) {
+            noticeService.delete2(deleteByCheckbox[i]);
+        }
+        return "redirect:/main";
     }
-
 }
