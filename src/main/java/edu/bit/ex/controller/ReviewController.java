@@ -4,14 +4,11 @@ import java.io.File;
 import java.io.IOException;
 import java.security.Principal;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -96,30 +93,29 @@ public class ReviewController {
     }
 
     // 후기 write
-    @PostMapping(value = "/review/write", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public ResponseEntity<List<FileVO>> writeReview(ProductMainVO productMainVO, FileVO fileVO,
+    @PostMapping("/review/write")
+    public String writeReview(ProductMainVO productMainVO, FileVO fileVO,
             @RequestParam("file") MultipartFile[] uploadFile) throws IOException {
 
         productMainService.writeReview(productMainVO);
 
-        List<FileVO> list = new ArrayList<>();
         String uploadFolder = "C:\\Users\\devyun\\Workspace\\project_barny\\src\\main\\webapp\\WEB-INF\\upload";
 
+        String uploadFolderPath = getFolder();
         // make folder
-        File uploadPath = new File(uploadFolder, getFolder());
+        File uploadPath = new File(uploadFolder, uploadFolderPath);
 
-        uploadPath.mkdirs();
+        if (uploadPath.exists() == false) {
+            uploadPath.mkdirs();
+
+        }
 
         for (MultipartFile multipartFile : uploadFile) {
-            FileVO fielVO = new FileVO();
 
             log.info("===================================");
             log.info("upload File Name: " + multipartFile.getOriginalFilename());
             log.info("upload File Size: " + multipartFile.getSize());
-
-            String uploadFileName = multipartFile.getOriginalFilename();
-            fileVO.setImage_name(uploadFileName);
+            log.info("upload File Path: " + uploadPath);
 
             String fileExtension = multipartFile.getOriginalFilename()
                     .substring(multipartFile.getOriginalFilename().lastIndexOf("."));
@@ -129,6 +125,7 @@ public class ReviewController {
             // UUID클래스 - (특수문자를 포함한)문자를 랜덤으로 생성 "-"라면 생략으로 대체
 
             log.info("upload File SaveName: " + storedFileName);
+            log.info("upload File Extension: " + fileExtension);
 
             File saveFile = new File(uploadPath, storedFileName);
 
@@ -141,7 +138,6 @@ public class ReviewController {
 
         }
 
-        return new ResponseEntity<>(list, HttpStatus.OK);
         String redirect = "redirect:/product_view?product_id=" + productMainVO.getProduct_id();
         // http://localhost:8282/product_view?product_id=6
         return redirect; // 다이렉트로 특정 상품 리스트로 가게
