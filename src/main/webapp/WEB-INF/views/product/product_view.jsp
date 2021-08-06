@@ -68,22 +68,24 @@
                   <td>${vo.b_title}</td>
                   <td>${vo.nickname}</td>
                   <td>${vo.b_date}</td>
-                  <td id="like_count" value="${vo.like_count}">${vo.like_count}</td>
-                  <td id="b_hit" value="${vo.b_hit}">${vo.b_hit}</td>
+                  <td id="like_count${status.index}">${vo.like_count}</td>
+                  <td id="b_hit">${vo.b_hit}</td>
                   <i class="fa" aria-hidden="false"></i>
                </tr>
                <tr>
                   <td colspan="6" id="collapse${status.index}" class="collapse acc" data-parent="#accordion" aria-expanded="false">
                      <p>${vo.b_content}</p>
+                     <button value="${vo.board_id}" id="${status.index}" type="button" class="like_button">좋아요</button>
                   </td>
                </tr>
             </c:forEach>
          </tbody>
             
          </form>
-         <button type="button" onclick="location.href='/user/review/write_view/product_view?product_id=${product_view.product_id}'">후기 등록</button>
+        
       </table>
    </div>
+   <button type="button" onclick="location.href='/user/review/write_view/product_view?product_id=${product_view.product_id}'">후기 등록</button>
 <!--page-->
    <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
@@ -113,49 +115,12 @@
   </nav>
 
    <script src="/static/js/popper.js"></script>
+   <script src="/static/js/reviewLike&Hit.js"></script>
+
 
 
    
       
 </body>
-<!--조회수-->
-<script type="text/javascript">
-   $(document).ready(function(){
-
-      $('.collapsed').click(function (event) {
-
-         event.preventDefault(); //실행했을때 나머지 이벤은 내가 컨트롤 하겠다
-
-         var aObj = this;
-
-         console.log($('#reviewForm').attr("action"));
-         console.log($(aObj).children('#board_id').text());
-         
-         
-         var form = {
-            board_id: $(aObj).children('#board_id').text()					
-         };
-
-         //dataType: 'json',
-         $.ajax({
-            type: "PUT",
-            url: "/product_view",
-            cache: false,
-            contentType: 'application/json; charset=utf-8',
-            data: JSON.stringify(form), 
-            success: function (result) {       
-                  $(aObj).children('#b_hit').text(result); 
-                  console.log("조회수 1 증가");
-            },
-            error: function (e) {
-               alert("실패");
-               console.log(e);
-            }
-         });	       
-
-      });
-   });
-
-</script>
 
 </html>

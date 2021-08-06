@@ -47,7 +47,7 @@
             <div class="form-group">
                 <label for="inputFile" class="col-form-label">첨부 파일</label>
                     <div class="custom-file" id="inputFile">
-                        <input name="file" type="file" class="custom-file-input" id="customFile">
+                        <input name="file" type="file" class="custom-file-input" id="customFile" accept="image/png, image/jpeg">
                         <label class="custom-file-label" for="customFile">파일을 선택해 주세요.</label>
                     </div>
             </div>
