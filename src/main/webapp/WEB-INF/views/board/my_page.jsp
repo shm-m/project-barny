@@ -141,7 +141,7 @@
                 <a style="font-family: BBTreeGB; font-size: 35px;">환영합니다. <sec:authentication
                         property="principal.memberVO.member_name"/>님!</a>
                 <p></p>
-                <a style="font-family: NanumSquare; font-size: 20px; font-weight: 400;">적립금 > <sec:authentication
+                <a style="font-family: NanumSquare; font-size: 18px; font-weight: 400;">적립금 >  <sec:authentication
                         property="principal.memberVO.point"/>P</a>
             </div>
 

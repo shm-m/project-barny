@@ -119,9 +119,10 @@ ol {
 }
 
 .card-my_page {
-    border : none;
+    border : solid 1px #e6b33a;
     border-radius: 0.25rem;
-    background-color: #EBC24B;
+    background: rgb(255,182,9);
+    background: radial-gradient(circle, rgba(255,182,9,1) 0%, rgba(235,194,75,1) 100%);
     color: white;
     text-align: center;
     font-family: NanumSquare;
@@ -141,7 +142,7 @@ ol {
 
 .my_page {
     font-family: NanumSquare;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 400;
 }
 
