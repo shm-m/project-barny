@@ -1,6 +1,7 @@
 package edu.bit.ex.vo;
 
 import java.sql.Date;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,5 +30,8 @@ public class ProductMainVO {
     private int like_count;
     private String nickname;
     private int member_idx;
+
+    // 첨부파일
+    private List<FileVO> fileList;
 
 }

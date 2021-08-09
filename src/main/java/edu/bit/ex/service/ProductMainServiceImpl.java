@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import edu.bit.ex.mapper.ProductMainMapper;
 import edu.bit.ex.page.Criteria;
+import edu.bit.ex.vo.FileVO;
 import edu.bit.ex.vo.ProductMainVO;
 import lombok.extern.slf4j.Slf4j;
 
@@ -58,7 +59,18 @@ public class ProductMainServiceImpl implements ProductMainService {
 
     @Override
     public void writeReview(ProductMainVO productMainVO) {
-        productMainMapper.writeReview(productMainVO);
+        List<FileVO> filelist = productMainVO.getFileList();
+
+        if (filelist.isEmpty() == true) {
+            log.info("이미지 없음");
+            productMainMapper.writeReview(productMainVO);
+        } else {
+            productMainMapper.writeReview(productMainVO);
+            log.info("insertList()...");
+            for (int i = 0; i < filelist.size(); i++) {
+                productMainMapper.insertList(filelist.get(i));
+            }
+        }
 
     }
 
