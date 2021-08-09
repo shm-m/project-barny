@@ -109,7 +109,7 @@
 	</ul>
 
 	<ul id="box">
-		<li>${member_id}님</li>
+		<li>${member_name}님</li>
 	</ul>
 
 	<ul id="box1">
@@ -241,11 +241,28 @@ a:link, a:visited, a:active, a:hover {
 	text-align: center;
 	line-height: 250px;
 }
-</style>
 
-	<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+#purchase-list{
+	position:absolute;
+	left:290px;
+	top:320px;
+	
+}
+
+#purchase_view{
+
+	position:absolute;
+	left:290px;
+	top:400px;
+
+}
+
+
+</style>
+<!-- navi var-->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript">
+	
 	$(document).ready(function() {
 		var lastEvent = null;
 		var slide = "#nav > li > ul";
@@ -280,11 +297,10 @@ a:link, a:visited, a:active, a:hover {
 
 
 
-	<c:if test="${member == null}"></c:if>
 
 	<ul id="nav">
 
-		<li>마이페이지${member.id}</li>
+		<li>마이페이지</li>
 
 		<li><a href="user/user_update?member_id">회원정보수정</a>
 			<ul>
@@ -293,7 +309,7 @@ a:link, a:visited, a:active, a:hover {
 
 		<li><a href="#2">구독정보</a></li>
 
-		<li><a href="purchase_list">구매내역</a></li>
+		<li><a id="purchase_list" href="purchase_list">구매내역</a></li>
 		<li><a href="">1:1문의내역</a>
 			<ul>
 				<li><a href="my_view">내문의</a></li>
@@ -301,9 +317,193 @@ a:link, a:visited, a:active, a:hover {
 
 		<li><a href="my_review">후기</a></li>
 
-		<li><a href="#6">적립금</a></li>
+      
+      	<table id="purchase-list" width="500" cellpadding="0" cellspacing="0" border="1">
+      	<table id="purchase_view" width="500" cellpadding="0" cellspacing="0" border="1">
+		
 </body>
 
+
+
+<!-- 구매내역 리스트 ajax -->
+<script>
+	$(document).ready(function (){
+		
+ 		$(document).on("click","#purchase_list",function(event){
+			//prevendDefault()는 href로 연결해 주지 않고 단순히 click에 대한 처리를 하도록 해준다.
+			event.preventDefault();
+			
+			console.log("purchase_list 호출전"); 
+
+			var url = "/board/purchase_list";
+
+			$.ajax({
+	            type: 'GET',
+	            url: url,
+	            cache : false, // 이걸 안쓰거나 true하면 수정해도 값반영이 잘안댐
+	            contentType:'application/json; charset=utf-8',
+	            dataType: 'json',// 데이터 타입을 제이슨 꼭해야함, 다른방법도 2가지있음
+		        success: function(result) {
+
+					var htmls="";
+					
+		        	$("#purchase-list").html("");	
+
+					$("<tr>" , {
+						html : "<td>" +  "주문번호" + "</td>"+  // 컬럼명들
+								"<td>" + "주문날짜" + "</td>"+
+								"<td>" + "총금액" + "</td>"
+					}).appendTo("#purchase-list") // 이것을 테이블에붙임
+
+					if(result.length < 1){
+						htmls.push("구매내역이 없습니다");
+					} else {
+
+		                    $(result).each(function(){			                    			                    
+			                    htmls += '<tr>';
+			                    
+			                    htmls += '<td>'
+			                    htmls += '<a class="order_id" href="${pageContext.request.contextPath}/board/purchase_view?order_id=' + this.order_id + '">' + this.order_id + '</a></td>';
+			                    htmls += '<td>'+ this.order_date + '</td>';
+			                    htmls += '<td>'+ this.total_price + '</td>';
+			                   
+			                    htmls += '</tr>';			                    		                   
+		                	});	//each end
+					}
+
+					$("#purchase-list").append(htmls);
+					
+		        }, error: function (e) {
+			        console.log(e);
+			    }
+
+			});	// Ajax end
+			 
+		}); 
+	});	
+	</script>
+	
+	<!-- 구매 내역 상세보기  ajax -->
+	<script>
+	$(document).ready(function (){
+		
+ 		$(document).on("click",".order_id",function(event){
+			//prevendDefault()는 href로 연결해 주지 않고 단순히 click에 대한 처리를 하도록 해준다.
+			event.preventDefault();
+			
+			console.log("purchase_view 호출전"); 
+
+			var url = "/board/purchase_view";
+
+			$.ajax({
+	            type: 'GET',
+	            url: $(this).attr("href"),
+	            cache : false, // 이걸 안쓰거나 true하면 수정해도 값반영이 잘안댐
+	            contentType:'application/json; charset=utf-8',
+	            dataType: 'json',// 데이터 타입을 제이슨 꼭해야함, 다른방법도 2가지있음
+		        success: function(result) {
+
+					var htmls="";
+					
+		        	$("#purchase_view").html("");	
+
+					$("<tr>" , {
+						html : 	"<td>" + "주문 상세 번호" + "</td>"+  // 컬럼명들
+								"<td>" + "주문번호" + "</td>"+
+								"<td>" + "상품" + "</td>"+
+								"<td>" + "상품수량" + "</td>"
+					}).appendTo("#purchase_view") // 이것을 테이블에붙임
+
+					if(result.length < 1){
+						htmls.push("구매내역이 없습니다");
+					} else {
+
+		                    $(result).each(function(){			                    			                    
+			                    htmls += '<tr>';
+			                    
+			                    htmls += '<td>'+ this.order_detail_id + '</td>';
+			                    htmls += '<td>'+ this.order_id + '</td>';
+			                    htmls += '<td>'+ this.product_name + '</td>';
+			                    htmls += '<td>'+ this.product_qty + '</td>';
+			                   
+			                    htmls += '</tr>';			                    		                   
+		                	});	//each end
+					}
+
+					$("#purchase_view").append(htmls);
+					
+		        }, error: function (a) {
+			        console.log(a);
+			    }
+
+			});	// Ajax end
+			 
+		}); 
+	});	
+	</script>
+	
+	<!-- 구독정보 ajax -->
+	<script>
+	$(document).ready(function (){
+		
+ 		$(document).on("click","#press",function(event){
+			//prevendDefault()는 href로 연결해 주지 않고 단순히 click에 대한 처리를 하도록 해준다.
+			event.preventDefault();
+			
+			console.log("#press 호출전"); 
+
+			var url = "/board/press";
+
+			$.ajax({
+	            type: 'GET',
+	            url: url,
+	            cache : false, // 이걸 안쓰거나 true하면 수정해도 값반영이 잘안댐
+	            contentType:'application/json; charset=utf-8',
+	            dataType: 'json',// 데이터 타입을 제이슨 꼭해야함, 다른방법도 2가지있음
+		        success: function(result) {
+
+					var htmls="";
+					
+		        	$("#press").html("");	
+
+					$("<tr>" , {
+						html :  "<td>" + "회원번호" + "</td>"+  // 컬럼명들
+								"<td>" + "구독" + "</td>"+
+								"<td>" + "날짜" + "</td>"
+								
+					}).appendTo("#press") // 이것을 테이블에붙임
+
+					if(result.length < 1){
+						htmls.push("구독된 정보가 없습니다");
+					} else {
+
+		                    $(result).each(function(){			                    			                    
+		                    	htmls += '<tr>';
+			                    htmls += '<td>'+ this.member_idx+ '</td>';
+			                    htmls += '<td>'+ this.product_id + '</td>';
+			                    htmls += '<td>'
+			         			
+			                    
+			                    htmls += '<td>'+ this.order_date + '</td>'; 
+// 			                    htmls += '<a href="${pageContext.request.contextPath}/press?member_idx=' + this.member_idx+ '">' + this.member_idx+ '</a></td>';
+			                   	htmls += '</tr>';	
+		                	});	//each end
+					}
+
+					$("#press").append(htmls);
+					
+		        }, error: function (b) {
+			        console.log(b);
+			    }
+
+			});	// Ajax end
+			 
+		}); 
+	});	
+	</script>
+	
+	
+	
 	<!-- Bootstrap core JS-->
 	<script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

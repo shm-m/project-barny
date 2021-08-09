@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import edu.bit.ex.mapper.BoardMapper;
 import edu.bit.ex.vo.BoardVO;
+import edu.bit.ex.vo.MemberVO;
+import edu.bit.ex.vo.OrderDetailVO;
 import edu.bit.ex.vo.OrderVO;
 import edu.bit.ex.vo.ProductMainVO;
 import lombok.extern.slf4j.Slf4j;
@@ -125,17 +127,21 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.review_delete(board_id);
 	}
 
+	
+	
+	
 	// 회원구매내역
 	@Override
-	public List<OrderVO> getOrderList(OrderVO orderVO) {
-		return boardMapper.getOrderList(orderVO);
+	public List<OrderVO> getOrderList(int member_idx) {
+		return boardMapper.getOrderList(member_idx);
 	}
 
 	// 구매 상세 보기
 	@Override
-	public ProductMainVO getOrder(int product_id) {
+	public List<OrderDetailVO> getOrder(int order_id) {
 		log.info("service:get()..");
-		return boardMapper.orderRead(product_id);
+		return boardMapper.orderRead(order_id);
 	}
-
+	
+	
 }

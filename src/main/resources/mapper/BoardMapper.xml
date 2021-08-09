@@ -122,11 +122,13 @@
 	]]>
 	</select>
 	
-	<select id="orderRead" resultType="edu.bit.ex.vo.ProductMainVO">
+	<select id="orderRead" resultType="edu.bit.ex.vo.OrderDetailVO">
 	<![CDATA[
-		select * from product where product_id = #{product_id}
+		select o.order_detail_id, p.product_name, o.product_qty, o.order_id 
+		from order_detail o, product p where o.order_id = p.product_id and o.order_id= #{o.order_id}
 	]]>
 	</select>
+	
 	
 	
 </mapper>
