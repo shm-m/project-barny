@@ -69,7 +69,7 @@
             </ul>
 
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
- 
+
                 <sec:authorize access="isAnonymous()">
                     <li class="nav-item"><a class="nav-link" href="/loginForm">로그인</a></li>
                 </sec:authorize>
