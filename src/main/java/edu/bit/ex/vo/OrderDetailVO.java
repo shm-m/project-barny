@@ -15,6 +15,7 @@ import lombok.ToString;
 public class OrderDetailVO {
 	private int order_detail_id;
 	private int product_id;
+	private String product_name;
 	private int product_qty;
 	private int order_id;
 	
