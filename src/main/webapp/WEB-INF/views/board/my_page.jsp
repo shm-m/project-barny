@@ -1,8 +1,8 @@
+@ -1,147 +1,147 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,10 +24,7 @@
     <link href="/static/my_page/css/my_page.css" rel="stylesheet"/>
     <link href="/static/table/css/style.css" rel="stylesheet"/>
 </head>
-
-
 <title>mypage</title>
-
 <body>
 <script type="text/javascript"
         src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
@@ -36,7 +33,6 @@
         var lastEvent = null;
         var slide = "#nav-my_page > li > ul";
         var alink = "#nav-my_page > li > a";
-
         function accordion() {
             if (this == lastEvent)
                 return false;
@@ -44,7 +40,6 @@
             setTimeout(function () {
                 lastEvent = null
             }, 200);
-
             if ($(this).attr('class') != 'active') {
                 $(slide).slideUp();
                 $(this).next(slide).slideDown();
@@ -57,12 +52,10 @@
                 $(this).next(slide).slideUp();
             }
         }
-
         $(alink).click(accordion).focus(accordion);
         $('#nav-my_page > li:last > a').addClass('stay');
     });
 </script>
-
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top"
      id="mainNav_2">
@@ -112,7 +105,6 @@
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/board/my_page">마이페이지</a></li>
                 </sec:authorize>
-
                 <li class="nav-item"><a class="nav-link" href="#services">장바구니</a></li>
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
@@ -121,7 +113,6 @@
         </div>
     </div>
 </nav>
-
 <!--content-->
 <div class="container" style ="width: 70%; padding: 7rem 0;">
     <div class="board_name">마이페이지
@@ -145,13 +136,10 @@
                         property="principal.memberVO.point"/>P</a>
             </div>
 
-
         </div>
     </div>
         <div class="line" style="border-bottom: solid 2px; border-bottom-color: #EBC24B;"></div>
-
     <c:if test="${member == null}"></c:if>
-
     <div class="main-menu">
         <div class="row mb-3 mt-5">
             <div class="card card-my_page col-4">
@@ -161,6 +149,7 @@
             </div>
             <div class="card card-my_page col-4">
                 <div class="card-body my_page">
+                <li><a id="purchase_list" href="purchase_list">구매내역</a></li>
                     구매 내역
                 </div>
             </div>
@@ -190,7 +179,6 @@
     </div>
     <div class="line pt-5" style="border-bottom: solid 3px; border-bottom-color: #EBC24B;"></div>
 </div>
-
 </div>
 <!-- Footer-->
 <footer class="footer">
@@ -210,27 +198,21 @@
         </div>
     </div>
 </footer>
-
 <!--top-button-->
 <img id="myBtn" src="/static/main_page/assets/top-btn.png" onclick="topFunction()">
-
-
 <!--kakao-chat-->
 <a href="javascript:void kakaoChatStart()" class="kakaoChatPc hidden-md hidden-sm hidden-xs" id="kakao-chat">
     <img src="/static/main_page/assets/kakao-chat.png" width="50px" height="50px">
 </a>
-
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type='text/javascript'>
     Kakao.init('7e53e24ce9a07956bfb5ac4930333caa');
-
     function kakaoChatStart() {
         Kakao.Channel.chat({
             channelPublicId: '_WDxjSs'
         });
     }
 </script>
-
 <!-- Bootstrap core JS-->
 <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
