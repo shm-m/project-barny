@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import edu.bit.ex.page.Criteria;
+import edu.bit.ex.vo.FileVO;
 import edu.bit.ex.vo.ProductMainVO;
 
 @Mapper
@@ -24,9 +25,12 @@ public interface ProductMainMapper {
 
     void writeReview(ProductMainVO productMainVO);
 
+    void insertList(FileVO fileVO);
+
     // 후기 페이징
 
     List<ProductMainVO> getListWithPaging(@Param("cri") Criteria cri, @Param("product_id") int product_id);
 
     int getTotalCount(@Param("cri") Criteria cri, @Param("product_id") int product_id);
+
 }

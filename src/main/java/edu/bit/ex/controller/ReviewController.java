@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.security.Principal;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,7 +88,7 @@ public class ReviewController {
     }
 
     private String getFolder() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
         String str = sdf.format(date);
         return str.replace("-", File.separator);
@@ -97,17 +99,25 @@ public class ReviewController {
     public String writeReview(ProductMainVO productMainVO, FileVO fileVO,
             @RequestParam("file") MultipartFile[] uploadFile) throws IOException {
 
-        productMainService.writeReview(productMainVO);
+        // if (uploadFile.length == 0) {
+        // productMainService.writeReview(productMainVO);
+
+        // String redirect = "redirect:/product_view?product_id=" +
+        // productMainVO.getProduct_id();
+        // // http://localhost:8282/product_view?product_id=6
+        // return redirect; // 다이렉트로 특정 상품 리스트로 가게
+        // } else {
+        List<FileVO> fileList = new ArrayList<>();
 
         String uploadFolder = "C:\\Users\\devyun\\Workspace\\project_barny\\src\\main\\webapp\\WEB-INF\\upload";
 
         String uploadFolderPath = getFolder();
+
         // make folder
         File uploadPath = new File(uploadFolder, uploadFolderPath);
 
         if (uploadPath.exists() == false) {
             uploadPath.mkdirs();
-
         }
 
         for (MultipartFile multipartFile : uploadFile) {
@@ -117,20 +127,32 @@ public class ReviewController {
             log.info("upload File Size: " + multipartFile.getSize());
             log.info("upload File Path: " + uploadPath);
 
+            if (multipartFile.getSize() == 0) {
+                continue;
+            }
+
+            fileVO.setImage_name(multipartFile.getOriginalFilename());
+
             String fileExtension = multipartFile.getOriginalFilename()
                     .substring(multipartFile.getOriginalFilename().lastIndexOf("."));
             // lastIndexOf(".") = 14(index는 0번부터)
             // substring(14) = .doc
+            fileVO.setImage_extension(fileExtension);
             String storedFileName = UUID.randomUUID().toString().replaceAll("-", "") + fileExtension;
             // UUID클래스 - (특수문자를 포함한)문자를 랜덤으로 생성 "-"라면 생략으로 대체
 
             log.info("upload File SaveName: " + storedFileName);
             log.info("upload File Extension: " + fileExtension);
 
-            File saveFile = new File(uploadPath, storedFileName);
-
             try {
+                File saveFile = new File(uploadPath, storedFileName);
                 multipartFile.transferTo(saveFile);
+                fileVO.setImage_uuid(storedFileName);
+                fileVO.setImage_route(uploadPath.getAbsolutePath());
+                fileVO.setProduct_id(productMainVO.getProduct_id());
+
+                fileList.add(fileVO);
+
             } catch (Exception e) {
                 log.error(e.getMessage());
             } // end catch
@@ -138,9 +160,16 @@ public class ReviewController {
 
         }
 
+        productMainVO.setFileList(fileList);
+        log.info("productMainVO.getFileList()" + productMainVO.getFileList());
+        productMainService.writeReview(productMainVO);
+
         String redirect = "redirect:/product_view?product_id=" + productMainVO.getProduct_id();
         // http://localhost:8282/product_view?product_id=6
         return redirect; // 다이렉트로 특정 상품 리스트로 가게
+
+        // }
+
     }
 
     @GetMapping("/user/review/write_view/**")

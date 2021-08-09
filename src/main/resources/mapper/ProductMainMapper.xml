@@ -53,8 +53,18 @@
         VALUES(board_id_seq.NEXTVAL, sysdate, #{b_title}, #{b_content}, 2, #{member_idx}, board_id_seq.currval, #{product_id})
         
         INTO b_like (board_id, like_count) VALUES(board_id_seq.currval, 0)
+
         select*from dual
         ]]>
+
+    </insert>
+
+    <insert id="insertList">
+
+        <![CDATA[
+        insert into image (image_id, product_id, board_id, image_name, image_extension, image_route, image_uuid) values (image_id_seq.NEXTVAL, #{product_id}, board_id_seq.currval, #{image_name}, #{image_extension}, #{image_route}, #{image_uuid} )
+        ]]>
+
     </insert>
 
     <!--후기 페이징-->
