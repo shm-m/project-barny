@@ -34,24 +34,24 @@ public class PressController {
 //	@Autowired
 //	private MemberService memberService;
 
-	// 마이페이지 (구매내역)리스트
-	@ResponseBody
-	@RequestMapping("/board/purchase_list")
-	public List<OrderVO> purchase_list(Model model, Principal principal, @AuthenticationPrincipal MemberContext ctx) {
-
-		log.info("purchase_list() Principal.." + principal.getName());
-		log.info("purchase_list()..: Principal" + ctx.getMemberVO().getMember_idx());
-
-		log.info("Principal" + ctx.getMemberVO().getMember_idx());
-
-		List<OrderVO> orderList = boardService.getOrderList(ctx.getMemberVO().getMember_idx());
-
-		model.addAttribute("purchase_list", orderList);
-
-		log.info("List<boardVO> orderList" + orderList);
-
-		return orderList;
-	}
+//	// 마이페이지 (구매내역)리스트
+//	@ResponseBody
+//	@RequestMapping("/board/purchase_list")
+//	public List<OrderVO> purchase_list(Model model, Principal principal, @AuthenticationPrincipal MemberContext ctx) {
+//
+//		log.info("purchase_list() Principal.." + principal.getName());
+//		log.info("purchase_list()..: Principal" + ctx.getMemberVO().getMember_idx());
+//
+//		log.info("Principal" + ctx.getMemberVO().getMember_idx());
+//
+//		List<OrderVO> orderList = boardService.getOrderList(ctx.getMemberVO().getMember_idx());
+//
+//		model.addAttribute("purchase_list", orderList);
+//
+//		log.info("List<boardVO> orderList" + orderList);
+//
+//		return orderList;
+//	}
 	
 		// 마이페이지 (구매내역) 상세보기
 		@ResponseBody
@@ -69,24 +69,6 @@ public class PressController {
 			return orderDetailList;
 		}
 		
-//		마이페이지 (구독) 
-//		@ResponseBody
-//		@RequestMapping("/board/")
-//		public List<MemberVO> pointList(Model model, Principal principal, @AuthenticationPrincipal MemberContext ctx) {
-//
-//			log.info("point() Principal.." + principal.getName());
-//			log.info("point()..: Principal" + ctx.getMemberVO().getMember_idx());
-//
-//			log.info("point" + ctx.getMemberVO().getMember_idx());
-//
-//			List<MemberVO> pointList = boardService.getPointList(ctx.getMemberVO().getMember_idx());
-//
-//			model.addAttribute("pointList", pointList);
-//
-//			log.info("List <MemberVO> pointList" + pointList);
-//
-//			return pointList;
-//		}
 
 
 //

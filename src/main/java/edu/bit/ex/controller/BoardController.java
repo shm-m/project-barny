@@ -24,11 +24,6 @@ public class BoardController {
 
 	@Autowired
 	private BoardService boardService;
-	
-	@Autowired
-	private ProductMainService productMainService;
-	
-	
 
 	// 마이페이지
 	@GetMapping("/board/my_page")
@@ -39,37 +34,26 @@ public class BoardController {
 		return "/board/my_page";
 	}
 
-//	// 마이페이지 (구매내역)리스트
-//	@GetMapping("/board/purchase_list")
-//	public String purchase_list(Model model, Principal principal, @AuthenticationPrincipal MemberContext ctx) {
-//
-//
-//		log.info("my_view() Principal.." + principal.getName());
-//		log.info("my_view()..: Principal" + ctx.getMemberVO().getMember_idx());
-//		
-//		log.info("Principal" + ctx.getMemberVO().getMember_idx());
-//		
-//		List<BoardVO> orderList = boardService.getMemberList(ctx.getMemberVO().getMember_idx());
-//
-//		model.addAttribute("my_view", orderList);
-//		
-//		log.info("List<boardVO> boardList"+orderList);
-//
-//		return "/board/purchase_list";
-//	}
+	// 마이페이지 (구매내역)리스트
+	@GetMapping("/board/purchase_list")
+	public String purchase_list(Model model, Principal principal, @AuthenticationPrincipal MemberContext ctx) {
 
-//	// 마이페이지 구매내역 상세보기
-//	@GetMapping("/board/purchase_view")
-//	public String product_view(ProductMainVO productMainVO, Model model) {
-//		log.info("product_view()..");
-//		log.info("product_view()..productMainVO" + productMainVO);
-//
-//		model.addAttribute("product_view", productMainService.get(productMainVO.getProduct_id()));
-//
-//		log.info("product_view_Get " + productMainService.get(productMainVO.getProduct_id()));
-//
-//		return "/product/product_view";
-//	}
+
+		log.info("purchase_list Principal.." + principal.getName());
+		log.info("purchase_list..: Principal" + ctx.getMemberVO().getMember_idx());
+		
+		log.info("Principal" + ctx.getMemberVO().getMember_idx());
+		
+		List<OrderVO> orderList = boardService.getOrderList(ctx.getMemberVO().getMember_idx());
+
+		model.addAttribute("purchase_list", orderList);
+		
+		log.info("List<orderVO> orderList"+orderList);
+
+		return "/board/purchase_list";
+	}
+
+
 
 	// 마이페이지 (1:1문의내역)리스트
 	@GetMapping("/board/my_view")
