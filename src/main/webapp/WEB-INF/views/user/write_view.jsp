@@ -58,7 +58,10 @@
     </div>
 </div>
 <script>
+
+
     $("input[type='file']").on("change", function(e) {
+        var fileName="";
 
         var formData = new FormData();
         var inputFile = $("input[name='file']");
@@ -66,9 +69,10 @@
 
         for(var i = 0; i < files.length; i++){
             formData.append("file", files[i]);
+            fileName = fileName + " " +  files[i].name; // + $(this).val().split("\\").pop(); 
         }
         
-       var fileName = $(this).val().split("\\").pop();
+        //fileName =fileName + ";" + $(this).val().split("\\").pop();
       $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
     </script>

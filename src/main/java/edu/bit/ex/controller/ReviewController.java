@@ -96,17 +96,9 @@ public class ReviewController {
 
     // 후기 write
     @PostMapping("/review/write")
-    public String writeReview(ProductMainVO productMainVO, FileVO fileVO,
-            @RequestParam("file") MultipartFile[] uploadFile) throws IOException {
+    public String writeReview(ProductMainVO productMainVO, @RequestParam("file") MultipartFile[] uploadFile)
+            throws IOException {
 
-        // if (uploadFile.length == 0) {
-        // productMainService.writeReview(productMainVO);
-
-        // String redirect = "redirect:/product_view?product_id=" +
-        // productMainVO.getProduct_id();
-        // // http://localhost:8282/product_view?product_id=6
-        // return redirect; // 다이렉트로 특정 상품 리스트로 가게
-        // } else {
         List<FileVO> fileList = new ArrayList<>();
 
         String uploadFolder = "C:\\Users\\devyun\\Workspace\\project_barny\\src\\main\\webapp\\WEB-INF\\upload";
@@ -130,6 +122,7 @@ public class ReviewController {
             if (multipartFile.getSize() == 0) {
                 continue;
             }
+            FileVO fileVO = new FileVO();
 
             fileVO.setImage_name(multipartFile.getOriginalFilename());
 
