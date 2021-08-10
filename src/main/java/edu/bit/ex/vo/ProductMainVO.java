@@ -15,6 +15,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class ProductMainVO {
+	// 상품보기
     private int product_id;
     private String product_name;
     private int price;

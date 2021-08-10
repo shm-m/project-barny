@@ -69,6 +69,9 @@
             </ul>
 
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                <li class="nav-item"><a class="nav-link" href="loginForm">로그인</a></li>
+                <li class="nav-item"><a class="nav-link" href="user/cart3">장바구니</a></li>
+                <li class="nav-item"><a class="nav-link" href="/cart3">장바구니</a></li>
 
                 <sec:authorize access="isAnonymous()">
                     <li class="nav-item"><a class="nav-link" href="/loginForm">로그인</a></li>

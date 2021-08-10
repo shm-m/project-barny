@@ -49,7 +49,7 @@ public class PrincipalDetailsService implements UserDetailsService {
                 .map(role -> new SimpleGrantedAuthority(role))
                 .collect(Collectors.toSet());
 
-        return new MemberContext(memberVO, cartList,collect);
+        return new MemberContext(memberVO, cartList, collect);
 
     }
 }

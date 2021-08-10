@@ -32,6 +32,95 @@
       		where product_id = #{product_id}
     	]]>
     </select>
+    
+ 	 <!-- 페이징 처리 / 검색처리 -->  
+    <select id="getTotalCount1" resultType="int">
+        <![CDATA[
+           	select count(*) 
+			from product 
+			where 
+           ]]>
+        <if test="keyword != null">
+            <include refid="criteria"></include>
+        </if> 
+        <![CDATA[  
+           category_num = 2
+        ]]>
+    </select>
+
+    <select id="getListWithPaging1" resultType="edu.bit.ex.vo.ProductMainVO">
+        <!-- ROWNUM: sql이 실행된 결과에 넘버링을 해줌 -->
+        <![CDATA[
+            SELECT * FROM ( 
+                   SELECT ROWNUM AS RNUM, A.* FROM (
+                            SELECT
+				           	product_id, product_name, price 
+							from product 
+                where
+                ]]>
+        <if test="keyword != null">
+            <include refid="criteria"></include>
+        </if> 
+        <![CDATA[ 
+                category_num = 2 order by product_id asc                  
+                ) A WHERE ROWNUM <= #{pageNum} * #{amount}
+              ) WHERE RNUM > (#{pageNum}-1) * #{amount}
+              ]]>
+
+    </select>
+    
+    <select id="getTotalCount2" resultType="int">
+        <![CDATA[
+           	select count(*) 
+			from product 
+			where 
+           ]]>
+        <if test="keyword != null">
+            <include refid="criteria"></include>
+        </if> 
+        <![CDATA[  
+           category_num = 3
+        ]]>
+    </select>
+
+    <select id="getListWithPaging2" resultType="edu.bit.ex.vo.ProductMainVO">
+        <!-- ROWNUM: sql이 실행된 결과에 넘버링을 해줌 -->
+        <![CDATA[
+            SELECT * FROM ( 
+                   SELECT ROWNUM AS RNUM, A.* FROM (
+                            SELECT
+                       		product_id, product_name, price 
+							from product
+                where
+                ]]>
+         <if test="keyword != null">
+            <include refid="criteria"></include>
+        </if> 
+        <![CDATA[ 
+                category_num = 3 order by product_id asc                  
+                ) A WHERE ROWNUM <= #{pageNum} * #{amount}
+              ) WHERE RNUM > (#{pageNum}-1) * #{amount}
+              ]]>
+
+    </select> 
+    
+    <!-- 검색 조건문 -->
+    <sql id="criteria">
+        <trim prefix="(" suffix=") AND" prefixOverrides="OR">
+            <foreach collection="typeArr" item="type">
+                <trim prefix="OR">
+                    <choose>
+                    <when test="type == 'C'.toString()">
+                        product_name like '%'||#{keyword}||'%' 
+                    </when>
+                    </choose>
+                </trim>
+            </foreach>
+        </trim>
+
+    </sql>
+    
+
 
     <!--후기 리스트-->
     <select id="getListReview" resultType="edu.bit.ex.vo.ProductMainVO">
