@@ -124,7 +124,7 @@
 	
 	<select id="orderRead" resultType="edu.bit.ex.vo.OrderDetailVO">
 	<![CDATA[
-		select o.order_detail_id, p.product_name, o.product_qty, o.order_id 
+		select o.order_detail_id, p.product_name, p.product_id , o.product_qty, o.order_id 
 		from order_detail o, product p where o.order_id = p.product_id and o.order_id= #{o.order_id}
 	]]>
 	</select>
