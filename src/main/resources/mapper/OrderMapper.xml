@@ -15,9 +15,10 @@
 <!-- 주문자 정보 불러오기 -->
     <select id="orderList" resultType="edu.bit.ex.vo.cart.OrderPaymentVO">
         <![CDATA[
-			SELECT MEMBER_IDX, MEMBER_ID, MEMBER_NAME, TEL, EMAIL, ADDRESS, POINT 
+ 			SELECT MEMBER_IDX, MEMBER_ID, MEMBER_NAME, TEL, EMAIL, ADDRESS, POINT 
 			FROM MEMBER
-			WHERE MEMBER_IDX = #{MEMBER_IDX}
+			WHERE MEMBER_IDX = #{MEMBER_IDX} 
+			
         ]]>
     </select>  
 

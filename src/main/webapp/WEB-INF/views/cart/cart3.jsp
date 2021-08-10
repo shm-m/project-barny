@@ -58,7 +58,7 @@
       </tr></br> --%>
       
     <h2>장바구니</h2>
-    <div class="row">
+    <%-- <div class="row">
         <div class="col-md-8">
             <form action="<c:url value='/user/order' />" method="post">
                 <input name="member_idx" type="hidden" value="<sec:authentication property="principal.cartList"/>"> 
@@ -69,7 +69,54 @@
                 <p><a class="btn btn-outline-dark btn-sm" href="order">주문하기</a></p>
             </div>
         </div>
-    </div>
+    </div> --%>
+    
+    <c:choose>
+    	<c:when test="${map.count == 0 }" >
+    	장바구니가 비었습니다.
+    	</c:when>
+    	
+    	<c:otherwise>
+        <form id="form1" name="form1" method="post"
+        action="${path}/shop/cart/update.do">
+            <table border="1" width="400px">    		
+    
+    <tr>
+      <td>사용자이름</td>
+      <td>상품이름</td>
+      <td>수량</td>
+      <td>가격</td>
+      <td>&nbsp;</td>
+      </tr></br>
+      
+      <c:foreach var="row" items="${map.cartList }">
+	      <tr aling="center">      
+	      <td>${row.product_name }</td> 
+	      <td><fmt:formatNumber value="${row.price }" pattern="#,###,###" /></td> 
+	      <td><input type="number" name="product_qty"  
+	      		style="width:30px;" value="<fmt:formatNumber value="${row.product_qty}" pattern="#,###,###" />">
+	            <input type="hidden" name="member_idx" value=${row.member_idx }></td>
+	      <td><fmt:formatNumber value="${row.money }" pattern="#,###,###" /></td>
+	      <td><a href="${path}/shop/cart/delete.do?cart_id=${row.member_idx}">[삭제]</a></td>                
+	      </tr>
+      </c:foreach> 
+      
+
+      <td colspan="5" align="right">
+          장바구니 금액 합계 :
+          <fmt:formatNumber value="${map.sumMoney}" pattern="#,###,###" /><br>
+          배송료 : ${map.fee}<br>
+          총합계 : <fmt:formatNumber value="${map.sum}" pattern="#,###,###" />
+      </td></tr>
+      </table>
+      <button id="btnUpdate">수정</button>
+      <button type="button" id="btnDelete">장바구니 비우기</button>
+	  </form>
+	</c:otherwise>
+	</c:choose>
+	
+	<button type = "button" id="btnList">상품목록</button>  
+
 
 </body>
 </html>

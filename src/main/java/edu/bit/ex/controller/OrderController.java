@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import edu.bit.ex.service.cart.CartService;
 import edu.bit.ex.service.cart.OrderService;
+import edu.bit.ex.service.member.MemberService;
 import edu.bit.ex.vo.MemberVO;
 import edu.bit.ex.vo.account.MemberContext;
 import edu.bit.ex.vo.cart.CartVO;
@@ -37,6 +38,8 @@ public class OrderController {
 	private CartService cartService;
 	@Autowired
 	private OrderService orderService;
+	@Autowired
+	private MemberService memberService;
 	
 	// 장바구니, 주문자 리스트 
 	@GetMapping("user/order")
@@ -57,6 +60,18 @@ public class OrderController {
 		
 		return "order/order";
 	}	
-		 	 	
+					
+/*		@ResponseBody
+		@RequestMapping(value="/verifyIamport/{imp_uid}")
+		public IamportResponse<Payment> paymentByImpUid(
+				Model model
+				, Locale locale
+				, HttpSession session
+				, @PathVariable(value= "imp_uid") String imp_uid) throws IamportResponseException, IOException
+		{	
+				return api.paymentByImpUid(imp_uid);
+		}
+		
+	}*/
 
 }

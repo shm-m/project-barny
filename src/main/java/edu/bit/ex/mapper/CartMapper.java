@@ -12,7 +12,8 @@ public interface CartMapper {
     void insert(CartVO cartVO); // 장바구니 담기
     void update(CartVO cartVO); // 장바구니 수정
     int delete(int member_idx); // 장바구니 삭제
-    // int delete(int product_id);
+    int deleteAll(int product_id); // 장바구니 개별삭제
+    int sumMoney(int member_idx); // 장바구니 합계
     
 	int countCart(int member_idx, String product_name); // 장바구니 동일상품 확인
 	void updateCart(CartVO cartVO); // 장바구니 동일상품 확인 시 수량수정

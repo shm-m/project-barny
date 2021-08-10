@@ -28,11 +28,18 @@
     </update>
 
 <!-- 장바구니 삭제 -->
-    <delete id="delete">
+    <delete id="deleteAll">
         <![CDATA[
            delete from cart where member_idx = #{member_idx}
         ]]>
     </delete>
+
+<!-- 장바구니 개별 삭제 -->
+    <delete id="delete">
+        <![CDATA[
+           delete from cart where product_id = #{product_id}
+        ]]>
+    </delete>    
     
 <!-- 장바구니에 동일한 상품 레코드 확인 -->
 	<select id="countCart" resultType="int">
@@ -53,6 +60,15 @@
 	<![CDATA[
 		select * from cart where member_idx = #{member_idx}
 	]]>
-	</select>	 
+	</select>
+	
+<!-- 장바구니 총 합계 -->
+    <select id="sumMoney" resultType="int">
+	<![CDATA[
+		select nvl(sum(price*product_qty), 0) from cart c, product p
+		where c.product_id = p.product_id and member_idx = #{member_idx}
+	]]>
+	</select>
+		 
 
 </mapper>
