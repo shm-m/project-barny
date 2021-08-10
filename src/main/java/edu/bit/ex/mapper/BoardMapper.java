@@ -52,4 +52,7 @@ public interface BoardMapper {
 	public List<OrderDetailVO> orderRead(int order_id);
 	
 	
+	// 회원 구독리스트
+	public List<OrderDetailVO> getPressList(int order_id);
+	
 }

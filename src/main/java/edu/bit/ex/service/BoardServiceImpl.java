@@ -144,4 +144,14 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	
+	//구독리스트
+	// 구매 상세 보기
+		@Override
+		public List<OrderDetailVO> getPressList(int order_id) {
+			log.info("service:get()..");
+			return boardMapper.getPressList(order_id);
+		}
 }
+	
+	
+

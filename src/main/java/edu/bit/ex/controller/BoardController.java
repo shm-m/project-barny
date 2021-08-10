@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import edu.bit.ex.service.BoardService;
 import edu.bit.ex.service.ProductMainService;
 import edu.bit.ex.vo.BoardVO;
+import edu.bit.ex.vo.OrderDetailVO;
 import edu.bit.ex.vo.OrderVO;
 import edu.bit.ex.vo.ProductMainVO;
 import edu.bit.ex.vo.account.MemberContext;
@@ -32,6 +33,26 @@ public class BoardController {
 		log.info("User name=======" + principal.getName());
 		
 		return "/board/my_page";
+	}
+	
+	
+	// 마이페이지 (구독)
+	@GetMapping("/board/press")
+	public String press(Model model, Principal principal, @AuthenticationPrincipal MemberContext ctx) {
+
+		
+		log.info("press Principal.." + principal.getName());
+		log.info("press..: Principal" + ctx.getMemberVO().getMember_idx());
+		
+		log.info("press" + ctx.getMemberVO().getMember_idx());
+		
+		List<OrderDetailVO> pressList = boardService.getPressList(ctx.getMemberVO().getMember_idx());
+
+		model.addAttribute("purchase_list", pressList);
+		
+		log.info("List<OrderDetailVO> orderList"+pressList);
+
+		return "/board/press";
 	}
 
 	// 마이페이지 (구매내역)리스트
