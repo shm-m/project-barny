@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html">
+<!DOCTYPE html>
 <html>
 <head>
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
@@ -68,7 +68,9 @@
 
                           $(result).each(function(){                                                          
                              htmls += '<tr>';
-                             
+                             htmls += '<a href="${pageContext.request.contextPath}/content_view?product_id=' + this.product_id + '">' + this.product_name + '</a></td>';
+
+
                              htmls += '<td>'+ this.order_detail_id + '</td>';
                              htmls += '<td>'+ this.order_id + '</td>';
                              htmls += '<td>'+ this.product_name + '</td>';
