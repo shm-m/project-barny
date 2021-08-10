@@ -22,42 +22,53 @@
      transition: height ease !important;
    }
 </style>
+
 <script type="text/javascript">
-   $(document).ready(function(){
+		$(document).ready(function () {
 
-      console.log("실행 되냐");
-      var aObj = this;
-      fnc_updateHit(aObj);
+			var searchForm = $("#searchForm");
+			$("#searchForm button").on("click", function (e) {
+				if (!searchForm.find("option:selected").val()) {
+					alert("검색 종류를 선택하세요");
+					return false;
+				}
+				if (!searchForm.find("input[name='keyword']").val()) {
+					alert("키워드를 입력하세요");
+					return false;
+				}
+				searchForm.find("input[name='pageNum']").val("1");
+				e.preventDefault();
 
-   });
+				searchForm.submit();
+
+			});
+		});
 </script>
-
 </head>
 <body>
-   <table id="list-table" width="500" cellpadding="0" cellspacing="0" border="1">
-      <form role="form" method="post">
-         <input type="hidden" name="product_id" value="${product_view.product_id}">
-
-         <tr>
-            <td> 상품이름 </td>
-            <td> ${product_view.product_name} </td>
-         </tr>
-         <tr>
-            <td> 가격 </td>
-            <td> ${product_view.price} 원</td>
-         </tr>
-
-      </form>
-      <div class="btn">
-         <p><a class="btn btn-outline-dark btn-sm" href="/user/cart3">장바구니에 담기</a></p>
-         <p><a class="btn btn-outline-dark btn-sm" href="/user/order">바로 구매하기</a></p>
-      </div>
-
-   </table>   
+    <div class="row">
+        <div class="col-md-4">
+            <img class="card-img-top" src="barny.png" alt="상품이미지">
+        </div>
+        <div class="col-md-8">
+            <h3>${product_view.product_name}</h3>
+            <p>${product_view.price} 원</p>
+            <hr class="my-4">
+            <%-- <form action="<c:url value='/user/cart3' />" method="post"> --%>
+                <div class="form-group">
+                    <label>수량</label>
+                    <input id="product_qty" name="amount" class="form-control" type="number" value="1" />
+                </div>
+                <input id="pro_id" name="product_id" type="hidden" value="${product_view.product_id}">
+                <button id="cart" type="button" class="cart btn-outline-dark btn-sm">장바구니</button>
+                <button type="submit" class="order btn-outline-dark btn-sm" href="/user/order">바로구매</button>
+            <!-- </form> -->
+        </div>
+    </div>
    <br>
-   <!--후기 list-->
-
    
+   
+<!--후기 list-->  
    <div class="table-wrap col-8">
       <table class="table myaccordion table-hover" id="accordion">
          <form role="form" method="post" id="reviewForm" action="${pageContext.request.contextPath}/product_view?product_id=${product_view.product_id}">
@@ -73,61 +84,30 @@
             </thead>
             <tbody>
             <c:forEach items="${list}" var="vo" varStatus="status">
-               <script type="text/javascript">
-                  function fnc_updateHit(aObj) {
-
-                     $('.collapsed${status.index}').click(function (event) {
-
-                        event.preventDefault(); //실행했을때 나머지 이벤은 내가 컨트롤 하겠다
-
-                        console.log($(aObj).attr("action"));
-
-                        var form = {
-                           board_id: $("#board_id${status.index}").val()					
-                          };
-
-                          //dataType: 'json',
-                          $.ajax({
-                            type: "PUT",
-                             url: $(aObj).attr("action"),
-                             cache: false,
-                             contentType: 'application/json; charset=utf-8',
-                             data: JSON.stringify(form), 
-                            success: function (result) {       
-                              if(result == "SUCCESS"){
-                                 console.log("조회수 1 증가");
-                              }					        
-                            },
-                            error: function (e) {
-                                console.log(e);
-                            }
-                        })	       
-
-                     });
-
-                  }
-               </script>
-               <tr data-toggle="collapse" data-target="#collapse${status.index}" aria-expanded="true" aria-controls="collapse${status.index}" class="collapsed" >
-                  <td id="board_id${status.index}" value="${vo.board_id}">${vo.board_id}</td>
+               <tr data-toggle="collapse" data-target="#collapse${status.index}" aria-expanded="true" aria-controls="collapse" class="collapsed" >
+                  <td id="board_id" value="${vo.board_id}">${vo.board_id}</td>
                   <td>${vo.b_title}</td>
                   <td>${vo.nickname}</td>
                   <td>${vo.b_date}</td>
-                  <td id="like_count${status.index}" value="${vo.like_count}">${vo.like_count}</td>
-                  <td id="b_hit" value="${vo.b_hit}">${vo.b_hit}</td>
+                  <td id="like_count${status.index}">${vo.like_count}</td>
+                  <td id="b_hit">${vo.b_hit}</td>
                   <i class="fa" aria-hidden="false"></i>
                </tr>
                <tr>
                   <td colspan="6" id="collapse${status.index}" class="collapse acc" data-parent="#accordion" aria-expanded="false">
                      <p>${vo.b_content}</p>
+                     <button value="${vo.board_id}" id="${status.index}" type="button" class="like_button">좋아요</button>
                   </td>
                </tr>
             </c:forEach>
          </tbody>
             
          </form>
-         <button type="button" onclick="location.href='/user/review/write_view/product_view?product_id=${product_view.product_id}'">후기 등록</button>
+        
       </table>
    </div>
+   <button type="button" onclick="location.href='/user/review/write_view/product_view?product_id=${product_view.product_id}'">후기 등록</button>
+
 <!--page-->
    <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
@@ -155,11 +135,110 @@
           </c:if>
       </ul>
   </nav>
+  
+<%--searching button--%>
+		<div class="table-responsive outline pt-4">
+			<form class="d-flex mb-3" id="searchForm" action="/notice" method='get' style="float: right;">
+				<select name='type' class="searching_option">
+					<option value=""<c:out value="${pageMaker.cri.type == null?'selected':''}"/>>--</option>
+					<option value="C"<c:out value="${pageMaker.cri.type eq 'C'?'selected':''}"/>>상품이름</option>
+				</select>
+				<input class="form-control_2 me-2" type='text' name='keyword'
+					   value='<c:out value="${pageMaker.cri.keyword}"/>'/>
+				<input class="form-control_2 me-2" type='hidden' name='pageNum'
+					   value='<c:out value="${pageMaker.cri.pageNum}"/>'/>
+				<input class="form-control_2 me-2" type='hidden' name='amount'
+					   value='<c:out value="${pageMaker.cri.amount}"/>'/>
+				<button class="searching_btn btn-outline-search" type="submit">검색</button>
+			</form>
+		</div>
+	</div>
+</div>
 
    <script src="/static/js/popper.js"></script>
+         
+</body>
 
+<!--조회수-->
 
+<script type="text/javascript">
+   $(document).ready(function(){
+
+      $('.collapsed').click(function (event) {
+
+         event.preventDefault(); //실행했을때 나머지 이벤은 내가 컨트롤 하겠다
+
+         var aObj = this;
+
+         console.log($('#reviewForm').attr("action"));
+         console.log($(aObj).children('#board_id').text());
+         
+         
+         var form = {
+            board_id: $(aObj).children('#board_id').text()					
+         };
+
+         //dataType: 'json',
+         $.ajax({
+            type: "PUT",
+            url: "/product_view",
+            cache: false,
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(form), 
+            success: function (result) {       
+                  $(aObj).children('#b_hit').text(result); 
+                  console.log("조회수 1 증가");
+            },
+            error: function (e) {
+               alert("실패");
+               console.log(e);
+            }
+         });	       
+
+      });
+   });
+</script>
    
+<script>
+   // 장바구니
+$(document).ready(function(){
+	   
+   	$("#cart").click(function(event) {
+   		
+   		event.preventDefault();
+   	 	  
+	 	  var product_id = $("#pro_id").val();
+	 	  var product_qty = $("#product_qty").val();
+	 	  
+	 	  
+	 	  var cart = {
+	 			 product_id : product_id,    			  
+	 			 product_qty : product_qty
+	 	  };
+	 	  
+	      //dataType: 'json',
+	         $.ajax({
+	            type: "GET",
+	            url: "/user/writeCart",
+	            cache: false,
+	            contentType: 'application/json; charset=utf-8',
+	            data: cart, 
+	            success: function (result) {   
+	            	alert("저장 성공");
+	            },
+	            error: function (e) {
+	               alert("실패");
+	               console.log(e);
+	            }
+	         });	       
+
+	});
+ });
+</script>
+
+   <script src="/static/js/reviewLike&Hit.js"></script>
+
+
       
 </body>
 </html>
