@@ -68,6 +68,9 @@ public interface BoardService {
 	public List<OrderVO> getOrderList(int member_idx);
 	// 주문내역 회원 내글 상세보기
 	public List<OrderDetailVO> getOrder(int order_id);
+
+	// 구독리스트
+	public List<OrderDetailVO> getPressList(int order_id);
 	
 	
 

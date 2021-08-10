@@ -31,27 +31,6 @@ public class PressController {
 	@Autowired
 	private ProductMainService productMainService;
 	
-//	@Autowired
-//	private MemberService memberService;
-
-//	// 마이페이지 (구매내역)리스트
-//	@ResponseBody
-//	@RequestMapping("/board/purchase_list")
-//	public List<OrderVO> purchase_list(Model model, Principal principal, @AuthenticationPrincipal MemberContext ctx) {
-//
-//		log.info("purchase_list() Principal.." + principal.getName());
-//		log.info("purchase_list()..: Principal" + ctx.getMemberVO().getMember_idx());
-//
-//		log.info("Principal" + ctx.getMemberVO().getMember_idx());
-//
-//		List<OrderVO> orderList = boardService.getOrderList(ctx.getMemberVO().getMember_idx());
-//
-//		model.addAttribute("purchase_list", orderList);
-//
-//		log.info("List<boardVO> orderList" + orderList);
-//
-//		return orderList;
-//	}
 	
 		// 마이페이지 (구매내역) 상세보기
 		@ResponseBody
@@ -71,18 +50,5 @@ public class PressController {
 		
 
 
-//
-//	// 마이페이지 (구독)
-//	@RequestMapping("/board/press")
-//	public String press(OrderVO orderVO, Model model) {
-//
-//
-//		log.info("purchase_list");
-//		log.info("purchase_list()..: orderVO" + orderVO);
-//
-//		model.addAttribute("purchase_list", boardService.getOrderList(orderVO));
-//
-//		return "/board/purchase_list";
-//	}
 
 }
