@@ -1,4 +1,3 @@
-@ -1,147 +1,147 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -144,11 +143,8 @@
         <div class="row mb-3 mt-5">
             <div class="card card-my_page col-4">
                 <div class="card-body my_page">
-<<<<<<< HEAD
                  <li><a id="press" href="press">구독 정보</a></li>
-=======
                 <a id="press" href="press">
->>>>>>> master
                     구독 정보
                 </div>
             </div>
