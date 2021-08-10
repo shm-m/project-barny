@@ -132,7 +132,7 @@
         <div class="row">
             <div class="col-3">
                 <img class="profile2"
-                     style="width: 200px; height: auto;"
+                     style="width: 85%; height: auto;"
                      src="/static/img/BARNY3.png"/>
             </div>
             <div class="col-1" style="border-left: solid 1px; border-left-color: #EBC24B; margin: 2rem 0; width: 1%;">
@@ -164,7 +164,7 @@
                     구매 내역
                 </div>
             </div>
-            <div class="card card-my_page col-4">
+            <div class="card card-my_page col-4" type="button" onclick="location.href='/board/my_view'">
                 <div class="card-body my_page">
                     문의 내역
                 </div>
@@ -183,7 +183,7 @@
             </div>
             <div class="card card-my_page col-4">
                 <div class="card-body my_page">
-                    개인정보수정
+                    개인 정보 수정
                 </div>
             </div>
         </div>
