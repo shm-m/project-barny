@@ -3,17 +3,17 @@
 <mapper namespace="edu.bit.ex.mapper.CartMapper">
 
 <!-- 장바구니 목록 출력 -->
-    <select id="getList" resultType="edu.bit.ex.vo.cart.CartVO">
+    <select id="cartList" resultType="edu.bit.ex.vo.cart.CartVO">
         <![CDATA[
-			SELECT DISTINCT M.MEMBER_IDX, P.PRODUCT_NAME, P.PRICE, C.PRODUCT_QTY
+			SELECT M.MEMBER_IDX, P.PRODUCT_ID, P.PRODUCT_NAME, P.PRICE, C.PRODUCT_QTY
 			FROM MEMBER M, PRODUCT P, CART C
-			WHERE M.MEMBER_IDX = C.MEMBER_IDX AND P.PRODUCT_ID = C.PRODUCT_ID AND M.MEMBER_IDX = #{MEMBER_IDX}
+			WHERE M.MEMBER_IDX = C.MEMBER_IDX AND P.PRODUCT_ID = C.PRODUCT_ID AND M.MEMBER_IDX = #{MEMBER_ID}
 			ORDER BY MEMBER_IDX ASC
         ]]>
-    </select>      
+    </select>    
 
 <!-- 장바구니 담기 -->   
-    <insert id="write">
+    <insert id="insert">
         <![CDATA[
         	INSERT INTO CART (member_idx, product_id, product_qty) 
         	VALUES(#{member_idx}, #{product_id}, #{product_qty})
@@ -28,11 +28,18 @@
     </update>
 
 <!-- 장바구니 삭제 -->
-    <delete id="delete">
+    <delete id="deleteAll">
         <![CDATA[
            delete from cart where member_idx = #{member_idx}
         ]]>
     </delete>
+
+<!-- 장바구니 개별 삭제 -->
+    <delete id="delete">
+        <![CDATA[
+           delete from cart where product_id = #{product_id}
+        ]]>
+    </delete>    
     
 <!-- 장바구니에 동일한 상품 레코드 확인 -->
 	<select id="countCart" resultType="int">
@@ -53,6 +60,15 @@
 	<![CDATA[
 		select * from cart where member_idx = #{member_idx}
 	]]>
-	</select>	 
+	</select>
+	
+<!-- 장바구니 총 합계 -->
+    <select id="sumMoney" resultType="int">
+	<![CDATA[
+		select nvl(sum(price*product_qty), 0) from cart c, product p
+		where c.product_id = p.product_id and member_idx = #{member_idx}
+	]]>
+	</select>
+		 
 
 </mapper>
