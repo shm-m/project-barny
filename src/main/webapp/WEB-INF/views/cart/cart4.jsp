@@ -48,7 +48,7 @@
     	  };
     	  
     	  $.ajax({
-    		  url : "/cart/cart4",
+    		  url : "/cart/cart3",
     		  type : "get",
     		  data : data,
     		  success : funtion(result) {
