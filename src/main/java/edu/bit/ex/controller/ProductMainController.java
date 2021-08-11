@@ -57,6 +57,7 @@ public class ProductMainController {
     public String product_view(ProductMainVO productMainVO, Model model, Criteria cri) {
         log.info("product_view()..");
         model.addAttribute("product_view", productMainService.get(productMainVO.getProduct_id()));
+        model.addAttribute("best_list", productMainService.getListReview(productMainVO.getProduct_id()));
 
         List<ProductMainVO> productList = productMainService.getListReview(cri, productMainVO.getProduct_id());
 
