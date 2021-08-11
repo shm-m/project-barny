@@ -29,7 +29,7 @@
          </tr>
           <tr>
             <td> 이메일 </td>
-            <td> <input type="text" name="email" value="${content_view.eamil}"></td>
+            <td> <input type="text" name="email" value="${content_view.email}"></td>
          </tr>
           <tr>
             <td> 결제수단 </td>
@@ -48,7 +48,7 @@
        
          <tr>
             <td> 생년월일 </td>
-            <td> <input type="text" name="date_of_birth" value="${content_view.date_of_birth}"></td>
+            <td> <input type="date" name="date_of_birth" value="${content_view.date_of_birth}"></td>
          </tr>
          
           <tr>
@@ -59,7 +59,7 @@
          
          
          <tr >
-            <td colspan="2"> <input type="submit" value="수정"> &nbsp;&nbsp; <a href="list">목록보기</a> &nbsp;&nbsp; <a id="a-delete" href="${pageContext.request.contextPath}/delete?bid=${content_view.bid}">삭제</a> &nbsp;&nbsp; <a href="reply_view?bid=${content_view.bid}">답변</a></td>
+            <td colspan="2"> <input type="submit" value="수정"> &nbsp;&nbsp; <a href="admin_member">목록보기</a> &nbsp;&nbsp; <a id="a-delete" href="${pageContext.request.contextPath}/admin/delete?member_idx=${content_view.member_idx}">삭제</a> &nbsp;&nbsp; <a href="reply_view?member_idx=${content_view.member_idx}">답변</a></td>
          </tr>
       </form>
    </table>   

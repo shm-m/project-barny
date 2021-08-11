@@ -11,34 +11,30 @@
 	
 	<table width="960" cellpadding="0" cellspacing="0" border="1">
 		<tr>
-			<td>아이디</td>
-			<td>비밀번호</td>
-			<td>회원번호</td>
-			<td>회원이름</td>
-			<td>닉네임</td>
-			<td>이메일</td>
-			<td>결제수단</td>
-			<td>전화번호</td>
-			<td>주소</td>
-			<td>생년월일</td>
-			<td>포인트</td>
+			<td>상품번호</td>
+			<td>상품명</td>
+			<td>재고량</td>
+			<td>가격</td>
+			<td>상품분류번호</td>
+			<td>이미지번호</td>
+			<td>이미지이름</td>
+			<td>확장자</td>
+			<td>경로</td>
 		</tr>
 		
-		<c:forEach items="${admin_member}" var="dto">
+		<c:forEach items="${admin_product}" var="dto">
 		<tr>
-			<td>${dto.member_id}</td>
-			<td>${dto.pw}</td>
-			<td>${dto.member_idx}</td>
+			<td>${dto.product_id}</td>
+			<td>${dto.product_name}</td>
+			<td>${dto.stock}</td>
 			<td>	
-				<a href="content_view?member_idx=${dto.member_idx}">${dto.member_name}</a> 
+				<a href="content_view?product_id=${dto.member_idx}">${dto.price}</a> 
 			</td>                             
-			<td>${dto.nickname}</td>
-			<td>${dto.email}</td>
-			<td>${dto.payment}</td>
-			<td>${dto.tel}</td>
-			<td>${dto.address}</td>
-			<td>${dto.date_of_birth}</td>
-			<td>${dto.point}</td>
+			<td>${dto.category_num}</td>
+			<td>${dto.image_id}</td>
+			<td>${dto.image_name}</td>
+			<td>${dto.image_extension}</td>
+			<td>${dto.image_route}</td>
 
 			<!-- <td>
 				<c:forEach begin="1" end="${vo.bindent}">-</c:forEach>

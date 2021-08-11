@@ -14,6 +14,11 @@
             <td> 아이디 </td>
             <td> <input type="text" name="member_id" size ="50"></td>
          </tr>
+
+         <tr>
+            <td> 비밀번호 </td>
+            <td> <input type="text" name="pw" size ="50"></td>
+         </tr>
          
          <tr>
             <td> 회원번호 </td>
@@ -52,7 +57,7 @@
          
           <tr>
             <td> 생년월일 </td>
-            <td> <input type="text" name="date_of_birth" size = "50"></td>
+            <td> <input type="text" name="date_of_birth_str" size = "50"></td>
          </tr>
          
           <tr>

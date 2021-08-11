@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import edu.bit.ex.mapper.AdminMemberMapper;
 import edu.bit.ex.vo.AdminMemberVO;
-import edu.bit.ex.vo.NoticeVO;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -28,11 +28,24 @@ public class AdminMemberServiceImpl implements AdminMemberService {
     }
     
    
-     //@Override public AdminMemberVO get(int member_idx) {
-     //log.info("service:get().."); 
+     @Override 
+     public AdminMemberVO get(int member_idx) {
+     log.info("service:get().."); 
      
-     //return adminMemberMapper.read(member_idx);
-     //}
+     return adminMemberMapper.read(member_idx);
+     }
+
+     @Override
+     public void modify(AdminMemberVO adminMemberVO){
+      log.info("service:modify()..");
+      adminMemberMapper.update(adminMemberVO);
+     }
+
+     @Override
+     public void delete(int member_idx){
+         log.info("service:delete()..");
+         adminMemberMapper.delete(member_idx);
+     }
       
       //@Override public void upHit(int member_idx) {
       //adminMemberMapper.updateHit(member_idx);

@@ -11,34 +11,27 @@
 	
 	<table width="960" cellpadding="0" cellspacing="0" border="1">
 		<tr>
-			<td>아이디</td>
-			<td>비밀번호</td>
+			<td>주문상세번호</td>
+			<td>총주문금액</td>
+			<td>주문날짜</td>
 			<td>회원번호</td>
 			<td>회원이름</td>
-			<td>닉네임</td>
-			<td>이메일</td>
 			<td>결제수단</td>
-			<td>전화번호</td>
-			<td>주소</td>
-			<td>생년월일</td>
-			<td>포인트</td>
+			<td>주문번호</td>	
 		</tr>
 		
-		<c:forEach items="${admin_member}" var="dto">
+		<c:forEach items="${admin_orders}" var="dto">
 		<tr>
-			<td>${dto.member_id}</td>
-			<td>${dto.pw}</td>
-			<td>${dto.member_idx}</td>
+			<td>${dto.order_detail_id}</td>
+			<td>${dto.total_price}</td>
 			<td>	
-				<a href="content_view?member_idx=${dto.member_idx}">${dto.member_name}</a> 
+				<a href="content_view_orders?member_idx=${dto.member_idx}">${dto.order_date}</a> 
 			</td>                             
-			<td>${dto.nickname}</td>
-			<td>${dto.email}</td>
+			<td>${dto.member_idx}</td>
+			<td>${dto.member_name}</td>
 			<td>${dto.payment}</td>
-			<td>${dto.tel}</td>
-			<td>${dto.address}</td>
-			<td>${dto.date_of_birth}</td>
-			<td>${dto.point}</td>
+			<td>${dto.order_id}</td>
+			
 
 			<!-- <td>
 				<c:forEach begin="1" end="${vo.bindent}">-</c:forEach>

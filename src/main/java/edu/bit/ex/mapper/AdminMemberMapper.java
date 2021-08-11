@@ -11,8 +11,11 @@ import edu.bit.ex.vo.AdminMemberVO;
 public interface AdminMemberMapper {
     public List<AdminMemberVO> getList();
     int insertMember(AdminMemberVO adminMemberVO);
-    //AdminMemberVO read(int member_idx);
+    AdminMemberVO read(int member_idx);
+    void update(AdminMemberVO adminMemberVO);
     
+    //void delete(AdminMemberVO adminMemberVO);
+    void delete(int memebr_idx);
      //void updateHit(int member_idx); 
      
      
