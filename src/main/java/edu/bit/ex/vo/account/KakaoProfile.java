@@ -1,5 +1,5 @@
 
-package edu.bit.ex.vo.account;
+/*package edu.bit.ex.vo.account;
 
 import lombok.Data;
 
@@ -48,6 +48,5 @@ public class KakaoProfile {
     }
 
 
-}
-
+}*/
 

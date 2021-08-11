@@ -69,8 +69,29 @@ public class AccountController {
     }
 
 
+    @GetMapping("/findId")
+    public String findId() {
+        return "account/findId";
+    }
 
 
+    @GetMapping("/findPw")
+    public String findPw() {
+        return "account/findPw";
+    }
+
+
+
+    @GetMapping("/f")
+    public String f() {
+        return "account/f";
+    }
+
+
+    @GetMapping("/joinForm2")
+    public String joinForm2() {
+        return "account/joinForm2";
+    }
 
 
 }
