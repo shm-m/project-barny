@@ -122,11 +122,20 @@
 	]]>
 	</select>
 	
-	<select id="orderRead" resultType="edu.bit.ex.vo.ProductMainVO">
+	<select id="orderRead" resultType="edu.bit.ex.vo.OrderDetailVO">
 	<![CDATA[
-		select * from product where product_id = #{product_id}
+		select o.order_detail_id, p.product_name, p.product_id , o.product_qty, o.order_id 
+		from order_detail o, product p where o.order_id = p.product_id and o.order_id= #{o.order_id}
 	]]>
 	</select>
+	
+	<select id="getPressList" resultType="edu.bit.ex.vo.OrderDetailVO">
+	<![CDATA[
+		select c.category_num, c.category_name,o.product_qty, o.order_id 
+		from order_detail o, product_category c where o.order_id = c.category_num and o.order_id = #{o.order_id}
+	]]>
+	</select>
+	
 	
 	
 </mapper>

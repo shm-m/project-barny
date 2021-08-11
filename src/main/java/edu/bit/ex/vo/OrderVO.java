@@ -17,5 +17,6 @@ public class OrderVO {
 	private Date order_date;
 	private int total_price;
 	private int member_idx;
+	private int product_id;
 	
 }

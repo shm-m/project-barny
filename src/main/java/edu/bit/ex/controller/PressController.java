@@ -1,43 +1,54 @@
 package edu.bit.ex.controller;
 
+import java.security.Principal;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.bit.ex.service.BoardService;
-import edu.bit.ex.vo.BoardVO;
+import edu.bit.ex.service.ProductMainService;
+import edu.bit.ex.vo.MemberVO;
+import edu.bit.ex.vo.OrderDetailVO;
 import edu.bit.ex.vo.OrderVO;
 import edu.bit.ex.vo.ProductMainVO;
-import lombok.experimental.ExtensionMethod;
+import edu.bit.ex.vo.account.MemberContext;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
+@AllArgsConstructor
 @Slf4j
 public class PressController {
-	
+
 	@Autowired
 	private BoardService boardService;
-
-
-	// 마이페이지 (구독)
-	@RequestMapping("/board/press")
-	public String press(OrderVO orderVO, Model model) {
-
-		orderVO.setMember_idx(44);
-
-		log.info("purchase_list");
-		log.info("purchase_list()..: orderVO" + orderVO);
-
-		model.addAttribute("purchase_list", boardService.getOrderList(orderVO));
-
-		return "/board/purchase_list";
-	}
-
 	
+	@Autowired
+	private ProductMainService productMainService;
+	
+	
+		// 마이페이지 (구매내역) 상세보기
+		@ResponseBody
+		@RequestMapping("/board/purchase_view")
+		public List<OrderDetailVO> purchase_view(OrderDetailVO orderDetailVO, Model model ){
+			log.info("purchase_view()..");
+			log.info("purchase_view()..OrderDetailVO" + orderDetailVO);
+
+			List<OrderDetailVO> orderDetailList = boardService.getOrder(orderDetailVO.getOrder_id());
+			
+			model.addAttribute("orderDetailList",orderDetailList );
+
+			log.info("purchase_view_Get " + boardService.getOrder(orderDetailVO.getOrder_id()));
+
+			return orderDetailList;
+		}
+		
+
+
 
 }
