@@ -62,23 +62,26 @@
                </tr>
             </thead>
             <tbody>
-            <c:forEach items="${list}" var="vo" varStatus="status">
-               <tr data-toggle="collapse" data-target="#collapse${status.index}" aria-expanded="true" aria-controls="collapse" class="collapsed" >
-                  <td id="board_id" value="${vo.board_id}">${vo.board_id}</td>
-                  <td>${vo.b_title}</td>
-                  <td>${vo.nickname}</td>
-                  <td>${vo.b_date}</td>
-                  <td id="like_count${status.index}">${vo.like_count}</td>
-                  <td id="b_hit">${vo.b_hit}</td>
-                  <i class="fa" aria-hidden="false"></i>
-               </tr>
-               <tr>
-                  <td colspan="6" id="collapse${status.index}" class="collapse acc" data-parent="#accordion" aria-expanded="false">
-                     <p>${vo.b_content}</p>
+               <c:forEach items="${list}" var="vo" varStatus="status">
+                  <tr data-toggle="collapse" data-target="#collapse${status.index}" aria-expanded="true" aria-controls="collapse" class="collapsed" >
+                     <td id="board_id" value="${vo.board_id}">${vo.board_id}</td>
+                     <td>${vo.b_title}</td>
+                     <td>${vo.nickname}</td>
+                     <td>${vo.b_date}</td>
+                     <td id="like_count${status.index}">${vo.like_count}</td>
+                     <td id="b_hit">${vo.b_hit}</td>
+                     <i class="fa" aria-hidden="false"></i>
+                  </tr>
+                  <tr>
+                     <td colspan="6" id="collapse${status.index}" class="collapse acc" data-parent="#accordion" aria-expanded="false">
+                        <p>${vo.b_content}</p>
+                        <c:forEach items="${vo.fileList}" var="image" varStatus="status">
+                           <p><img style="width: 200px; height: 200px;" src="${image.image_route}"></p>
+                        </c:forEach>
                      <button value="${vo.board_id}" id="${status.index}" type="button" class="like_button">좋아요</button>
                   </td>
                </tr>
-            </c:forEach>
+         </c:forEach>
          </tbody>
             
          </form>

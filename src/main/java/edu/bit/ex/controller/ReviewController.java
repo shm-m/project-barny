@@ -87,6 +87,7 @@ public class ReviewController {
         return entity;
     }
 
+    // make folder
     private String getFolder() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
@@ -101,7 +102,7 @@ public class ReviewController {
 
         List<FileVO> fileList = new ArrayList<>();
 
-        String uploadFolder = "C:\\Users\\devyun\\Workspace\\project_barny\\src\\main\\webapp\\WEB-INF\\upload";
+        String uploadFolder = "C:\\Users\\devyun\\Workspace\\project_barny\\src\\main\\resources\\static\\upload";
 
         String uploadFolderPath = getFolder();
 
@@ -160,8 +161,6 @@ public class ReviewController {
         String redirect = "redirect:/product_view?product_id=" + productMainVO.getProduct_id();
         // http://localhost:8282/product_view?product_id=6
         return redirect; // 다이렉트로 특정 상품 리스트로 가게
-
-        // }
 
     }
 

@@ -1,5 +1,8 @@
 package edu.bit.ex.controller;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import edu.bit.ex.page.Criteria;
 import edu.bit.ex.page.PageVO;
 import edu.bit.ex.service.ProductMainService;
+import edu.bit.ex.vo.FileVO;
 import edu.bit.ex.vo.ProductMainVO;
 import lombok.extern.slf4j.Slf4j;
 
@@ -54,7 +58,29 @@ public class ProductMainController {
     public String product_view(ProductMainVO productMainVO, Model model, Criteria cri) {
         log.info("product_view()..");
         model.addAttribute("product_view", productMainService.get(productMainVO.getProduct_id()));
-        model.addAttribute("list", productMainService.getListReview(cri, productMainVO.getProduct_id()));
+
+        List<ProductMainVO> productList = productMainService.getListReview(cri, productMainVO.getProduct_id());
+
+        model.addAttribute("list", productList);
+
+        for (int i = 0; i < productList.size(); i++) {
+
+            List<FileVO> imgList = productMainService.getFileList(productList.get(i).getBoard_id());
+
+            for (FileVO image : imgList) {
+                String path = (image.getImage_route()) + "\\" + (image.getImage_uuid());
+
+                String result = path.substring(path.indexOf("\\static"));
+
+                log.info(result);
+                image.setImage_route(result);
+            }
+
+            productList.get(i).setFileList(imgList);
+
+        }
+
+        log.info("productList" + productList);
 
         int total = productMainService.getTotal(cri, productMainVO.getProduct_id());
         model.addAttribute("pageMaker", new PageVO(cri, total));
