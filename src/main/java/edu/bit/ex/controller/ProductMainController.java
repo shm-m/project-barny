@@ -1,6 +1,5 @@
 package edu.bit.ex.controller;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,12 +67,13 @@ public class ProductMainController {
             List<FileVO> imgList = productMainService.getFileList(productList.get(i).getBoard_id());
 
             for (FileVO image : imgList) {
-                String path = (image.getImage_route()) + "\\" + (image.getImage_uuid());
+                // // String path = (image.getImage_route()) + "\\" + (image.getImage_uuid());
 
-                String result = path.substring(path.indexOf("\\static"));
+                // // String result = path.substring(path.indexOf("\\static"));
 
-                log.info(result);
-                image.setImage_route(result);
+                // // log.info(result);
+                // // image.setImage_route(result);
+                image.setImage_route("http://localhost:8282" + (image.getImage_route()));
             }
 
             productList.get(i).setFileList(imgList);

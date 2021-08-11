@@ -138,11 +138,19 @@ public class ReviewController {
             log.info("upload File SaveName: " + storedFileName);
             log.info("upload File Extension: " + fileExtension);
 
+            // 이미지 저장 주소 자르기
+            String path = uploadPath.getAbsolutePath() + "\\" + storedFileName;
+            String result = path.substring(path.indexOf("\\static"));
+            String result2 = result.replace("\\", "/");
+            // String result3 = "http://localhost:8282" + result2;
+
+            log.info("실제로 불러올 주소: " + result2);
+
             try {
                 File saveFile = new File(uploadPath, storedFileName);
                 multipartFile.transferTo(saveFile);
                 fileVO.setImage_uuid(storedFileName);
-                fileVO.setImage_route(uploadPath.getAbsolutePath());
+                fileVO.setImage_route(result2);
                 fileVO.setProduct_id(productMainVO.getProduct_id());
 
                 fileList.add(fileVO);
