@@ -1,9 +1,12 @@
 package edu.bit.ex.mapper;
 
 import edu.bit.ex.vo.MemberVO;
+import edu.bit.ex.vo.account.AuthVO;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 
 @Mapper
@@ -21,8 +24,14 @@ public interface MemberMapper {
 
     public int checkOverId(String member_id);
 
+    @Select("select * from AUTH where member_idx = #{member_idx}")
+    List<AuthVO> getAuthList(MemberVO memberVO);
 
     int checkEmail(String email);
 
     int checkNickname(String nickname);
+
+    public MemberVO findId(String email);
+
+    int changePw(String pw,String member_id,String email);
 }

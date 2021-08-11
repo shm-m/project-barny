@@ -5,9 +5,6 @@ import edu.bit.ex.controller.validator.MemberValidator;
 import edu.bit.ex.service.member.MemberService;
 import edu.bit.ex.vo.MemberVO;
 import lombok.RequiredArgsConstructor;
-
-import java.security.Principal;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -70,6 +67,34 @@ public class AccountController {
         model.addAttribute("memberVO", memberVO);
         return "account/joinForm";
     }
+
+
+
+    @GetMapping("/findId")
+    public String findId() {
+        return "account/findId";
+    }
+
+
+    @GetMapping("/findPw")
+    public String findPw() {
+        return "account/findPw";
+    }
+
+
+
+    @GetMapping("/f")
+    public String f() {
+        return "account/f";
+    }
+
+
+    @GetMapping("/joinForm2")
+    public String joinForm2() {
+        return "account/joinForm2";
+    }
+
+
     
 //    @GetMapping
 //    public String getMyinfo(Principal principal) {
@@ -77,5 +102,6 @@ public class AccountController {
 //        return principal.toString();
 //    }
 //    
+
 
 }
