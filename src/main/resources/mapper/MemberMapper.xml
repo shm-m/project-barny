@@ -73,6 +73,8 @@
         where nickname = #{nickname}
         ]]>
     </select>
+    
+
 
     <select id="findId" resultType="edu.bit.ex.vo.MemberVO">
 		<![CDATA[

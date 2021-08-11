@@ -69,6 +69,7 @@ public class AccountController {
     }
 
 
+
     @GetMapping("/findId")
     public String findId() {
         return "account/findId";
@@ -92,6 +93,15 @@ public class AccountController {
     public String joinForm2() {
         return "account/joinForm2";
     }
+
+
+    
+//    @GetMapping
+//    public String getMyinfo(Principal principal) {
+//    	
+//        return principal.toString();
+//    }
+//    
 
 
 }
