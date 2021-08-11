@@ -121,8 +121,11 @@
                     </div>
 
                     <div>
-                        <a href="#">
-                            아이디/비밀번호 찾기
+                        <a href="/findId">
+                            아이디 찾기 ⎮
+                        </a>
+                        <a href="/findPw">
+                            비밀번호 찾기
                         </a>
                     </div>
                 </div>
@@ -133,12 +136,12 @@
                     </button>
                 </div>
                 <div class="container-login100-form-btn m-t-17">
-                    <button class="other_login100-form-btn"button type="button" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=6cbc45879bd3c8e98d47a03bf45de7e1&redirect_uri=http://localhost:8282/auth/kakao/callback&response_type=code'">
+                  <button class="other_login100-form-btn"button type="button" onclick="location.href='/oauth2/authorization/kakao'">
                         KAKAO로 로그인
                     </button>
                 </div>
                 <div class="container-login100-form-btn m-t-17">
-                    <button class="other_login100-form-btn">
+                    <button class="other_login100-form-btn"  type="button" onclick="location.href='/oauth2/authorization/naver'">
                         NAVER로 로그인
                     </button>
                 </div>

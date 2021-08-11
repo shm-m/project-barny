@@ -27,7 +27,7 @@ public class MemberVO {
     private Date date_of_birth;
     private int point;
 
-    private List<AuthVO> authList = new ArrayList<>();
+    private List<AuthVO> authList ;
 
 
 }

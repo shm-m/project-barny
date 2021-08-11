@@ -31,23 +31,11 @@
 
     </resultMap>
     <!--option + command + l-->
-    <select id="getMember" resultMap="memberMap">
-      <![CDATA[
-        select m.member_id,
-               m.member_idx,
-               m.pw,
-               m.member_name,
-               m.nickname,
-               m.email,
-               m.payment,
-               m.tel,
-               m.address,
-               m.date_of_birth,
-               m.point,
-               a.role
-        from member m
-                 left outer join auth a on m.member_idx = a.member_idx
-        where m.member_id = #{member_id}
+    <select id="getMember"  resultMap="memberMap">
+     <![CDATA[
+        select *
+        from member, auth
+        where member.member_idx = auth.member_idx and member.member_id=#{username}
         ]]>
     </select>
 
@@ -88,5 +76,13 @@
     
 
 
+    <select id="findId" resultType="edu.bit.ex.vo.MemberVO">
+		<![CDATA[
+        select member_id,member_name from member where email=#{email}
+        ]]>
+	</select>
 
+    <update id="changePw">
+        update member set pw = #{pw} where member_id = #{member_id} and email = #{email}
+    </update>
 </mapper>
