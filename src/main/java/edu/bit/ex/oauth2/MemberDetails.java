@@ -8,6 +8,7 @@ import java.util.Map;
 import edu.bit.ex.service.member.MemberService;
 import edu.bit.ex.vo.MemberVO;
 import edu.bit.ex.vo.account.AuthVO;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -15,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import lombok.extern.slf4j.Slf4j;
 
+@Getter
 @Slf4j
 public class MemberDetails implements UserDetails, OAuth2User {
     // 시큐리티 세션에는 authentication만 들어갈 수 있다. authentication에는 userDetails와 oauth2가 들어갈
@@ -54,10 +56,10 @@ public class MemberDetails implements UserDetails, OAuth2User {
 
         return authorities;
     }
-
-    public MemberVO getmember() {
-        return memberVO;
-    }
+//
+//    public MemberVO getMember() {
+//        return memberVO;
+//    }
 
     @Override
     public String getPassword() { // 패스워드 리턴
