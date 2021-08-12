@@ -27,11 +27,8 @@
     <link rel="stylesheet" href="/static/table/css/owl.carousel.min.css"/>
 
 </head>
-<tbody>
 
 <body>
-			
-
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top"
      id="mainNav_2">
@@ -121,53 +118,24 @@
                     </tr>
                     </thead>
                     <tbody>
-                    
-		<c:choose>
-
-				<c:when test="${empty my_view}" >
-
-					<tr><td colspan="5" align="center">게시글이없습니다</td></tr>
-
-				</c:when> 
-
-				<c:when test="${!empty my_view}">
-
-
-				<c:forEach var="boardList" items="${my_view}">
-
-</c:forEach>
-</c:when>
-</c:choose>
-
-                    <c:forEach items="${my_view}" var="dto">
+                    <c:forEach items="${reply_view}" var="dto">
                         <tr style="font-weight: 400;">
                             <td style="width : 15%;">${dto.board_id}</td>
                             <td>
-                                <c:forEach begin="1" end="${dto.b_indent}">ㄴ</c:forEach>
-                                <a href="my_content_view?board_id=${dto.board_id}">${dto.b_title}</a></td>
+                                <c:forEach begin="1" end="${dto.b_indent}">-</c:forEach>
+                                <a href="reply_content_view?board_id=${dto.board_id}">${dto.b_title}</a></td>
                             <td style="width : 15%;">${dto.b_date}</td>
-                        </tr>
-                    </c:forEach>
-                    
-                    <c:forEach items="${reply_view}" var="dtt">
-                        <tr style="font-weight: 400;">
-                            <td style="width : 15%;">${dtt.board_id}</td>
-                            <td>
-                                <c:forEach begin="1" end="${dtt.b_indent}">ㄴ</c:forEach>
-                                <a href="reply_content_view?board_id=${dtt.board_id}">${dtt.b_title}</a></td>
-                            <td style="width : 15%;">${dtt.b_date}</td>
                         </tr>
                     </c:forEach>
                     </tbody>
                 </table>
-                <div class="line mb-3" style="border-bottom: solid 2px; border-bottom-color: #EBC24B;"></div>
-                <a class="btn-basic post mb-2" type="button" title="글쓰기" onclick="location.href='/board/my_view_write'">글쓰기</a>
+<!--                 <div class="line mb-3" style="border-bottom: solid 2px; border-bottom-color: #EBC24B;"></div> -->
+<!--                 <a class="btn-basic post mb-2" type="button" title="글쓰기" onclick="location.href='/board/my_view_write'">글쓰기</a> -->
             </div>
         </div>
 
     </div>
 </div>
-
 
 <!-- Footer-->
 <footer class="footer">

@@ -70,7 +70,19 @@ public interface BoardService {
 	public List<OrderDetailVO> getOrder(int order_id);
 
 	// 구독리스트
-	public List<OrderDetailVO> getPressList(int order_id);
+	public List<ProductMainVO> getPressList(int product_id);
+
+	public void review_remove2(int board_id);
+
+	public List<BoardVO> getReply(int board_id);
+
+
+	//구독삭제
+	public void update_modify(BoardVO boardVO);
+	
+	//리스트삭제
+	public void ship_remove(int ship_id);
+
 	
 	
 
