@@ -32,7 +32,9 @@
 	<link href="/static/main_page/css/styles.css" rel="stylesheet"/>
 	<link rel="stylesheet" href="/static/table/css/style.css"/>
 	<link rel="stylesheet" href="/static/table/css/owl.carousel.min.css"/>
-
+	
+	<!--JQuery-->
+	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 
 	<script type="text/javascript">
 		$(document).ready(function () {
