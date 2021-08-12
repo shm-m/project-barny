@@ -48,6 +48,35 @@
 
 
 <body>
+    <div class="row">
+        <div class="col-md-4">
+            <img class="card-img-top" src="barny.png" alt="상품이미지">
+        </div>
+        <div class="col-md-8">
+            <h3>${product_view.product_name}</h3>
+            <p>${product_view.price} 원</p>
+            <hr class="my-4">
+            <%-- <form action="<c:url value='/user/cart3' />" method="post"> --%>
+                <div class="form-group">
+                    <label>수량</label>
+                    <input id="product_qty" name="amount" class="form-control" type="number" value="1" />
+                </div>
+                <input id="pro_id" name="product_id" type="hidden" value="${product_view.product_id}">
+                <button id="cart" type="button" class="cart btn-outline-dark btn-sm">장바구니</button>
+                <button id="order" type="button" class="order btn-outline-dark btn-sm">바로구매</button>
+            <!-- </form> -->
+        </div>
+    </div>
+   <br>
+   
+<!-- 상품 상세 정보 -->
+<div class="row">
+    <div class="col-lg-4">            
+                <img class="detail-img" style="width: 100%; height: auto;" src="/static/img/002.png">                       
+                <img class="detail-img" style="width: 100%; height: auto;" src="/static/img/003.png">                      
+                <img class="detail-img" style="width: 100%; height: auto;" src="/static/img/004.png">           
+   </div>
+</div>   
    <div class="row">
        <div class="col-md-4">
            <img class="card-img-top" src="barny.png" alt="상품이미지">
@@ -67,13 +96,9 @@
            <!-- </form> -->
        </div>
    </div>
-  <br>
-  
+  <br>  
 
-
-   <!--best 후기-->
-
-   
+   <!--best 후기-->  
 
    <div class="table-wrap col-6">
       <p>베스트 후기</p>
@@ -114,9 +139,6 @@
    </div>
 
 </br>
-
-   <!--후기 list-->
-
    
 <!--후기 list-->  
    <div class="table-wrap col-8">
@@ -163,7 +185,7 @@
    <button type="button" onclick="location.href='/user/review/write_view/product_view?product_id=${product_view.product_id}'">후기 등록</button>
 
 <!--page-->
-   <nav aria-label="Page navigation example">
+    <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
           <c:if test="${pageMaker.prev}">
               <li class="page-item">
@@ -188,10 +210,10 @@
               </li>
           </c:if>
       </ul>
-  </nav>
+  </nav> 
   
 <%--searching button--%>
-		<div class="table-responsive outline pt-4">
+		<%-- <div class="table-responsive outline pt-4">
 			<form class="d-flex mb-3" id="searchForm" action="/notice" method='get' style="float: right;">
 				<select name='type' class="searching_option">
 					<option value=""<c:out value="${pageMaker.cri.type == null?'selected':''}"/>>--</option>
@@ -207,7 +229,7 @@
 			</form>
 		</div>
 	</div>
-</div>
+</div> --%>
 
    <script src="/static/js/popper.js"></script>
    <script src="/static/js/reviewLike&Hit.js"></script>
