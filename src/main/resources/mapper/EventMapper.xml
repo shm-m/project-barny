@@ -65,6 +65,7 @@
            delete from barny_board where board_id = #{board_id}
         ]]>
     </delete>
+
     <!-- 검색 조건문 -->
     <sql id="criteria">
         <trim prefix="(" suffix=") AND" prefixOverrides="OR">
@@ -83,4 +84,12 @@
         </trim>
 
     </sql>
+
+    <!--포인트 적립-->
+    <update id="updatePoint">
+        <![CDATA[
+        update member set point = point + #{point} where member_idx = #{member_idx}
+        ]]>
+    </update>
+
 </mapper>

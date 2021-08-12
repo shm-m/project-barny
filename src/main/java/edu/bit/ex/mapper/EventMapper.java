@@ -1,7 +1,9 @@
 package edu.bit.ex.mapper;
 
+import java.lang.reflect.Member;
 import java.util.List;
 
+import edu.bit.ex.vo.MemberVO;
 import org.apache.ibatis.annotations.Mapper;
 
 import edu.bit.ex.page.Criteria;
@@ -24,4 +26,6 @@ public interface EventMapper {
 
     List<EventVO> getListWithPaging(Criteria cri);
 
+    // Update Total Point
+    void updatePoint(MemberVO memberVO);
 }
