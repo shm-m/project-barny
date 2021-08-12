@@ -96,13 +96,9 @@
            <!-- </form> -->
        </div>
    </div>
-  <br>
-  
+  <br>  
 
-
-   <!--best 후기-->
-
-   
+   <!--best 후기-->  
 
    <div class="table-wrap col-6">
       <p>베스트 후기</p>
@@ -143,10 +139,6 @@
    </div>
 
 </br>
-
-   <!--후기 list-->
-
->>>>>>> b567b750a6eb19e412b28dddb7956d874e998790
    
 <!--후기 list-->  
    <div class="table-wrap col-8">
