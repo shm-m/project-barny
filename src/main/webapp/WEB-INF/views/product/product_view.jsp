@@ -48,10 +48,14 @@
 
    <!--best 후기-->
 
-   <div class="table-wrap col-4">
+   
+
+   <div class="table-wrap col-8">
+      <p>베스트 후기</p>
       <table class="table myaccordion table-hover" id="accordion">
             <thead>
                <tr>
+                  <th class="th-sm"></th>
                   <th class="th-sm">글번호</th>
                   <th class="th-sm">제목</th>
                   <th class="th-sm">작성자</th>
@@ -62,7 +66,8 @@
             <tbody>
                <c:forEach items="${best_list}" var="ff" varStatus="file">
                   <tr data-toggle="collapse" data-target="#best_collapse${file.index}" aria-expanded="true" aria-controls="collapse" class="collapsed">
-                     <td id="board_id" value="${ff.board_id}">${ff.board_id}</td>
+                     <td><img src="https://image.flaticon.com/icons/png/512/3712/3712572.png" style="height: 20px;"></td>
+                     <td id="board_id" value="${vo.board_id}">${ff.board_id}</td>
                      <td>${ff.b_title}</td>
                      <td>${ff.nickname}</td>
                      <td>${ff.b_date}</td>
