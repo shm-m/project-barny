@@ -49,8 +49,6 @@ public interface BoardMapper {
 	// 회원 구매내역
 	public List<OrderVO> getOrderList(int member_idx);
 	// 회원 구매내역 상세보기
-	public ProductMainVO orderRead(int product_id);
-
 	public List<OrderDetailVO> orderRead(int order_id);
 	
 	

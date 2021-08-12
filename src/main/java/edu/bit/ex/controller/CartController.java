@@ -44,8 +44,8 @@ public class CartController {
 	private CartService cartService;
 	
 	// 장바구니 리스트 
-	@GetMapping("/cart3")
-	public String cart3(Model model, Principal principal,@AuthenticationPrincipal MemberContext ctx) {
+	@GetMapping("/cart5")
+	public String cart5(Model model, Principal principal,@AuthenticationPrincipal MemberContext ctx) {
 
 		log.info("Principal" + principal.getName());
 		log.info("Principal" + ctx.getMemberVO().getMember_idx());
@@ -74,7 +74,7 @@ public class CartController {
 
 		  model.addAttribute("map", map);
 		  
-		return "cart/cart3";
+		return "cart/cart5";
 	}	
 	 	 	
 	// 장바구니 담기

@@ -137,11 +137,11 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	// 구매 상세 보기
-	@Override
-	public List<OrderDetailVO> getOrder(int order_id) {
-		log.info("service:get()..");
-		return boardMapper.orderRead(order_id);
-	}
+	   @Override
+	   public List<OrderDetailVO> getOrder(int order_id) {
+	      log.info("service:get()..");
+	      return boardMapper.orderRead(order_id);
+	   }
 	
 
 

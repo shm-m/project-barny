@@ -63,14 +63,6 @@ public interface BoardService {
 	public void review_remove(int board_id);
 	
 
-
-	// 주문내역/구매내역
-	public List<OrderVO> getOrderList(OrderVO orderVO);
-	// 주문내역 회원 내글 상세보기
-	public ProductMainVO getOrder(int product_id);
-	
-
-	
 	//주문내역/구매내역
 	public List<OrderVO> getOrderList(int member_idx);
 	// 주문내역 회원 내글 상세보기
