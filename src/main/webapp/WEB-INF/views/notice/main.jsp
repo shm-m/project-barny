@@ -61,7 +61,6 @@
 		$(function(){
 			var chkObj = document.getElementsByName("RowCheck");
 			var rowCnt = chkObj.length;
-
 			$("input[name='allCheck']").click(function(){
 				var chk_listArr = $("input[name='RowCheck']");
 				for (var i=0; i<chk_listArr.length; i++){
@@ -329,5 +328,6 @@
 
 <!-- AJax-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </body>
 </html>
