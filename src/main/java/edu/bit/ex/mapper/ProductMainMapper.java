@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import edu.bit.ex.page.Criteria;
+import edu.bit.ex.vo.FileVO;
 import edu.bit.ex.vo.ProductMainVO;
 
 @Mapper
@@ -33,6 +34,8 @@ public interface ProductMainMapper {
     int getTotalCount2(Criteria cri);
     List<ProductMainVO> getListWithPaging2(Criteria cri);
     
+
+    void insertList(FileVO fileVO);
 
     // 후기 페이징
 

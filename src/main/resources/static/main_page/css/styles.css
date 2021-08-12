@@ -247,7 +247,6 @@ sup {
 }
 
 a {
-  color: #ffc800;
   text-decoration: underline;
 }
 a:hover {
@@ -11338,6 +11337,7 @@ p {
     padding-top: 0rem;
     padding-bottom: 0rem;
     background-color: white;
+    box-shadow: 2px 2px 10px grey;
   }
   #mainNav.navbar-shrink .navbar-brand {
     font-size: 1.25em;
@@ -11408,6 +11408,7 @@ p {
     padding-bottom: 0rem;
     border: none;
     background-color: white;
+    box-shadow: 2px 2px 10px grey;
     transition: padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
   }
   #mainNav_2 .navbar-brand {

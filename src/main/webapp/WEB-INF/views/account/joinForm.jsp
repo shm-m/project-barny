@@ -3,7 +3,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-<!DOCTYPE html>
 <html lang="ko">
 <head>
     <title>Find your drink, Barny</title>
@@ -14,6 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
     <!--  <style> body {
@@ -41,7 +41,6 @@
 
 </head>
 <body>
-
 <!--joinForm-->
 <form:form name="frmMember" modelAttribute="memberVO" action="/join" method="POST">
     <div class="container pt-5" style="width:60%">
@@ -96,76 +95,103 @@
                             </div>
                         </div>
                     </div>
-                        <%--                    <div class="col-md-8 mb-3">--%>
-                        <%--                        <label for="email">이메일</label>--%>
-                        <%--                        <input type="email" class="form-control" id="email"--%>
-                        <%--                               name="email"--%>
-                        <%--                               value="${memberVO.email}"--%>
-                        <%--                               placeholder="you@example.com" required>--%>
-                        <%--                        <form:errors path="email" cssStyle="color: #721c24"/>--%>
-                        <%--                        </div>--%>
+
+
                     <div class="row">
-                        <div class="mb-3">
-                            <label for="email">이메일</label>
-                            <input type="email" class="form-control" id="email" name="email"
-                                   value="${memberVO.email}"
-                                   placeholder="you@example.com" required>
-                            <div class="invalid-feedback"> 이메일을 입력해주세요.</div>
-                        </div>
-                        <!--인증 메일 번호-->
-                        <div class="col-md-8 mb-3">
-                            <input class="form-control" disabled="disabled">
-                        </div>
-                        <!--인증 버튼-->
-                        <div class="col-md-4 mb-3" class="mail_check_button">
-                            <span>인증하기</span>
+                        <div class="col-md-8 mb-3 ">
+                            <div class="wrap-input100 validate-input m-b-16">
+                                <label for="email">이메일</label>
+                                <input type="email"
+                                       placeholder="E-Mail" name="email" id="email"
+                                       value="${memberVO.email}"
+                                       class="form-control" required>
+                                <form:errors path="email" cssStyle="color: #e80f25"/>
+
+                            </div>
                         </div>
 
+                        <div class="col-md-3 mb-4 pt-4">
+                            <input type="button" value="인증하기" id="sendMail" class="btn btn-outline-primary btn-s"> <br>
+                        </div>
+                        <div class="col-md-8 mb-3 ">
+                            <input type="text" placeholder="인증 키 입력" style="display: none;"
+                                   class="compare form-control" required><span class="compare-text"
+                                                                      style="display: none">불일치</span>
+                        </div>
                     </div>
 
 
-                    <div class="mb-3">
-                        <label for="address">주소</label>
-                        <input type="text" class="form-control" id="address"
-                               value="${memberVO.address}"
-                               name="address"
-                               placeholder="서울특별시 종로구" required>
-                        <div class="invalid-feedback">
-                            주소를 입력해주세요.
-                        </div>
-                    </div>
                     <div class="row">
+                        <label for="postcode">주소</label>
                         <div class="col-md-8 mb-3">
-                            <label for="tel">전화번호</label>
-                            <input type="tel" class="form-control"
-                                   value="${memberVO.tel}"
-                                   placeholder="010-0000-0000"
-                                   id="tel" name="tel">
-                            <div class="invalid-feedback"> 전화번호를 입력해주세요.</div>
+                            <input type="text" class="form-control" id="postcode" name="address" placeholder="우편번호">
                         </div>
-                        <div class="col-md-4 mb-3"><label for="date_of_birth">생년월일</label>
-                            <input type="date"
-                                   class="form-control"
-                                   value="${memberVO.date_of_birth}"
-                                   id="date_of_birth"
-                                   name="date_of_birth"
-                                   placeholder=""
-                                   required>
-                            <div class="invalid-feedback"> 생년월일을 입력해주세요.</div>
+                        <div class="col-md-4 mb-3">
+                            <input type="button" class="btn btn-outline-primary btn-s"
+                                   onclick="execDaumPostcode()"
+                                   value="우편번호 찾기"><br>
+                        </div>
+                        <div class="col-md-8 mb-3">
+                            <input type="text" class="form-control" id="roadAddress"
+                                   value="${memberVO.address}"
+                                   name="address"
+                                   placeholder="도로명주소 " required>
+                            <div class="invalid-feedback">
+                                주소를 입력해주세요.
+                            </div>
+                        </div>
+                        <div class="col-md-8 mb-3 ">
+                            <input type="text" class="form-control" id="detailAddress"
+                                   value="${memberVO.address}"
+                                   name="address"
+                                   placeholder="상세주소" required>
+                            <div class="invalid-feedback">
+                                주소를 입력해주세요.
+                            </div>
+
+                            <input type="hidden" id="jibunAddress" placeholder="지번주소"></br>
+                            <span id="guide" style="color:#6A6666;display:none"></span>
+                            <input type="hidden" id="extraAddress" placeholder="참고항목">
                         </div>
                     </div>
-                    <hr class="mb-4">
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input"
-                               id="aggrement" required>
-                        <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label></div>
-                    <div class="mb-4"></div>
-                    <button class="btn btn-primary btn-lg btn-block" type="submit">가입 완료</button>
-                </form>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-8 mb-3">
+                <label for="tel">전화번호</label>
+                <input type="tel" class="form-control"
+                       value="${memberVO.tel}"
+                       placeholder="010-0000-0000"
+                       id="tel" name="tel">
+                <div class="invalid-feedback"> 전화번호를 입력해주세요.</div>
+            </div>
+            <div class="col-md-4 mb-3"><label for="date_of_birth">생년월일</label>
+                <input type="date"
+                       class="form-control"
+                       value="${memberVO.date_of_birth}"
+                       id="date_of_birth"
+                       name="date_of_birth"
+                       placeholder=""
+                       required>
+                <div class="invalid-feedback"> 생년월일을 입력해주세요.</div>
             </div>
         </div>
 
+
+        <hr class="mb-4">
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input"
+                   id="aggrement" required>
+            <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label></div>
+        <div class="mb-4"></div>
+        <button class="btn btn-primary btn-lg btn-block" id="submit-btn" type="submit">가입 완료</button>
+        </form>
     </div>
+    </div>
+
+    </div>
+
 
     <script> window.addEventListener('load', () => {
         const forms = document.getElementsByClassName('validation-form');
@@ -180,19 +206,21 @@
         });
     }, false); </script>
 
-    <script>
 
-        /* 인증번호 이메일 전송 */
-        $(".mail_check_button").click(function () {
-
-        });
-    </script>
 </form:form>
+
+
+
+
 </body>
 
 
-<!--JS-->
+<!—JS—>
+
+<script src="/static/join_page/js/join.js"></script>
 <script src="/static/login/js/main.js"></script>
+<script src="/static/join_page/js/find-address.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="/static/login/vendor/animsition/js/animsition.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -203,5 +231,5 @@
 <script src="/static/login/vendor/countdowntime/countdowntime.js"></script>
 
 
-</body>
+
 </html>

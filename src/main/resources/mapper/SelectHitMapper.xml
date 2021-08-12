@@ -10,4 +10,19 @@
     	]]>
 	</select>
 
+	<!--후기 라이크 업뎃-->
+	<update id="updateLike">
+		<![CDATA[
+		update b_like set like_count = like_count + 1 where board_id = #{board_id}
+		]]>
+	</update>
+	<!--후기 라이크 받아오기-->
+	<select id="getLike" resultType="int">
+		<![CDATA[
+      		select like_count
+      		from b_like
+      		where board_id = #{board_id}
+    	]]>
+	</select>
+
 </mapper>

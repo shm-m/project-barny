@@ -1,10 +1,10 @@
 package edu.bit.ex.service.member;
 
+
 import edu.bit.ex.mapper.MemberMapper;
 import edu.bit.ex.vo.MemberVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -20,28 +20,6 @@ public class MemberServiceImpl implements MemberService {
     private final PasswordEncoder passwordEncoder;
     @Autowired
     private MemberMapper memberMapper;
-
-
-
-   /* @Override
-    public MemberVO getMember(String member_id) {
-        return memberMapper.getMember(member_id);
-    }
-
-    @Override
-    public int insertUser(MemberVO memberVO) {
-        return 0;
-    }
-
-    @Override
-    public void insertAuthorities(MemberVO memberVO) {
-
-    }
-
-    @Override
-    public int getMemberIdx(MemberVO memberVO) {
-        return 0;
-    }*/
 
 
     @Override
@@ -71,7 +49,7 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public boolean emailCheck(String email) {
-        return memberMapper.checkEmail(email) ==0;
+        return memberMapper.checkEmail(email) == 0;
     }
 
     @Override
@@ -81,7 +59,7 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public boolean checkValidateNickname(String nickname) {
-        return memberMapper.checkNickname(nickname)==0;
+        return memberMapper.checkNickname(nickname) == 0;
     }
 
     //==  id 중복검사 구현 ==//
@@ -91,5 +69,20 @@ public class MemberServiceImpl implements MemberService {
         return memberMapper.checkOverId(member_id) == 0;
     }
 
-}
+    @Override
+    public MemberVO findId(String member_id) {
+        return memberMapper.findId(member_id);
+    }
 
+
+    @Override
+    public int changePw(String pw, String member_id, String email) {
+
+        System.out.println("pw" +pw);
+        System.out.println("member_id = " + member_id);
+        System.out.println("email = " + email);
+        return memberMapper.changePw(pw,member_id,email);
+    }
+
+
+}

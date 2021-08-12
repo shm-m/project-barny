@@ -47,9 +47,10 @@
             <div class="form-group">
                 <label for="inputFile" class="col-form-label">첨부 파일</label>
                     <div class="custom-file" id="inputFile">
-                        <input name="file" type="file" class="custom-file-input" id="customFile">
+                        <input name="file" type="file" class="custom-file-input" id="customFile" accept="image/png, image/jpeg" multiple>
                         <label class="custom-file-label" for="customFile">파일을 선택해 주세요.</label>
                     </div>
+                    
             </div>
             <a href="/product_view?product_id=${product_view.product_id}" role="button" class="btn btn-secondary">취소</a>
             <input type="submit" class="btn btn-primary" value="등록"></input>
@@ -57,8 +58,21 @@
     </div>
 </div>
 <script>
-    $(".custom-file-input").on("change", function() {
-      var fileName = $(this).val().split("\\").pop();
+
+
+    $("input[type='file']").on("change", function(e) {
+        var fileName="";
+
+        var formData = new FormData();
+        var inputFile = $("input[name='file']");
+        var files = inputFile[0].files;
+
+        for(var i = 0; i < files.length; i++){
+            formData.append("file", files[i]);
+            fileName = fileName + " " +  files[i].name; // + $(this).val().split("\\").pop(); 
+        }
+        
+        //fileName =fileName + ";" + $(this).val().split("\\").pop();
       $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
     </script>

@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import edu.bit.ex.vo.BoardVO;
+import edu.bit.ex.vo.MemberVO;
+import edu.bit.ex.vo.OrderDetailVO;
 import edu.bit.ex.vo.OrderVO;
 import edu.bit.ex.vo.ProductMainVO;
 
@@ -45,9 +47,14 @@ public interface BoardMapper {
 	public void review_delete(int board_id);
 	
 	// 회원 구매내역
-	public List<OrderVO> getOrderList(OrderVO orderVO);
+	public List<OrderVO> getOrderList(int member_idx);
 	// 회원 구매내역 상세보기
 	public ProductMainVO orderRead(int product_id);
 
+	public List<OrderDetailVO> orderRead(int order_id);
+	
+	
+	// 회원 구독리스트
+	public List<OrderDetailVO> getPressList(int order_id);
 	
 }
