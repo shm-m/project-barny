@@ -22,29 +22,54 @@
      transition: height ease !important;
    }
 </style>
+
+<script type="text/javascript">
+		$(document).ready(function () {
+
+			var searchForm = $("#searchForm");
+			$("#searchForm button").on("click", function (e) {
+				if (!searchForm.find("option:selected").val()) {
+					alert("검색 종류를 선택하세요");
+					return false;
+				}
+				if (!searchForm.find("input[name='keyword']").val()) {
+					alert("키워드를 입력하세요");
+					return false;
+				}
+				searchForm.find("input[name='pageNum']").val("1");
+				e.preventDefault();
+
+				searchForm.submit();
+
+			});
+		});
+</script>
 </head>
 
-   <table id="list-table" width="500" cellpadding="0" cellspacing="0" border="1">
-      <form role="form" method="post">
-         <input type="hidden" name="product_id" value="${product_view.product_id}">
 
-         <tr>
-            <td> 상품이름 </td>
-            <td> ${product_view.product_name} </td>
-         </tr>
-         <tr>
-            <td> 가격 </td>
-            <td> ${product_view.price} 원</td>
-         </tr>
+<body>
+   <div class="row">
+       <div class="col-md-4">
+           <img class="card-img-top" src="barny.png" alt="상품이미지">
+       </div>
+       <div class="col-md-8">
+           <h3>${product_view.product_name}</h3>
+           <p>${product_view.price} 원</p>
+           <hr class="my-4">
+           <%-- <form action="<c:url value='/user/cart3' />" method="post"> --%>
+               <div class="form-group">
+                   <label>수량</label>
+                   <input id="product_qty" name="amount" class="form-control" type="number" value="1" />
+               </div>
+               <input id="pro_id" name="product_id" type="hidden" value="${product_view.product_id}">
+               <button id="cart" type="button" class="cart btn-outline-dark btn-sm">장바구니</button>
+               <button type="submit" class="order btn-outline-dark btn-sm" href="/user/order">바로구매</button>
+           <!-- </form> -->
+       </div>
+   </div>
+  <br>
+  
 
-      </form>
-      <div class="btn">
-         <p><a class="btn btn-outline-dark btn-sm" href="/user/cart3">장바구니에 담기</a></p>
-         <p><a class="btn btn-outline-dark btn-sm" href="/user/order">바로 구매하기</a></p>
-      </div>
-
-   </table>   
-   <br>
 
    <!--best 후기-->
 
@@ -93,6 +118,7 @@
    <!--후기 list-->
 
    
+<!--후기 list-->  
    <div class="table-wrap col-8">
       <table class="table myaccordion table-hover" id="accordion">
          <form role="form" method="post" id="reviewForm" action="${pageContext.request.contextPath}/product_view?product_id=${product_view.product_id}">
@@ -135,6 +161,7 @@
       </table>
    </div>
    <button type="button" onclick="location.href='/user/review/write_view/product_view?product_id=${product_view.product_id}'">후기 등록</button>
+
 <!--page-->
    <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
@@ -162,10 +189,66 @@
           </c:if>
       </ul>
   </nav>
+  
+<%--searching button--%>
+		<div class="table-responsive outline pt-4">
+			<form class="d-flex mb-3" id="searchForm" action="/notice" method='get' style="float: right;">
+				<select name='type' class="searching_option">
+					<option value=""<c:out value="${pageMaker.cri.type == null?'selected':''}"/>>--</option>
+					<option value="C"<c:out value="${pageMaker.cri.type eq 'C'?'selected':''}"/>>상품이름</option>
+				</select>
+				<input class="form-control_2 me-2" type='text' name='keyword'
+					   value='<c:out value="${pageMaker.cri.keyword}"/>'/>
+				<input class="form-control_2 me-2" type='hidden' name='pageNum'
+					   value='<c:out value="${pageMaker.cri.pageNum}"/>'/>
+				<input class="form-control_2 me-2" type='hidden' name='amount'
+					   value='<c:out value="${pageMaker.cri.amount}"/>'/>
+				<button class="searching_btn btn-outline-search" type="submit">검색</button>
+			</form>
+		</div>
+	</div>
+</div>
 
    <script src="/static/js/popper.js"></script>
    <script src="/static/js/reviewLike&Hit.js"></script>
-   
-</body>
+         
+<script>
+   // 장바구니
+$(document).ready(function(){
+	   
+   	$("#cart").click(function(event) {
+   		
+   		event.preventDefault();
+   	 	  
+	 	  var product_id = $("#pro_id").val();
+	 	  var product_qty = $("#product_qty").val();
+	 	  
+	 	  
+	 	  var cart = {
+	 			 product_id : product_id,    			  
+	 			 product_qty : product_qty
+	 	  };
+	 	  
+	      //dataType: 'json',
+	         $.ajax({
+	            type: "GET",
+	            url: "/user/writeCart",
+	            cache: false,
+	            contentType: 'application/json; charset=utf-8',
+	            data: cart, 
+	            success: function (result) {   
+	            	alert("저장 성공");
+	            },
+	            error: function (e) {
+	               alert("실패");
+	               console.log(e);
+	            }
+	         });	       
 
+	});
+ });
+</script>
+
+
+</body>
 </html>

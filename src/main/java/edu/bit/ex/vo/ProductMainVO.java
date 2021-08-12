@@ -15,10 +15,12 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class ProductMainVO {
+	// 상품보기
     private int product_id;
     private String product_name;
     private int price;
     private int category_num;
+    private int subscribe;
 
     // 아래는 후기
     private int board_id;
@@ -30,6 +32,7 @@ public class ProductMainVO {
     private int like_count;
     private String nickname;
     private int member_idx;
+    
 
     // 첨부파일
     private List<FileVO> fileList;

@@ -54,8 +54,6 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.insertBoard(boardVO);
 	}
 
-	
-	
 	// 회원 마이페이지 게시글 부분
 	// 1:1문의
 	@Override
@@ -127,9 +125,6 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.review_delete(board_id);
 	}
 
-	
-	
-	
 	// 회원구매내역
 	@Override
 	public List<OrderVO> getOrderList(int member_idx) {
@@ -142,6 +137,37 @@ public class BoardServiceImpl implements BoardService {
 		log.info("service:get()..");
 		return boardMapper.orderRead(order_id);
 	}
-	
-	
+
+	// 구독리스트
+	@Override
+	public List<ProductMainVO> getPressList(int product_id) {
+		log.info("service:get()..");
+		return boardMapper.getPressList(product_id);
+	}
+
+	@Override
+	public void review_remove2(int board_id) {
+		log.info("service:review_remove()..");
+		boardMapper.like_delete(board_id);
+
+	}
+
+	@Override
+	public List<BoardVO> getReply(int board_id) {
+		return boardMapper.getReply(board_id);
+	}
+
+	// 구독취소
+	@Override
+	public void update_modify(BoardVO boardVO) {
+		boardMapper.update_modify(boardVO);
+
+	}
+
+	@Override
+	public void ship_remove(int ship_id) {
+		log.info("service:ship_remove().." + ship_id);
+		boardMapper.ship_remove(ship_id);
+	}
+
 }

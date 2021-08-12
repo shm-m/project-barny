@@ -21,9 +21,19 @@ public interface ProductMainMapper {
 
     List<ProductMainVO> getListReview(int product_id); // 상품 당 후기
 
-    void updateHit(ProductMainVO productMainVO);
+    void updateHit(ProductMainVO productMainVO); // 조회수
 
-    void writeReview(ProductMainVO productMainVO);
+    void writeReview(ProductMainVO productMainVO); // 후기 추가
+    
+    // 페이징 처리 함수
+    // 술
+    int getTotalCount1(Criteria cri);
+    List<ProductMainVO> getListWithPaging1(Criteria cri);
+    
+    // 안주
+    int getTotalCount2(Criteria cri);
+    List<ProductMainVO> getListWithPaging2(Criteria cri);
+    
 
     void insertList(FileVO fileVO);
 

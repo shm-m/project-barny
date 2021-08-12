@@ -147,6 +147,13 @@
 
 		</dependency>
 
+
+		<!-- OAuth2 login -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-client</artifactId>
+		</dependency>
+
 		<!--Multipart (upload & download)-->
 		<dependency>
 			<groupId>commons-io</groupId>
@@ -159,6 +166,7 @@
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.4</version>
 		</dependency>
+
 
 	</dependencies>
 
