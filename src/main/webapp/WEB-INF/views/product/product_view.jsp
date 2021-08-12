@@ -50,27 +50,25 @@
 
    
 
-   <div class="table-wrap col-8">
+   <div class="table-wrap col-6">
       <p>베스트 후기</p>
       <table class="table myaccordion table-hover" id="accordion">
             <thead>
                <tr>
+                  <th class="th-sm" style="text-indent:-10000px;">글번호</th>
                   <th class="th-sm"></th>
-                  <th class="th-sm">글번호</th>
                   <th class="th-sm">제목</th>
                   <th class="th-sm">작성자</th>
-                  <th class="th-sm">작성일</th>
                   <th class="th-sm">좋아요</th>
                </tr>
             </thead>
             <tbody>
                <c:forEach items="${best_list}" var="ff" varStatus="file">
                   <tr data-toggle="collapse" data-target="#best_collapse${file.index}" aria-expanded="true" aria-controls="collapse" class="collapsed">
+                     <td id="board_id" value="${vo.board_id}" style="text-indent:-10000px;">${ff.board_id}</td>
                      <td><img src="https://image.flaticon.com/icons/png/512/3712/3712572.png" style="height: 20px;"></td>
-                     <td id="board_id" value="${vo.board_id}">${ff.board_id}</td>
                      <td>${ff.b_title}</td>
                      <td>${ff.nickname}</td>
-                     <td>${ff.b_date}</td>
                      <td id="like_count${status.index}">${ff.like_count}</td>
                      <i class="fa" aria-hidden="false"></i>
                   </tr>
