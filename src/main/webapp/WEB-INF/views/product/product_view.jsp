@@ -61,12 +61,20 @@
                 </div>
                 <input id="pro_id" name="product_id" type="hidden" value="${product_view.product_id}">
                 <button id="cart" type="button" class="cart btn-outline-dark btn-sm">장바구니</button>
-                <button type="submit" class="order btn-outline-dark btn-sm" href="/user/order">바로구매</button>
+                <button id="order" type="button" class="order btn-outline-dark btn-sm">바로구매</button>
             <!-- </form> -->
         </div>
     </div>
    <br>
    
+<!-- 상품 상세 정보 -->
+<div class="row">
+    <div class="col-lg-4">            
+                <img class="detail-img" style="width: 100%; height: auto;" src="/static/img/002.png">                       
+                <img class="detail-img" style="width: 100%; height: auto;" src="/static/img/003.png">                      
+                <img class="detail-img" style="width: 100%; height: auto;" src="/static/img/004.png">           
+   </div>
+</div>   
    
 <!--후기 list-->  
    <div class="table-wrap col-8">
@@ -107,7 +115,7 @@
    </div>
    
 <!--page-->
-   <nav aria-label="Page navigation example">
+    <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
           <c:if test="${pageMaker.prev}">
               <li class="page-item">
@@ -132,10 +140,10 @@
               </li>
           </c:if>
       </ul>
-  </nav>
+  </nav> 
   
 <%--searching button--%>
-		<div class="table-responsive outline pt-4">
+		<%-- <div class="table-responsive outline pt-4">
 			<form class="d-flex mb-3" id="searchForm" action="/notice" method='get' style="float: right;">
 				<select name='type' class="searching_option">
 					<option value=""<c:out value="${pageMaker.cri.type == null?'selected':''}"/>>--</option>
@@ -151,7 +159,7 @@
 			</form>
 		</div>
 	</div>
-</div>
+</div> --%>
 
    <script src="/static/js/popper.js"></script>
    

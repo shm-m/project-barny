@@ -62,10 +62,13 @@ public interface BoardService {
 	
 
 
-	//주문내역/구매내역
+	// 주문내역/구매내역
 	public List<OrderVO> getOrderList(OrderVO orderVO);
 	// 주문내역 회원 내글 상세보기
 	public ProductMainVO getOrder(int product_id);
+	
+
+	
 
 
 

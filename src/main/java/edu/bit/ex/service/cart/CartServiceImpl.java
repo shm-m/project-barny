@@ -15,10 +15,10 @@ public class CartServiceImpl implements CartService {
     @Autowired
     private CartMapper cartMapper;
     
-	@Override
-	public List<CartVO> cartMoney() {
-		return null;
-	}
+	/*
+	 * @Override public List<CartVO> cartMoney() { return null; }
+	 */
+    
     // 장바구니 리스트
     @Override
     public List<CartVO> cartList(int member_idx) {
@@ -61,7 +61,7 @@ public class CartServiceImpl implements CartService {
 	
 	// 장바구니 동일상품 확인
 	 @Override
-	public int countCart(int member_idx, String product_name) {
+	public int countCart(int member_idx, int product_id) {
 		// return cartMapper.countCart(member_idx, product_name);
 		return 0;
 	 }
@@ -70,6 +70,12 @@ public class CartServiceImpl implements CartService {
 	@Override
 	public void updateCart(CartVO cartVO) {
 		// cartMapper.updateCart(cartVO);
+		
+	}
+
+	@Override
+	public void modifyCart(CartVO cartVO) {
+		// TODO Auto-generated method stub
 		
 	}
 	

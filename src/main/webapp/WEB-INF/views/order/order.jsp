@@ -101,7 +101,10 @@
       </div>
     </div>
 
-<button type="submit" class="orderPage btn-outline-dark btn-sm" href="/user/orderPage">주문하기</button>
+<!-- <button type="submit" class="orderPage btn-outline-dark btn-sm" href="/user/orderPage">주문하기</button> -->
+<div class="text-center mb-5 mt-5">
+    <a class="btn btn-secondary btn-lg text-uppercase" href="/orderPage">주문하기!</a>
+</div>
 
 </body>
 

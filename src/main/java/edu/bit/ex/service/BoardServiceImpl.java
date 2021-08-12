@@ -137,5 +137,7 @@ public class BoardServiceImpl implements BoardService {
 		log.info("service:get()..");
 		return boardMapper.orderRead(product_id);
 	}
+	
+
 
 }

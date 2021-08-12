@@ -48,5 +48,6 @@ public interface BoardMapper {
 	public List<OrderVO> getOrderList(OrderVO orderVO);
 	// 회원 구매내역 상세보기
 	public ProductMainVO orderRead(int product_id);
+
 	
 }

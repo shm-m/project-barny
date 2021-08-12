@@ -74,4 +74,10 @@ public class OrderController {
 		
 	}*/
 
+	@GetMapping("/orderPage")
+	public String orderPage() {
+		return "order/orderPage";
+	}
+	
+	
 }

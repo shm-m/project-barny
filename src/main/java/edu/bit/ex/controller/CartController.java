@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,14 +44,14 @@ public class CartController {
 	private CartService cartService;
 	
 	// 장바구니 리스트 
-	/*@GetMapping("/cart3")
+	@GetMapping("/cart3")
 	public String cart3(Model model, Principal principal,@AuthenticationPrincipal MemberContext ctx) {
 
 		log.info("Principal" + principal.getName());
 		log.info("Principal" + ctx.getMemberVO().getMember_idx());
 		
       
-		log.info("Principal" + ctx.getMemberVO().getMember_idx());		
+		// log.info("Principal" + ctx.getMemberVO().getMember_idx());		
 		
 		List<CartVO> cartList = cartService.cartList(ctx.getMemberVO().getMember_idx());
 		
@@ -58,11 +60,25 @@ public class CartController {
 		log.info("List<CartVO> cartList" +  cartList);		
 		
 		
+		  Map<String, Object> map = new HashMap<>();		 		
+
+		  int sumMoney = cartService.sumMoney(ctx.getMemberVO().getMember_idx()); 
+		  int fee = sumMoney >= 30000 ? 0 :2500; 
+		  // 배송료 계산 : 3000원 넘으면 배송료가 0, 안넘으면 2500원
+		  
+		  map.put("sumMoney", sumMoney); 
+		  map.put("fee", fee); 
+		  map.put("sum",sumMoney+fee); // 전체 금액 
+		  //map.put("cartList", cartList); 
+		  map.put("count",cartList.size()); // 상품 갯수
+
+		  model.addAttribute("map", map);
+		  
 		return "cart/cart3";
 	}	
 	 	 	
 	// 장바구니 담기
-	@ResponseBody
+	@ResponseBody	 
 	@GetMapping("/writeCart")	
 	public String writeCart(CartVO cartVO, Principal principal, @AuthenticationPrincipal MemberContext ctx) {
 		
@@ -79,61 +95,106 @@ public class CartController {
 		
 		return "SUCCESS";
 	} 
-	*/
+	
+	
+	/*
+	 @GetMapping("/writeCart") 
+	 public String writeCart(@ModelAttribute CartVO cartVO, HttpSession session) {
+	 
+	 int member_idx = (int)session.getAttribute("member_idx"); 
+	 if(member_idx == 0) { 
+		 return "redirect:/loginForm"; 
+		 
+	 }
+	 cartVO.setMember_idx(member_idx); 
+	 cartService.writeCart(cartVO);
+	 
+	 return "SUCCESS"; 
+	 }
+	 
+	
 	
 	@GetMapping("/writeCart")	
 	public String writeCart(@ModelAttribute CartVO cartVO, HttpSession session) {
 		
 		int member_idx = (int)session.getAttribute("member_idx");
-		if(member_idx == 0) {
-			return "redirect:/loginForm";
-		}
+		cartVO.setMember_idx(member_idx);
 		
-		cartVO.setMember_idx(member_idx);		
-		cartService.writeCart(cartVO);
+		int count = cartService.countCart(cartVO.getProduct_id(), member_idx);
+		count == 0 ? cartService.updateCart(cartVO) : cartService.writeCart(cartVO);
+		
+		if(count == 0) {
+			cartService.writeCart(cartVO);
+		} else {
+			cartService.updateCart(cartVO);
+		}
 		
 		return "SUCCESS";
 	} 
 	
+	
+	  @RequestMapping("/cart3") public ModelAndView cart3(ModelAndView mav,
+	  HttpSession session) {
+	  
+	  Map<String, Object> map = new HashMap<>();
+	  
+	  int member_idx = (int)session.getAttribute("member_idx");
+	  
+	  if(member_idx != 0) { 
+	  List<CartVO> cartList = cartService.cartList(member_idx); 
+	  int sumMoney = cartService.sumMoney(member_idx); 
+	  int fee = sumMoney >= 30000 ? 0 :2500; //
+	  배송료 계산 : 3000원 넘으면 배송료가 0, 안넘으면 2500원
+	  
+	  map.put("sumMoney", sumMoney); map.put("fee", fee); map.put("sum",
+	  sumMoney+fee); // 전체 금액 map.put("cartList", cartList); map.put("count",
+	  cartList.size()); // 상품 갯수
+	  
+	  mav.setViewName("cart/cart3"); mav.addObject("map", map);
+	  
+	  } else {
+	  
+	  
+	  } return new ModelAndView("loginForm", "", null);
+	  
+	  }
+	 
+	
 	@RequestMapping("/cart3")	
-	public ModelAndView cart3(ModelAndView mav, HttpSession session) {
+	public ModelAndView cart3(ModelAndView mav, @AuthenticationPrincipal MemberContext ctx) {
 		
 		Map<String, Object> map = new HashMap<>();
 		
 		int member_idx = (int)session.getAttribute("member_idx");
 		
-		if(member_idx != 0) {
-			List<CartVO> cartList = cartService.cartList(member_idx);
-			int sumMoney = cartService.sumMoney(member_idx);
-			int fee = sumMoney >= 30000 ? 0 :2500;
+		List<CartVO> cartList = cartService.cartList(member_idx);
+				
+		int sumMoney = cartService.sumMoney(member_idx);
+		int fee = sumMoney >= 30000 ? 0 :2500;
 			// 배송료 계산 : 3000원 넘으면 배송료가 0, 안넘으면 2500원
 			
-			map.put("sumMoney", sumMoney);
-			map.put("fee", fee);
-			map.put("sum", sumMoney+fee); // 전체 금액
-			map.put("cartList", cartList);
-			map.put("count", cartList.size()); // 상품 갯수
-			
-			mav.setViewName("cart/cart3");
-			mav.addObject("map", map);		
+		map.put("cartList", cartList);
+		map.put("count", cartList.size()); // 상품 갯수
+		map.put("sumMoney", sumMoney);
+		map.put("fee", fee);
+		map.put("sum", sumMoney+fee); // 전체 금액
 					
-		} else {
-			
-			
-		}
-		return new ModelAndView("loginForm", "", null);
+		mav.setViewName("cart/cart3");
+		mav.addObject("map", map);		
+					
+		return mav;
 		
-	}
+	}*/
 	
-	@GetMapping("/delete")	
+	@DeleteMapping("/delete")	
 	public String delete(@RequestParam int product_id) {
-								
+
 		cartService.removeProduct(product_id);
 		
 		return "redirect:/cart3";
 	} 
 	
-	@GetMapping("/deleteAll")	
+	@RequestMapping("/deleteAll")	
 	public String deleteAll(HttpSession session) {
 								
 		int member_idx = (int)session.getAttribute("member_idx");
@@ -142,6 +203,18 @@ public class CartController {
 		}
 
 		return "redirect:/cart3";
-	} 
+	} 	
+	
+    // delete by checkbox
+    /*@RequestMapping(value = "/delete_")
+    public String deleteByCheckbox(HttpServletRequest request) throws Exception {
+        String[] deleteByCheckbox = request.getParameterValues("valueArr");
+        int size = deleteByCheckbox.length;
+        log.info("deleted notice number: " + size);
+        for(int i=0; i<size; i++) {
+            CartService.removeProduct(deleteByCheckbox[i]);
+        }
+        return "redirect:/main";
+    }*/
 	
 }
