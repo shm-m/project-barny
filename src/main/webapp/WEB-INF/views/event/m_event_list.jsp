@@ -48,7 +48,7 @@
   
 		<div class="card-group col d-flex justify-content-center" style="margin-left: 15px;">
 			<div class="card">
-				<a href="..">
+				<a href="/">
 			  <img src="/static/img/event1.png" class="card-img-top"></a>
 			  <div class="card-body">
 				<h5 class="card-title">[상시 이벤트] 바니를 찾아라!</h5>
@@ -84,83 +84,7 @@
 		
 	</div>
   </section>
-<!-- 
-  <section class="page-section bg-white">
-	<div class="container">
-		<div class="text-center">
-			<div class="text-center" style="margin-bottom: 5rem;">
-				<h4 class="section-heading text-uppercase">이벤트 게시판</h4>
-			</div>
-		</div>
-		
-	<div class="col-md-6">
-		<table class="table table-sm">
-			<tr>
-				<td>이벤트 번호</td>
-				<td>이벤트 제목</td>
-				<td>게시 날짜</td>
-			</tr>
-			<c:forEach items="${event_list}" var="vo">
-				<tr>
-					<td>${vo.board_id}</td>
-					<td>
-						<a href="${pageContext.request.contextPath}/event/content/${vo.board_id}">${vo.b_title}</a>
-					</td>
-					<td>${vo.b_date}</td>
-				</tr>
-			</c:forEach>
-		</table>
-	</div>
 
-
-	<div class="col-lg-12">
-		<form id='searchForm' action="/event" method='get'>
-			<select name='type'>
-				<option value=""<c:out value="${pageMaker.cri.type == null?'selected':''}"/>>--</option>
-				<option value="T"<c:out value="${pageMaker.cri.type eq 'T'?'selected':''}"/>>제목</option>
-				<option value="C"<c:out value="${pageMaker.cri.type eq 'C'?'selected':''}"/>>내용</option>
-			</select>
-			<input type='text' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>'/>
-			<input type='hidden' name='pageNum' value='<c:out value="${pageMaker.cri.pageNum}"/>'/>
-			<input type='hidden' name='amount' value='<c:out value="${pageMaker.cri.amount}"/>'/>
-			<button class='btn btn-default'>Search</button>
-		</form>
-	</div>
-
-
-	<nav aria-label="Page navigation example">
-		<ul class="pagination">
-			<c:if test="${pageMaker.prev}">
-				<li class="page-item">
-					<a class="page-link" href="event${pageMaker.makeQuery(pageMaker.startPage - 1) }" aria-label="Previous">
-						<span aria-hidden="true">&laquo;</span>
-						<span class="sr-only">Previous</span>
-					</a>
-				</li>
-			</c:if>
-		
-			<c:forEach var="idx" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
-				<li class="page-item "><a class="page-link" href="event${pageMaker.makeQuery(idx)}">
-					${idx}
-				</a>
-				</li>
-			</c:forEach>
-			<!-- 페이지 메이커에 링크 걸어줌 -->
-		
-			<!-- <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-				<li class="page-item">
-					<a class="page-link" aria-label="Next" href="event${pageMaker.makeQuery(pageMaker.endPage +1) }">
-						<span aria-hidden="true">&raquo;</span>
-	        			<span class="sr-only">Next</span>
-					</a>
-				</li>
-			</c:if>
-		</ul>
-	</nav>
-
-		
-</div>
-</section> -->
 
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

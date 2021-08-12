@@ -23,6 +23,8 @@ public class BoardVO {
 	private int b_group;
 	private int b_indent;
 	private int b_step;
+	private int product_id;
+	private String product_name;
 	private int like_count;
 
 }

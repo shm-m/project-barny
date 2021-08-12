@@ -45,6 +45,8 @@
 		});
 </script>
 </head>
+
+
 <body>
     <div class="row">
         <div class="col-md-4">
@@ -75,6 +77,76 @@
                 <img class="detail-img" style="width: 100%; height: auto;" src="/static/img/004.png">           
    </div>
 </div>   
+   <div class="row">
+       <div class="col-md-4">
+           <img class="card-img-top" src="barny.png" alt="상품이미지">
+       </div>
+       <div class="col-md-8">
+           <h3>${product_view.product_name}</h3>
+           <p>${product_view.price} 원</p>
+           <hr class="my-4">
+           <%-- <form action="<c:url value='/user/cart3' />" method="post"> --%>
+               <div class="form-group">
+                   <label>수량</label>
+                   <input id="product_qty" name="amount" class="form-control" type="number" value="1" />
+               </div>
+               <input id="pro_id" name="product_id" type="hidden" value="${product_view.product_id}">
+               <button id="cart" type="button" class="cart btn-outline-dark btn-sm">장바구니</button>
+               <button type="submit" class="order btn-outline-dark btn-sm" href="/user/order">바로구매</button>
+           <!-- </form> -->
+       </div>
+   </div>
+  <br>
+  
+
+
+   <!--best 후기-->
+
+   
+
+   <div class="table-wrap col-6">
+      <p>베스트 후기</p>
+      <table class="table myaccordion table-hover" id="accordion">
+            <thead>
+               <tr>
+                  <th class="th-sm" style="text-indent:-10000px;">글번호</th>
+                  <th class="th-sm"></th>
+                  <th class="th-sm">제목</th>
+                  <th class="th-sm">작성자</th>
+                  <th class="th-sm">좋아요</th>
+               </tr>
+            </thead>
+            <tbody>
+               <c:forEach items="${best_list}" var="ff" varStatus="file">
+                  <tr data-toggle="collapse" data-target="#best_collapse${file.index}" aria-expanded="true" aria-controls="collapse" class="collapsed">
+                     <td id="board_id" value="${vo.board_id}" style="text-indent:-10000px;">${ff.board_id}</td>
+                     <td><img src="https://image.flaticon.com/icons/png/512/3712/3712572.png" style="height: 20px;"></td>
+                     <td>${ff.b_title}</td>
+                     <td>${ff.nickname}</td>
+                     <td id="like_count${status.index}">${ff.like_count}</td>
+                     <i class="fa" aria-hidden="false"></i>
+                  </tr>
+                  <tr>
+                     <td colspan="6" id="best_collapse${file.index}" class="collapse acc" data-parent="#accordion" aria-expanded="false">
+                        <c:forEach items="${ff.fileList}" var="image">
+                           <p><img style="width: 200px; height: 200px;" src="${image.image_route}"></p> 
+                        </c:forEach>
+                        <p>${ff.b_content}</p>
+                  </td>
+               </tr>
+         </c:forEach>
+         </tbody>
+            
+         </form>
+        
+      </table>
+   </div>
+
+</br>
+
+   <!--후기 list-->
+
+>>>>>>> b567b750a6eb19e412b28dddb7956d874e998790
    
 <!--후기 list-->  
    <div class="table-wrap col-8">
@@ -91,23 +163,27 @@
                </tr>
             </thead>
             <tbody>
-            <c:forEach items="${list}" var="vo" varStatus="status">
-               <tr data-toggle="collapse" data-target="#collapse${status.index}" aria-expanded="true" aria-controls="collapse" class="collapsed" >
-                  <td id="board_id" value="${vo.board_id}">${vo.board_id}</td>
-                  <td>${vo.b_title}</td>
-                  <td>${vo.nickname}</td>
-                  <td>${vo.b_date}</td>
-                  <td id="like_count${status.index}">${vo.like_count}</td>
-                  <td id="b_hit">${vo.b_hit}</td>
-                  <i class="fa" aria-hidden="false"></i>
-               </tr>
-               <tr>
-                  <td colspan="6" id="collapse${status.index}" class="collapse acc" data-parent="#accordion" aria-expanded="false">
-                     <p>${vo.b_content}</p>
-                     <button value="${vo.board_id}" id="${status.index}" type="button" class="like_button">좋아요</button>
+               <c:forEach items="${list}" var="vo" varStatus="status">
+                  <tr data-toggle="collapse" data-target="#collapse${status.index}" aria-expanded="true" aria-controls="collapse" class="collapsed">
+                     <td id="board_id" value="${vo.board_id}">${vo.board_id}</td>
+                     <td>${vo.b_title}</td>
+                     <td>${vo.nickname}</td>
+                     <td>${vo.b_date}</td>
+                     <td id="like_count${status.index}">${vo.like_count}</td>
+                     <td id="b_hit">${vo.b_hit}</td>
+                     <i class="fa" aria-hidden="false"></i>
+                  </tr>
+                  <tr>
+                     <td colspan="6" id="collapse${status.index}" class="collapse acc" data-parent="#accordion" aria-expanded="false">
+                        <p>${vo.b_content}</p>
+                        <button value="${vo.board_id}" id="${status.index}" type="button" class="like_button">좋아요</button>
+                        <c:forEach items="${vo.fileList}" var="image" varStatus="status">
+                           <p><img style="width: 200px; height: 200px;" src="${image.image_route}"></p> 
+                           <!-- <p><img style="width: 200px; height: 200px;" src="http://localhost:8282/static/upload/2021/08/11/100c815ced514be285b177bc9936a5fa.jpg"></p> -->
+                        </c:forEach>
                   </td>
                </tr>
-            </c:forEach>
+         </c:forEach>
          </tbody>
             
          </form>
@@ -164,49 +240,8 @@
 </div> --%>
 
    <script src="/static/js/popper.js"></script>
+   <script src="/static/js/reviewLike&Hit.js"></script>
          
-</body>
-
-<!--조회수-->
-
-<script type="text/javascript">
-   $(document).ready(function(){
-
-      $('.collapsed').click(function (event) {
-
-         event.preventDefault(); //실행했을때 나머지 이벤은 내가 컨트롤 하겠다
-
-         var aObj = this;
-
-         console.log($('#reviewForm').attr("action"));
-         console.log($(aObj).children('#board_id').text());
-         
-         
-         var form = {
-            board_id: $(aObj).children('#board_id').text()					
-         };
-
-         //dataType: 'json',
-         $.ajax({
-            type: "PUT",
-            url: "/product_view",
-            cache: false,
-            contentType: 'application/json; charset=utf-8',
-            data: JSON.stringify(form), 
-            success: function (result) {       
-                  $(aObj).children('#b_hit').text(result); 
-                  console.log("조회수 1 증가");
-            },
-            error: function (e) {
-               alert("실패");
-               console.log(e);
-            }
-         });	       
-
-      });
-   });
-</script>
-   
 <script>
    // 장바구니
 $(document).ready(function(){
@@ -244,9 +279,6 @@ $(document).ready(function(){
  });
 </script>
 
-   <script src="/static/js/reviewLike&Hit.js"></script>
 
-
-      
 </body>
 </html>

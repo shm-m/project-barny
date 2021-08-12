@@ -37,10 +37,11 @@ public interface ProductMainMapper {
 
     void insertList(FileVO fileVO);
 
+    List<FileVO> getFileList(int board_id); //첨부파일 이미지 리스트
+
     // 후기 페이징
 
     List<ProductMainVO> getListWithPaging(@Param("cri") Criteria cri, @Param("product_id") int product_id);
 
     int getTotalCount(@Param("cri") Criteria cri, @Param("product_id") int product_id);
-
 }
