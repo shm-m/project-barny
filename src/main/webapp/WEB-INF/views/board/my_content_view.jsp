@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -140,18 +141,25 @@
                             <div class="col-2" style="text-align: left; margin-top: 5px;"><a class="btn-basic text-uppercase"
                                                                             href="my_view">목록 보기</a>
                             </div>
-                            <div class="col-10" style="text-align: right">
-                                <input type="submit" class="btn-basic text-uppercase" value="수정">
-                                <a class="btn-basic text-uppercase" id="a_delete"
-                                   href="${pageContext.request.contextPath}/board/my_delete?board_id=${my_content_view.board_id}">삭제</a>
-                            </div>
-                            </div>
-                        </td>
-                    </tr>
-                </form>
-            </table>
+                            
+                                 <c:if test="${my_content_view.board_type_id != 7}">
+	                                <input type="submit" class="btn-basic text-uppercase" value="수정">
+	                                <a class="btn-basic text-uppercase" id="a_delete"
+	                                   href="${pageContext.request.contextPath}/board/my_delete?board_id=${my_content_view.board_id}">삭제</a>  
+	                                                                 <a href="my_content_view?board_id=${dto.board_id}">${dto.b_title}</a></td>
+                                </c:if>
+                                
+                                
+                                
+                                
+                            <td style="width : 15%;">${dto.b_date}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="line mb-3" style="border-bottom: solid 2px; border-bottom-color: #EBC24B;"></div>
+                <a class="btn-basic post mb-2" type="button" title="글쓰기" onclick="location.href='/board/my_view_write'">글쓰기</a>
+            </div>
         </div>
-    </div>
 </div>
 
 <!-- Footer-->

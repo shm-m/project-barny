@@ -144,13 +144,38 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	
-	//구독리스트
-	// 구매 상세 보기
+		//구독리스트
 		@Override
-		public List<OrderDetailVO> getPressList(int order_id) {
+		public List<ProductMainVO> getPressList(int product_id) {
 			log.info("service:get()..");
-			return boardMapper.getPressList(order_id);
+			return boardMapper.getPressList(product_id);
 		}
+
+		@Override
+		public void review_remove2(int board_id) {
+			log.info("service:review_remove()..");
+			boardMapper.like_delete(board_id);
+			
+		}
+
+		@Override
+		public List<BoardVO> getReply(int board_id) {
+			return boardMapper.getReply(board_id);
+		}
+
+		//구독취소
+		@Override
+		public void update_modify(BoardVO boardVO) {
+			boardMapper.update_modify(boardVO);
+			
+		}
+
+		@Override
+		public void ship_remove(int ship_id) {
+			log.info("service:ship_remove().." + ship_id);
+			boardMapper.ship_remove(ship_id);			
+		}
+		
 }
 	
 	
