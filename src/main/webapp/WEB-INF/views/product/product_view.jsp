@@ -23,7 +23,7 @@
    }
 </style>
 </head>
-<body>
+
    <table id="list-table" width="500" cellpadding="0" cellspacing="0" border="1">
       <form role="form" method="post">
          <input type="hidden" name="product_id" value="${product_view.product_id}">
@@ -45,6 +45,48 @@
 
    </table>   
    <br>
+
+   <!--best 후기-->
+
+   <div class="table-wrap col-4">
+      <table class="table myaccordion table-hover" id="accordion">
+            <thead>
+               <tr>
+                  <th class="th-sm">글번호</th>
+                  <th class="th-sm">제목</th>
+                  <th class="th-sm">작성자</th>
+                  <th class="th-sm">작성일</th>
+                  <th class="th-sm">좋아요</th>
+               </tr>
+            </thead>
+            <tbody>
+               <c:forEach items="${best_list}" var="ff" varStatus="file">
+                  <tr data-toggle="collapse" data-target="#best_collapse${file.index}" aria-expanded="true" aria-controls="collapse" class="collapsed">
+                     <td id="board_id" value="${ff.board_id}">${ff.board_id}</td>
+                     <td>${ff.b_title}</td>
+                     <td>${ff.nickname}</td>
+                     <td>${ff.b_date}</td>
+                     <td id="like_count${status.index}">${ff.like_count}</td>
+                     <i class="fa" aria-hidden="false"></i>
+                  </tr>
+                  <tr>
+                     <td colspan="6" id="best_collapse${file.index}" class="collapse acc" data-parent="#accordion" aria-expanded="false">
+                        <c:forEach items="${ff.fileList}" var="image">
+                           <p><img style="width: 200px; height: 200px;" src="${image.image_route}"></p> 
+                        </c:forEach>
+                        <p>${ff.b_content}</p>
+                  </td>
+               </tr>
+         </c:forEach>
+         </tbody>
+            
+         </form>
+        
+      </table>
+   </div>
+
+</br>
+
    <!--후기 list-->
 
    
@@ -63,7 +105,7 @@
             </thead>
             <tbody>
                <c:forEach items="${list}" var="vo" varStatus="status">
-                  <tr data-toggle="collapse" data-target="#collapse${status.index}" aria-expanded="true" aria-controls="collapse" class="collapsed" >
+                  <tr data-toggle="collapse" data-target="#collapse${status.index}" aria-expanded="true" aria-controls="collapse" class="collapsed">
                      <td id="board_id" value="${vo.board_id}">${vo.board_id}</td>
                      <td>${vo.b_title}</td>
                      <td>${vo.nickname}</td>
@@ -120,7 +162,7 @@
 
    <script src="/static/js/popper.js"></script>
    <script src="/static/js/reviewLike&Hit.js"></script>
-
+   
 </body>
 
 </html>
