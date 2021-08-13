@@ -36,7 +36,7 @@ function cardset() {
   var mixup = shuffle();
   for (var i = 0; i < mixup.length; i++) {
     var createcard =
-      "<img src='./img/backimg.jpg' class=" +
+      "<img src='/static/cardbarny/img/backimg.jpg' class=" +
       mixup[i] +
       " width='100px' height='150px'>&nbsp";
     $("#cardground").append(createcard);
@@ -52,7 +52,7 @@ $(document).ready(function () {
     var CSS = $(this).attr("class"); // 클릭한애 클래스 속성의 값 위에서 클래스 값이 card1, card2, card2 back 이런식으로 했음
 
     if (check != true) {
-      $(this).attr("src", "./img/" + CSS + ".jpg"); // 클릭한애 <img src="./img/card2.jpg" class="card2">(예시) 열려있음
+      $(this).attr("src", "/static/cardbarny/img/" + CSS + ".jpg"); // 클릭한애 <img src="./img/card2.jpg" class="card2">(예시) 열려있음
       $(this).addClass("back"); //클릭한 애 <img src="./img/card2.jpg" class="card2 back">
     } else {
       console.log("back");
@@ -68,19 +68,27 @@ $(document).ready(function () {
 
       if (FirstB != SecondB) {
         setTimeout(function () {
-          $(".back").attr("src", "./img/backimg.jpg"); //clas="back"인 애의 src 요소를 저걸로 바꿔라(다시 덮어라)
+          $(".back").attr("src", "/static/cardbarny/img/backimg.jpg"); //clas="back"인 애의 src 요소를 저걸로 바꿔라(다시 덮어라)
           $("img").removeClass("back"); //깟다는 클래스 지워라
         }, 200);
       } else if (CSSCheck == false) {
         setTimeout(function () {
-          $(".back").attr("src", "./img/backimg.jpg"); //clas="back"인 애의 src 요소를 저걸로 바꿔라(다시 덮어라)
+          $(".back").attr("src", "/static/cardbarny/img/backimg.jpg"); //clas="back"인 애의 src 요소를 저걸로 바꿔라(다시 덮어라)
           $("img").removeClass("back"); //깟다는 클래스 지워라
         }, 200);
       } else {
         alert("바니 찾기 성공!");
+        alert("100 point 적립하세요!");
+        show();
+
         return;
       }
       BackLength = 0;
     }
   });
 });
+
+// 포인트 적립 버튼
+function show() {
+  $("#point").show();
+}
