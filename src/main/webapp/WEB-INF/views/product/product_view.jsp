@@ -124,10 +124,14 @@
                   </tr>
                   <tr>
                      <td colspan="6" id="best_collapse${file.index}" class="collapse acc" data-parent="#accordion" aria-expanded="false">
+                     <div style="width: 250px; height: 250px;">
                         <c:forEach items="${ff.fileList}" var="image">
                            <p><img style="width: 200px; height: 200px;" src="${image.image_route}"></p> 
                         </c:forEach>
+                     </div>
+                     <div style="text-align: center;">
                         <p>${ff.b_content}</p>
+                     </div>
                   </td>
                </tr>
          </c:forEach>
@@ -167,11 +171,10 @@
                   </tr>
                   <tr>
                      <td colspan="6" id="collapse${status.index}" class="collapse acc" data-parent="#accordion" aria-expanded="false">
-                        <p>${vo.b_content}</p>
-                        <button value="${vo.board_id}" id="${status.index}" type="button" class="like_button">좋아요</button>
+                        <p style="text-align: center;">${vo.b_content}</p>
+                        <button value="${vo.board_id}" id="${status.index}" type="button" class="like_button">좋아용</button>
                         <c:forEach items="${vo.fileList}" var="image" varStatus="status">
-                           <p><img style="width: 200px; height: 200px;" src="${image.image_route}"></p> 
-                           <!-- <p><img style="width: 200px; height: 200px;" src="http://localhost:8282/static/upload/2021/08/11/100c815ced514be285b177bc9936a5fa.jpg"></p> -->
+                           <p><img style="width: 200px; height: 200px;" src="${image.image_route}"></p>
                         </c:forEach>
                   </td>
                </tr>
