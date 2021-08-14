@@ -78,25 +78,6 @@
                <img class="detail-img" style="width: 100%; height: auto;" src="/static/img/004.png">
             </div>
          </div>
-         <div class="row">
-            <div class="col-md-4">
-               <img class="card-img-top" src="barny.png" alt="상품이미지">
-            </div>
-            <div class="col-md-8">
-               <h3>${product_view.product_name}</h3>
-               <p>${product_view.price} 원</p>
-               <hr class="my-4">
-               <%-- <form action="<c:url value='/user/cart3' />" method="post"> --%>
-                  <div class="form-group">
-                     <label>수량</label>
-                     <input id="product_qty" name="amount" class="form-control" type="number" value="1" />
-                  </div>
-                  <input id="pro_id" name="product_id" type="hidden" value="${product_view.product_id}">
-                  <button id="cart" type="button" class="cart btn-outline-dark btn-sm">장바구니</button>
-                  <button type="submit" class="order btn-outline-dark btn-sm" href="/user/order">바로구매</button>
-                  <!-- </form> -->
-            </div>
-         </div>
          <br>
 
          <!--best 후기-->
@@ -114,31 +95,41 @@
                   </tr>
                </thead>
                <tbody>
-                  <c:forEach items="${best_list}" var="ff" varStatus="file">
-                     <tr data-toggle="collapse" data-target="#best_collapse${file.index}" aria-expanded="true"
-                        aria-controls="collapse" class="collapsed">
-                        <td id="board_id" value="${vo.board_id}" style="text-indent:-10000px;">${ff.board_id}</td>
-                        <td><img src="https://image.flaticon.com/icons/png/512/3712/3712572.png" style="height: 20px;">
-                        </td>
-                        <td>${ff.b_title}</td>
-                        <td>${ff.nickname}</td>
-                        <td id="like_count${status.index}">${ff.like_count}</td>
-                        <i class="fa" aria-hidden="false"></i>
-                     </tr>
-                     <tr>
-                        <td colspan="6" id="best_collapse${file.index}" class="collapse acc" data-parent="#accordion"
-                           aria-expanded="false">
-                           <div style="width: 250px; height: 250px;">
-                              <c:forEach items="${ff.fileList}" var="image">
-                                 <p><img style="width: 200px; height: 200px;" src="${image.image_route}"></p>
-                              </c:forEach>
-                           </div>
-                           <div style="text-align: center;">
-                              <p>${ff.b_content}</p>
-                           </div>
-                        </td>
-                     </tr>
-                  </c:forEach>
+                  <c:choose>
+                     <c:when test="${empty best_list}">
+                        <tr>
+                           <td colspan="5" align="center">작성한 후기가 없습니다</td>
+                        </tr>
+                     </c:when>
+                     <c:when test="${!empty best_list}">
+                        <c:forEach items="${best_list}" var="ff" varStatus="file">
+                           <tr data-toggle="collapse" data-target="#best_collapse${file.index}" aria-expanded="true"
+                              aria-controls="collapse" class="collapsed">
+                              <td id="board_id" value="${vo.board_id}" style="text-indent:-10000px;">${ff.board_id}</td>
+                              <td><img src="https://image.flaticon.com/icons/png/512/3712/3712572.png"
+                                    style="height: 20px;">
+                              </td>
+                              <td>${ff.b_title}</td>
+                              <td>${ff.nickname}</td>
+                              <td id="like_count${status.index}">${ff.like_count}</td>
+                              <i class="fa" aria-hidden="false"></i>
+                           </tr>
+                           <tr>
+                              <td colspan="6" id="best_collapse${file.index}" class="collapse acc"
+                                 data-parent="#accordion" aria-expanded="false">
+                                 <div style="width: 250px; height: 250px;">
+                                    <c:forEach items="${ff.fileList}" var="image">
+                                       <p><img style="width: 200px; height: 200px;" src="${image.image_route}"></p>
+                                    </c:forEach>
+                                 </div>
+                                 <div style="text-align: center;">
+                                    <p>${ff.b_content}</p>
+                                 </div>
+                              </td>
+                           </tr>
+                        </c:forEach>
+                     </c:when>
+                  </c:choose>
                </tbody>
 
                </form>
@@ -164,30 +155,39 @@
                      </tr>
                   </thead>
                   <tbody>
-                     <c:forEach items="${list}" var="vo" varStatus="status">
-                        <tr data-toggle="collapse" data-target="#collapse${status.index}" aria-expanded="true"
-                           aria-controls="collapse" class="collapsed">
-                           <td id="board_id" value="${vo.board_id}">${vo.board_id}</td>
-                           <td>${vo.b_title}</td>
-                           <td>${vo.nickname}</td>
-                           <td>${vo.b_date}</td>
-                           <td id="like_count${status.index}">${vo.like_count}</td>
-                           <td id="b_hit">${vo.b_hit}</td>
-                           <i class="fa" aria-hidden="false"></i>
-                        </tr>
-                        <tr>
-                           <td colspan="6" id="collapse${status.index}" class="collapse acc" data-parent="#accordion"
-                              aria-expanded="false">
-                              <p style="text-align: center;">${vo.b_content}</p>
-                              <button value="${vo.board_id}" id="${status.index}" type="button"
-                                 class="like_button">좋아용</button>
-                              <c:forEach items="${vo.fileList}" var="image" varStatus="status">
-                                 <p><img style="width: 200px; height: 200px;" src="${image.image_route}"
-                                       onerror="history.go(0);"></p>
-                              </c:forEach>
-                           </td>
-                        </tr>
-                     </c:forEach>
+                     <c:choose>
+                        <c:when test="${empty list}">
+                           <tr>
+                              <td colspan="6" align="center">작성한 후기가 없습니다</td>
+                           </tr>
+                        </c:when>
+                        <c:when test="${!empty list}">
+                           <c:forEach items="${list}" var="vo" varStatus="status">
+                              <tr data-toggle="collapse" data-target="#collapse${status.index}" aria-expanded="true"
+                                 aria-controls="collapse" class="collapsed">
+                                 <td id="board_id" value="${vo.board_id}">${vo.board_id}</td>
+                                 <td>${vo.b_title}</td>
+                                 <td>${vo.nickname}</td>
+                                 <td>${vo.b_date}</td>
+                                 <td id="like_count${status.index}">${vo.like_count}</td>
+                                 <td id="b_hit">${vo.b_hit}</td>
+                                 <i class="fa" aria-hidden="false"></i>
+                              </tr>
+                              <tr>
+                                 <td colspan="6" id="collapse${status.index}" class="collapse acc"
+                                    data-parent="#accordion" aria-expanded="false">
+                                    <p style="text-align: center;">${vo.b_content}</p>
+                                    <button value="${vo.board_id}" id="${status.index}" type="button"
+                                       class="like_button">좋아용</button>
+                                    <c:forEach items="${vo.fileList}" var="image" varStatus="status">
+                                       <p><img style="width: 200px; height: 200px;" src="${image.image_route}"
+                                             onerror="history.go(0);"></p>
+                                    </c:forEach>
+                                 </td>
+                              </tr>
+                           </c:forEach>
+                        </c:when>
+                     </c:choose>
                   </tbody>
 
                </form>
@@ -291,18 +291,5 @@
 
 
       </body>
-      <script>
-         // $('#myCollapsible').on('hidden.bs.collapse', function () {
-
-         // })
-
-         // $(".collapsed").click(function (event) {
-         //    console.log("collapse");
-         //    var target = $(this).attr("data-target");
-         //    var obj = $(target)
-         //    var img = 
-         // });
-
-      </script>
 
       </html>
