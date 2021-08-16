@@ -52,6 +52,8 @@ public class ProductMainController {
         log.info("product_main_food()..");
         model.addAttribute("product_main_food", productMainService.getList2(cri));
 
+        // log.info("product_main_food().." + productMainService.getList2(cri));
+        
         int total = productMainService.getTotal2(cri);
         model.addAttribute("pageMaker", new PageVO(cri, total));
 

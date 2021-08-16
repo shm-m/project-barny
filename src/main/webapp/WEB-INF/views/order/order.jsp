@@ -14,33 +14,133 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+<meta name="description" content=""/>
+<meta name="author" content=""/>
 <title>Order</title>
 
+<!-- Favicon-->
+<link rel="icon" type="image/x-icon" href="/static/main_page/assets/favicon-2.ico"/>
+<!-- Font Awesome icons (free version)-->
+<script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+<!-- Google fonts-->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css"/>
+<!-- naver fonts -->
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+<!-- Core theme CSS (includes Bootstrap)-->
+<link href="/static/main_page/css/styles.css" rel="stylesheet"/>
+<link rel="stylesheet" href="/static/css/styles.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
 </head>
+
+<style>
+.order {
+	padding-top: 100px;
+	margin-left: 500px;
+}
+
+</style>
 <body>
-    
-    <h4>주문상품</h4>
-    <div class="row">
-        <div class="col-md-8">
-            <form action="<c:url value='/user/order' />" method="post">
-                <input name="member_idx" type="hidden" value="<sec:authentication property="principal.cartList"/>"> 
-                <td><sec:authentication property="principal.cartList"/></td>
-                <hr class="my-4">
-            </form>
+
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top"
+     id="mainNav_2">
+    <div class="container">
+        <a class="navbar-brand" href="/main"><img
+                src="/static/main_page/assets/img/logo.png" alt="바니 로고 1"/></a>
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+            Menu <i class="fas fa-bars ms-1"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                <li class="nav-item"><a class="nav-link" href="/subs">구독</a></li>
+                <li class="nav-item"><a class="nav-link" href="#portfolio">브랜드
+                    스토리</a></li>
+                <li class="nav-item dropdown"><a
+                        class="nav-link dropdown-toggle" href="#"
+                        id="navbarDarkDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false"> 상품 보기 </a>
+                    <ul class="dropdown-menu"
+                        aria-labelledby="navbarDarkDropdownMenuLink">
+                        <li></li>
+                        <a class="dropdown-item" href="/product_main">패키지</a></li>
+                        <li><a class="dropdown-item" href="/product_main_liquor">술</a></li>
+                        <li><a class="dropdown-item" href="/product_main_food">안주</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#team">이벤트</a></li>
+                <li class="nav-item dropdown"><a
+                        class="nav-link dropdown-toggle" href="#"
+                        id="navbarDarkDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false"> 고객센터 </a>
+                    <ul class="dropdown-menu"
+                        aria-labelledby="navbarDarkDropdownMenuLink">
+                        <li></li>
+                        <a class="dropdown-item" href="/notice">공지사항</a></li>
+                        <li><a class="dropdown-item" href="/faq">자주 묻는 질문</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                <sec:authorize access="isAnonymous()">
+                    <li class="nav-item"><a class="nav-link" href="/loginForm">로그인</a></li>
+                </sec:authorize>
+                <sec:authorize access="isAuthenticated()">
+                    <li class="nav-item"><a class="nav-link" href="/board/my_page">마이페이지</a></li>
+                </sec:authorize>
+
+                <li class="nav-item"><a class="nav-link" href="/user/cart5">장바구니</a></li>
+                <sec:authorize access="isAuthenticated()">
+                    <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
+                </sec:authorize>
+            </ul>
         </div>
     </div>
-
-    <h4>주문자 정보</h4>
+</nav>
+  
+<div class="order">  
+<div class="container mt-4">    
+    <h3>주문상품</h3>
+    <div class="row">
+        <div class="col-md-8">       
+            <form action="<c:url value='/user/order' />" method="post">
+<%--                 <input name="member_idx" type="hidden" value="<sec:authentication property="principal.cartList"/>"> 
+                <td><sec:authentication property="principal.cartList"/></td>              
+              <tr>
+		      <td>상품이름</td>
+		      <td>수량</td>
+		      <td>가격</td>
+		      <td>&nbsp;</td>
+		      </tr></br> --%>
+		
+		      <c:forEach items="${cartList}" var="dto">
+		      <tr>
+		         <td>${dto.product_name}</td>
+		         <td>${dto.product_qty}</td>
+		         <%-- <td>${dto.price}</td> --%>
+		      </tr></br>
+		      </c:forEach>		      		          
+		      
+                <hr class="my-4"> 
+            </form>
+        </div>
+    </div>   
+    
+    <h3>주문자 정보</h3>
     <div class="row">
         <div class="col-md-8">
             <form action="<c:url value='/user/cart3' />" method="post">
@@ -54,7 +154,7 @@
         </div>
     </div>
 
-    <h4>배송 정보</h4>
+    <h3>배송 정보</h3>
     <div class="row">
         <div class="col-md-8">
             <form action="<c:url value='/user/cart3' />" method="post">
@@ -66,8 +166,7 @@
         </div>
     </div>
     
-       <h4>결제 정보</h4>   
-
+    <h3>결제 정보</h3>   
     <div class="table-wrap col-8"><div class="accordion" id="accordionExample">
         <div class="accordion-item">
           <h4 class="accordion-header" id="headingOne">
@@ -100,11 +199,13 @@
         </div>
       </div>
     </div>
-
+</div>
+</div>
 <!-- <button type="submit" class="orderPage btn-outline-dark btn-sm" href="/user/orderPage">주문하기</button> -->
 <div class="text-center mb-5 mt-5">
     <a class="btn btn-secondary btn-lg text-uppercase" href="/orderPage">주문하기!</a>
 </div>
+
 
 </body>
 
@@ -117,14 +218,14 @@
 	    $("#payment").click(function(event) {
 	    
 	    IMP.request_pay({
-	        pg : 'kakaopay',
+	        pg : 'inicis',
 	        pay_method : 'card',
 	        merchant_uid : 'merchant_' + new Date().getTime(),
 	        name : 'A패키지',
-	        amount : 14000,
-	        buyer_email : '12345@naver.com',
-	        buyer_name : '홍길동',
-	        buyer_tel : '1234-5678',
+	        amount : 100,
+	        buyer_email : '5678@naver.com',
+	        buyer_name : '홍길삼',
+	        buyer_tel : '010-1234-5678',
 	        buyer_addr : '서울시 종로구',
 	        buyer_postcode : '123-456'
 	    }, function(rsp) {
@@ -153,6 +254,7 @@
 	        			//[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
 	        		}
 	        	});
+	        	location.href='${pageContext.request.contextPath}/orderPage';
 	        } else {
 	            var msg = '결제에 실패하였습니다.'; 
 	            msg += '에러내용 : ' + rsp.error_msg;
