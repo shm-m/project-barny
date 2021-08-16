@@ -215,28 +215,38 @@
                               </tr>
                            </thead>
                            <tbody>
-                              <c:forEach items="${best_list}" var="ff" varStatus="file">
-                                 <tr data-toggle="collapse" data-target="#best_collapse${file.index}"
-                                    aria-expanded="true" aria-controls="collapse" class="collapsed">
-                                    <td id="board_id" value="${vo.board_id}" style="text-indent:-10000px;">
-                                       ${ff.board_id}</td>
-                                    <td><img src="https://image.flaticon.com/icons/png/512/3712/3712572.png"
-                                          style="height: 20px;"></td>
-                                    <td>${ff.b_title}</td>
-                                    <td>${ff.nickname}</td>
-                                    <td id="like_count${status.index}">${ff.like_count}</td>
-                                    <i class="fa" aria-hidden="false"></i>
-                                 </tr>
-                                 <tr>
-                                    <td colspan="6" id="best_collapse${file.index}" class="collapse acc"
-                                       data-parent="#accordion" aria-expanded="false">
-                                       <c:forEach items="${ff.fileList}" var="image">
-                                          <p><img style="width: 200px; height: 200px;" src="${image.image_route}"></p>
-                                       </c:forEach>
-                                       <p>${ff.b_content}</p>
-                                    </td>
-                                 </tr>
-                              </c:forEach>
+                              <c:choose>
+                                 <c:when test="${empty list}">
+                                    <tr>
+                                       <td colspan="6" align="center">작성한 후기가 없습니다</td>
+                                    </tr>
+                                 </c:when>
+                                 <c:when test="${!empty list}">
+                                    <c:forEach items="${best_list}" var="ff" varStatus="file">
+                                       <tr data-toggle="collapse" data-target="#best_collapse${file.index}"
+                                          aria-expanded="true" aria-controls="collapse" class="collapsed">
+                                          <td id="board_id" value="${vo.board_id}" style="text-indent:-10000px;">
+                                             ${ff.board_id}</td>
+                                          <td><img src="https://image.flaticon.com/icons/png/512/3712/3712572.png"
+                                                style="height: 20px;"></td>
+                                          <td>${ff.b_title}</td>
+                                          <td>${ff.nickname}</td>
+                                          <td id="like_count${status.index}">${ff.like_count}</td>
+                                          <i class="fa" aria-hidden="false"></i>
+                                       </tr>
+                                       <tr>
+                                          <td colspan="6" id="best_collapse${file.index}" class="collapse acc"
+                                             data-parent="#accordion" aria-expanded="false">
+                                             <c:forEach items="${ff.fileList}" var="image">
+                                                <p><img style="width: 200px; height: 200px;" src="${image.image_route}">
+                                                </p>
+                                             </c:forEach>
+                                             <p>${ff.b_content}</p>
+                                          </td>
+                                       </tr>
+                                    </c:forEach>
+                                 </c:when>
+                              </c:choose>
                            </tbody>
 
 

@@ -189,8 +189,8 @@
     <insert id="insertList">
 
         <![CDATA[
-        insert into image (image_id, product_id, board_id, image_name, image_extension, image_route, image_uuid)
-        values (image_id_seq.NEXTVAL, #{product_id}, board_id_seq.currval, #{image_name}, #{image_extension},
+        insert into image (image_id, board_id, image_name, image_extension, image_route, image_uuid)
+        values (image_id_seq.NEXTVAL, board_id_seq.currval, #{image_name}, #{image_extension},
                 #{image_route}, #{image_uuid})
         ]]>
 
