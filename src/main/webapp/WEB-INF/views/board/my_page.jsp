@@ -143,13 +143,11 @@
         <div class="row mb-3 mt-5">
             <div class="card card-my_page col-4">
                 <div class="card-body my_page">
-                 <li><a id="press" href="press">구독 정보</a></li>
                     구독 정보
                 </div>
             </div>
             <div class="card card-my_page col-4">
                 <div class="card-body my_page">
-                <li><a id="purchase_list" href="purchase_list">구매내역</a></li>
                     구매 내역
                 </div>
             </div>
