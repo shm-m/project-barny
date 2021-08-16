@@ -142,7 +142,7 @@ public class ReviewController {
 
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter out = response.getWriter();
-            out.println("이미 좋아요 누르셨습니다. 새로고침 해주세요.");
+            out.println(selectHitService.getLike(productMainVO.getBoard_id()));
 
         }
 
