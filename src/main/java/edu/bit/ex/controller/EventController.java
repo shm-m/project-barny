@@ -1,25 +1,25 @@
 package edu.bit.ex.controller;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import edu.bit.ex.vo.account.MemberContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import lombok.extern.slf4j.Slf4j;
 import edu.bit.ex.service.EventService;
 import edu.bit.ex.vo.MemberVO;
-
 import org.springframework.web.servlet.ModelAndView;
 
 @Slf4j
 @Controller
-@RequestMapping("/event/**")
+//@RequestMapping("/event/**")
 public class EventController {
 
     @Autowired
     private EventService eventService;
 
-    // 메인 페이지
+    // 룰렛 메인 페이지
     @GetMapping("/roulette")
     public Object roulette_game(ModelAndView mav, @AuthenticationPrincipal MemberContext ctx) {
         mav.setViewName("event/roulette_game");
@@ -40,6 +40,12 @@ public class EventController {
         return "redirect:/event/roulette";
     }
 
+    // 카드게임 메인 페이지
+    @GetMapping("/user/event_cardbarny")
+    public String cardbarny() {
+        return "/user/cardBarny";
+    }
 
 }
+
 
