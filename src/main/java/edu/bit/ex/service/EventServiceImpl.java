@@ -1,5 +1,6 @@
 package edu.bit.ex.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import edu.bit.ex.vo.MemberVO;
@@ -61,5 +62,15 @@ public class EventServiceImpl implements EventService {
     @Override
     public void updatePoint(MemberVO memberVO) {
         eventMapper.updatePoint(memberVO);
+    }
+
+    @Override
+    public void participate(int member_idx) {
+        eventMapper.participate(member_idx);
+    }
+
+    @Override
+    public String checkPart(int member_idx) {
+        return eventMapper.checkPart(member_idx);
     }
 }

@@ -3,7 +3,10 @@
 <mapper namespace="edu.bit.ex.mapper.EventMapper">
     <select id="getList" resultType="edu.bit.ex.vo.EventVO">
         <![CDATA[
-        select board_id, b_title, b_content, board_type_id, b_date from barny_board where board_type_id = 1 order by board_id desc
+        select board_id, b_title, b_content, board_type_id, b_date
+        from barny_board
+        where board_type_id = 1
+        order by board_id desc
         ]]>
     </select>
 
@@ -43,26 +46,34 @@
 
     <insert id="write">
         <![CDATA[
-        INSERT INTO barny_board (board_id, b_date, b_title, b_content, board_type_id, member_idx, b_group) 
-        VALUES(board_id_seq.NEXTVAL, sysdate, #{b_title}, #{b_content}, 1, 1, board_id_seq.currval)
+        INSERT INTO barny_board (board_id, b_date, b_title, b_content, board_type_id, member_idx, b_group)
+        VALUES (board_id_seq.NEXTVAL, sysdate, #{b_title}, #{b_content}, 1, 1, board_id_seq.currval)
         ]]>
     </insert>
 
     <select id="read" resultType="edu.bit.ex.vo.EventVO">
         <![CDATA[
-           select * from barny_board where board_id = #{board_id}
+        select *
+        from barny_board
+        where board_id = #{board_id}
         ]]>
     </select>
 
     <update id="update">
         <![CDATA[
-           update barny_board set b_date = sysdate, b_title = #{b_title}, b_content = #{b_content} where board_id = #{board_id}
+        update barny_board
+        set b_date    = sysdate,
+            b_title   = #{b_title},
+            b_content = #{b_content}
+        where board_id = #{board_id}
         ]]>
     </update>
 
     <delete id="delete">
         <![CDATA[
-           delete from barny_board where board_id = #{board_id}
+        delete
+        from barny_board
+        where board_id = #{board_id}
         ]]>
     </delete>
 
@@ -73,11 +84,11 @@
                 <trim prefix="OR">
                     <choose>
                         <when test="type == 'T'.toString()">
-                        b_title like '%'||#{keyword}||'%' 
-                    </when>
+                            b_title like '%'||#{keyword}||'%'
+                        </when>
                         <when test="type == 'C'.toString()">
-                        b_content like '%'||#{keyword}||'%' 
-                    </when>
+                            b_content like '%'||#{keyword}||'%'
+                        </when>
                     </choose>
                 </trim>
             </foreach>
@@ -88,8 +99,28 @@
     <!--포인트 적립-->
     <update id="updatePoint">
         <![CDATA[
-        update member set point = point + #{point} where member_idx = #{member_idx}
+        update member
+        set point = point + #{point}
+        where member_idx = #{member_idx}
         ]]>
     </update>
+
+    <!--이벤트 참여-->
+    <insert id="participate">
+        <![CDATA[
+        insert into b_event(board_id, participate_date, member_idx)
+        values (22, sysdate, #{member_idx})
+        ]]>
+    </insert>
+
+    <!--이벤트 참여 여부 체크-->
+    <select id="checkPart" resultType="String">
+        <![CDATA[
+        select to_char(participate_date, 'yyyymmdd')
+        from b_event
+        where member_idx = #{member_idx}
+          and (to_char(participate_date, 'yyyymmdd') = to_char(sysdate, 'yyyymmdd'))
+        ]]>
+    </select>
 
 </mapper>

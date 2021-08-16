@@ -1,5 +1,6 @@
 package edu.bit.ex.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import edu.bit.ex.page.Criteria;
@@ -25,4 +26,7 @@ public interface EventService {
     // Update Total Point
     void updatePoint(MemberVO memberVO);
 
+    void participate(int member_idx);
+
+    String checkPart(int member_idx);
 }

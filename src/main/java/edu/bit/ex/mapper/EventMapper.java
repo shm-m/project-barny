@@ -1,6 +1,7 @@
 package edu.bit.ex.mapper;
 
 import java.lang.reflect.Member;
+import java.sql.Date;
 import java.util.List;
 
 import edu.bit.ex.vo.MemberVO;
@@ -28,4 +29,8 @@ public interface EventMapper {
 
     // Update Total Point
     void updatePoint(MemberVO memberVO);
+
+    void participate(int member_idx);
+
+    String checkPart(int member_idx);
 }

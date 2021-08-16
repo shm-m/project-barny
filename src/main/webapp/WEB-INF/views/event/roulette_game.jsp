@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,52 +27,64 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/static/main_page/css/styles.css" rel="stylesheet"/>
     <link href="/static/event/roulette/css/roulette.css" rel="stylesheet"/>
+
 </head>
 <body>
-
-
 <div class="roulette-background">
     <img src="/static/event/roulette/img/title.png" style="width: 60%;">
-    <div class ="content">
+    <div class="content">
         <div>
-        <img src="/static/event/roulette/img/roulette.png" id="image">
+            <img src="/static/event/roulette/img/roulette.png" id="image">
         </div>
         <div>
-        <img src="/static/event/roulette/img/niddle.png" id="n_id">
+            <img src="/static/event/roulette/img/niddle.png" id="n_id">
             <div>
-    </div>
-    <div>
-        <input type='button' class="roulette-btn" value='룰렛 돌리기' id='start_btn'></input>
-    </div>
-    <div id="result_id"></div>
-    <div id="result_id2"></div>
-    <div id="result_id3"></div>
-</div>
+                <form name="addPoint" action="/event/add_point" method="post">
+                    <input id="point" type="hidden" name="point" value=0>
+                    <input id="member_idx" type="hidden" name="member_idx"
+                           value="<sec:authentication property="principal.memberVO.member_idx"/>">
+                    <input type="button" class="roulette-btn" value='룰렛 돌리기' id='start_btn'/>
+                </form>
+            </div>
+        </div>
 
 
-<script>
+        <script>
+            window.onload = function () {
+                var pArr = ["100", "10", "500", "2000", "100", "1000"];
+                $('#start_btn').click(function () {
+                    function convertDateFormat(date) {
+                        var year = date.getFullYear();
+                        var month = date.getMonth() + 1;
+                        month = month >= 10 ? month : '0' + month;
+                        var day = date.getDate();
+                        day = day >= 10 ? day : '0' + day;
+                        return [year, month, day].join('');
+                    }
+                    var today = convertDateFormat(new Date());
+                    var participate_date = '${participate_date}';
+                    if (participate_date == today) {
+                        alert('해당 이벤트는 하루에 한번만 참여 가능합니다.')
+                        return false
+                    }
+                    rotation();
+                    setTimeout("document.addPoint.submit()", 5500);
+                });
 
-    window.onload = function () {
-
-        var pArr = ["100", "10", "500", "2000", "100", "1000"];
-
-        $('#start_btn').click(function () {
-            rotation();
-        });
-
-        function rotation() {
-            $("#image").rotate({
-                angle: 0,
-                animateTo: 360 * 5 + randomize(0, 360),
-                center: ["50%", "50%"],
-                easing: $.easing.easeInOutElastic,
-                callback: function () {
-                    var n = $(this).getRotateAngle();
-                    endAnimate(n);
-                },
-                duration: 5000
-            });
-        }
+                function rotation() {
+                    $("#image").rotate({
+                        angle: 0,
+                        animateTo: 360 * 5 + randomize(0, 360),
+                        center: ["50%", "50%"],
+                        easing: $.easing.easeInOutElastic,
+                        callback: function () {
+                            var n = $(this).getRotateAngle();
+                            endAnimate(n);
+                            alert('축하합니다. ' + $("#point").val() + ' 포인트에 당첨되었습니다.');
+                        },
+                        duration: 5000
+                    });
+                }
 
 // 100p 적립 : 300-360
 // 10p 적립: 240-300
@@ -80,58 +93,46 @@
 // 100p 적립 : 60-120
 // 1000p 적립: 0-60
 
-        function endAnimate($n) {
-            var n = $n;
-            $('#result_id').html("<p>움직인각도:" + n + "</p>");
-            var real_angle = n % 360;
-            var part = Math.floor(real_angle);
+                function endAnimate($n) {
+                    var n = $n;
+                    var real_angle = n % 360;
+                    var part = Math.floor(real_angle);
 
-            $('#result_id2').html("<p>상품범위:" + part + "</p>");
+                    if (0 <= part && part < 60) {
+                        $("#point").val(pArr[5]);
+                        return;
+                    } else if (60 <= part && part < 120) {
+                        $("#point").val(pArr[4]);
+                        return;
+                    } else if (120 <= part && part < 180) {
+                        $("#point").val(pArr[3]);
+                        return;
+                    } else if (180 <= part && part < 240) {
+                        $("#point").val(pArr[2]);
+                        return;
+                    } else if (240 <= part && part < 300) {
+                        $("#point").val(pArr[1]);
+                        return;
+                    } else {
+                        $("#point").val(pArr[0]);
+                        return;
+                    }
+                }
 
-
-            if (0 <= part && part < 60) {
-                $('#result_id3').html("<p>당첨내역:" + pArr[5] + "</p>");
-                alert('축하합니다. ' + pArr[5] + ' 포인트에 당첨되었습니다.');
-                return;
-            } else if (60 <= part && part < 120) {
-                $('#result_id3').html("<p>당첨내역:" + pArr[4] + "</p>");
-                alert('축하합니다. ' + pArr[4] + ' 포인트에 당첨되었습니다.');
-                return;
-            } else if (120 <= part && part < 180) {
-                $('#result_id3').html("<p>당첨내역:" + pArr[3] + "</p>");
-                alert('축하합니다. ' + pArr[3] + ' 포인트에 당첨되었습니다.');
-                return;
-            } else if (180 <= part && part < 240) {
-                $('#result_id3').html("<p>당첨내역:" + pArr[2] + "</p>");
-                alert('축하합니다. ' + pArr[2] + ' 포인트에 당첨되었습니다.');
-                return;
-            } else if (240 <= part && part < 300) {
-                $('#result_id3').html("<p>당첨내역:" + pArr[1] + "</p>");
-                alert('축하합니다. ' + pArr[1] + ' 포인트에 당첨되었습니다.');
-                return;
-            } else {
-                $('#result_id3').html("<p>당첨내역:" + pArr[0] + "</p>")
-                alert('축하합니다. ' + pArr[0] + ' 포인트에 당첨되었습니다.');
-                return;
-            }
-        }
+                function randomize($min, $max) {
+                    return Math.floor(Math.random() * ($max - $min + 1)) + $min;
+                }
+            };
+        </script>
 
 
-        function randomize($min, $max) {
-            return Math.floor(Math.random() * ($max - $min + 1)) + $min;
-        }
-
-    };
-</script>
-</body>
-
-
-<!-- Bootstrap core JS-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core theme JS-->
-<script src="https://code.jquery.com/jquery-1.11.3.js" integrity="sha256-IGWuzKD7mwVnNY01LtXxq3L84Tm/RJtNCYBfXZw3Je0="
-        crossorigin="anonymous"></script>
-<script src="/static/event/roulette/js/jQueryRotate.js"></script>
-<script src="/static/event/roulette/js/jQueryRotateCompressed.js"></script>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="https://code.jquery.com/jquery-1.11.3.js"
+                integrity="sha256-IGWuzKD7mwVnNY01LtXxq3L84Tm/RJtNCYBfXZw3Je0="
+                crossorigin="anonymous"></script>
+        <script src="/static/event/roulette/js/jQueryRotate.js"></script>
+        <script src="/static/event/roulette/js/jQueryRotateCompressed.js"></script>
 </body>
 </html>
