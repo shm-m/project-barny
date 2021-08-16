@@ -40,7 +40,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@RequestMapping("/user/*")
+@RequestMapping("/user/*") 
 public class CartController {
 	
 	@Autowired
@@ -97,26 +97,7 @@ public class CartController {
 		cartService.writeCart(cartVO);
 		
 		return "SUCCESS";
-	} 		
-	
-   // update
-    /* @PutMapping("/update")
-    public ResponseEntity<String> update(@RequestBody CartVO cartVO, ModelAndView mav) {
-
-        ResponseEntity<String> entity = null;
-
-        try {
-
-            cartService.modify(cartVO);
-            entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
-        }
-
-        return entity;
-    }	*/
+	} 			
 	
 	// update
     @PostMapping("/updateCart")
@@ -147,4 +128,5 @@ public class CartController {
         }
         return "SUCCESS";
     }
+	
 }

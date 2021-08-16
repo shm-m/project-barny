@@ -8144,7 +8144,7 @@ a {
   -webkit-transition: .3s all ease;
   -o-transition: .3s all ease;
   transition: .3s all ease;
-  color: #99b19c; }
+  color: /* #99b19c; */#ffc800; }
   a:hover, a:focus {
     text-decoration: none !important;
     outline: none !important;
@@ -8159,7 +8159,7 @@ h1, h2, h3, h4, h5,
   color: #000; }
 
 .bg-primary {
-  background: #99b19c !important; }
+  background:/*  #99b19c */ #ffc800 !important; }
 
 .ftco-section {
   padding: 7em 0; }
@@ -8179,8 +8179,8 @@ h1, h2, h3, h4, h5,
   background-repeat: no-repeat;
   background-position: center center; }
 
-.table-wrap {
-  overflow-x: scroll; }
+/*.table-wrap {
+   overflow-x: scroll;  }*/
 
 .table {
   min-width: 1000px !important;
@@ -8190,7 +8190,7 @@ h1, h2, h3, h4, h5,
   -moz-box-shadow: 0px 5px 12px -12px rgba(0, 0, 0, 0.29);
   box-shadow: 0px 5px 12px -12px rgba(0, 0, 0, 0.29); }
   .table thead.thead-primary {
-    background: #99b19c; }
+    background: /* #99b19c; */#ffc800; }
   .table thead th {
     border: none;
     padding: 30px;
@@ -8204,8 +8204,8 @@ h1, h2, h3, h4, h5,
     padding: 30px;
     font-size: 14px;
     background: #fff;
-    border-bottom: 4px solid #f8f9fd;
-    vertical-align: middle; }
+    border-bottom: 1px solid #f8f9fd; 
+    vertical-align: middle;  }
   .table tbody td.quantity {
     width: 10%; }
   .table tbody td .img {
@@ -8271,6 +8271,6 @@ h1, h2, h3, h4, h5,
 
 /* Style the checkmark/indicator */
 .checkbox-primary {
-  color: #99b19c; }
+  color:/*  #99b19c; */#ffc800; }
   .checkbox-primary input:checked ~ .checkmark:after {
-    color: #99b19c; }
+    color:/*  #99b19c; */#ffc800; }

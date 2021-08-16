@@ -11,19 +11,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 <meta name="description" content=""/>
 <meta name="author" content=""/>
-<title>Find your drink, Barny</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="/static/main_page/assets/favicon-2.ico"/>
+
 <!-- Font Awesome icons (free version)-->
 <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+
 <!-- Google fonts-->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
 <!-- naver fonts -->
 <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/static/main_page/css/styles.css" rel="stylesheet"/>
 <link rel="stylesheet" href="/static/css/styles.css">
+
+<link rel="stylesheet" href="/static/table/css/style.css"/>
+<link rel="stylesheet" href="/static/table/css/owl.carousel.min.css"/>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -38,8 +47,35 @@
 <script src="/static/cart/js/bootstrap.min.js"></script> 
 <script src="/static/cart/js/main.js"></script>
 
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+	
 </head>
+<style>
+.btn-basic1 {
+  font-family: BBTreeGB;
+  font-size : 15px;
+  background-color:  /* #EBC24B; */ white; 
+  color: gray;
+  padding: 7px;
+  border-radius: 3px;
+  text-align: center;
+  border-width : 1px;
+}
 
+.btn-basic1:hover {
+  color: gray;
+  box-shadow: 0 0 0 0.25rem rgba(255, 208, 38, 0.5);
+}
+
+.btn-basic1:focus {
+  color: gray;
+  box-shadow: 0 0 0 0.25rem rgba(255, 208, 38, 0.5);
+}
+
+
+</style>
 <body>
 
 <!-- Navigation-->
@@ -66,9 +102,9 @@
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
                         <li></li>
-                        <a class="dropdown-item" href="#">패키지</a></li>
-                        <li><a class="dropdown-item" href="#">술</a></li>
-                        <li><a class="dropdown-item" href="#">안주</a></li>
+                        <a class="dropdown-item" href="/product_main">패키지</a></li>
+                        <li><a class="dropdown-item" href="/product_main_liquor">술</a></li>
+                        <li><a class="dropdown-item" href="/product_main_food">안주</a></li>
                     </ul>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="#team">이벤트</a></li>
@@ -85,14 +121,14 @@
                 </li>
             </ul>
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                <sec:authorize access="isAnonymous()">
+<%--                 <sec:authorize access="isAnonymous()">
                     <li class="nav-item"><a class="nav-link" href="/loginForm">로그인</a></li>
-                </sec:authorize>
+                </sec:authorize> --%>
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/board/my_page">마이페이지</a></li>
                 </sec:authorize>
 
-                <li class="nav-item"><a class="nav-link" href="#services">장바구니</a></li>
+                <li class="nav-item"><a class="nav-link" href="/user/cart5">장바구니</a></li>
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
                 </sec:authorize>
@@ -117,10 +153,10 @@
 				<input type="button" value="선택 삭제 " class="selection" onclick="deleteValue();" />
 			</div> 
 
-			<div class="row">
-				<div class="col-md-12">
-					<div class="table-wrap">
-						<table class="table">
+			<div class="row" style="text-align:center;">
+				<div class="col-md-12" >
+					<div class="table-wrap" >
+						<table class="table" >
 							<thead class="thead-primary">
 								<tr>
 									<th>&nbsp;</th>
@@ -128,11 +164,11 @@
 									<th>Product</th>
 									<th>Price</th>
 									<th>Qty</th>
-									<th>&nbsp;</th>
+									<!-- <th>&nbsp;</th> -->
 								</tr>
 							</thead>
-							<tbody>
-							<c:forEach items="${cartList}" var="dto">
+							<tbody>														
+							<c:forEach items="${cartList}" var="dto">						
 								<tr class="alert" role="alert">
  									<th scope="row">
  									<label class="control control--checkbox">
@@ -141,8 +177,8 @@
 									</label>
 									</th> 
 									<td>
-										<%-- <div class="img" src="${dto.image_route}"></div> --%>
-										<a href="#"><img class="img" src="${dto.image_route}"></a>
+										 <%-- <div class="img" src="${dto.image_route}"></div> --%> 
+										<a href="#"><img class="img" src="${dto.image_route}"></a>										
 									</td>									
 										<td>
 											<div class="productname">
@@ -151,16 +187,19 @@
 										</td>
 										<td>${dto.price} </td>
 										<td class="qty">
-											<div class="input-group"> 
+											<div class="input-group1"> 
 												<%-- <input type="text" name="qty" class="qty form-control input-number" value="${dto.product_qty}" min="1" max="10"> --%>
-												<input id="product_qty" name="product_qty" type="number" value="${dto.product_qty}" />
+												<input id="product_qty" name="product_qty" style="text-align:center; width:60px; margin-left:30%;" type="number" value="${dto.product_qty}" />
                                                 <input id="product_id" name="product_id" type="hidden" value="${dto.product_id}">
-												<button id="update" type="button" class="btn-outline-dark btn-sm">수정</button>
+												<button id="update" type="button" class="btn-basic1 btn-sm">수량변경</button>
 												
-											</div> 
-									<!--<button id="update" type="button" class="btn-outline-dark btn-sm">수정</button> -->										</td>
-									</c:forEach>
+											</div>
+										</td>	 
 									</tr>
+									<!--<button id="update" type="button" class="btn-outline-dark btn-sm">수정</button> -->										
+																		
+									</c:forEach>																																		
+								
 									</tbody>
 								<tr>
 									<td id ="total_price" colspan="5" align="right">
@@ -175,12 +214,78 @@
 			</div>			
 		</div>
 	<div class="text-center mb-5 mt-5">
-		<a class="btn btn-secondary btn-sm text-uppercase" href="/user/order">주문하기!</a><br>
-		<a class="btn btn-secondary btn-sm text-uppercase" href="/product_main">더 쇼핑하기!</a>
+<!-- 		<a class="btn btn-secondary btn-sm text-uppercase" href="/user/order">주문하기!</a><br>
+		<a class="btn btn-secondary btn-sm text-uppercase" href="/product_main">더 쇼핑하기!</a> -->
+		
+		<a class="btn-basic btn-lg text-uppercase" href="/user/order">주문하기!</a>		
+		<a class="btn-basic btn-lg text-uppercase" href="/product_main">더 쇼핑하기!</a>
 	</div>	
 	
 	</section>
-	
+
+<!-- Footer-->
+<footer class="footer">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-4 text-lg-start"><b>주식회사 바니</b> <br> 서울특별시 종로구 종로 69 YMCA빌딩 7층
+                <br>Copyright &copy; Barny Inc. All rights reserved.
+            </div>
+            <div class="col-lg-4 my-3 my-lg-0">
+                <a class="btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+                <a class="btn-dark btn-social mx-2" href="#!"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a class="link-dark text-decoration-none me-3" href="#!">개인정보처리방침</a>
+                <a class="link-dark text-decoration-none" href="#!">이용약관</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!--top-button-->
+<img id="myBtn" src="/static/main_page/assets/top-btn.png" onclick="topFunction()">
+
+
+<!--kakao-chat-->
+<a href="javascript:void kakaoChatStart()" class="kakaoChatPc hidden-md hidden-sm hidden-xs" id="kakao-chat">
+    <img src="/static/main_page/assets/kakao-chat.png" width="50px" height="50px">
+</a>
+
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script type='text/javascript'>
+    Kakao.init('7e53e24ce9a07956bfb5ac4930333caa');
+
+    function kakaoChatStart() {
+        Kakao.Channel.chat({
+            channelPublicId: '_WDxjSs'
+        });
+    }
+</script>
+<!-- Bootstrap core JS-->
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="/static/main_page/js/scripts.js"></script>
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>	
+
+<!-- 이미지 루트 변경 
+<script>
+	$(document).ready(function(){
+    	//이미지 변경 함수 호출
+    	changeIMG();
+    });
+    
+    
+    function changeIMG(){
+
+        
+        //img 태그의 클래스 명으로 변경 할 때
+        $(".imgClass").attr("src", 'http://localhost:8282/${dto.image_route}');
+    }
+
+</script>-->
+
 
 <!-- 수량 변경 -->
 	<script type="text/javascript">

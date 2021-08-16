@@ -75,7 +75,7 @@ public class OrderController {
 	}*/
 
 	// 바로구매
-	@ResponseBody	 
+	/* @ResponseBody	 
 	@GetMapping("/user/order2")	
 	public String order2(CartVO cartVO, Principal principal, @AuthenticationPrincipal MemberContext ctx) {
 		
@@ -91,7 +91,7 @@ public class OrderController {
 		cartService.order2(cartVO);
 		
 		return "SUCCESS";
-	} 
+	} */
 	
 	@GetMapping("/orderPage")
 	public String orderPage() {

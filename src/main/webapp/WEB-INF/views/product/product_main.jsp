@@ -33,29 +33,43 @@
 
   } 
 
-/*     .card-img {
-    -webkit-transform:scale(1);
-    -moz-transform:scale(1);
-    -ms-transform:scale(1); 
-    -o-transform:scale(1);  
-    transform:scale(1);
-    -webkit-transition:.3s;
-    -moz-transition:.3s;
-    -ms-transition:.3s;
-    -o-transition:.3s;
-    transition:.3s;
-    width: 200px;
-  	height: 250px;
-  	object-fit: cover;
-  	overflow: hidden;
+ .searchForm1 {
+	position:fixed;  
+	width:175px; 
+	display:inline-block; 
+	right:500; /* 창에서 오른쪽 길이 */ 
+	top:50%; /* 창에서 위에서 부터의 높이 */ 
+	background-color: transparent; 
+	margin:0;
+	text-align: center;
+} 
+
+ .package {
+	margin-left : 15%; 
+	margin-right : 4%;
+	margin-top : 80px;  
+
 }
-.card-img:hover {
-    -webkit-transform:scale(1.2);
-    -moz-transform:scale(1.2);
-    -ms-transform:scale(1.2);   
-    -o-transform:scale(1.2);
-    transform:scale(1.2);
-} */
+
+.pagination {
+	margin-left: 600px;
+} 
+
+.total-1 {
+	margin-left : 8%;
+}
+
+.sidebar {
+ 	/* position : fixed; */ 
+ 	position : absolute; 
+	width : 175px; 
+	display : inline-block; 
+	right : 500; /* 창에서 오른쪽 길이 */ 
+	top : 16%; /* 창에서 위에서 부터의 높이 */ 
+	background-color : transparent; 
+	margin : 0; 	
+
+}
 
 
 </style>
@@ -128,7 +142,7 @@
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
-    <div class="carousel-inner">
+    <div class="carousel-inner" style="width:100%; height: 450px !important;">
         <div class="carousel-item active">
             <img src="static/img/first.jpg" class="d-block w-100" alt="First Slide">
         </div>
@@ -149,31 +163,47 @@
     </button>
 </div>
 
-<!-- 네비게이션 탭 -->
-
-<ul class="nav justify-content-center navbar-expand-lg navbar-light bg-light">
-    <li class="nav-item">
-      <a class="nav-link active" href="product_main">구독패키지</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="product_main_liquor">술</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="product_main_food">안주</a>
-    </li>
-
-    <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-        
-        <!-- !!!!!!!!!!!search 버튼 색 바꿔야합니다!!!!!!!!!! -->
-    </form>
-    
-</ul>
+<!-- Sidebar -->
+<div class="total-1">
+     <div class="sidebar p-3 bg-light" style="width: 15%; margin-top:200px; "> 
+      <!-- <a href="/" class="sidebar align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"> -->
+        <span class="fs-4">상품보기</span>
+      </a>
+      <hr>
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+          <a href="/product_main" class="nav-link link-dark active" >
+            구독패키지
+          </a>
+        </li>
+        <li>
+          <a href="/product_main_liquor" class="nav-link link-dark" >
+            술
+          </a>
+        </li>
+        <li>
+          <a href="product_main_food" class="nav-link link-dark">
+            안주
+          </a>
+        </li>
+      </ul>
+      <hr class="my-2">
+      <div class="col-lg-12">
+		<form id='searchForm1' action="/product_main_liquor" method='get' style="font-size:10px;">
+  			<select name='type' >
+ 				<option value=""<c:out value="${pageMaker.cri.type == null?'selected':''}"/>>--</option>
+				<option value="C"<c:out value="${pageMaker.cri.type eq 'C'?'selected':''}"/>>상품이름</option> 
+			</select>  
+			<input type='text' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>'/>
+<%-- 			<input type='hidden' name='pageNum' value='<c:out value="${pageMaker.cri.pageNum}"/>'/>
+			<input type='hidden' name='amount' value='<c:out value="${pageMaker.cri.amount}"/>'/> --%>
+			<button class='btn btn-secondary btn-sm'>Search</button>
+		</form>
+	</div>
+</div>
 
 <!-- 패키지 상품 보기 -->
-
-<div class="container mt-4 text-center">
+<div class="package text-center"> 
     <div class="row">
         <c:forEach items="${product_main}" var="dto">
             <div class="col-4">
@@ -190,7 +220,6 @@
             </div>
         </c:forEach>
     </div>
-</div>
 
 <!-- 구독하기 버튼 -->
 
@@ -199,7 +228,7 @@
     <a class="btn btn-secondary btn-lg text-uppercase" href="/#">구독하기</a>
 </div> -->
 
-<div style="height: auto; width: 100%; border:1px solid hsl(0, 4%, 33%);"/>
+<div style="height: auto; width: 100%; "/>
 <div class="container-2">
     <div class="text-center mb-5 mt-5">
         <h3 class="display-4 mb-5">이런 상품은 어떠세요?</h3>
@@ -208,7 +237,7 @@
 </div>
 
 <!-- 추천 상품보기-->
- <div class="container mt-4 text-center">
+<!--  <div class="container mt-4 text-center"> -->
     <div class="row">
       <div class="col-4">
         <div class="card h-100">
@@ -237,9 +266,9 @@
         </div>
       </div>
     </div>
-  </div>
+<!--   </div> -->
 
-  <div class="container mt-4 text-center">
+<!--   <div class="container mt-4 text-center"> -->
     <div class="row">
       <div class="col-4">
         <div class="card h-100">
@@ -269,7 +298,7 @@
         </div>
       </div>
     </div>
-  </div>
+<!--   </div> -->
 
 <!-- 상품 더보기 버튼 -->
 
@@ -277,6 +306,8 @@
     <!--  <button type="button" class="btn btn-outline-dark btn-lg mt-5">상품 더 보러가기!</button> -->
     <a class="btn btn-secondary btn-lg text-uppercase" href="/product_main_liquor">상품 더 보러가기!</a>
 </div>
+</div>
+</div> 
 
 <!--top-button-->
 <img id="myBtn" src="/static/main_page/assets/top-btn.png" onclick="topFunction()">

@@ -142,9 +142,9 @@
                 </li>
             </ul>
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-<!--                 <sec:authorize access="isAnonymous()">
+                <sec:authorize access="isAnonymous()">
                     <li class="nav-item"><a class="nav-link" href="/loginForm">로그인</a></li>
-                </sec:authorize> -->
+                </sec:authorize> 
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/board/my_page">마이페이지</a></li>
                 </sec:authorize>
@@ -262,6 +262,25 @@
 	</nav>
 	</div>
  </div>
+
+<!-- Footer-->
+<footer class="footer">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-4 text-lg-start"><b>주식회사 바니</b> <br> 서울특별시 종로구 종로 69 YMCA빌딩 7층
+                <br>Copyright &copy; Barny Inc. All rights reserved.
+            </div>
+            <div class="col-lg-4 my-3 my-lg-0">
+                <a class="btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+                <a class="btn-dark btn-social mx-2" href="#!"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a class="link-dark text-decoration-none me-3" href="#!">개인정보처리방침</a>
+                <a class="link-dark text-decoration-none" href="#!">이용약관</a>
+            </div>
+        </div>
+    </div>
+</footer>
      
 <!--top-button-->
 <img id="myBtn" src="/static/main_page/assets/top-btn.png" onclick="topFunction()">

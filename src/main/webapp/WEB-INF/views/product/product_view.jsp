@@ -142,7 +142,7 @@
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                  <sec:authorize access="isAnonymous()">
                     <li class="nav-item"><a class="nav-link" href="/loginForm">로그인</a></li>
-                </sec:authorize> -
+                </sec:authorize> 
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/board/my_page">마이페이지</a></li>
                 </sec:authorize>
@@ -158,7 +158,7 @@
 
 <div class="product_view">
 <div class="product_view1">
-<div class="container mt-4">
+<!-- <div class="container mt-4"> -->
     <div class="row">
         <div class="col-md-4">
             <img class="card-img" src="${product_view.image_route}" alt="상품이미지">
@@ -178,12 +178,12 @@
                                 	
                 <input id="pro_id" name="product_id" type="hidden" value="${product_view.product_id}">
                 <button id="cart" type="button" class="btn btn-secondary btn-md">장바구니</button>                              
-                <button id="order2" type="button" class="btn btn-secondary btn-md">바로구매</button>
+                <!-- <button id="order2" type="button" class="btn btn-secondary btn-md">바로구매</button> -->
                 <button id="re" type="button" disabled class="btn btn-secondary btn-md">재입고알림</button>
         </div>
     </div>
    <br>
- </div>
+ <!-- </div> -->
  </div> 
  
  <hr class="my-6">
@@ -205,7 +205,7 @@
 
    <div class="table-wrap col-6">
       <p>베스트 후기</p>
-      <table class="table myaccordion table-hover" id="accordion">
+      <table class="table myaccordion table-hover" id="accordion" >
             <thead>
                <tr>
                   <th class="th-sm" style="text-indent:-10000px;">글번호</th>
@@ -294,15 +294,13 @@
                         </c:when>
                      </c:choose>
                   </tbody>
-
                </form>
-
             </table>
          </div>
          <button type="button"
             onclick="location.href='/user/review/write_view/product_view?product_id=${product_view.product_id}'">후기
             등록</button>
-
+</div>
  <!--page-->
          <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
