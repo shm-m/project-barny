@@ -42,16 +42,10 @@ public class CartServiceImpl implements CartService {
 	
 	// 장바구니 개별 삭제
 	@Override
-	public void removeProduct(int product_id) {
-		cartMapper.delete(product_id);
+	public void delete(int member_idx, int product_id) {
+		cartMapper.delete(member_idx, product_id);
 	}
 	
-	// 장바구니 삭제
-	@Override
-	public void removeAll(int member_idx) {
-		// return 
-		cartMapper.deleteAll(member_idx);
-	}
 	
 	// 장바구니 합계
 	@Override
@@ -85,7 +79,12 @@ public class CartServiceImpl implements CartService {
 		
 	}*/
 
-
+	// 바로구매
+	@Override
+	public void order2(CartVO cartVO) {
+		cartMapper.insert2(cartVO);
+		
+	}
 
 
        
