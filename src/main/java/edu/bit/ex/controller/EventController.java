@@ -22,7 +22,7 @@ public class EventController {
     // 카드게임 메인 페이지
     @GetMapping("/user/event/cardbarny")
     public String cardbarny() {
-        return "/user/cardBarny";
+        return "/event/cardBarny";
     }
 
     // 룰렛 메인 페이지
@@ -35,12 +35,12 @@ public class EventController {
     }
 
     // 포인트 적립
-    @RequestMapping(value = "/add_point", method = RequestMethod.POST)
+    @RequestMapping(value = "/event/add_point", method = RequestMethod.POST)
     public String add_point(MemberVO memberVO) {
         log.info("event roulette start");
         eventService.updatePoint(memberVO);
         eventService.participate(memberVO.getMember_idx());
-        return "redirect:/user/event_roulette";
+        return "redirect:/user/event/roulette";
     }
 
 
