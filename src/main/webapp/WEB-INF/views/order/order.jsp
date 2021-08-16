@@ -112,7 +112,11 @@
     </div>
 </nav>
   
-<div class="order">  
+<div class="order">
+<div class="order-1" style="margin-left:30%; margin-bottom:5%;">
+<h1>주문서</h1>  
+</div>
+
 <div class="container mt-4">    
     <h3>주문상품</h3>
     <div class="row">
