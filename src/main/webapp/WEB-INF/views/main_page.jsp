@@ -41,10 +41,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link" href=/subs>구독</a></li>
+                <li class="nav-item"><a class="nav-link" href=/subscribe>구독</a></li>
                 <li class="nav-item"><a class="nav-link" href="/story">브랜드 스토리</a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                    <a class="nav-link dropdown-toggle" href="#" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
                         상품 보기
                     </a>
@@ -55,16 +55,16 @@
                         <li><a class="dropdown-item" href="product_main_food">안주</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="#team">이벤트</a></li>
+                <li class="nav-item"><a class="nav-link" href="/event">이벤트</a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                    <a class="nav-link dropdown-toggle" href="#" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
                         고객센터
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
                         <li></li>
-                        <a class="dropdown-item" href="/notice_list">공지사항</a></li>
-                        <li><a class="dropdown-item" href="/faq">자주 묻는 질문</a></li>
+                        <a class="dropdown-item" href="/notice">공지사항</a></li>
+                        <li><a class="dropdown-item" href="/notice/faq">자주 묻는 질문</a></li>
                     </ul>
                 </li>
             </ul>

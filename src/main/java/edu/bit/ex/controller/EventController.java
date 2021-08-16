@@ -13,19 +13,22 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Slf4j
 @Controller
-//@RequestMapping("/event/**")
+
 public class EventController {
 
     @Autowired
     private EventService eventService;
 
+    // 카드게임 메인 페이지
+    @GetMapping("/user/event/cardbarny")
+    public String cardbarny() {
+        return "/user/cardBarny";
+    }
+
     // 룰렛 메인 페이지
-    @GetMapping("/roulette")
+    @GetMapping("/user/event/roulette")
     public Object roulette_game(ModelAndView mav, @AuthenticationPrincipal MemberContext ctx) {
         mav.setViewName("event/roulette_game");
-        if (ctx == null) {
-            return "/loginForm";
-        }
         mav.addObject("participate_date", eventService.checkPart(ctx.getMemberVO().getMember_idx()));
         return mav;
 
@@ -37,14 +40,10 @@ public class EventController {
         log.info("event roulette start");
         eventService.updatePoint(memberVO);
         eventService.participate(memberVO.getMember_idx());
-        return "redirect:/event/roulette";
+        return "redirect:/user/event_roulette";
     }
 
-    // 카드게임 메인 페이지
-    @GetMapping("/user/event_cardbarny")
-    public String cardbarny() {
-        return "/user/cardBarny";
-    }
+
 
 }
 

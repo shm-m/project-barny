@@ -2,6 +2,7 @@
          pageEncoding="utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,20 +13,14 @@
     <meta name="author" content=""/>
     <title>Find your drink, Barny</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon"
-          href="/static/main_page/assets/favicon-2.ico"/>
+    <link rel="icon" type="image/x-icon" href="/static/main_page/assets/favicon-2.ico"/>
     <!-- Font Awesome icons (free version)-->
-    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"
-            crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
-          rel="stylesheet" type="text/css"/>
-    <link
-            href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700"
-            rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css"/>
     <!-- naver fonts -->
-    <link rel="stylesheet" type="text/css"
-          href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/static/main_page/css/styles.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/static/css/styles.css">
@@ -50,31 +45,29 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link" href="/subs">구독</a></li>
-                <li class="nav-item"><a class="nav-link" href="#portfolio">브랜드
+                <li class="nav-item"><a class="nav-link" href="/subscribe">구독</a></li>
+                <li class="nav-item"><a class="nav-link" href="/story">브랜드
                     스토리</a></li>
                 <li class="nav-item dropdown"><a
-                        class="nav-link dropdown-toggle" href="#"
-                        id="navbarDarkDropdownMenuLink" role="button"
+                        class="nav-link dropdown-toggle" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false"> 상품 보기 </a>
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
                         <li></li>
-                        <a class="dropdown-item" href="#">패키지</a></li>
-                        <li><a class="dropdown-item" href="#">술</a></li>
-                        <li><a class="dropdown-item" href="#">안주</a></li>
+                        <a class="dropdown-item" href="product_main">패키지</a></li>
+                        <li><a class="dropdown-item" href="product_main_liquor">술</a></li>
+                        <li><a class="dropdown-item" href="product_main_food">안주</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="#team">이벤트</a></li>
+                <li class="nav-item"><a class="nav-link" href="/event">이벤트</a></li>
                 <li class="nav-item dropdown"><a
-                        class="nav-link dropdown-toggle" href="#"
-                        id="navbarDarkDropdownMenuLink" role="button"
+                        class="nav-link dropdown-toggle" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false"> 고객센터 </a>
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
                         <li></li>
                         <a class="dropdown-item" href="/notice">공지사항</a></li>
-                        <li><a class="dropdown-item" href="/faq">자주 묻는 질문</a></li>
+                        <li><a class="dropdown-item" href="/notice/faq">자주 묻는 질문</a></li>
                     </ul>
                 </li>
             </ul>
@@ -85,8 +78,7 @@
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/board/my_page">마이페이지</a></li>
                 </sec:authorize>
-
-                <li class="nav-item"><a class="nav-link" href="#services">장바구니</a></li>
+                <li class="nav-item"><a class="nav-link" href="/user/cart3">장바구니</a></li>
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
                 </sec:authorize>
