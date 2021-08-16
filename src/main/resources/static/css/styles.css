@@ -267,3 +267,14 @@ h4.section-heading {
 .card {
   margin-right: 3rem !important;
 }
+
+.event-t {
+  font-family: NanumSquare;
+  font-weight: bold;
+}
+.event-b {
+  font-family: NanumSquare;
+  color: black;
+  font-size: 15px;
+}
+

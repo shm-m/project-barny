@@ -11753,3 +11753,9 @@ header.masthead .masthead-heading {
   text-decoration: none;
   cursor: pointer;
 }
+
+.event-card {
+  border : solid 1px;
+  border-color: #BEBEC0;
+  background-color: white;
+}
