@@ -140,9 +140,9 @@
                 </li>
             </ul>
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                <sec:authorize access="isAnonymous()">
+                 <sec:authorize access="isAnonymous()">
                     <li class="nav-item"><a class="nav-link" href="/loginForm">로그인</a></li>
-                </sec:authorize>
+                </sec:authorize> -
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/board/my_page">마이페이지</a></li>
                 </sec:authorize>
@@ -244,77 +244,96 @@
    
 <hr class="my-4">
    
-<!--후기 list --> 
-   <div class="table-wrap col-8">
-      <table class="table myaccordion table-hover" id="accordion">
-         <form role="form" method="post" id="reviewForm" action="${pageContext.request.contextPath}/product_view?product_id=${product_view.product_id}">
-            <thead>
-               <tr>
-                  <th class="th-sm">글번호</th>
-                  <th class="th-sm">제목</th>
-                  <th class="th-sm">작성자</th>
-                  <th class="th-sm">작성일</th>
-                  <th class="th-sm">좋아요</th>
-                  <th class="th-sm">조회</th>
-               </tr>
-            </thead>
-            <tbody>
-               <c:forEach items="${list}" var="vo" varStatus="status">
-                  <tr data-toggle="collapse" data-target="#collapse${status.index}" aria-expanded="true" aria-controls="collapse" class="collapsed">
-                     <td id="board_id" value="${vo.board_id}">${vo.board_id}</td>
-                     <td>${vo.b_title}</td>
-                     <td>${vo.nickname}</td>
-                     <td>${vo.b_date}</td>
-                     <td id="like_count${status.index}">${vo.like_count}</td>
-                     <td id="b_hit">${vo.b_hit}</td>
-                     <i class="fa" aria-hidden="false"></i>
-                  </tr>
-                  <tr>
-                     <td colspan="6" id="collapse${status.index}" class="collapse acc" data-parent="#accordion" aria-expanded="false">
-                        <p>${vo.b_content}</p>
-                        <button value="${vo.board_id}" id="${status.index}" type="button" class="like_button">좋아요</button>
-                        <c:forEach items="${vo.fileList}" var="image" varStatus="status">
-                           <p><img style="width: 200px; height: 200px;" src="${image.image_route}"></p> 
-                           <!-- <p><img style="width: 200px; height: 200px;" src="http://localhost:8282/static/upload/2021/08/11/100c815ced514be285b177bc9936a5fa.jpg"></p> -->
-                        </c:forEach>
-                  </td>
-               </tr>
-         </c:forEach>
-         </tbody>
-            
-         </form>
-        
-      </table>
-   </div>         
-   <button type="button" onclick="location.href='/user/review/write_view/product_view?product_id=${product_view.product_id}'">후기 등록</button>
- </div>
-<!--page-->
-    <nav aria-label="Page navigation example">
-      <ul class="pagination justify-content-center">
-          <c:if test="${pageMaker.prev}">
-              <li class="page-item">
-                  <a class="page-link" href="${pageMaker.makeNum(pageMaker.startPage - 1)}&product_id=${product_view.product_id}" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                      <span class="sr-only">Previous</span>
-                  </a>
-              </li>
-          </c:if>
-          <c:forEach var="idx" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
-              <li class="page-item "><a class="page-link" href="${pageMaker.makeNum(idx)}&product_id=${product_view.product_id}">
-                      ${idx}
-              </a>
-              </li>
-          </c:forEach>
-          <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-              <li class="page-item">
-                  <a class="page-link" aria-label="Next" href="${pageMaker.makeQuery(pageMaker.endPage +1) }&product_id=${product_view.product_id}">
-                      <span aria-hidden="true">&raquo;</span>
-                      <span class="sr-only">Next</span>
-                  </a>
-              </li>
-          </c:if>
-      </ul>
-  </nav> 
+  <!--후기 list-->
+         <div class="table-wrap col-8">
+            <table class="table myaccordion table-hover" id="accordion">
+               <form role="form" method="post" id="reviewForm"
+                  action="${pageContext.request.contextPath}/product_view?product_id=${product_view.product_id}">
+                  <thead>
+                     <tr>
+                        <th class="th-sm">글번호</th>
+                        <th class="th-sm">제목</th>
+                        <th class="th-sm">작성자</th>
+                        <th class="th-sm">작성일</th>
+                        <th class="th-sm">좋아요</th>
+                        <th class="th-sm">조회</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <c:choose>
+                        <c:when test="${empty list}">
+                           <tr>
+                              <td colspan="6" align="center">작성한 후기가 없습니다</td>
+                           </tr>
+                        </c:when>
+                        <c:when test="${!empty list}">
+                           <c:forEach items="${list}" var="vo" varStatus="status">
+                              <tr data-toggle="collapse" data-target="#collapse${status.index}" aria-expanded="true"
+                                 aria-controls="collapse" class="collapsed">
+                                 <td id="board_id" value="${vo.board_id}">${vo.board_id}</td>
+                                 <td>${vo.b_title}</td>
+                                 <td>${vo.nickname}</td>
+                                 <td>${vo.b_date}</td>
+                                 <td id="like_count${status.index}">${vo.like_count}</td>
+                                 <td id="b_hit">${vo.b_hit}</td>
+                                 <i class="fa" aria-hidden="false"></i>
+                              </tr>
+                              <tr>
+                                 <td colspan="6" id="collapse${status.index}" class="collapse acc"
+                                    data-parent="#accordion" aria-expanded="false">
+                                    <p style="text-align: center;">${vo.b_content}</p>
+                                    <button value="${vo.board_id}" id="${status.index}" type="button"
+                                       class="like_button">좋아용</button>
+                                    <c:forEach items="${vo.fileList}" var="image" varStatus="status">
+                                       <p><img style="width: 200px; height: 200px;" src="${image.image_route}"
+                                             onerror="history.go(0);"></p>
+                                    </c:forEach>
+                                 </td>
+                              </tr>
+                           </c:forEach>
+                        </c:when>
+                     </c:choose>
+                  </tbody>
+
+               </form>
+
+            </table>
+         </div>
+         <button type="button"
+            onclick="location.href='/user/review/write_view/product_view?product_id=${product_view.product_id}'">후기
+            등록</button>
+
+ <!--page-->
+         <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+               <c:if test="${pageMaker.prev}">
+                  <li class="page-item">
+                     <a class="page-link"
+                        href="${pageMaker.makeNum(pageMaker.startPage - 1)}&product_id=${product_view.product_id}"
+                        aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                     </a>
+                  </li>
+               </c:if>
+               <c:forEach var="idx" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
+                  <li class="page-item "><a class="page-link"
+                        href="${pageMaker.makeNum(idx)}&product_id=${product_view.product_id}">
+                        ${idx}
+                     </a>
+                  </li>
+               </c:forEach>
+               <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+                  <li class="page-item">
+                     <a class="page-link" aria-label="Next"
+                        href="${pageMaker.makeQuery(pageMaker.endPage +1) }&product_id=${product_view.product_id}">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                     </a>
+                  </li>
+               </c:if>
+            </ul>
+         </nav>
  
  
 <%--searching button--%>
@@ -336,8 +355,9 @@
 	</div>
 </div> --%>
 
-   <script src="/static/js/popper.js"></script>
-   <script src="/static/js/reviewLike&Hit.js"></script>
+<script src="/static/js/popper.js"></script>
+<script src="/static/js/reviewLike&Hit.js"></script>
+
          
 <script>
    // 장바구니
