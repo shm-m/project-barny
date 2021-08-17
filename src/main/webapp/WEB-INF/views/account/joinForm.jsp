@@ -122,8 +122,9 @@
 
 
                     <div class="row">
+                    <div class="col-md-8 mb-3 ">
+                            <div class="wrap-input100 validate-input m-b-16">
                         <label for="postcode">주소</label>
-                        <div class="col-md-8 mb-3">
                             <input type="text" class="form-control" id="postcode" name="address" placeholder="우편번호">
                         </div>
                         <div class="col-md-4 mb-3">
@@ -185,7 +186,7 @@
                    id="aggrement" required>
             <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label></div>
         <div class="mb-4"></div>
-        <button class="btn btn-primary btn-lg btn-block" id="submit-btn" type="submit">가입 완료</button>
+        <button class="btn btn-primary btn-lg btn-block" type="submit">가입 완료</button>
         </form>
     </div>
     </div>

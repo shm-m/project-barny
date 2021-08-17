@@ -83,6 +83,8 @@ public interface BoardService {
 	//리스트삭제
 	public void ship_remove(int ship_id);
 
+	public List<MemberVO> getPointList(int member_idx);
+
 	
 	
 

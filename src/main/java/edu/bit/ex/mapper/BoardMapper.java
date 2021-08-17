@@ -73,5 +73,8 @@ public interface BoardMapper {
 	
 	//구매취소
 	public void ship_remove(int ship_id);
+	
+	//포인트
+	public List<MemberVO> getPointList(int member_idx);
 
 }

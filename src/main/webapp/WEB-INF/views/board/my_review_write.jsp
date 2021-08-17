@@ -13,7 +13,7 @@
 		<select name="board_type_id">
 			    <option value="2">후기</option>
 			</select>
-			<input type="hidden" name="board_id" value="${my_review.product_id}">
+			<input type="hidden" name="board_type_id" value="${my_review.board_type_id}">
 			
 			<tr>
 				<td> 제목 </td>
