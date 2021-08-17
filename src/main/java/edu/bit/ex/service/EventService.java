@@ -1,11 +1,9 @@
 package edu.bit.ex.service;
 
-import java.sql.Date;
 import java.util.List;
 
 import edu.bit.ex.page.Criteria;
 import edu.bit.ex.vo.EventVO;
-import edu.bit.ex.vo.MemberVO;
 
 public interface EventService {
     List<EventVO> getList();
@@ -23,10 +21,4 @@ public interface EventService {
 
     int remove(int board_id);
 
-    // Update Total Point
-    void updatePoint(MemberVO memberVO);
-
-    void participate(int member_idx);
-
-    String checkPart(int member_idx);
 }

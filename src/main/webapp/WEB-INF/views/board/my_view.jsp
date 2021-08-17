@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,9 +27,11 @@
     <link rel="stylesheet" href="/static/table/css/owl.carousel.min.css"/>
 
 </head>
-
+<tbody>
 
 <body>
+			
+
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top"
      id="mainNav_2">
@@ -44,29 +46,31 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link" href="/subscribe">구독</a></li>
-                <li class="nav-item"><a class="nav-link" href="/story">브랜드
+                <li class="nav-item"><a class="nav-link" href="/subs">구독</a></li>
+                <li class="nav-item"><a class="nav-link" href="#portfolio">브랜드
                     스토리</a></li>
                 <li class="nav-item dropdown"><a
-                        class="nav-link dropdown-toggle" role="button"
+                        class="nav-link dropdown-toggle" href="#"
+                        id="navbarDarkDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false"> 상품 보기 </a>
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
                         <li></li>
-                        <a class="dropdown-item" href="product_main">패키지</a></li>
-                        <li><a class="dropdown-item" href="product_main_liquor">술</a></li>
-                        <li><a class="dropdown-item" href="product_main_food">안주</a></li>
+                        <a class="dropdown-item" href="#">패키지</a></li>
+                        <li><a class="dropdown-item" href="#">술</a></li>
+                        <li><a class="dropdown-item" href="#">안주</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="/event">이벤트</a></li>
+                <li class="nav-item"><a class="nav-link" href="#team">이벤트</a></li>
                 <li class="nav-item dropdown"><a
-                        class="nav-link dropdown-toggle" role="button"
+                        class="nav-link dropdown-toggle" href="#"
+                        id="navbarDarkDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false"> 고객센터 </a>
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
                         <li></li>
                         <a class="dropdown-item" href="/notice">공지사항</a></li>
-                        <li><a class="dropdown-item" href="/notice/faq">자주 묻는 질문</a></li>
+                        <li><a class="dropdown-item" href="/faq">자주 묻는 질문</a></li>
                     </ul>
                 </li>
             </ul>
@@ -77,7 +81,8 @@
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/board/my_page">마이페이지</a></li>
                 </sec:authorize>
-                <li class="nav-item"><a class="nav-link" href="/user/cart3">장바구니</a></li>
+
+                <li class="nav-item"><a class="nav-link" href="#services">장바구니</a></li>
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
                 </sec:authorize>
@@ -91,12 +96,12 @@
     <div class="row">
         <div class="col-3" style="padding: 7rem 0;">
             <div class="list-group side-nav">
-                <a href="/board/press" class="list-group-item list-group-item-action">구독 정보</a>
-                <a href="/board/purchase_list" class="list-group-item list-group-item-action">구매 내역</a>
-                <a href="/board/my_view" class="list-group-item list-group-item-action active" aria-current="true">
+                <a href="#" class="list-group-item list-group-item-action">구독 정보</a>
+                <a href="#" class="list-group-item list-group-item-action">구매 내역</a>
+                <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
                     문의 내역
                 </a>
-                <a href="/board/my_review" class="list-group-item list-group-item-action">후기</a>
+                <a href="#" class="list-group-item list-group-item-action">후기</a>
                 <a href="#" class="list-group-item list-group-item-action">적립금</a>
                 <a href="#" class="list-group-item list-group-item-action">개인 정보 수정</a>
             </div>
@@ -116,25 +121,23 @@
                     </tr>
                     </thead>
                     <tbody>
+                    
+		<c:choose>
 
-                    <c:choose>
+				<c:when test="${empty my_view}" >
 
-                        <c:when test="${empty my_view}">
+					<tr><td colspan="5" align="center">게시글이없습니다</td></tr>
 
-                            <tr>
-                                <td colspan="5" align="center">게시글이없습니다</td>
-                            </tr>
+				</c:when> 
 
-                        </c:when>
-
-                        <c:when test="${!empty my_view}">
+				<c:when test="${!empty my_view}">
 
 
-                            <c:forEach var="boardList" items="${my_view}">
+				<c:forEach var="boardList" items="${my_view}">
 
-                            </c:forEach>
-                        </c:when>
-                    </c:choose>
+</c:forEach>
+</c:when>
+</c:choose>
 
                     <c:forEach items="${my_view}" var="dto">
                         <tr style="font-weight: 400;">
@@ -145,7 +148,7 @@
                             <td style="width : 15%;">${dto.b_date}</td>
                         </tr>
                     </c:forEach>
-
+                    
                     <c:forEach items="${reply_view}" var="dtt">
                         <tr style="font-weight: 400;">
                             <td style="width : 15%;">${dtt.board_id}</td>
@@ -164,6 +167,7 @@
 
     </div>
 </div>
+
 
 <!-- Footer-->
 <footer class="footer">
@@ -184,6 +188,7 @@
     </div>
 </footer>
 
+
 <!--top-button-->
 <img id="myBtn" src="/static/main_page/assets/top-btn.png" onclick="topFunction()">
 
@@ -203,6 +208,7 @@
         });
     }
 </script>
+
 <!-- Bootstrap core JS-->
 <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -210,6 +216,5 @@
 <script src="/static/main_page/js/scripts.js"></script>
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-
 </body>
 </html>
