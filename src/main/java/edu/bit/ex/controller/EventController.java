@@ -22,7 +22,7 @@ public class EventController {
     // 카드게임 메인 페이지
     @GetMapping("/user/event/cardbarny")
     public String cardbarny() {
-        return "/event/cardBarny";
+        return "event/cardBarny";
     }
 
     // 룰렛 메인 페이지

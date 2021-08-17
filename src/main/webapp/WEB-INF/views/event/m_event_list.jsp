@@ -31,6 +31,7 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link rel="stylesheet" href="/static/css/5.0bootstrap.min.css"/>
     <link rel="stylesheet" href="/static/css/styles.css">
+    <link href="/static/main_page/css/styles.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
     <link href="/static/main_page/css/styles.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/static/table/css/style.css"/>
@@ -39,6 +40,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 </head>
 
+<style>
+    .event-card {
+        background-color: white;
+        border: solid 1px;
+        border-color: #ECECEC;
+    }
+
+    .event-t {
+        font-family: NanumSquare;
+        font-weight: bold;
+    }
+
+    .event-b {
+        font-family: NanumSquare;
+        color: black;
+        font-size: 15px;
+    }
+</style>
 
 <body>
 <!-- Navigation-->
