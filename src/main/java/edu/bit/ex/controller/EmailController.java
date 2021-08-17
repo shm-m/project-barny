@@ -1,25 +1,20 @@
 package edu.bit.ex.controller;
 
 import com.google.gson.Gson;
-import edu.bit.ex.service.DashBoardService;
+
 import edu.bit.ex.service.member.MemberService;
 import edu.bit.ex.vo.MemberVO;
-import edu.bit.ex.vo.OrderVO;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 @Slf4j
@@ -123,30 +118,5 @@ public class EmailController {
     }
 
 
-    @Controller
-    public static class DashBoardController {
 
-        @Autowired
-        private DashBoardService dashBoardService;
-
-        @GetMapping("/statistics")
-        public String statistics(Model model) {
-
-            List<OrderVO> orders = dashBoardService.getOrders();
-
-            Map<Integer, Integer> monthTotalPrice = dashBoardService.extractMonthTotalPrice(orders);
-            Map<Integer, Integer> dayTotalPrice = dashBoardService.extractDayTotalPrice(orders);
-
-            model.addAttribute("monthTotalPrice",monthTotalPrice);
-            model.addAttribute("dayTotalPrice",dayTotalPrice);
-
-
-            System.out.println("DashBoardController.statistics");
-            System.out.println("monthTotalPrice = " + monthTotalPrice);
-            System.out.println("dayTotalPrice = " + dayTotalPrice);
-            return "account/statistics";
-        }
-
-
-    }
 }

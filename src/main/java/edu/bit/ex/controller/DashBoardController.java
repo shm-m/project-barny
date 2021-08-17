@@ -12,7 +12,6 @@ import java.util.Map;
 
 @Controller
 public class DashBoardController {
-
     @Autowired
     private DashBoardService dashBoardService;
 
@@ -27,11 +26,10 @@ public class DashBoardController {
         model.addAttribute("monthTotalPrice",monthTotalPrice);
         model.addAttribute("dayTotalPrice",dayTotalPrice);
 
+
         System.out.println("DashBoardController.statistics");
-
+        System.out.println("monthTotalPrice = " + monthTotalPrice);
+        System.out.println("dayTotalPrice = " + dayTotalPrice);
         return "account/statistics";
-
     }
-
-
 }
