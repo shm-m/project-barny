@@ -107,7 +107,7 @@ public class MemberDetails implements UserDetails, OAuth2User {
         log.info("isActived");
         boolean active = true;
 
-        if (authVO.getActive() != '1' || authVO.getActive() == '0') {
+        if (authVO.getActive() == '0') {
             System.out.println(memberVO.getMember_id() + "의 enable : " + authVO.getActive());
             active = false;
         }

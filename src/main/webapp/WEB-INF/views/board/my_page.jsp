@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
+    <title>mypage</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="/static/main_page/assets/favicon.ico"/>
     <!-- Font Awesome icons (free version)-->
@@ -23,38 +24,9 @@
     <link href="/static/my_page/css/my_page.css" rel="stylesheet"/>
     <link href="/static/table/css/style.css" rel="stylesheet"/>
 </head>
-<title>mypage</title>
-<body>
-<script type="text/javascript"
-        src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        var lastEvent = null;
-        var slide = "#nav-my_page > li > ul";
-        var alink = "#nav-my_page > li > a";
-        function accordion() {
-            if (this == lastEvent)
-                return false;
-            lastEvent = this;
-            setTimeout(function () {
-                lastEvent = null
-            }, 200);
-            if ($(this).attr('class') != 'active') {
-                $(slide).slideUp();
-                $(this).next(slide).slideDown();
-                $(alink).removeClass('active');
-                $(this).addClass('active');
-            } else if ($(this).next(slide).is(':hidden')) {
-                $(slide).slideUp();
-                $(this).next(slide).slideDown();
-            } else {
-                $(this).next(slide).slideUp();
-            }
-        }
-        $(alink).click(accordion).focus(accordion);
-        $('#nav-my_page > li:last > a').addClass('stay');
-    });
-</script>
+
+<body id="page-top">
+
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top"
      id="mainNav_2">
@@ -69,31 +41,29 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link" href="/subs">구독</a></li>
-                <li class="nav-item"><a class="nav-link" href="#portfolio">브랜드
+                <li class="nav-item"><a class="nav-link" href="/subscribe">구독</a></li>
+                <li class="nav-item"><a class="nav-link" href="/story">브랜드
                     스토리</a></li>
                 <li class="nav-item dropdown"><a
-                        class="nav-link dropdown-toggle" href="#"
-                        id="navbarDarkDropdownMenuLink" role="button"
+                        class="nav-link dropdown-toggle" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false"> 상품 보기 </a>
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
                         <li></li>
-                        <a class="dropdown-item" href="#">패키지</a></li>
-                        <li><a class="dropdown-item" href="#">술</a></li>
-                        <li><a class="dropdown-item" href="#">안주</a></li>
+                        <a class="dropdown-item" href="product_main">패키지</a></li>
+                        <li><a class="dropdown-item" href="product_main_liquor">술</a></li>
+                        <li><a class="dropdown-item" href="product_main_food">안주</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="#team">이벤트</a></li>
+                <li class="nav-item"><a class="nav-link" href="/event">이벤트</a></li>
                 <li class="nav-item dropdown"><a
-                        class="nav-link dropdown-toggle" href="#"
-                        id="navbarDarkDropdownMenuLink" role="button"
+                        class="nav-link dropdown-toggle" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false"> 고객센터 </a>
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
                         <li></li>
                         <a class="dropdown-item" href="/notice">공지사항</a></li>
-                        <li><a class="dropdown-item" href="/faq">자주 묻는 질문</a></li>
+                        <li><a class="dropdown-item" href="/notice/faq">자주 묻는 질문</a></li>
                     </ul>
                 </li>
             </ul>
@@ -104,7 +74,7 @@
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/board/my_page">마이페이지</a></li>
                 </sec:authorize>
-                <li class="nav-item"><a class="nav-link" href="#services">장바구니</a></li>
+                <li class="nav-item"><a class="nav-link" href="/user/cart3">장바구니</a></li>
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
                 </sec:authorize>
@@ -112,6 +82,8 @@
         </div>
     </div>
 </nav>
+
+
 <!--content-->
 <div class="container" style ="width: 70%; padding: 7rem 0;">
     <div class="board_name">마이페이지
@@ -141,15 +113,13 @@
     <c:if test="${member == null}"></c:if>
     <div class="main-menu">
         <div class="row mb-3 mt-5">
-            <div class="card card-my_page col-4">
+            <div class="card card-my_page col-4" type="button" onclick="location.href='/board/press'">
                 <div class="card-body my_page">
-                 <li><a id="press" href="press">구독 정보</a></li>
                     구독 정보
                 </div>
             </div>
-            <div class="card card-my_page col-4">
+            <div class="card card-my_page col-4" type="button" onclick="location.href='/board/purchase_list'">
                 <div class="card-body my_page">
-                <li><a id="purchase_list" href="purchase_list">구매내역</a></li>
                     구매 내역
                 </div>
             </div>
@@ -160,17 +130,17 @@
             </div>
         </div>
         <div class="row">
-            <div class="card card-my_page col-4">
+            <div class="card card-my_page col-4" type="button" onclick="location.href='/board/my_review'">
                 <div class="card-body my_page">
                     후기
                 </div>
             </div>
-            <div class="card card-my_page col-4">
+            <div class="card card-my_page col-4" type="button" onclick="location.href='#'">
                 <div class="card-body my_page">
                     적립금
                 </div>
             </div>
-            <div class="card card-my_page col-4">
+            <div class="card card-my_page col-4" type="button" onclick="location.href='#'">
                 <div class="card-body my_page">
                     개인 정보 수정
                 </div>
@@ -180,6 +150,7 @@
     <div class="line pt-5" style="border-bottom: solid 3px; border-bottom-color: #EBC24B;"></div>
 </div>
 </div>
+
 <!-- Footer-->
 <footer class="footer">
     <div class="container">
@@ -198,15 +169,20 @@
         </div>
     </div>
 </footer>
+
 <!--top-button-->
 <img id="myBtn" src="/static/main_page/assets/top-btn.png" onclick="topFunction()">
+
+
 <!--kakao-chat-->
 <a href="javascript:void kakaoChatStart()" class="kakaoChatPc hidden-md hidden-sm hidden-xs" id="kakao-chat">
     <img src="/static/main_page/assets/kakao-chat.png" width="50px" height="50px">
 </a>
+
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type='text/javascript'>
     Kakao.init('7e53e24ce9a07956bfb5ac4930333caa');
+
     function kakaoChatStart() {
         Kakao.Channel.chat({
             channelPublicId: '_WDxjSs'
