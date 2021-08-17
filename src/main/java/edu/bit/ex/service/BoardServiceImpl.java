@@ -171,4 +171,9 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.ship_remove(ship_id);
 	}
 
+	@Override
+	public List<MemberVO> getPointList(int member_idx) {
+		return boardMapper.getPointList(member_idx);
+	}
+
 }

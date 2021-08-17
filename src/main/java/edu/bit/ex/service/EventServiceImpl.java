@@ -1,7 +1,9 @@
 package edu.bit.ex.service;
 
+import java.sql.Date;
 import java.util.List;
 
+import edu.bit.ex.vo.MemberVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -57,4 +59,18 @@ public class EventServiceImpl implements EventService {
         return eventMapper.delete(board_id);
     }
 
+    @Override
+    public void updatePoint(MemberVO memberVO) {
+        eventMapper.updatePoint(memberVO);
+    }
+
+    @Override
+    public void participate(int member_idx) {
+        eventMapper.participate(member_idx);
+    }
+
+    @Override
+    public String checkPart(int member_idx) {
+        return eventMapper.checkPart(member_idx);
+    }
 }

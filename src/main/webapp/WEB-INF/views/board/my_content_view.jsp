@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>  
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,10 +51,13 @@
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                 <li class="nav-item"><a class="nav-link" href="/subs">구독</a></li>
                 <li class="nav-item"><a class="nav-link" href="#portfolio">브랜드
+                <li class="nav-item"><a class="nav-link" href="/subscribe">구독</a></li>
+                <li class="nav-item"><a class="nav-link" href="/story">브랜드
                     스토리</a></li>
                 <li class="nav-item dropdown"><a
                         class="nav-link dropdown-toggle" href="#"
                         id="navbarDarkDropdownMenuLink" role="button"
+                        class="nav-link dropdown-toggle" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false"> 상품 보기 </a>
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
@@ -61,18 +65,24 @@
                         <a class="dropdown-item" href="#">패키지</a></li>
                         <li><a class="dropdown-item" href="#">술</a></li>
                         <li><a class="dropdown-item" href="#">안주</a></li>
+                        <a class="dropdown-item" href="product_main">패키지</a></li>
+                        <li><a class="dropdown-item" href="product_main_liquor">술</a></li>
+                        <li><a class="dropdown-item" href="product_main_food">안주</a></li>
                     </ul>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="#team">이벤트</a></li>
+                <li class="nav-item"><a class="nav-link" href="/event">이벤트</a></li>
                 <li class="nav-item dropdown"><a
                         class="nav-link dropdown-toggle" href="#"
                         id="navbarDarkDropdownMenuLink" role="button"
+                        class="nav-link dropdown-toggle" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false"> 고객센터 </a>
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
                         <li></li>
                         <a class="dropdown-item" href="/notice">공지사항</a></li>
                         <li><a class="dropdown-item" href="/faq">자주 묻는 질문</a></li>
+                        <li><a class="dropdown-item" href="/notice/faq">자주 묻는 질문</a></li>
                     </ul>
                 </li>
             </ul>
@@ -85,6 +95,7 @@
                 </sec:authorize>
 
                 <li class="nav-item"><a class="nav-link" href="#services">장바구니</a></li>
+                <li class="nav-item"><a class="nav-link" href="/user/cart3">장바구니</a></li>
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
                 </sec:authorize>
@@ -101,9 +112,13 @@
                 <a href="#" class="list-group-item list-group-item-action">구독 정보</a>
                 <a href="#" class="list-group-item list-group-item-action">구매 내역</a>
                 <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                <a href="/board/press" class="list-group-item list-group-item-action">구독 정보</a>
+                <a href="/board/purchase_list" class="list-group-item list-group-item-action">구매 내역</a>
+                <a href="/board/my_view" class="list-group-item list-group-item-action active" aria-current="true">
                     문의 내역
                 </a>
                 <a href="#" class="list-group-item list-group-item-action">후기</a>
+                <a href="/board/my_review" class="list-group-item list-group-item-action">후기</a>
                 <a href="#" class="list-group-item list-group-item-action">적립금</a>
                 <a href="#" class="list-group-item list-group-item-action">개인 정보 수정</a>
             </div>
@@ -140,6 +155,14 @@
                             <div class="row">
                             <div class="col-2" style="text-align: left; margin-top: 5px;"><a class="btn-basic text-uppercase"
                                                                             href="my_view">목록 보기</a>
+                                <div class="col-2" style="text-align: left; margin-top: 5px;"><a class="btn-basic text-uppercase"
+                                                                                                 href="my_view">목록 보기</a>
+                                </div>
+                                <div class="col-10" style="text-align: right">
+                                    <input type="submit" class="btn-basic text-uppercase" value="수정">
+                                    <a class="btn-basic text-uppercase" id="a_delete"
+                                       href="${pageContext.request.contextPath}/board/my_delete?board_id=${my_content_view.board_id}">삭제</a>
+                                </div>
                             </div>
                             
                                  <c:if test="${my_content_view.board_type_id != 7}">
@@ -156,10 +179,15 @@
                         </tr>
                     </tbody>
                 </table>
+                
                 <div class="line mb-3" style="border-bottom: solid 2px; border-bottom-color: #EBC24B;"></div>
                 <a class="btn-basic post mb-2" type="button" title="글쓰기" onclick="location.href='/board/my_view_write'">글쓰기</a>
             </div>
+                        </td>
+                    </tr>
+                </form>
         </div>
+    </div>
 </div>
 
 <!-- Footer-->
