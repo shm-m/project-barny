@@ -37,7 +37,7 @@ table {
 
 .calendar {
   height: 510px;
-  left: 35%;
+  margin: auto;
   position: relative;
   width: 510px;
   text-align: center;
@@ -45,7 +45,6 @@ table {
 
 .calendar header {
   position: relative;
-  margin-left: -11%;
 }
 
 .calendar h2 {

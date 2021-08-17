@@ -182,7 +182,7 @@
         <section class="page-section bg-white">
           <div class="container-fluid">
             <div class="text-center">
-              <div class="text-center" style="margin-bottom: 5rem;">
+              <div class="text-center" style="margin-bottom: 3rem;">
                 <h4 class="section-heading text-uppercase">정기 배송 달력</h4>
               </div>
               <div class="calendar-container">
@@ -192,7 +192,7 @@
                   </header>
                   <table>
                     <thead>
-                      <tr>
+                      <tr style="text-align: center;">
                         <td>월</td>
                         <td>화</td>
                         <td>수</td>
@@ -202,7 +202,7 @@
                         <td>일</td>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody style="text-align: center;">
                       <tr>
                         <td date-month="12" date-day="1">1</td>
                         <td date-month="12" date-day="2">2</td>
