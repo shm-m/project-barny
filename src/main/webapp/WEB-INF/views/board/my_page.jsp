@@ -144,7 +144,6 @@
             <div class="card card-my_page col-4">
                 <div class="card-body my_page">
                  <li><a id="press" href="press">구독 정보</a></li>
-                <a id="press" href="press">
                     구독 정보
                 </div>
             </div>

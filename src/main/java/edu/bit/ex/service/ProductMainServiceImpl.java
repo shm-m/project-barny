@@ -78,6 +78,11 @@ public class ProductMainServiceImpl implements ProductMainService {
 
     // 후기 조회수
     @Override
+    public List<FileVO> getFileList(int board_id){
+        return productMainMapper.getFileList(board_id);
+    }
+
+    @Override
     public void updateHit(ProductMainVO productMainVO) {
         productMainMapper.updateHit(productMainVO);
 
