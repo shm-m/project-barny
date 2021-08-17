@@ -1,33 +1,34 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-         pageEncoding="utf-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
-    <title>mypage</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>1:1 write view</title>
+    <!--font-->
+    <link rel="stylesheet" href="fonts/icomoon/style.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="/static/main_page/assets/favicon.ico"/>
+    <link rel="icon" type="image/x-icon" href="/static/main_page/assets/favicon-2.ico"/>
+
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
-    <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@200;300;400;500;600&family=Nanum+Gothic:wght@400;700;800&display=swap"
-          rel="stylesheet">
-    <!-- naver fonts -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link rel="stylesheet" href="/static/main_page/css/styles.css"/>
     <link rel="stylesheet" href="/static/my_page/css/my_page.css"/>
+    <link rel="stylesheet" href="/static/main_page/css/styles.css"/>
     <link rel="stylesheet" href="/static/table/css/style.css"/>
     <link rel="stylesheet" href="/static/table/css/owl.carousel.min.css"/>
 
-</head>
+    <!--JQuery-->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
+</head>
 <body>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top"
@@ -108,32 +109,52 @@
             <div class="board_name">1:1 문의
                 <a class="board_name_small">포인트 및 주문내역, 개인정보 등을 확인하거나 변경하세요.</a>
             </div>
-            <div class="table-responsive outline pb-3">
-                <table class="table custom-table" style="min-width: 500px;">
-                    <thead style="border-bottom: solid 1px;">
-                    <tr>
-                        <td>번호</td>
-                        <td>제목</td>
-                        <td>날짜</td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach items="${my_view}" var="dto">
-                        <tr style="font-weight: 400;">
-                            <td style="width : 15%;">${dto.board_id}</td>
+            <div class="table-responsive outline pt-3">
+                <table class="table" style="font-size: 13px; border-top : solid 1px; border-top-color: #dee2e6;">
+                    <form action="write_my_view" method="post" id="inquiry" name="inquiry">
+                        <tr>
+                            <td class="content_head"> 문의 종류</td>
                             <td>
-                                <c:forEach begin="1" end="${dto.b_indent}">-</c:forEach>
-                                <a href="my_content_view?board_id=${dto.board_id}">${dto.b_title}</a></td>
-                            <td style="width : 15%;">${dto.b_date}</td>
+                                <div class="form-group">
+                                    <select name="board_type_id" id="board_type_id" class="category-form" value="">
+                                        <option value="0">--</option>
+                                        <option value="3">주문 문의</option>
+                                        <option value="4">상품 문의</option>
+                                        <option value="5">배송 문의</option>
+                                        <option value="6">기타 문의</option>
+                                    </select>
+                                </div>
+                            </td>
                         </tr>
-                    </c:forEach>
-                    </tbody>
+                        <tr>
+                            <td class="content_head"> 제목</td>
+                            <td>
+                                <div class="form-group">
+                                    <input type="text" class="form-control_2" name="b_title" id="b_title"
+                                           placeholder="제목을 입력하세요"/>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="content_head"> 내용</td>
+                            <td>
+                                <div class="form-group">
+                                    <input type="text" class="form-control_2"
+                                           style="padding-top: 1rem; padding-bottom: 13rem;"
+                                           name="b_content" id="b_content" placeholder="내용을 입력하세요">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" class="py-3" style="text-align: right;">
+                                <input type="submit" class="btn-basic text-uppercase" value="등록">
+                                <a href="/admin/admin_question" role="button" class="btn-basic text-uppercase">취소</a>
+                            </td>
+                        </tr>
+                    </form>
                 </table>
-                <div class="line mb-3" style="border-bottom: solid 2px; border-bottom-color: #EBC24B;"></div>
-                <a class="btn-basic post mb-2" type="button" title="글쓰기" onclick="location.href='/board/my_view_write'">글쓰기</a>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -156,7 +177,6 @@
     </div>
 </footer>
 
-
 <!--top-button-->
 <img id="myBtn" src="/static/main_page/assets/top-btn.png" onclick="topFunction()">
 
@@ -177,12 +197,38 @@
     }
 </script>
 
+<%--validation--%>
+<script>
+    $(function () {
+        $("#inquiry").submit(function () {
+            if ($("#board_type_id").val() == 0) {
+                alert('문의 종류를 선택해주세요.')
+                return false
+            }
+            if ($("#b_title").val() == "") {
+                alert('제목을 입력해주세요.')
+                return false
+            }
+            if ($("#b_content").val() == "") {
+                alert('내용을 입력해주세요.')
+                return false
+            }
+        });
+    });
+</script>
+
 <!-- Bootstrap core JS-->
-<script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/static/table/js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
 <!-- Core theme JS-->
 <script src="/static/main_page/js/scripts.js"></script>
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+<!-- AJax-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </body>
 </html>

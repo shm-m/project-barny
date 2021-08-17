@@ -1,32 +1,36 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-         pageEncoding="utf-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
-    <title>mypage</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>1:1content</title>
+    <!--font-->
+    <link rel="stylesheet" href="fonts/icomoon/style.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="/static/main_page/assets/favicon.ico"/>
+    <link rel="icon" type="image/x-icon" href="/static/main_page/assets/favicon-2.ico"/>
+
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
-    <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@200;300;400;500;600&family=Nanum+Gothic:wght@400;700;800&display=swap"
-          rel="stylesheet">
-    <!-- naver fonts -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link rel="stylesheet" href="/static/main_page/css/styles.css"/>
     <link rel="stylesheet" href="/static/my_page/css/my_page.css"/>
+    <link rel="stylesheet" href="/static/main_page/css/styles.css"/>
     <link rel="stylesheet" href="/static/table/css/style.css"/>
     <link rel="stylesheet" href="/static/table/css/owl.carousel.min.css"/>
 
+    <!--JQuery-->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
+
 
 <body>
 <!-- Navigation-->
@@ -108,32 +112,47 @@
             <div class="board_name">1:1 문의
                 <a class="board_name_small">포인트 및 주문내역, 개인정보 등을 확인하거나 변경하세요.</a>
             </div>
-            <div class="table-responsive outline pb-3">
-                <table class="table custom-table" style="min-width: 500px;">
-                    <thead style="border-bottom: solid 1px;">
+            <div class="table-responsive outline pt-3"></div>
+            <table class="table" style="font-size: 13px; border-top : solid 1px; border-top-color: #dee2e6;">
+                <form action="my_modify" method="post">
+                    <input type="hidden" name="board_id" value="${my_content_view.board_id}">
                     <tr>
-                        <td>번호</td>
-                        <td>제목</td>
-                        <td>날짜</td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach items="${my_view}" var="dto">
-                        <tr style="font-weight: 400;">
-                            <td style="width : 15%;">${dto.board_id}</td>
-                            <td>
-                                <c:forEach begin="1" end="${dto.b_indent}">-</c:forEach>
-                                <a href="my_content_view?board_id=${dto.board_id}">${dto.b_title}</a></td>
-                            <td style="width : 15%;">${dto.b_date}</td>
-                        </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>
-                <div class="line mb-3" style="border-bottom: solid 2px; border-bottom-color: #EBC24B;"></div>
-                <a class="btn-basic post mb-2" type="button" title="글쓰기" onclick="location.href='/board/my_view_write'">글쓰기</a>
-            </div>
-        </div>
 
+                        <td class="content_head"> 제목</td>
+                        <td colspan="3"><input type="text" class="textarea-custom py-1" style="padding-left:10px;"
+                                               id="b_title" name="b_title" value="${my_content_view.b_title}"></td>
+                    </tr>
+                    <tr>
+                        <td class="content_head"> 번호</td>
+                        <td style="width:70px; border-right : solid 1px; border-right-color: #dee2e6;"> ${my_content_view.board_id} </td>
+                        <td class="content_head"> 작성 일자</td>
+                        <td> ${my_content_view.b_date} </td>
+                    </tr>
+                    <tr>
+                        <td class="content_head"> 내용</td>
+                        <td colspan="4"><textarea class="textarea-custom" rows="10" id="b_content" name="b_content"
+                                                  style="padding-top: 1rem; padding-bottom: 5rem; padding-left:10px; width: 100%;">${my_content_view.b_content}</textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="py-3">
+                            <div class="row">
+                            <div class="col-2" style="text-align: left; margin-top: 5px;"><a class="btn-basic text-uppercase"
+                                                                            href="admin_question">목록 보기</a>
+                            </div>
+                            <div class="col-10" style="text-align: right">
+                                <input type="submit" class="btn-basic text-uppercase" value="수정">
+                                <a class="btn-basic text-uppercase" id="a_delete"
+                                   href="${pageContext.request.contextPath}/board/my_delete?board_id=${reply_view.board_id}">삭제</a>
+                                   <a class="btn-basic text-uppercase" id="a_reply"
+                                   href="${pageContext.request.contextPath}/admin/reply_view?board_id=${reply_view.board_id}">답변</a>
+                            </div>
+                            </div>
+                        </td>
+                    </tr>
+                </form>
+            </table>
+        </div>
     </div>
 </div>
 
@@ -156,7 +175,6 @@
     </div>
 </footer>
 
-
 <!--top-button-->
 <img id="myBtn" src="/static/main_page/assets/top-btn.png" onclick="topFunction()">
 
@@ -177,12 +195,6 @@
     }
 </script>
 
-<!-- Bootstrap core JS-->
-<script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core theme JS-->
-<script src="/static/main_page/js/scripts.js"></script>
-<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
 </body>
 </html>

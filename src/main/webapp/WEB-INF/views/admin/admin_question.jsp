@@ -118,19 +118,19 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${my_view}" var="dto">
+                    <c:forEach items="${admin_question}" var="dto">
                         <tr style="font-weight: 400;">
                             <td style="width : 15%;">${dto.board_id}</td>
                             <td>
                                 <c:forEach begin="1" end="${dto.b_indent}">-</c:forEach>
-                                <a href="my_content_view?board_id=${dto.board_id}">${dto.b_title}</a></td>
+                                <a href="content_view_question?board_id=${dto.board_id}">${dto.b_title}</a></td>
                             <td style="width : 15%;">${dto.b_date}</td>
                         </tr>
                     </c:forEach>
                     </tbody>
                 </table>
                 <div class="line mb-3" style="border-bottom: solid 2px; border-bottom-color: #EBC24B;"></div>
-                <a class="btn-basic post mb-2" type="button" title="글쓰기" onclick="location.href='/board/my_view_write'">글쓰기</a>
+                <a class="btn-basic post mb-2" type="button" title="글쓰기" onclick="location.href='/admin/write_view_question'">글쓰기</a>
             </div>
         </div>
 
