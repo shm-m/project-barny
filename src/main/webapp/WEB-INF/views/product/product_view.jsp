@@ -3,7 +3,7 @@
       <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
          <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
             <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-               <!DOCTYPE html">
+               <!DOCTYPE html "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
                <html>
 
                <head>
@@ -111,26 +111,24 @@
                               <li class="nav-item"><a class="nav-link" href="/subscribe">구독</a></li>
                               <li class="nav-item"><a class="nav-link" href="/story">브랜드
                                     스토리</a></li>
-                              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#"
-                                    id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false"> 상품 보기 </a>
+                              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false"> 상품 보기 </a>
                                  <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
                                     <li></li>
-                                    <a class="dropdown-item" href="#">패키지</a>
+                                    <a class="dropdown-item" href="product_main">패키지</a>
                               </li>
-                              <li><a class="dropdown-item" href="#">술</a></li>
-                              <li><a class="dropdown-item" href="#">안주</a></li>
+                              <li><a class="dropdown-item" href="product_main_liquor">술</a></li>
+                              <li><a class="dropdown-item" href="product_main_food">안주</a></li>
                            </ul>
                            </li>
-                           <li class="nav-item"><a class="nav-link" href="event">이벤트</a></li>
-                           <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#"
-                                 id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown"
-                                 aria-expanded="false"> 고객센터 </a>
+                           <li class="nav-item"><a class="nav-link" href="/event">이벤트</a></li>
+                           <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" role="button"
+                                 data-bs-toggle="dropdown" aria-expanded="false"> 고객센터 </a>
                               <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
                                  <li></li>
                                  <a class="dropdown-item" href="/notice">공지사항</a>
                            </li>
-                           <li><a class="dropdown-item" href="/faq">자주 묻는 질문</a></li>
+                           <li><a class="dropdown-item" href="/notice/faq">자주 묻는 질문</a></li>
                            </ul>
                            </li>
                            </ul>
@@ -141,8 +139,7 @@
                               <sec:authorize access="isAuthenticated()">
                                  <li class="nav-item"><a class="nav-link" href="/board/my_page">마이페이지</a></li>
                               </sec:authorize>
-
-                              <li class="nav-item"><a class="nav-link" href="#services">장바구니</a></li>
+                              <li class="nav-item"><a class="nav-link" href="/user/cart3">장바구니</a></li>
                               <sec:authorize access="isAuthenticated()">
                                  <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
                               </sec:authorize>
@@ -228,17 +225,16 @@
                                           <td>${ff.b_title}</td>
                                           <td>${ff.nickname}</td>
                                           <td id="like_count${status.index}">${ff.like_count}</td>
-                                          <i class="fa" aria-hidden="false"></i>
                                        </tr>
                                        <tr>
                                           <td colspan="6" id="best_collapse${file.index}" class="collapse acc"
                                              data-parent="#accordion" aria-expanded="false">
+                                             <p style="text-align: center; margin: 5%;">${ff.b_content}</p>
                                              <c:forEach items="${ff.fileList}" var="image">
-                                                <div class="float: left; margin-right: 10px;"><img style=" width:
+                                                <div style="float: left; margin-right: 10px;"><img style=" width:
                                                    200px; height: 200px;" src="${image.image_route}">
                                                 </div>
                                              </c:forEach>
-                                             <p style="text-align: center; margin: 5%;">${ff.b_content}</p>
                                           </td>
                                        </tr>
                                     </c:forEach>
@@ -287,7 +283,6 @@
                                              <td>${vo.b_date}</td>
                                              <td id="like_count${status.index}">${vo.like_count}</td>
                                              <td id="b_hit">${vo.b_hit}</td>
-                                             <i class="fa" aria-hidden="false"></i>
                                           </tr>
                                           <tr>
                                              <td colspan="6" id="collapse${status.index}" class="collapse acc"
@@ -317,13 +312,13 @@
                            </form>
 
                         </table>
-                        <button class="btn btn-warning btn-sm" style="float: right;" type="button"
+                        <button class="btn btn-warning btn-sm" style="float: right; display: block;" type="button"
                            onclick="location.href='/user/review/write_view/product_view?product_id=${product_view.product_id}'">후기
                            등록</button>
                      </div>
-
                   </div>
-
+                  <br>
+                  <br>
                   <!--page-->
                   <nav aria-label="Page navigation example">
                      <ul class="pagination justify-content-center">
