@@ -49,7 +49,7 @@
     	<c:otherwise>
         <form id="form1" name="form1" method="post"
         action="${path}/shop/cart/update.do">
-            <table border="1" width="400px">    		
+    <table border="1" width="400px">    		
     
     <tr>
       <td>상품이름</td>

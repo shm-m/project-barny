@@ -5,13 +5,16 @@
 <!-- 장바구니 목록 출력 -->
     <select id="cartList" resultType="edu.bit.ex.vo.cart.CartVO">
         <![CDATA[
-			SELECT M.MEMBER_IDX, P.PRODUCT_ID, P.PRODUCT_NAME, P.PRICE, C.PRODUCT_QTY
-			FROM MEMBER M, PRODUCT P, CART C
-			WHERE M.MEMBER_IDX = C.MEMBER_IDX AND P.PRODUCT_ID = C.PRODUCT_ID AND M.MEMBER_IDX = #{MEMBER_ID}
+			SELECT I.IMAGE_ROUTE, M.MEMBER_IDX, P.PRODUCT_ID, P.PRODUCT_NAME, P.PRICE, C.PRODUCT_QTY
+			FROM MEMBER M, PRODUCT P, CART C, IMAGE I
+			WHERE M.MEMBER_IDX = C.MEMBER_IDX AND P.PRODUCT_ID = C.PRODUCT_ID AND I.PRODUCT_ID = P.PRODUCT_ID AND M.MEMBER_IDX = #{MEMBER_ID}
 			ORDER BY MEMBER_IDX ASC
         ]]>
     </select>    
-
+<!-- 			SELECT M.MEMBER_IDX, P.PRODUCT_ID, P.PRODUCT_NAME, P.PRICE, C.PRODUCT_QTY
+			FROM MEMBER M, PRODUCT P, CART C
+			WHERE M.MEMBER_IDX = C.MEMBER_IDX AND P.PRODUCT_ID = C.PRODUCT_ID AND M.MEMBER_IDX = #{MEMBER_ID}
+			ORDER BY MEMBER_IDX ASC -->
 <!-- 장바구니 담기 -->   
     <insert id="insert">
         <![CDATA[
@@ -23,23 +26,16 @@
 <!-- 장바구니 수정 -->    
     <update id="update">
         <![CDATA[
-           update cart set product_qty = #{product_qty} where member_idx = #{member_idx} and product_name = #{product_name}
+           update cart set product_qty = #{product_qty} where member_idx = #{member_idx} and product_id = #{product_id}
         ]]>
     </update>
-
-<!-- 장바구니 삭제 -->
-    <delete id="deleteAll">
-        <![CDATA[
-           delete from cart where member_idx = #{member_idx}
-        ]]>
-    </delete>
 
 <!-- 장바구니 개별 삭제 -->
     <delete id="delete">
         <![CDATA[
-           delete from cart where product_id = #{product_id}
+           delete from cart where member_idx = #{member_idx} and product_id = #{product_id}
         ]]>
-    </delete>    
+    </delete>      
     
 <!-- 장바구니에 동일한 상품 레코드 확인 -->
 	<select id="countCart" resultType="int">
@@ -70,5 +66,12 @@
 	]]>
 	</select>
 		 
+<!-- 바로구매 -->   
+    <insert id="insert2">
+        <![CDATA[
+        	INSERT INTO CART (member_idx, product_id, product_qty) 
+        	VALUES(#{member_idx}, #{product_id}, #{product_qty})
+        ]]>
+    </insert>		 
 
 </mapper>

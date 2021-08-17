@@ -21,6 +21,7 @@ public class ProductMainVO {
     private int price;
     private int category_num;
     private int subscribe;
+    private String image_route;
 
     // 아래는 후기
     private int board_id;
