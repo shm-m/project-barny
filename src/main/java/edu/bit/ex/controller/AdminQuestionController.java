@@ -74,8 +74,10 @@ public class AdminQuestionController {
    }
 
    @PostMapping("/admin/reply")
-   public String reply(AdminQuestionVO adminQuestionVO){
-          log.info("reply()..");
+   public String reply(AdminQuestionVO adminQuestionVO,@AuthenticationPrincipal MemberContext ctx){
+          log.info("reply().." + ctx);
+
+          adminQuestionVO.setMember_idx(ctx.getMemberVO().getMember_idx());
 
           adminQuestionService.writeReply(adminQuestionVO);
 

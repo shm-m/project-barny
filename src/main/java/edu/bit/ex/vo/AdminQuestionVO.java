@@ -24,5 +24,6 @@ public class AdminQuestionVO {
 	private int b_indent;
 	private int b_step;
 	private int like_count;
+	private int product_id;
 
 }
