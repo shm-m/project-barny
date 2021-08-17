@@ -28,12 +28,13 @@ public class BoardController {
 
 	// 마이페이지
 	@GetMapping("/board/my_page")
-	public String my_page(Principal principal) {
+	public String my_page(Model model, Principal principal, @AuthenticationPrincipal MemberContext ctx) {
 		
 		log.info("User name=======" + principal.getName());
 		
 		return "/board/my_page";
 	}
+	
 	
 	
 	// 마이페이지 (구독)
@@ -46,14 +47,24 @@ public class BoardController {
 		
 		log.info("press" + ctx.getMemberVO().getMember_idx());
 		
-		List<OrderDetailVO> pressList = boardService.getPressList(ctx.getMemberVO().getMember_idx());
+		List<ProductMainVO> pressList = boardService.getPressList(ctx.getMemberVO().getMember_idx());
 
-		model.addAttribute("purchase_list", pressList);
+		model.addAttribute("press", pressList);
 		
-		log.info("List<OrderDetailVO> orderList"+pressList);
+		log.info("List<ProductMainVO> pressList"+pressList);
 
 		return "/board/press";
 	}
+	
+		// 회원 1:1문의 내역 게시판 수정
+		@GetMapping("/board/update_modify")
+		public String update_modify(BoardVO boardVO, Model model) {
+			log.info("update_modify..");
+
+			boardService.update_modify(boardVO);
+
+			return "redirect:/board/press";
+		}
 
 	// 마이페이지 (구매내역)리스트
 	@GetMapping("/board/purchase_list")
@@ -73,6 +84,16 @@ public class BoardController {
 
 		return "/board/purchase_list";
 	}
+	
+	// 구매내역 삭제
+		@GetMapping("/board/ship_delete")
+		public String ship_delete(OrderVO orderVO, Model model) {
+			log.info("ship_delete().." + orderVO);
+
+			boardService.ship_remove(orderVO.getShip_id());
+
+			return "redirect:/board/purchase_list";
+		}
 
 
 
@@ -104,10 +125,30 @@ public class BoardController {
 		log.info("my_content_view()..boardVO" + boardVO);
 
 		model.addAttribute("my_content_view", boardService.get(boardVO.getBoard_id()));
-
+		
 		log.info("my_content_view boardVO_Get " + boardService.get(boardVO.getBoard_id()));
 
 		return "/board/my_content_view";
+	}
+	//답글
+	@GetMapping("/board/reply_view")
+	public String reply_view(BoardVO boardVO, Model model) {
+		log.info("reply_view()");
+		model.addAttribute("reply_view", boardService.getReply(boardVO.getBoard_id()));
+
+		return "/board/reply_view";
+	}
+	//답글상세보기
+	@GetMapping("/board/reply_content_view")
+	public String reply_content_view(BoardVO boardVO, Model model) {
+		log.info("reply_content_view..");
+		log.info("reply_content_view..boardVO" + boardVO);
+
+		model.addAttribute("reply_content_view", boardService.get(boardVO.getBoard_id()));
+
+		log.info("reply_content_viewboardVO_Get " + boardService.get(boardVO.getBoard_id()));
+
+		return "/board/reply_content_view";
 	}
 
 	// 회원 마이페이지 1:1문의 글쓰기 입력폼
@@ -124,7 +165,6 @@ public class BoardController {
 		log.info("write_my_view()");
 
 		boardVO.setMember_idx(ctx.getMemberVO().getMember_idx());
-		//boardVO.setBoard_type_id();
 		
 		log.info("boardVO :" + boardVO);
 		
@@ -135,7 +175,7 @@ public class BoardController {
 		
 	}
 
-	// 회원 1:1문의 주문내역 게시판 수정
+	// 회원 1:1문의 내역 게시판 수정
 	@PostMapping("/board/my_modify")
 	public String my_modify(BoardVO boardVO, Model model) {
 		log.info("my_modify()..");
@@ -145,7 +185,7 @@ public class BoardController {
 		return "redirect:/board/my_view";
 	}
 
-	// 회원 1:1문의 주문내역 게시판 삭제
+	// 회원 1:1문의 내역 게시판 삭제
 	@GetMapping("/board/my_delete")
 	public String my_delete(BoardVO boardVO, Model model) {
 		log.info("my_delete()..");
@@ -218,14 +258,18 @@ public class BoardController {
 	}
 
 	// 회원 후기 게시판 삭제
-	@GetMapping("/board/review_delete")
-	public String review_delete(BoardVO boardVO, Model model) {
-		log.info("review_delete()..");
+	 @GetMapping("/board/review_delete")
+	   public String review_delete(BoardVO boardVO, Model model) {
+	      log.info("review_delete()..");
+	     //먼저 like 지우고
+	      boardService.review_remove2(boardVO.getBoard_id());
+	     //두번째 보드 지우고
+	      boardService.review_remove(boardVO.getBoard_id());
 
-		boardService.review_remove(boardVO.getBoard_id());
-
-		return "redirect:/board/my_review";
+	      return "redirect:/board/my_review";
 	}
+	
+
 
 	// 관리자 주문내역 리스트
 	@GetMapping("/board/list")

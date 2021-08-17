@@ -17,6 +17,7 @@ public class CartVO {
     private String product_name;
     private int product_qty;
     private int price;
+    private String image_route;
     
     private int money;
 

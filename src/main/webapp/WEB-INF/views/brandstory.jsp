@@ -52,19 +52,19 @@
             <li><a class="dropdown-item" href="#">안주</a></li>
           </ul>
         </li>
-        <li class="nav-item"><a class="nav-link" href="#team">이벤트</a></li>
+        <li class="nav-item"><a class="nav-link" href="/event">이벤트</a></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             고객센터
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-            <li></li><a class="dropdown-item" href="#">공지사항</a></li>
-            <li><a class="dropdown-item" href="#">자주 묻는 질문</a></li>
+            <li></li><a class="dropdown-item" href="/notice">공지사항</a></li>
+            <li><a class="dropdown-item" href="/notice/faq">자주 묻는 질문</a></li>
           </ul>
         </li>
       </ul>
       <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-        <li class="nav-item"><a class="nav-link" href="#services">로그인</a></li>
+        <li class="nav-item"><a class="nav-link" href="/loginForm">로그인</a></li>
         <li class="nav-item"><a class="nav-link" href="#services">장바구니</a></li>
       </ul>
     </div>

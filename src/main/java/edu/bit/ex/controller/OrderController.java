@@ -74,4 +74,29 @@ public class OrderController {
 		
 	}*/
 
+	// 바로구매
+	@ResponseBody	 
+	@GetMapping("/user/order2")	
+	public String order2(CartVO cartVO, Principal principal, @AuthenticationPrincipal MemberContext ctx) {
+		
+		log.info("order2() ..");
+		
+		log.info("principal" + principal.getName());
+		log.info("principal" + ctx.getMemberVO().getMember_idx());
+		
+		log.info("cartVO().." + cartVO);
+		
+		cartVO.setMember_idx(ctx.getMemberVO().getMember_idx());
+		
+		cartService.order2(cartVO);
+		
+		return "SUCCESS";
+	} 
+	
+	@GetMapping("/orderPage")
+	public String orderPage() {
+		return "order/orderPage";
+	}
+	
+	
 }

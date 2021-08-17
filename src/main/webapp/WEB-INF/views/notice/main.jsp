@@ -33,10 +33,11 @@
 	<link rel="stylesheet" href="/static/table/css/style.css"/>
 	<link rel="stylesheet" href="/static/table/css/owl.carousel.min.css"/>
 
+	<!--JQuery-->
+	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 
 	<script type="text/javascript">
 		$(document).ready(function () {
-
 			var searchForm = $("#searchForm");
 			$("#searchForm button").on("click", function (e) {
 				if (!searchForm.find("option:selected").val()) {
@@ -49,9 +50,7 @@
 				}
 				searchForm.find("input[name='pageNum']").val("1");
 				e.preventDefault();
-
 				searchForm.submit();
-
 			});
 		});
 	</script>
@@ -62,7 +61,6 @@
 		$(function(){
 			var chkObj = document.getElementsByName("RowCheck");
 			var rowCnt = chkObj.length;
-
 			$("input[name='allCheck']").click(function(){
 				var chk_listArr = $("input[name='RowCheck']");
 				for (var i=0; i<chk_listArr.length; i++){
@@ -78,7 +76,6 @@
 				}
 			});
 		});
-
 		function deleteValue(){
 			var url = "${pageContext.request.contextPath}/admin/notice/delete_";
 			var valueArr = new Array();
@@ -312,7 +309,6 @@
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type='text/javascript'>
 	Kakao.init('7e53e24ce9a07956bfb5ac4930333caa');
-
 	function kakaoChatStart() {
 		Kakao.Channel.chat({
 			channelPublicId: '_WDxjSs'
