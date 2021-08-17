@@ -142,6 +142,8 @@
 		from order_detail o, product p where o.order_id = p.product_id and o.order_id= #{o.order_id}
 	]]>
 	</select>
+
+	
 	
 	<delete id="ship_remove">
 	<![CDATA[
