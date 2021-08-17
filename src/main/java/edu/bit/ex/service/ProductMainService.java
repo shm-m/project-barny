@@ -3,6 +3,7 @@ package edu.bit.ex.service;
 import java.util.List;
 
 import edu.bit.ex.page.Criteria;
+import edu.bit.ex.vo.FileVO;
 import edu.bit.ex.vo.ProductMainVO;
 
 public interface ProductMainService {
@@ -26,6 +27,8 @@ public interface ProductMainService {
     
     public int getTotal2(Criteria cri); // 안주
     public List<ProductMainVO> getList2(Criteria cri);
+
+    List<FileVO> getFileList(int board_id);
 
     // 후기 페이징
     public List<ProductMainVO> getListReview(Criteria cri, int product_id);

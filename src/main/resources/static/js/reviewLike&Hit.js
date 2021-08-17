@@ -25,7 +25,7 @@ $(document).ready(function () {
         console.log("조회수 1 증가");
       },
       error: function (e) {
-        alert("실패");
+        //alert("실패");
         console.log(e);
       },
     });
