@@ -5,6 +5,7 @@ import edu.bit.ex.vo.account.AuthVO;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -34,4 +35,16 @@ public interface MemberMapper {
     public MemberVO findId(String email);
 
     int changePw(String pw,String member_id,String email);
+
+    
+    //수정
+	public int updateUser(MemberVO memberVO);
+	//탈퇴
+//	public void deleteUser(MemberVO memberVO);
+
+//	public String getPw(MemberVO memberVO);
+
+	public int deleteUser(MemberVO memberVO);
+
+
 }

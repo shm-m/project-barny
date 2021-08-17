@@ -23,5 +23,5 @@ public class OrderVO {
 	private String ship_status_name;
 	private int ship_status_id;
 	private int ship_id;
-	private Data ship_date;
+	private Date ship_date;
 }
