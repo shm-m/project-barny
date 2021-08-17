@@ -96,7 +96,7 @@
             <p class="contents2">술&안주 정기구독 서비스</p>
             <p class="contents3">특별한 가격으로 나만의 Bar를 꾸려보세요</p>
 
-            <a class="btn btn-outline-yellow btn-lg text-uppercase" href="/product_main">구독하기</a>
+            <a class="btn btn-outline-yellow btn-lg text-uppercase mt-5" href="/product_main">구독하기</a>
           </div>
         </div>
 
