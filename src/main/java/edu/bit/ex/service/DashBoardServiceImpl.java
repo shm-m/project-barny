@@ -39,6 +39,8 @@ public class DashBoardServiceImpl implements DashBoardService {
             return monthTotalPrice;
     }
 
+
+
     @Override
     public Map<Integer, Integer> extractDayTotalPrice(List<OrderVO> orders) {
 
