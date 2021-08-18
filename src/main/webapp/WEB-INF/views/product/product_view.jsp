@@ -229,7 +229,7 @@
 									<td>${ff.b_title}</td>
 									<td>${ff.nickname}</td>
 									<td id="like_count${status.index}">${ff.like_count}</td>
-									<i class="fa" aria-hidden="false"></i>
+									<!-- <i class="fa" aria-hidden="false"></i> -->
 								</tr>
 								<tr>
 									<td colspan="6" id="best_collapse${file.index}"
@@ -287,7 +287,7 @@
 										<td>${vo.b_date}</td>
 										<td id="like_count${status.index}">${vo.like_count}</td>
 										<td id="b_hit">${vo.b_hit}</td>
-										<i class="fa" aria-hidden="false"></i>
+										<!-- <i class="fa" aria-hidden="false"></i> -->
 									</tr>
 									<tr>
 										<td colspan="6" id="collapse${status.index}"
