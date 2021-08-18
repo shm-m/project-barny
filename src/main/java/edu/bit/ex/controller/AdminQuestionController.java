@@ -90,9 +90,12 @@ public class AdminQuestionController {
       log.info("adminQuestionVO.."  + adminQuestionVO);
 
 
-      model.addAttribute("reply_view",adminQuestionService.getReply(adminQuestionVO.getBoard_id()));
-      
-      log.info("adminQuestionService.getReply(adminQuestionVO.getBoard_id).."  + adminQuestionService.get(adminQuestionVO.getBoard_id()));
+      //model.addAttribute("reply_view",adminQuestionService.getReply(adminQuestionVO.getBoard_id()));
+      log.info("after..."  + adminQuestionService.get(adminQuestionVO.getBoard_id()));
+      model.addAttribute("reply_view",adminQuestionService.get(adminQuestionVO.getBoard_id()));
+
+
+
 
 
       return "/admin/reply_view";

@@ -85,13 +85,13 @@
 		 <insert id="insertReply">
 		<![CDATA[
 			insert into barny_board (b_hit,product_id, member_idx, board_type_id, b_date, board_id, b_title, b_content, b_group, b_step, b_indent) 
-			values (0,null,#{member_idx},#{board_type_id},sysdate, BARNY_barny_board_seq.nextval, #{b_title},#{b_content},BOARD_ID_SEQ.currval, #{b_step}+1, #{b_indent}+1)
+			values (0,null,#{member_idx},#{board_type_id},sysdate, board_id_seq.nextval, #{b_title},#{b_content},BOARD_ID_SEQ.currval, #{b_step}+1, #{b_indent}+1)
 		]]>
 		 </insert>
 
 		 <select id="getReply" resultType="edu.bit.ex.vo.AdminQuestionVO">
 			<![CDATA[		
-				select*from barny_board where board_type_id=#{board_type_id} and b_group=#{b_group}
+				select * from barny_board where board_type_id=#{board_type_id} and b_group=#{b_group}
 			]]>
 			</select>
 	

@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
-    <title>mypage</title>
+    <title>Find your own drink, Barny</title>
 
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="/static/main_page/assets/favicon.ico"/>
@@ -105,8 +105,8 @@
         </div>
 
         <div class="col-9" style="width: 70%; padding: 7rem 0;">
-            <div class="board_name">1:1 문의
-                <a class="board_name_small">포인트 및 주문내역, 개인정보 등을 확인하거나 변경하세요.</a>
+            <div class="board_name">회원 정보 관리
+                <a class="board_name_small">관리자 모드입니다.</a>
             </div>
 
             <div class="table-responsive outline pb-3">

@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
-    <title>mypage</title>
+    <title>Find your own drink, Barny</title>
 
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="/static/main_page/assets/favicon.ico"/>
@@ -106,7 +106,7 @@
 
         <div class="col-9" style="width: 70%; padding: 7rem 0;">
             <div class="board_name">1:1 문의
-                <a class="board_name_small">포인트 및 주문내역, 개인정보 등을 확인하거나 변경하세요.</a>
+                <a class="board_name_small">관리자 모드입니다.</a>
             </div>
             <div class="table-responsive outline pb-3">
                 <table class="table custom-table" style="min-width: 500px;">
@@ -128,15 +128,15 @@
                         </tr>
                     </c:forEach>
 
-                    <c:forEach items="${reply_view}" var="dtt">
+                     <c:forEach items="${reply_view}" var="dtt">
                         <tr style="font-weight: 400;">
                             <td style="width : 15%;">${dtt.board_id}</td>
                             <td>
                                 <c:forEach begin="1" end="${dtt.b_indent}">ㄴ</c:forEach>
-                                <a href="reply_content_view?board_id=${dtt.board_id}">${dtt.b_title}</a></td>
+                                <a href="/admin/admin_question?board_id=${dtt.board_id}">${dtt.b_title}</a></td>
                             <td style="width : 15%;">${dtt.b_date}</td>
                         </tr>
-                    </c:forEach>
+                    </c:forEach> 
 
                     </tbody>
                 </table>

@@ -9,13 +9,13 @@
 <body>
    <table id="list-table" width="500" cellpadding="0" cellspacing="0" border="1">
       <form action="reply" method="post">
-         <input type="hidden" name="board_id" value="${reply_view.board_id}">
+         <input type="hidden" name="board_id" value="${reply_view.board_id}"> 
          <input type="hidden" name="b_group" value="${reply_view.b_group}">
          <input type="hidden" name="b_step" value="${reply_view.b_step}">
          <input type="hidden" name="b_indent" value="${reply_view.b_indent}">
          <tr>
             <td> 번호 </td>
-            <td> ${reply_view.board_id} </td>
+             <td> ${reply_view.board_id} </td> 
          </tr>
 
          <tr>
