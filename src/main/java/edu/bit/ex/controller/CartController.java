@@ -40,7 +40,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@RequestMapping("/user/*")
+@RequestMapping("/user/*")  
 public class CartController {
 	
 	@Autowired
@@ -97,30 +97,13 @@ public class CartController {
 		cartService.writeCart(cartVO);
 		
 		return "SUCCESS";
-	} 		
-	
-   // update
-    /* @PutMapping("/update")
-    public ResponseEntity<String> update(@RequestBody CartVO cartVO, ModelAndView mav) {
-
-        ResponseEntity<String> entity = null;
-
-        try {
-
-            cartService.modify(cartVO);
-            entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
-        }
-
-        return entity;
-    }	*/
+	} 			
 	
 	// update
+	
+	@ResponseBody
     @PostMapping("/updateCart")
-    public String updateCart(CartVO cartVO, Principal principal, @AuthenticationPrincipal MemberContext ctx) {
+    public String updateCart(@RequestBody CartVO cartVO, Principal principal, @AuthenticationPrincipal MemberContext ctx) {
 		
     	log.info("updateCart() ..");
 		
@@ -128,8 +111,9 @@ public class CartController {
 		log.info("principal" + ctx.getMemberVO().getMember_idx());
 		
 		log.info("cartVO().." + cartVO);
-
-		cartService.updateCart(cartVO);
+		cartVO.setMember_idx(ctx.getMemberVO().getMember_idx());
+		
+		cartService.modify(cartVO);
 
         return "SUCCESS";
     }	
@@ -147,4 +131,5 @@ public class CartController {
         }
         return "SUCCESS";
     }
+	
 }
