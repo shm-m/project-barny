@@ -24,7 +24,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 <meta name="description" content=""/>
 <meta name="author" content=""/>
-<title>Order</title>
+<title>Find your own drink, Barny</title>
 
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="/static/main_page/assets/favicon-2.ico"/>
@@ -76,9 +76,9 @@
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
                         <li></li>
-                        <a class="dropdown-item" href="/product_main">패키지</a></li>
-                        <li><a class="dropdown-item" href="/product_main_liquor">술</a></li>
-                        <li><a class="dropdown-item" href="/product_main_food">안주</a></li>
+                        <a class="dropdown-item" href="product_main">패키지</a></li>
+                        <li><a class="dropdown-item" href="product_main_liquor">술</a></li>
+                        <li><a class="dropdown-item" href="product_main_food">안주</a></li>
                     </ul>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="/event">이벤트</a></li>
@@ -97,10 +97,15 @@
                 <sec:authorize access="isAnonymous()">
                     <li class="nav-item"><a class="nav-link" href="/loginForm">로그인</a></li>
                 </sec:authorize>
-                <sec:authorize access="isAuthenticated()">
+                <sec:authorize access="hasAnyRole('ROLE_USER')">
                     <li class="nav-item"><a class="nav-link" href="/board/my_page">마이페이지</a></li>
                 </sec:authorize>
-                <li class="nav-item"><a class="nav-link" href="/user/cart5">장바구니</a></li>
+                <sec:authorize access="hasAnyRole('ROLE_ADMIN')">
+                    <li class="nav-item"><a class="nav-link" href="/#">관리페이지</a></li>
+                </sec:authorize>
+                <sec:authorize access="hasAnyRole('ROLE_USER')">
+                    <li class="nav-item"><a class="nav-link" href="/user/cart5">장바구니</a></li>
+                </sec:authorize>
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
                 </sec:authorize>
@@ -182,6 +187,19 @@
                 <p>주문자이름 : <sec:authentication property="principal.memberVO.member_name"/></p>
                 <p>휴대폰 : <sec:authentication property="principal.memberVO.tel"/> </p>
                 <p>이메일 : <sec:authentication property="principal.memberVO.email"/> </p>
+                <hr class="my-4">
+            </form>
+        </div>
+    </div>
+    
+    <h3>적립금</h3>
+    <div class="row">
+        <div class="col-md-8">
+            <form action="<c:url value='/user/cart3' />" method="post">
+                <input name="member_idx" type="hidden" value="<sec:authentication property="principal.memberVO.member_idx"/>">
+                <p>적립금 :&nbsp; <sec:authentication property="principal.memberVO.point"/>&nbsp;p&nbsp;<button id="point" type="button" class="btn btn-secondary btn-md">사용하기</button></p>
+                <p>(5000p 이상 사용가능)
+                <input id="point1" name="point" type="hidden" value="<sec:authentication property="principal.memberVO.point"/>"></p>
                 <hr class="my-4">
             </form>
         </div>
@@ -287,6 +305,7 @@
 
 </body>
 
+<!-- 아임포트 -->
 <script>
 	$(document).ready(function(){
 			
@@ -341,8 +360,27 @@
 	        }
 	    });
 	    });
-	});    
-	    
-	   
+	});    	    	   
 </script>
+
+<!-- 적립금 -->
+	<script type="text/javascript">
+	$(document).ready(function(){
+		
+		$("#point").click(function(event) {
+	   	 	  
+		 	  var point = $("#point1").val();
+		 	  
+		 	  if($("#point1") >= "5000") {
+		 		  alert("5000원 이상 사용가능합니다!")
+		 		  $button_point = $('#point').attr('disabled', true);
+
+
+		 	  }
+		 	  
+		 	  	       
+
+		});
+	 });
+	</script>
 </html>
