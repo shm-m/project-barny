@@ -3,7 +3,7 @@
 @import 'bootstrap/mixins';
 
 $font-primary: 'Poppins',Arial, sans-serif;
-$primary: #99b19c;
+$primary: /*#99b19c;*/ #ffc800;
 body{
 	font-family: $font-primary;
 	font-size: 16px;

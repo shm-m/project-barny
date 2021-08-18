@@ -9,7 +9,6 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -26,6 +25,7 @@ public class MemberVO {
     private String address;
     private Date date_of_birth;
     private int point;
+    private int subscribe;
 
     private List<AuthVO> authList ;
 

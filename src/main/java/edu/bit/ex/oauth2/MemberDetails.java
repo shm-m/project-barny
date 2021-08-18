@@ -90,6 +90,8 @@ public class MemberDetails implements UserDetails, OAuth2User {
     public boolean isAccountNonLocked() { // 계정이 잠겨있나 ?
         boolean lock = true;
 
+        log.info("isAccountNonLocked");
+        
         if (authVO.getActive() == 0) {
             System.out.println(memberVO.getMember_id() + "의 블랙리스트 여부 : " + authVO.getActive());
             lock = false;
@@ -104,17 +106,20 @@ public class MemberDetails implements UserDetails, OAuth2User {
     public boolean isEnabled() {// 계정이 활성화 되었나?
         // 휴면 계정 사용시 필요
         // ex) 현재 시간 - 로긴시간 -> 1년초과시 return false 설정
-        log.info("isActived");
-        boolean active = true;
+//        log.info("isActived");
+//        boolean active = true;
+//
+//        if (authVO.getActive() == '0') {
+//            System.out.println(memberVO.getMember_id() + "의 enable : " + authVO.getActive());
+//            active = false;
+//        }
+//
+//        return active;
 
-        if (authVO.getActive() != '1' || authVO.getActive() == '0') {
-            System.out.println(memberVO.getMember_id() + "의 enable : " + authVO.getActive());
-            active = false;
-        }
-
-        return active;
+        return authVO.getActive() == 1;
     }
 
+  
     // oauth2User
     @Override
     public Map<String, Object> getAttributes() { // 리소스 서버로부터 가져오는 회원정보
