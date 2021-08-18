@@ -29,7 +29,7 @@
                 <div class="card admin-menu text-white mb-4">
                     <div class="card-body">회원 관리</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="#">더보기</a>
+                        <a class="small text-white stretched-link" href="/admin/admin_member">더보기</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
