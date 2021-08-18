@@ -106,10 +106,11 @@ public class MemberServiceImpl implements MemberService {
         return memberMapper.updateUser(memberVO);
 		
 	}
-
+    
+    //탈퇴
 	@Override
 	public void deleteUser(MemberVO memberVO) {
-	
+		memberMapper.deleteUser(memberVO);
 	}
 
 	
@@ -118,7 +119,7 @@ public class MemberServiceImpl implements MemberService {
 //	public String getPw(MemberVO memberVO) {
 //		return memberMapper.getPw(memberVO);
 //	}
-
+//
 //	@Override
 //	public boolean deleteUser(MemberVO memberVO) {
 //		return memberMapper.deleteUser(memberVO)==1 ? true:false;

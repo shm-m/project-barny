@@ -57,12 +57,16 @@ public class BoardController {
 		return "/board/press";
 	}
 	
-		// 회원 1:1문의 내역 게시판 수정
+		
+		// 구독ㄴ 내역 게시판 수정
 		@GetMapping("/board/update_modify")
-		public String update_modify(BoardVO boardVO, Model model) {
+		public String update_modify(BoardVO boardVO, Model model, @AuthenticationPrincipal MemberContext ctx) {
 			log.info("update_modify..");
-
+			
+			boardVO.setMember_idx(ctx.getMemberVO().getMember_idx());
+			
 			boardService.update_modify(boardVO);
+			
 
 			return "redirect:/board/press";
 		}

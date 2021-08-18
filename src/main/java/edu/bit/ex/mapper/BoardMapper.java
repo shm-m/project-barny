@@ -77,4 +77,5 @@ public interface BoardMapper {
 	//포인트
 	public List<MemberVO> getPointList(int member_idx);
 
+
 }

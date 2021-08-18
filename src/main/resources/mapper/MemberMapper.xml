@@ -92,7 +92,7 @@
     </update>
     
     <update id="deleteUser">
-      update auth set enabled=0  where member_idx=#{member_idx} 
+      update auth set active=0  where member_idx=#{member_idx} 
     </update>
     
 </mapper>
