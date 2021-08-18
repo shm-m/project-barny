@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 
@@ -87,21 +88,44 @@
     </div>
   </nav>
 
-
+  <!--게임-->
   <div id="wrapper" class="container" style="margin-top: 2%; margin-bottom: 1%;">
     <div class="title">
       <p>숨어있는 바니를 찾고 적립금을 받아가세요!</p>
     </div>
     <div id="cardground"></div>
+    <br>
     <div>
-      <form>
-        <button id="point" type="submit" style="display: none" class="btn btn-lg btn-outline-warning">
-          적립하기
-        </button>
+      <form name="addPoint" action="/event/add_point2" method="post">
+        <input id="member_idx" type="hidden" name="member_idx" value="<sec:authentication property="principal.memberVO.member_idx" />">
+        <input id="start_btn" type="button" style="display: none" class="btn btn-lg btn-outline-warning" value='적립하기'/>
       </form>
     </div>
   </div>
   <script type="text/javascript" src="/static/cardbarny/card.js"></script>
+  <script>
+    window.onload = function () {
+        $('#start_btn').click(function () {
+            function convertDateFormat(date) {
+                var year = date.getFullYear();
+                var month = date.getMonth() + 1;
+                month = month >= 10 ? month : '0' + month;
+                var day = date.getDate();
+                day = day >= 10 ? day : '0' + day;
+                return [year, month, day].join('');
+            }
+
+            var today = convertDateFormat(new Date());
+            var participate_date = '${participate_date}';
+            if (participate_date == today) {
+                alert('해당 이벤트는 하루에 한번만 참여 가능합니다.')
+                return false
+            }
+            setTimeout("document.addPoint.submit()", 5500);
+        });
+
+    };
+</script>
 
   <!-- Footer-->
   <footer class="footer">
