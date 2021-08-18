@@ -129,19 +129,21 @@
         </div>
     </div>
 </nav>
+
 <!--joinForm-->
 <form:form name="frmMember" modelAttribute="memberVO" action="/join" method="POST">
-    <div class="container pt-5" style="width:60%">
+    <div class="container" style="width:60%; padding: 8rem 0;">
         <div class="input-form-backgroud row">
             <div class="input-form col-md-12 mx-auto">
 
-                <h4 class="mb-3">회원가입</h4>
+                <h4 class="mb-3 join_title">회원가입</h4>
 
+                <div class="form-line"></div>
                 <form class="validation-form" novalidate>
                     <div class="row">
 
                         <div class="col-md-6 mb-3">
-                            <div class="wrap-input100 validate-input m-b-16">
+                            <div class="wrap-input100 validate-input m-b-16" style="background-color: transparent;">
                                 <label for="member_id">아이디</label>
                                 <input class="form-control" type="text" id="member_id" name="member_id"
                                        value="${memberVO.member_id}"
@@ -153,7 +155,7 @@
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <div class="wrap-input100 validate-input m-b-16">
+                            <div class="wrap-input100 validate-input m-b-16" style="background-color: transparent;">
                                 <label for="member_name">이름</label>
                                 <input class="form-control" type="text" id="member_name" name="member_name"
                                        value="${memberVO.member_name}"
@@ -164,7 +166,7 @@
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <div class="wrap-input100 validate-input m-b-16">
+                            <div class="wrap-input100 validate-input m-b-16" style="background-color: transparent;">
                                 <label for="pw">패스워드</label>
                                 <input class="form-control" type="password" id="pw" name="pw"
                                        placeholder="8자~20자 이내의 영문,숫자,특수기호 조합" required>
@@ -174,7 +176,7 @@
 
 
                         <div class="col-md-6 mb-3">
-                            <div class="wrap-input100 validate-input m-b-16">
+                            <div class="wrap-input100 validate-input m-b-16" style="background-color: transparent;">
                                 <label for="nickname">닉네임</label>
                                 <input class="form-control" type="text" id="nickname" name="nickname"
                                        value="${memberVO.nickname}"
@@ -187,7 +189,7 @@
 
                     <div class="row">
                         <div class="col-md-8 mb-3 ">
-                            <div class="wrap-input100 validate-input m-b-16">
+                            <div class="wrap-input100 validate-input m-b-16" style="background-color: transparent;">
                                 <label for="email">이메일</label>
                                 <input type="email"
                                        placeholder="E-Mail" name="email" id="email"
@@ -273,8 +275,11 @@
                    id="aggrement" required>
             <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label></div>
         <div class="mb-4"></div>
-        <button class="btn btn-primary btn-lg btn-block" id="submit-btn" type="submit">가입 완료</button>
+        <div class="form-line"></div>
+        <div style="text-align: right;">
+        <button class="btn btn-primary btn-lg btn-block" style="font-family: BBTreeGB; "id="submit-btn" type="submit">가입 완료</button>
         </form>
+        </div>
     </div>
     </div>
 
