@@ -61,24 +61,20 @@
 	overflow: hidden;
 	transition: height ease !important;
 }
-
 .card-img {
 	width: 300px;
 	height: 350px;
 	object-fit: cover;
 }
-
 .product_view {
 	padding-top: 100px;
 	/*margin-left: 200px;
 	margin-right: 200px;*/
 }
-
 .product_view1 {
 	/* margin-left: 400px; */
 	margin-left: 25%;
 }
-
 .product_detail {
 	margin-left: 23%;
 	/*     margin-left: 25%;
@@ -89,7 +85,6 @@
 
 <script type="text/javascript">
 		$(document).ready(function () {
-
 			var searchForm = $("#searchForm");
 			$("#searchForm button").on("click", function (e) {
 				if (!searchForm.find("option:selected").val()) {
@@ -102,9 +97,7 @@
 				}
 				searchForm.find("input[name='pageNum']").val("1");
 				e.preventDefault();
-
 				searchForm.submit();
-
 			});
 		});
 	</script>
@@ -244,6 +237,7 @@
 									<td>${ff.b_title}</td>
 									<td>${ff.nickname}</td>
 									<td id="like_count${status.index}">${ff.like_count}</td>
+									<!-- <i class="fa" aria-hidden="false"></i> -->
 								</tr>
 								<tr>
 									<td colspan="6" id="best_collapse${file.index}" class="collapse acc" data-parent="#accordion"
@@ -298,6 +292,7 @@
 										<td>${vo.b_date}</td>
 										<td id="like_count${status.index}">${vo.like_count}</td>
 										<td id="b_hit">${vo.b_hit}</td> 
+										<!-- <i class="fa" aria-hidden="false"></i> -->
 									</tr>
 									<tr>
 										<td colspan="6" id="collapse${status.index}"
@@ -372,19 +367,14 @@
 	<script>
 		// 장바구니
 		$(document).ready(function () {
-
 			$("#cart").click(function (event) {
-
 				event.preventDefault();
-
 				var product_id = $("#pro_id").val();
 				var product_qty = $("#product_qty").val();
-
 				var cart = {
 					product_id: product_id,
 					product_qty: product_qty
 				};
-
 				//dataType: 'json',
 				$.ajax({
 					type: "GET",
@@ -400,9 +390,7 @@
 						console.log(e);
 					}
 				});
-
 			});
-
 		});
 	</script>
 
@@ -443,7 +431,6 @@
 	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 	<script type='text/javascript'>
 		Kakao.init('7e53e24ce9a07956bfb5ac4930333caa');
-
 		function kakaoChatStart() {
 			Kakao.Channel.chat({
 				channelPublicId: '_WDxjSs'
