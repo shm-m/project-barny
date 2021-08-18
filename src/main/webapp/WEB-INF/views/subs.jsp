@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    <brㅠㄱ%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+    <br%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
       <!DOCTYPE html>
       <html lang="en">
 

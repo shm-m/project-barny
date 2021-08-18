@@ -57,10 +57,10 @@ var calendar = {
       var eventDay = $(this).attr("date-day");
       $(
         'tbody tr td[date-month="' +
-          eventMonth +
-          '"][date-day="' +
-          eventDay +
-          '"]'
+        eventMonth +
+        '"][date-day="' +
+        eventDay +
+        '"]'
       ).addClass("event");
     });
 
@@ -74,10 +74,10 @@ var calendar = {
       var dayEvent = $(this).text();
       $(
         '.day-event[date-month="' +
-          monthEvent +
-          '"][date-day="' +
-          dayEvent +
-          '"]'
+        monthEvent +
+        '"][date-day="' +
+        dayEvent +
+        '"]'
       ).slideDown("fast");
     });
 
@@ -100,14 +100,14 @@ var calendar = {
         var eventNumber = $(this).closest(".day-event").attr("data-number");
         $(".person-list").append(
           '<div class="day" date-month="' +
-            eventMonth +
-            '" date-day="' +
-            eventDay +
-            '" data-number="' +
-            eventNumber +
-            '" style="display:none;">' +
-            eventHtml +
-            "</div>"
+          eventMonth +
+          '" date-day="' +
+          eventDay +
+          '" data-number="' +
+          eventNumber +
+          '" style="display:none;">' +
+          eventHtml +
+          "</div>"
         );
         $(
           '.day[date-month="' + eventMonth + '"][date-day="' + eventDay + '"]'
@@ -124,22 +124,22 @@ var calendar = {
         var eventNumber = $(this).closest(".day-event").attr("data-number");
         $(
           '.day[date-month="' +
+          eventMonth +
+          '"][date-day="' +
+          eventDay +
+          '"][data-number="' +
+          eventNumber +
+          '"]'
+        ).slideUp("slow");
+        setTimeout(function () {
+          $(
+            '.day[date-month="' +
             eventMonth +
             '"][date-day="' +
             eventDay +
             '"][data-number="' +
             eventNumber +
             '"]'
-        ).slideUp("slow");
-        setTimeout(function () {
-          $(
-            '.day[date-month="' +
-              eventMonth +
-              '"][date-day="' +
-              eventDay +
-              '"][data-number="' +
-              eventNumber +
-              '"]'
           ).remove();
         }, 1500);
       }
@@ -154,44 +154,44 @@ var calendar = {
           var eventNumber = $(this).closest(".day").attr("data-number");
           $(
             '.day[date-month="' +
-              eventMonth +
-              '"][date-day="' +
-              eventDay +
-              '"][data-number="' +
-              eventNumber +
-              '"]'
+            eventMonth +
+            '"][date-day="' +
+            eventDay +
+            '"][data-number="' +
+            eventNumber +
+            '"]'
           ).slideUp("slow");
           $(
             '.day-event[date-month="' +
-              eventMonth +
-              '"][date-day="' +
-              eventDay +
-              '"][data-number="' +
-              eventNumber +
-              '"]'
+            eventMonth +
+            '"][date-day="' +
+            eventDay +
+            '"][data-number="' +
+            eventNumber +
+            '"]'
           )
             .find(".save")
             .attr("checked", false);
           $(
             '.day-event[date-month="' +
-              eventMonth +
-              '"][date-day="' +
-              eventDay +
-              '"][data-number="' +
-              eventNumber +
-              '"]'
+            eventMonth +
+            '"][date-day="' +
+            eventDay +
+            '"][data-number="' +
+            eventNumber +
+            '"]'
           )
             .find("span")
             .text("Save to personal list");
           setTimeout(function () {
             $(
               '.day[date-month="' +
-                eventMonth +
-                '"][date-day="' +
-                eventDay +
-                '"][data-number="' +
-                eventNumber +
-                '"]'
+              eventMonth +
+              '"][date-day="' +
+              eventDay +
+              '"][data-number="' +
+              eventNumber +
+              '"]'
             ).remove();
           }, 1500);
         }
