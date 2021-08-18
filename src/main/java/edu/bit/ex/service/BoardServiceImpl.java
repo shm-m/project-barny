@@ -21,9 +21,9 @@ public class BoardServiceImpl implements BoardService {
 	private BoardMapper boardMapper;
 
 	@Override
-	public List<BoardVO> getList() {
+	public List<BoardVO> getAdminList() {
 
-		return boardMapper.getList();
+		return boardMapper.getAdminList();
 	}
 
 	// 1:1문의 게시판 주문문의 게시판 하나 읽기

@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +12,7 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
     <title>Find your own drink, Barny</title>
+
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="/static/main_page/assets/favicon.ico"/>
     <!-- Font Awesome icons (free version)-->
@@ -20,14 +23,14 @@
     <!-- naver fonts -->
     <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="/static/main_page/css/styles.css" rel="stylesheet"/>
-    <link href="/static/my_page/css/my_page.css" rel="stylesheet"/>
-    <link href="/static/table/css/style.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/static/main_page/css/styles.css"/>
+    <link rel="stylesheet" href="/static/my_page/css/my_page.css"/>
+    <link rel="stylesheet" href="/static/table/css/style.css"/>
+    <link rel="stylesheet" href="/static/table/css/owl.carousel.min.css"/>
+
 </head>
 
-<body id="page-top">
-
-
+<body>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top"
      id="mainNav_2">
@@ -42,11 +45,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link" href="/subscribe">구독</a></li>
-                <li class="nav-item"><a class="nav-link" href="/story">브랜드
+                <li class="nav-item"><a class="nav-link" href="/subs">구독</a></li>
+                <li class="nav-item"><a class="nav-link" href="#portfolio">브랜드
                     스토리</a></li>
                 <li class="nav-item dropdown"><a
-                        class="nav-link dropdown-toggle" role="button"
+                        class="nav-link dropdown-toggle" href="#"
+                        id="navbarDarkDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false"> 상품 보기 </a>
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
@@ -56,15 +60,16 @@
                         <li><a class="dropdown-item" href="/product_main_food">안주</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="/event">이벤트</a></li>
+                <li class="nav-item"><a class="nav-link" href="#team">이벤트</a></li>
                 <li class="nav-item dropdown"><a
-                        class="nav-link dropdown-toggle" role="button"
+                        class="nav-link dropdown-toggle" href="#"
+                        id="navbarDarkDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false"> 고객센터 </a>
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
                         <li></li>
                         <a class="dropdown-item" href="/notice">공지사항</a></li>
-                        <li><a class="dropdown-item" href="/notice/faq">자주 묻는 질문</a></li>
+                        <li><a class="dropdown-item" href="/faq">자주 묻는 질문</a></li>
                     </ul>
                 </li>
             </ul>
@@ -72,15 +77,8 @@
                 <sec:authorize access="isAnonymous()">
                     <li class="nav-item"><a class="nav-link" href="/loginForm">로그인</a></li>
                 </sec:authorize>
-                <sec:authorize access="hasAnyRole('ROLE_USER')">
-                    <li class="nav-item"><a class="nav-link" href="/board/my_page">마이페이지</a></li>
-                </sec:authorize>
-                <sec:authorize access="hasAnyRole('ROLE_ADMIN')">
-                    <li class="nav-item"><a class="nav-link" href="/#">관리페이지</a></li>
-                </sec:authorize>
-                <sec:authorize access="hasAnyRole('ROLE_USER')">
-                    <li class="nav-item"><a class="nav-link" href="/user/cart5">장바구니</a></li>
-                </sec:authorize>
+
+                <li class="nav-item"><a class="nav-link" href="#services">장바구니</a></li>
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
                 </sec:authorize>
@@ -89,75 +87,57 @@
     </div>
 </nav>
 
-
 <!--content-->
-<div class="container" style ="width: 70%; padding: 7rem 0;">
-    <div class="board_name">마이페이지
-        <a class="board_name_small">포인트 및 주문내역, 개인정보 등을 확인하거나 변경하세요.</a>
-    </div>
-        <div class="line" style="border-bottom: solid 3px; border-bottom-color: #EBC24B;"></div>
-    <div class="container my-page-header my-3 ">
-        <div class="row">
-            <div class="col-3">
-                <img class="profile2"
-                     style="width: 85%; height: auto;"
-                     src="/static/img/BARNY3.png"/>
+<div class="container" style="padding-top: 2rem;">
+    <div class="row">
+        <div class="col-3" style="padding: 7rem 0;">
+            <div class="list-group side-nav">
+                <a href="/admin/admin_member" class="list-group-item list-group-item-action">회원 관리</a>
+                <a href="#" class="list-group-item list-group-item-action">상품 관리</a>
+                <a href="/board/adminList" class="list-group-item list-group-item-action" aria-current="true">
+                    게시판 관리
+                </a>
+                <a href="#" class="list-group-item list-group-item-action active">주문 관리</a>
+
             </div>
-            <div class="col-1" style="border-left: solid 1px; border-left-color: #EBC24B; margin: 2rem 0; width: 1%;">
-            </div>
-            <div class="col mt-5 pl-5" style="text-align: left;">
-                <a style="font-family: BBTreeGB; font-size: 35px;">환영합니다. <sec:authentication
-                        property="principal.memberVO.member_name"/>님!</a>
-                <p></p>
-                <a style="font-family: NanumSquare; font-size: 18px; font-weight: 400;">적립금 >  <sec:authentication
-                        property="principal.memberVO.point"/>P</a>
+        </div>
+
+        <div class="col-9" style="width: 70%; padding: 7rem 0;">
+            <div class="board_name">게시판 관리
+                <a class="board_name_small">관리자 모드입니다.</a>
             </div>
 
-        </div>
-    </div>
-        <div class="line" style="border-bottom: solid 2px; border-bottom-color: #EBC24B;"></div>
-    <c:if test="${member == null}"></c:if>
-    <div class="main-menu">
-        <div class="row mb-3 mt-5">
-            <div class="card card-my_page col-4" type="button" onclick="location.href='/board/press'">
-                <div class="card-body my_page">
-                    구독 정보
-                </div>
-            </div>
-            <div class="card card-my_page col-4" type="button" onclick="location.href='/board/purchase_list'">
-                <div class="card-body my_page">
-                    구매 내역
-                </div>
-            </div>
-            <div class="card card-my_page col-4" type="button" onclick="location.href='/board/my_view'">
-                <div class="card-body my_page">
-                    문의 내역
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="card card-my_page col-4" type="button" onclick="location.href='/board/my_review'">
-                <div class="card-body my_page">
-                    후기
-                </div>
-            </div>
-            <div class="card card-my_page col-4" type="button" onclick="location.href='/board/point'">
-                <div class="card-body my_page">
-                    적립금
-                </div>
-            </div>
-            <div class="card card-my_page col-4" type="button" onclick="location.href='/user/edit'">
-                <div class="card-body my_page">
-                    개인 정보 수정
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="line pt-5" style="border-bottom: solid 3px; border-bottom-color: #EBC24B;"></div>
-</div>
-</div>
+            <div class="table-responsive outline pb-3">
+                <table class="table custom-table" style="min-width: 500px;">
+                    <thead style="border-bottom: solid 1px;">
+                    <tr>
+                        <td>글번호</td>
+         				<td>회원번호</td>
+        			    <td>제목</td>
+         				<td>날짜</td>
 
-<!-- Footer-->
+            </tr>
+            </thead>
+                    
+	
+		 <c:forEach items="${adminList}" var="dto">
+      <tr>
+         <td>${dto.board_id}</td>
+         <td>${dto.member_idx}</td>
+         
+         <td>
+            <c:forEach begin="1" end="${dto.b_indent}">ㄴ</c:forEach>
+            <a href="content_view?board_id=${dto.board_id}">${dto.b_title}</a></td>
+         <td>${dto.b_date}</td>
+      </tr>
+      </c:forEach>
+      <tr>
+         <td colspan="5"> <a href="write_view">글작성</a> </td>
+      </tr>
+      
+	</table>
+
+    <!-- Footer-->
 <footer class="footer">
     <div class="container">
         <div class="row align-items-center">
@@ -195,6 +175,7 @@
         });
     }
 </script>
+
 <!-- Bootstrap core JS-->
 <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
