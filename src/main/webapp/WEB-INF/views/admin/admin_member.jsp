@@ -3,34 +3,34 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
     <title>Find your own drink, Barny</title>
+
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="/static/main_page/assets/favicon-2.ico"/>
+    <link rel="icon" type="image/x-icon" href="/static/main_page/assets/favicon.ico"/>
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"/>
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@200;300;400;500;600&family=Nanum+Gothic:wght@400;700;800&display=swap"
+          rel="stylesheet">
     <!-- naver fonts -->
     <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="/static/main_page/css/styles.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="/static/css/styles.css">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="/static/main_page/css/styles.css"/>
+    <link rel="stylesheet" href="/static/my_page/css/my_page.css"/>
+    <link rel="stylesheet" href="/static/table/css/style.css"/>
+    <link rel="stylesheet" href="/static/table/css/owl.carousel.min.css"/>
 
 </head>
-<body id="page-top">
 
+<body>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top"
      id="mainNav_2">
@@ -45,29 +45,31 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link" href="/subscribe">구독</a></li>
-                <li class="nav-item"><a class="nav-link" href="/story">브랜드
+                <li class="nav-item"><a class="nav-link" href="/subs">구독</a></li>
+                <li class="nav-item"><a class="nav-link" href="#portfolio">브랜드
                     스토리</a></li>
                 <li class="nav-item dropdown"><a
-                        class="nav-link dropdown-toggle" role="button"
+                        class="nav-link dropdown-toggle" href="#"
+                        id="navbarDarkDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false"> 상품 보기 </a>
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
                         <li></li>
-                        <a class="dropdown-item" href="/product_main">패키지</a></li>
-                        <li><a class="dropdown-item" href="/product_main_liquor">술</a></li>
-                        <li><a class="dropdown-item" href="/product_main_food">안주</a></li>
+                        <a class="dropdown-item" href="#">패키지</a></li>
+                        <li><a class="dropdown-item" href="#">술</a></li>
+                        <li><a class="dropdown-item" href="#">안주</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="/event">이벤트</a></li>
+                <li class="nav-item"><a class="nav-link" href="#team">이벤트</a></li>
                 <li class="nav-item dropdown"><a
-                        class="nav-link dropdown-toggle" role="button"
+                        class="nav-link dropdown-toggle" href="#"
+                        id="navbarDarkDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false"> 고객센터 </a>
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
                         <li></li>
                         <a class="dropdown-item" href="/notice">공지사항</a></li>
-                        <li><a class="dropdown-item" href="/notice/faq">자주 묻는 질문</a></li>
+                        <li><a class="dropdown-item" href="/faq">자주 묻는 질문</a></li>
                     </ul>
                 </li>
             </ul>
@@ -75,15 +77,11 @@
                 <sec:authorize access="isAnonymous()">
                     <li class="nav-item"><a class="nav-link" href="/loginForm">로그인</a></li>
                 </sec:authorize>
-                <sec:authorize access="hasAnyRole('ROLE_USER')">
+                <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/board/my_page">마이페이지</a></li>
                 </sec:authorize>
-                <sec:authorize access="hasAnyRole('ROLE_ADMIN')">
-                    <li class="nav-item"><a class="nav-link" href="/statistics">관리페이지</a></li>
-                </sec:authorize>
-                <sec:authorize access="hasAnyRole('ROLE_USER')">
-                    <li class="nav-item"><a class="nav-link" href="/user/cart5">장바구니</a></li>
-                </sec:authorize>
+
+                <li class="nav-item"><a class="nav-link" href="#services">장바구니</a></li>
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
                 </sec:authorize>
@@ -92,48 +90,75 @@
     </div>
 </nav>
 
-<!--이하 절취선 까지는 기능이 제대로 돌아가는 지 확인하기 위함으로 안가져가셔도 됩니다.-->
-<div class="first-img">
-    <img class="header-img" style="width: 100%; height: auto;"
-         src="/static/img/first.jpg">
-</div>
-<div class="container-1">
-    <div class="text-center mb-5 mt-5">
-        <H1 class="display-4 mb-5">당신을 찾아가는 Bar</H1>
-        <h5>
-            Barny는 전국 각지의 대중화 되지 않은 전통주와 해외 주류를 포함한 다양한 주류를 입고하여<br> 집까지
-            배송해드리는 정기구독 시스템입니다.</br>
-        </h5>
-    </div>
-</div>
-<div class="second-img">
-    <img class="header-img" style="width: 100%; height: auto;"
-         src="/static/img/second.jpg">
-</div>
-<div class="container-1">
-    <div class="text-center mb-5 mt-5">
-        <H1 class="display-4 mb-5">당신과 함께하는 Bar</H1>
-        <h5>
-            특별한 사람들과 함께 집에서 안전하고 편안하게 자신이 원하는 주류를<br>접할 수 있도록 하기 위해 도입하게
-            되었습니다. </br>
-        </h5>
-    </div>
-</div>
-<div class="third-img">
-    <img class="header-img" style="width: 100%; height: auto;"
-         src="/static/img/third.jpg">
-</div>
-<div class="container-1">
-    <div class="text-center mb-5 mt-5">
-        <H1 class="display-4 mb-5">합리적인 가격으로 지금 시작해보세요</H1>
-        <button type="button" class="btn btn-outline-dark btn-lg mt-5">구독
-            하기
-        </button>
-    </div>
-</div>
-<!-- --------------------------------------------------------------------------------------------- -->
+<!--content-->
+<div class="container" style="padding-top: 2rem;">
+    <div class="row">
+        <div class="col-3" style="padding: 7rem 0;">
+            <div class="list-group side-nav">
+                <a href="#" class="list-group-item list-group-item-action  active" aria-current="true">회원 관리</a>
+                <a href="#" class="list-group-item list-group-item-action">상품 관리</a>
+                <a href="#" class="list-group-item list-group-item-action">
+                    게시판 관리
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">주문 관리</a>
 
-<!-- Footer-->
+            </div>
+        </div>
+
+        <div class="col-9" style="width: 70%; padding: 7rem 0;">
+            <div class="board_name">회원 정보 관리
+                <a class="board_name_small">관리자 모드입니다.</a>
+            </div>
+
+            <div class="table-responsive outline pb-3">
+                <table class="table custom-table" style="min-width: 500px;">
+                    <thead style="border-bottom: solid 1px;">
+                    <tr>
+                        <td>아이디</td>
+			            <!-- <td>비밀번호</td> -->
+			            <td>회원번호</td>
+			            <td>회원이름</td>
+			            <td>닉네임</td>
+			            <td>이메일</td>
+			            <td>결제수단</td>
+			            <td>전화번호</td>
+			            <td>주소</td>
+			            <!-- <td>생년월일</td> -->
+			            <td>포인트</td>
+            </tr>
+            </thead>
+                    
+            <tbody>
+
+            </tbody>
+
+	
+		<c:forEach items="${admin_member}" var="dto">
+		<tr style="font-weight: 400;">
+			<td style="width : 15%;">${dto.member_id}</td>
+			<!-- <td>${dto.pw}</td> -->
+			<td>${dto.member_idx}</td>
+			<td>	
+				<a href="content_view?member_idx=${dto.member_idx}">${dto.member_name}</a> 
+			</td>                             
+			<td>${dto.nickname}</td>
+			<td>${dto.email}</td>
+			<td>${dto.payment}</td>
+			<td>${dto.tel}</td>
+			<td>${dto.address}</td>
+			<!-- <td>${dto.date_of_birth}</td> -->
+			<td>${dto.point}</td>
+
+		</tr>
+		</c:forEach>
+		
+		<tr>
+         <td colspan="960"> <a href="write_view">글작성</a> </td>
+      </tr>
+      
+	</table>
+
+    <!-- Footer-->
 <footer class="footer">
     <div class="container">
         <div class="row align-items-center">
@@ -151,7 +176,6 @@
         </div>
     </div>
 </footer>
-
 <!--top-button-->
 <img id="myBtn" src="/static/main_page/assets/top-btn.png" onclick="topFunction()">
 
@@ -171,6 +195,7 @@
         });
     }
 </script>
+
 <!-- Bootstrap core JS-->
 <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
