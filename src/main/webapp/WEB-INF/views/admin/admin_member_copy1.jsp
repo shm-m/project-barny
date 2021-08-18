@@ -108,47 +108,54 @@
             <div class="board_name">1:1 문의
                 <a class="board_name_small">포인트 및 주문내역, 개인정보 등을 확인하거나 변경하세요.</a>
             </div>
-	
-			<div class="table-responsive outline pb-3">
+            <div class="table-responsive outline pb-3">
                 <table class="table custom-table" style="min-width: 500px;">
                     <thead style="border-bottom: solid 1px;">
-		<tr>
-			<td>주문상세번호</td>
-			<td>총주문금액</td>
-			<td>주문날짜</td>
-			<td>회원번호</td>
-			<td>회원이름</td>
-			<td>결제수단</td>
-			<td>주문번호</td>	
-		</tr>
-	</thead>
-	
-		<c:forEach items="${admin_orders}" var="dto">
-		<tr>
-			<td>${dto.order_detail_id}</td>
-			<td>${dto.total_price}</td>
-			<td>	
-				<a href="content_view_orders?member_idx=${dto.member_idx}">${dto.order_date}</a> 
-			</td>                             
-			<td>${dto.member_idx}</td>
-			<td>${dto.member_name}</td>
-			<td>${dto.payment}</td>
-			<td>${dto.order_id}</td>
-			
+						<tr>
+							<td>아이디</td>
+							<td>비밀번호</td>
+							<td>회원번호</td>
+							<td>회원이름</td>
+							<td>닉네임</td>
+							<td>이메일</td>
+							<td>결제수단</td>
+							<td>전화번호</td>
+							<td>주소</td>
+							<td>생년월일</td>
+							<td>포인트</td>
+						</tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${admin_member}" var="dto">
+                        <tr style="font-weight: 400;">
+                            <td style="width : 15%;">${dto.board_id}</td>
+                            <td>
+                                <c:forEach begin="1" end="${dto.b_indent}">-</c:forEach>
+                                <a href="content_view_question?board_id=${dto.board_id}">${dto.b_title}</a></td>
+                            <td style="width : 15%;">${dto.b_date}</td>
+                        </tr>
+                    </c:forEach>
 
-			<!-- <td>
-				<c:forEach begin="1" end="${vo.bindent}">-</c:forEach>
-				<a href="content_view?bid=${vo.bid}">${vo.btitle}</a>
-			</td> -->
+                    <c:forEach items="${reply_view}" var="dtt">
+                        <tr style="font-weight: 400;">
+                            <td style="width : 15%;">${dtt.board_id}</td>
+                            <td>
+                                <c:forEach begin="1" end="${dtt.b_indent}">ㄴ</c:forEach>
+                                <a href="reply_content_view?board_id=${dtt.board_id}">${dtt.b_title}</a></td>
+                            <td style="width : 15%;">${dtt.b_date}</td>
+                        </tr>
+                    </c:forEach>
 
-		</tr>
-		</c:forEach>
-		
-		<tr>
-         <td colspan="960"> <a href="write_view">글작성</a> </td>
-      </tr>
-      
-	</table>
+                    </tbody>
+                </table>
+                <div class="line mb-3" style="border-bottom: solid 2px; border-bottom-color: #EBC24B;"></div>
+                <a class="btn-basic post mb-2" type="button" title="글쓰기" onclick="location.href='/admin/write_view_question'">글쓰기</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 <!-- Footer-->
 <footer class="footer">
     <div class="container">

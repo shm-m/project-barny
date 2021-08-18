@@ -138,7 +138,7 @@
                         <td colspan="4" class="py-3">
                             <div class="row">
                             <div class="col-2" style="text-align: left; margin-top: 5px;"><a class="btn-basic text-uppercase"
-                                                                            href="my_view">목록 보기</a>
+                                                                            href="admin_question">목록 보기</a>
                             </div>
                             </div>
                         </td>

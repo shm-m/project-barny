@@ -20,4 +20,5 @@ public interface AdminQuestionMapper {
 	// //답글 관련
 	void updateShape(AdminQuestionVO adminQuestionVO);
 	void insertReply(AdminQuestionVO adminQuestionVO);
+	public List<AdminQuestionVO> getReply(int board_id);
 }

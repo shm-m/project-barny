@@ -38,6 +38,10 @@ public class AdminQuestionServiceImpl implements AdminQuestionService {
          adminQuestionMapper.insertReply(adminQuestionVO);
     }
      
+    @Override
+	public List<AdminQuestionVO> getReply(int board_id) {
+		return adminQuestionMapper.getReply(board_id);
+	}
      
 
 }

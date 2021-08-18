@@ -17,4 +17,5 @@ public interface AdminQuestionService {
      //답글
      void writeReply(AdminQuestionVO adminQuestionVO);
 
+     public List<AdminQuestionVO> getReply(int board_id);
 }
