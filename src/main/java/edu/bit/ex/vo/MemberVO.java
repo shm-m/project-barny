@@ -25,6 +25,7 @@ public class MemberVO {
     private String address;
     private Date date_of_birth;
     private int point;
+    private int subscribe;
 
     private List<AuthVO> authList ;
 
