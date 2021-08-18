@@ -99,9 +99,9 @@
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
                         <li></li>
-                        <a class="dropdown-item" href="/product_main">패키지</a></li>
-                        <li><a class="dropdown-item" href="/product_main_liquor">술</a></li>
-                        <li><a class="dropdown-item" href="/product_main_food">안주</a></li>
+                        <a class="dropdown-item" href="product_main">패키지</a></li>
+                        <li><a class="dropdown-item" href="product_main_liquor">술</a></li>
+                        <li><a class="dropdown-item" href="product_main_food">안주</a></li>
                     </ul>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="/event">이벤트</a></li>
@@ -120,10 +120,15 @@
                 <sec:authorize access="isAnonymous()">
                     <li class="nav-item"><a class="nav-link" href="/loginForm">로그인</a></li>
                 </sec:authorize>
-                <sec:authorize access="isAuthenticated()">
+                <sec:authorize access="hasAnyRole('ROLE_USER')">
                     <li class="nav-item"><a class="nav-link" href="/board/my_page">마이페이지</a></li>
                 </sec:authorize>
-                <li class="nav-item"><a class="nav-link" href="/user/cart5">장바구니</a></li>
+                <sec:authorize access="hasAnyRole('ROLE_ADMIN')">
+                    <li class="nav-item"><a class="nav-link" href="/#">관리페이지</a></li>
+                </sec:authorize>
+                <sec:authorize access="hasAnyRole('ROLE_USER')">
+                    <li class="nav-item"><a class="nav-link" href="/user/cart5">장바구니</a></li>
+                </sec:authorize>
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
                 </sec:authorize>
@@ -192,7 +197,7 @@
  				<option value=""<c:out value="${pageMaker.cri.type == null?'selected':''}"/>>--</option>
 				<option value="C"<c:out value="${pageMaker.cri.type eq 'C'?'selected':''}"/>>상품이름</option> 
 			</select>  
-			<input type='text' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>'/>
+			<input type='text' name='keyword' style="width:60px;"value='<c:out value="${pageMaker.cri.keyword}"/>'/>
 <%-- 			<input type='hidden' name='pageNum' value='<c:out value="${pageMaker.cri.pageNum}"/>'/>
 			<input type='hidden' name='amount' value='<c:out value="${pageMaker.cri.amount}"/>'/> --%>
 			<button class='btn btn-secondary btn-sm'>Search</button>
@@ -305,7 +310,26 @@
     <a class="btn btn-secondary btn-lg text-uppercase" href="/product_main_liquor">상품 더 보러가기!</a>
 </div>
 </div>
-</div> 
+</div>
+ 
+<!-- Footer-->
+<footer class="footer">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-4 text-lg-start"><b>주식회사 바니</b> <br> 서울특별시 종로구 종로 69 YMCA빌딩 7층
+                <br>Copyright &copy; Barny Inc. All rights reserved.
+            </div>
+            <div class="col-lg-4 my-3 my-lg-0">
+                <a class="btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+                <a class="btn-dark btn-social mx-2" href="#!"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a class="link-dark text-decoration-none me-3" href="#!">개인정보처리방침</a>
+                <a class="link-dark text-decoration-none" href="#!">이용약관</a>
+            </div>
+        </div>
+    </div>
+</footer>
 
 <!--top-button-->
 <img id="myBtn" src="/static/main_page/assets/top-btn.png" onclick="topFunction()">
