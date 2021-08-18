@@ -76,7 +76,7 @@
 
 
 </style>
-<body>
+<body id="page-top">
 
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top"
@@ -92,12 +92,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link" href="/subs">구독</a></li>
-                <li class="nav-item"><a class="nav-link" href="#portfolio">브랜드
+                <li class="nav-item"><a class="nav-link" href="/subscribe">구독</a></li>
+                <li class="nav-item"><a class="nav-link" href="/story">브랜드
                     스토리</a></li>
                 <li class="nav-item dropdown"><a
-                        class="nav-link dropdown-toggle" href="#"
-                        id="navbarDarkDropdownMenuLink" role="button"
+                        class="nav-link dropdown-toggle" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false"> 상품 보기 </a>
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
@@ -107,27 +106,25 @@
                         <li><a class="dropdown-item" href="/product_main_food">안주</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="#team">이벤트</a></li>
+                <li class="nav-item"><a class="nav-link" href="/event">이벤트</a></li>
                 <li class="nav-item dropdown"><a
-                        class="nav-link dropdown-toggle" href="#"
-                        id="navbarDarkDropdownMenuLink" role="button"
+                        class="nav-link dropdown-toggle" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false"> 고객센터 </a>
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
                         <li></li>
                         <a class="dropdown-item" href="/notice">공지사항</a></li>
-                        <li><a class="dropdown-item" href="/faq">자주 묻는 질문</a></li>
+                        <li><a class="dropdown-item" href="/notice/faq">자주 묻는 질문</a></li>
                     </ul>
                 </li>
             </ul>
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-<%--                 <sec:authorize access="isAnonymous()">
+                <sec:authorize access="isAnonymous()">
                     <li class="nav-item"><a class="nav-link" href="/loginForm">로그인</a></li>
-                </sec:authorize> --%>
+                </sec:authorize>
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/board/my_page">마이페이지</a></li>
                 </sec:authorize>
-
                 <li class="nav-item"><a class="nav-link" href="/user/cart5">장바구니</a></li>
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
@@ -137,6 +134,7 @@
     </div>
 </nav>
 
+<!-- 장바구니 -->
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">
@@ -145,6 +143,20 @@
 				</div>
 			</div>
 
+						<c:choose>
+					    	<c:when test="${map.count == 0 }" >
+					    	<hr class="my-4 mb-6" > 
+					    	<div class=empty style="text-align:center; margin-top:50px; margin-bottom:50px;">
+					    	<p>장바구니가 비었습니다.</p>
+					    	</div>
+					    	<hr class="my-4 mb-6" >
+							<div class="text-center mb-5 mt-5">
+							    <a class="btn-basic btn-lg text-uppercase" href="/product_main">쇼핑하러가기!</a>
+							</div>
+					    	</c:when>
+					    	
+					    	<c:otherwise>
+					    	
  			<div>
 				<label class="control control--checkbox mx-2"> 
 				<input type="checkbox" id="allCheck" name="allCheck" />
@@ -157,7 +169,7 @@
 				<div class="col-md-12" >
 					<div class="table-wrap" >
 						<table class="table" >
-							<thead class="thead-primary">
+							<thead class="thead-primary">							
 								<tr>
 									<th>&nbsp;</th>
 									<th>&nbsp;</th>
@@ -167,7 +179,7 @@
 									<!-- <th>&nbsp;</th> -->
 								</tr>
 							</thead>
-							<tbody>														
+							<tbody>																					
 							<c:forEach items="${cartList}" var="dto">						
 								<tr class="alert" role="alert">
  									<th scope="row">
@@ -178,7 +190,7 @@
 									</th> 
 									<td>
 										 <%-- <div class="img" src="${dto.image_route}"></div> --%> 
-										<a href="#"><img class="img" src="${dto.image_route}"></a>										
+										<a href="#"><img class="img" src="/${dto.image_route}"></a>										
 									</td>									
 										<td>
 											<div class="productname">
@@ -206,20 +218,19 @@
 									장바구니 금액 합계 : <fmt:formatNumber value="${map.sumMoney}" pattern="#,###,###" />원 <br>
 									배송료 : ${map.fee} 원<br> 
 									총 주문금액 : <fmt:formatNumber value="${map.sum}" pattern="#,###,###" />원
-									</td>
+									</td>				
 								</tr>
 						</table>
 					</div>
 				</div>
 			</div>			
 		</div>
-	<div class="text-center mb-5 mt-5">
-<!-- 		<a class="btn btn-secondary btn-sm text-uppercase" href="/user/order">주문하기!</a><br>
-		<a class="btn btn-secondary btn-sm text-uppercase" href="/product_main">더 쇼핑하기!</a> -->
-		
-		<a class="btn-basic btn-lg text-uppercase" href="/user/order">주문하기!</a>		
-		<a class="btn-basic btn-lg text-uppercase" href="/product_main">더 쇼핑하기!</a>
+	<div class="text-center mb-5 mt-5">				
+		<a class="btn-basic btn-lg text-uppercase" href="/user/order">주문하기!</a>
+		<a class="btn-basic btn-lg text-uppercase" href="/product_main">더 쇼핑하기!</a>							
 	</div>	
+	</c:otherwise>
+	</c:choose>
 	
 	</section>
 
@@ -269,24 +280,6 @@
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>	
 
-<!-- 이미지 루트 변경 
-<script>
-	$(document).ready(function(){
-    	//이미지 변경 함수 호출
-    	changeIMG();
-    });
-    
-    
-    function changeIMG(){
-
-        
-        //img 태그의 클래스 명으로 변경 할 때
-        $(".imgClass").attr("src", 'http://localhost:8282/${dto.image_route}');
-    }
-
-</script>-->
-
-
 <!-- 수량 변경 -->
 	<script type="text/javascript">
 	$(document).ready(function(){
@@ -310,7 +303,7 @@
 		            url: "/user/updateCart",
 		            cache: false,
 		            contentType: 'application/json; charset=utf-8',
-		            data: update,
+		            data: JSON.stringify(update),
 		            success: function (result) {   
 		            	// console.log("수정 성공");
 		            	location.href = "/user/cart5";

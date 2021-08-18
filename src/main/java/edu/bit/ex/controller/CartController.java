@@ -40,7 +40,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@RequestMapping("/user/*") 
+@RequestMapping("/user/*")  
 public class CartController {
 	
 	@Autowired
@@ -100,8 +100,10 @@ public class CartController {
 	} 			
 	
 	// update
+	
+	@ResponseBody
     @PostMapping("/updateCart")
-    public String updateCart(CartVO cartVO, Principal principal, @AuthenticationPrincipal MemberContext ctx) {
+    public String updateCart(@RequestBody CartVO cartVO, Principal principal, @AuthenticationPrincipal MemberContext ctx) {
 		
     	log.info("updateCart() ..");
 		
@@ -109,8 +111,9 @@ public class CartController {
 		log.info("principal" + ctx.getMemberVO().getMember_idx());
 		
 		log.info("cartVO().." + cartVO);
-
-		cartService.updateCart(cartVO);
+		cartVO.setMember_idx(ctx.getMemberVO().getMember_idx());
+		
+		cartService.modify(cartVO);
 
         return "SUCCESS";
     }	

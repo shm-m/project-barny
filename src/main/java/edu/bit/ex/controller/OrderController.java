@@ -42,7 +42,7 @@ public class OrderController {
 	private MemberService memberService;
 	
 	// 장바구니, 주문자 리스트 
-	@GetMapping("user/order")
+	@GetMapping("/user/order")
 	public String order(Model model, Principal principal,@AuthenticationPrincipal MemberContext ctx) {
 
 		log.info("Principal" + principal.getName());
