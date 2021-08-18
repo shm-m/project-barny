@@ -53,7 +53,7 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
-<title>product_view</title>
+<title>Find your own drink, Barny</title>
 <style>
 .collapsing {
 	position: relative;
