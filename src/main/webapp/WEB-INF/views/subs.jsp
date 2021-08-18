@@ -255,7 +255,7 @@
                 </tr>
               </tbody>
             </table>
-            <div class="list">
+            <div class="list" style="margin-left: 10%;">
               <div class="day-event" date-month="12" date-day="5">
                 <a class="close fontawesome-remove"></a>
                 <h2 class="title">월 초 정기배송일</h2>
