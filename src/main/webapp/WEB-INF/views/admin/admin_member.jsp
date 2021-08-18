@@ -95,14 +95,13 @@
     <div class="row">
         <div class="col-3" style="padding: 7rem 0;">
             <div class="list-group side-nav">
-                <a href="#" class="list-group-item list-group-item-action">구독 정보</a>
-                <a href="#" class="list-group-item list-group-item-action">구매 내역</a>
-                <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-                    문의 내역
+                <a href="#" class="list-group-item list-group-item-action  active" aria-current="true">회원 관리</a>
+                <a href="#" class="list-group-item list-group-item-action">상품 관리</a>
+                <a href="#" class="list-group-item list-group-item-action">
+                    게시판 관리
                 </a>
-                <a href="#" class="list-group-item list-group-item-action">후기</a>
-                <a href="#" class="list-group-item list-group-item-action">적립금</a>
-                <a href="#" class="list-group-item list-group-item-action">개인 정보 수정</a>
+                <a href="#" class="list-group-item list-group-item-action">주문 관리</a>
+
             </div>
         </div>
 
