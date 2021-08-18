@@ -53,21 +53,23 @@
   
   .product_view {
 	padding-top: 100px;
- 	margin-left: 200px;
-	margin-right: 200px; 
+ 	/*margin-left: 200px;
+	margin-right: 200px;*/ 
   
 }
 
   .product_view1 {
- 	margin-left: 400px;
+ 	/* margin-left: 400px; */
+ 	margin-left: 25%;
+ 	  	
  
 }
 
   .product_detail {
-    /*margin: auto; */
-    margin-left: 400px;
+    margin-left: 23%;
+/*     margin-left: 25%;
 	margin-right: 200px;
-	margin-top: -10px;
+	margin-top: -10px; */
   } 
   
 </style>
@@ -190,11 +192,9 @@
 		<div class="product_detail">
 			<div class="row">
 				<div class="col-md-12">
-					<img class="detail-img" style="width: 80%; height: auto;"
-						src="/static/img/002.png"> <img class="detail-img"
-						style="width: 80%; height: auto;" src="/static/img/003.png">
-					<img class="detail-img" style="width: 80%; height: auto;"
-						src="/static/img/004.png">
+					<img class="detail-img" style="width: 70%; height: auto;" src="/static/img/002.png"> 
+					<img class="detail-img" style="width: 70%; height: auto;" src="/static/img/003.png">
+					<img class="detail-img" style="width: 70%; height: auto;" src="/static/img/004.png">
 				</div>
 			</div>
 			<br>
@@ -338,7 +338,7 @@
 <!--page-->
 	<nav aria-label="Page navigation example">
 		<ul class="pagination justify-content-center"
-			style="margin-left: 21%;">
+			style="margin-left: 13.5%;">
 			<c:if test="${pageMaker.prev}">
 				<li class="page-item"><a class="page-link"
 					href="${pageMaker.makeNum(pageMaker.startPage - 1)}&product_id=${product_view.product_id}"
