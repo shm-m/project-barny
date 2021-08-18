@@ -7,7 +7,7 @@
 
 <html lang="ko">
 <head>
-    <title>Find your drink, Barny</title>
+    <title>Find your own drink, Barny</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <!-- Favicon-->
@@ -129,12 +129,12 @@
     <div class="row">
         <div class="col-3" style="padding: 7rem 0;">
             <div class="list-group side-nav">
-                <a href="#" class="list-group-item list-group-item-action">구독 정보</a>
-                <a href="#" class="list-group-item list-group-item-action">구매 내역</a>
-                <a href="#" class="list-group-item list-group-item-action">문의 내역</a>
-                <a href="#" class="list-group-item list-group-item-action">후기</a>
-                <a href="#" class="list-group-item list-group-item-action">적립금</a>
-                <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                <a href="/board/press" class="list-group-item list-group-item-action">구독 정보</a>
+                <a href="/board/purchase_list" class="list-group-item list-group-item-action">구매 내역</a>
+                <a href="/board/my_view" class="list-group-item list-group-item-action">문의 내역</a>
+                <a href="/board/my_review" class="list-group-item list-group-item-action">후기</a>
+                <a href="/board/point" class="list-group-item list-group-item-action">적립금</a>
+                <a href="/user/edit" class="list-group-item list-group-item-action active" aria-current="true">
                 개인 정보 수정</a>
             
             </div>
@@ -150,13 +150,13 @@
                     <tr>
                     
 <!--updateForm-->
-<form:form name="frmMember" modelAttribute="memberVO" action="/updateUser" method="POST" >
+<form:form name="frmMember" modelAttribute="memberVO" action="/updateUser" method="POST">
          <div class="container pt-5" style="width: 60%">
             <div class="input-form-backgroud row">
             <div class="input-form col-md-12 mx-auto"></div>
          </div>
          </div>
-               <%-- <form class="validation-form" novalidate> --%>
+               <form class="validation-form" novalidate>
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <div class="wrap-input100 validate-input m-b-16">
@@ -185,18 +185,17 @@
                             <div class="wrap-input100 validate-input m-b-16">
                                 <label for="pw">패스워드</label>
                                 <input class="form-control" type="password" id="pw" name="pw"
-                                       placeholder="8자~20자 이내의 영문,숫자,특수기호 조합"  >
+                                       placeholder="8자~20자 이내의 영문,숫자,특수기호 조합"  required>
                                 <form:errors path="pw"/>
                             </div>
                         </div>
-
 
                         <div class="col-md-6 mb-3">
                             <div class="wrap-input100 validate-input m-b-16">
                                 <label for="nickname">닉네임</label>
                                 <input class="form-control" type="text" id="nickname" name="nickname"
-                                       value="<sec:authentication property="principal.memberVO.nickname"/>"
-                                       placeholder="nickname" >
+                                       value="<%-- <sec:authentication property="principal.memberVO.nickname"/> --%>"
+                                       placeholder="닉네임" required>
                                 <form:errors path="nickname"/>
                             </div>
                         </div>
@@ -229,27 +228,28 @@
                     <div class="row">
                         <label for="postcode">주소</label>
                         <div class="col-md-8 mb-3">
-                            <input type="text" class="form-control" id="postcode" name="address" placeholder="우편번호">
+                            <input type="text" class="form-control" id="postcode" name="address" placeholder="우편번호" required>
                         </div>
                         <div class="col-md-4 mb-3">
                             <input type="button" class="btn btn-outline-primary btn-s"
-                                   onclick="execDaumPostcode()"
-                                   value="우편번호 찾기"><br>
+                                   onclick="execDaumPostcode()" 
+                                   value="우편번호 찾기" required><br>
                         </div>
                         <div class="col-md-8 mb-3">
                             <input type="text" class="form-control" id="roadAddress"
                                    value="${memberVO.address}"
                                    name="address"
-                                   placeholder="도로명주소 " >
+                                   placeholder="도로명주소 " required>
                             <div class="invalid-feedback">
                                 주소를 입력해주세요.
                             </div>
                         </div>
+                        
                         <div class="col-md-8 mb-3 ">
                             <input type="text" class="form-control" id="detailAddress"
                                    value="${memberVO.address}"
                                    name="address"
-                                   placeholder="상세주소" >
+                                   placeholder="상세주소" required>
                             <div class="invalid-feedback">
                                 주소를 입력해주세요.
                             </div>
@@ -258,14 +258,19 @@
                             <span id="guide" style="color:#6A6666;display:none"></span>
                             <input type="hidden" id="extraAddress" placeholder="참고항목">
                         </div>
+                          </div>
+       				 </div>
+       				  </div>
+       				  
                         <div class="col-md-8 mb-3">
                          <label for="tel">전화번호</label>
                          <input type="tel" class="form-control"
                                 value="<sec:authentication property="principal.memberVO.tel"/>"
-                                placeholder="010-0000-0000"
-                                id="tel" name="tel">
+                                placeholder="010-0000-0000" 
+                                id="tel" name="tel" required>
                          <div class="invalid-feedback"> 전화번호를 입력해주세요.</div>
                      </div>
+                    
                      <div class="col-md-4 mb-3"><label for="date_of_birth">생년월일</label>
                          <input type="date"
                                 class="form-control" disabled
@@ -277,97 +282,44 @@
                          <div class="invalid-feedback"> 생년월일을 입력해주세요.</div>
                      </div>
                     </div>
+                    
 <%--                     </form> --%>
                     <hr class="mb-4">
-                    
                     <div class="custom-control custom-checkbox">
                      <input type="checkbox" class="custom-control-input"
                          id="aggrement" >
                      <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label></div>
                  <div class="mb-4"></div>
-                 <!-- <button class="btn btn-primary btn-lg btn-block"  id="submit-btn" type="submit">수정 완료</button> -->
-                 <button class="btn btn-primary btn-lg btn-block" id="#submit-update" type="submit">수정완료</button>
-                 <button type="button" onclick="location.href='${pageContext.request.contextPath}/my/delete'"
+                 <button class="btn btn-primary btn-lg btn-block" type="submit">수정완료</button>
+                 <button type="button" onclick="location.href='${pageContext.request.contextPath}/user/delete'"
                               class="btn btn-primary btn-lg btn-block">회원 탈퇴</button>
-            </div>
-        </div>
-    </div>
-    
-    <script type="text/javascript">
-
-        // 비밀번호 미입력시 경고창
-
-        /* function checkValue(){
-
-            if(!document.deleteform.pwd.value){
-
-                alert("비밀번호를 입력하지 않았습니다.");
-
-                return false;
-
-            }
-
-        } */
-
-        
-
-        $(document).ready(function(){
-
-            $("#btnDelete").click(function(){
-
-                // 확인 대화상자 
-
-                if(confirm("삭제하시겠습니까?")){
-
-                    document.deleteform.action = "secessionpro";
-
-                    document.deleteform.submit();
-
-                }
-
-            });
-
-        });
-
-    </script>
+          </form>
+   
 </form:form>
 
     	  
-      <script>
-      function button_event(){
-    	  if (confirm("탈퇴되었습니다") == true){    
-    	      document.form.submit();
-    	  }else{   //취소
-    	      return;
-    	  }
-    	  }
-    	  //-->
-    	  </script>
 
 
 <script>
-// window.addEventListener('load', () => {
-//         const forms = document.getElementsByClassName('validation-form');
-//         Array.prototype.filter.call(forms, (form) => {
-//             form.addEventListener('submit', function (event) { //이 addEventListener 가 submit 이라는 이벤트를 발생시켰을떄 function실행
-//                 if (form.checkValidity() === false) {
-//                     event.preventDefault();
-//                     event.stopPropagation();
-//                 }
-//                 form.classList.add('was-validated');
-//             }, false);
-//         });
-//     }, false); 
+window.addEventListener('load', () => {
+        const forms = document.getElementsByClassName('validation-form');
+        Array.prototype.filter.call(forms, (form) => {
+            form.addEventListener('submit', function (event) { //이 addEventListener 가 submit 이라는 이벤트를 발생시켰을떄 function실행
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    }, false); 
 
 
-
-
-
-
+</script>
 </body>
 
 
-<!—JS—>
+<!—JS->
 
 <script src="/static/join_page/js/join.js"></script>
 <script src="/static/login/js/main.js"></script>

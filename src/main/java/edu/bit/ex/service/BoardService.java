@@ -10,7 +10,7 @@ import edu.bit.ex.vo.ProductMainVO;
 
 public interface BoardService {
 	// 관리자리스트
-	public List<BoardVO> getList();
+	public List<BoardVO> getAdminList();
 
 	// 관리자주문내역읽기
 	public BoardVO get(int board_id);
@@ -81,8 +81,10 @@ public interface BoardService {
 	
 	//리스트삭제
 	public void ship_remove(int ship_id);
-
+	//포인트
 	public List<MemberVO> getPointList(int member_idx);
+
+
 
 	
 	

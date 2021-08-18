@@ -26,17 +26,9 @@ public interface MemberService {
     
     
     //회원정보수정
-
-
-
-//	void updateUser(MemberVO memberVO);
-
 	int updateUser(MemberVO memberVO);
 
-//	void deleteUser(MemberVO memberVO);
-
-//	String getPw(MemberVO memberVO);
-
+	//회원정보탈퇴
 	void deleteUser(MemberVO memberVO);
 
 
