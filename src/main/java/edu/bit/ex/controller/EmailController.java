@@ -1,13 +1,14 @@
 package edu.bit.ex.controller;
 
 import com.google.gson.Gson;
+
 import edu.bit.ex.service.member.MemberService;
 import edu.bit.ex.vo.MemberVO;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -115,6 +116,7 @@ public class EmailController {
         return gson.toJson(key);
 
     }
+
 
 
 }
