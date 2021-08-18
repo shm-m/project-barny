@@ -36,7 +36,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
-	<title>product_view</title>
+	<title>Find your own drink, Barny</title>
 	<style>
 		.collapsing {
 			position: relative;
