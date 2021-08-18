@@ -19,6 +19,7 @@
         <result property="address" column="address"/>
         <result property="date_of_birth" column="date_of_birth"/>
         <result property="point" column="point"/>
+        <result property="subscribe" column="subscribe"/>
 
         <collection property="authList" resultMap="authMap"></collection>
         <!-- 콜렉션은 알아서 123 매칭(map)시켜준다.(콜렉션 프레임) -->
@@ -43,9 +44,9 @@
     <insert id="insertUser">
        <![CDATA[
         insert into member(member_id, member_idx, pw, member_name, nickname, email, payment, tel, address,
-                           date_of_birth, point)
+                           date_of_birth, point,subscribe)
         values (#{member_id}, BARNY_member_SEQ.NEXTVAL, #{pw}, #{member_name}, #{nickname}, #{email}, null, #{tel},
-                #{address}, #{date_of_birth}, 0)
+                #{address}, #{date_of_birth}, 0,null)
         ]]>
     </insert>
 

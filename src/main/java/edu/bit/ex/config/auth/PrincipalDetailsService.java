@@ -37,7 +37,7 @@ public class PrincipalDetailsService implements UserDetailsService {
 
         log.warn("queried by MemberVO mapper: " + memberVO);
 
-        if (memberVO == null) {
+        if (memberVO == null || memberVO.getAuthList().stream().anyMatch(e -> e.getActive() == 0)) {
             throw new UsernameNotFoundException("User " + username + " Not Found!");
         } else if(cartList == null) {
         	throw new UsernameNotFoundException("cartList " + cartList + " Not Found!");
