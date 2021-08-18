@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import edu.bit.ex.service.BoardService;
 import edu.bit.ex.service.ProductMainService;
 import edu.bit.ex.vo.BoardVO;
+import edu.bit.ex.vo.MemberVO;
 import edu.bit.ex.vo.OrderDetailVO;
 import edu.bit.ex.vo.OrderVO;
 import edu.bit.ex.vo.ProductMainVO;
@@ -327,5 +328,26 @@ public class BoardController {
 
 		return "redirect:/board/list";
 	}
+	
+
+	// 마이페이지 (1:1문의내역)리스트
+	@GetMapping("/board/point")
+	public String point(Model model, Principal principal, @AuthenticationPrincipal MemberContext ctx) {
+
+
+		log.info("point() Principal.." + principal.getName());
+		log.info("point()..: Principal" + ctx.getMemberVO().getMember_idx());
+		
+		log.info("Principal" + ctx.getMemberVO().getMember_idx());
+		
+		List<MemberVO> pointList = boardService.getPointList(ctx.getMemberVO().getMember_idx());
+
+		model.addAttribute("point", pointList);
+		
+		log.info("List<MemberVO> boardList"+pointList);
+
+		return "/board/point";
+	}
+
 
 }

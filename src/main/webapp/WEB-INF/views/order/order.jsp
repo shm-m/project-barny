@@ -51,7 +51,7 @@
 }
 
 </style>
-<body>
+<body id="page-top">
 
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top"
@@ -67,12 +67,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link" href="/subs">구독</a></li>
-                <li class="nav-item"><a class="nav-link" href="#portfolio">브랜드
+                <li class="nav-item"><a class="nav-link" href="/subscribe">구독</a></li>
+                <li class="nav-item"><a class="nav-link" href="/story">브랜드
                     스토리</a></li>
                 <li class="nav-item dropdown"><a
-                        class="nav-link dropdown-toggle" href="#"
-                        id="navbarDarkDropdownMenuLink" role="button"
+                        class="nav-link dropdown-toggle" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false"> 상품 보기 </a>
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
@@ -82,16 +81,15 @@
                         <li><a class="dropdown-item" href="/product_main_food">안주</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="#team">이벤트</a></li>
+                <li class="nav-item"><a class="nav-link" href="/event">이벤트</a></li>
                 <li class="nav-item dropdown"><a
-                        class="nav-link dropdown-toggle" href="#"
-                        id="navbarDarkDropdownMenuLink" role="button"
+                        class="nav-link dropdown-toggle" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false"> 고객센터 </a>
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
                         <li></li>
                         <a class="dropdown-item" href="/notice">공지사항</a></li>
-                        <li><a class="dropdown-item" href="/faq">자주 묻는 질문</a></li>
+                        <li><a class="dropdown-item" href="/notice/faq">자주 묻는 질문</a></li>
                     </ul>
                 </li>
             </ul>
@@ -102,7 +100,6 @@
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/board/my_page">마이페이지</a></li>
                 </sec:authorize>
-
                 <li class="nav-item"><a class="nav-link" href="/user/cart5">장바구니</a></li>
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
@@ -111,8 +108,13 @@
         </div>
     </div>
 </nav>
-  
-<div class="order">  
+
+<!-- 주문페이지  -->  
+<div class="order">
+<div class="order-1" style="margin-left:30%; margin-bottom:5%;">
+<h1>주문서</h1>  
+</div>
+
 <div class="container mt-4">    
     <h3>주문상품</h3>
     <div class="row">
@@ -125,15 +127,46 @@
 		      <td>수량</td>
 		      <td>가격</td>
 		      <td>&nbsp;</td>
-		      </tr></br> --%>
+		      </tr></br> 
 		
 		      <c:forEach items="${cartList}" var="dto">
 		      <tr>
 		         <td>${dto.product_name}</td>
 		         <td>${dto.product_qty}</td>
-		         <%-- <td>${dto.price}</td> --%>
+		         <%-- <td>${dto.price}</td> 
 		      </tr></br>
-		      </c:forEach>		      		          
+		      </c:forEach>	--%>	 
+		      		      																					
+			<div class="row" style="text-align:center;">
+				<div class="col-md-12" >
+					<div class="table-wrap" >
+						<table class="table">
+							<thead class="thead-primary">
+								<tr>
+									<th>&nbsp;</th> 
+									<th>&nbsp;</th>
+									<th>Product</th>
+									<th>Price</th>
+									<th>Qty</th>									 
+								</tr>
+							</thead>
+							<tbody>														
+									<c:forEach items="${cartList}" var="dto">						
+									<tr class="alert" role="alert">
+  										<td>&nbsp;</td>
+										<td><a href="#"><img class="img" style="width:70px; height:70px;" src="/${dto.image_route}"></a></td>									
+										<td>${dto.product_name}</td>
+										<td>${dto.price} </td>
+										<td>${dto.product_qty}</td>	 
+									</tr>														
+									</c:forEach>																																										
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>																																					
+								
+									     		          
 		      
                 <hr class="my-4"> 
             </form>
@@ -193,7 +226,7 @@
           </h4>
           <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-              <button id="payment" type="button" class="btn-outline-dark btn-sm">결제하기</button>
+              <button id="payment" type="button" class="btn btn-secondary btn-sm">결제하기</button>
             </div>
           </div>
         </div>
@@ -206,6 +239,51 @@
     <a class="btn btn-secondary btn-lg text-uppercase" href="/orderPage">주문하기!</a>
 </div>
 
+<!-- Footer-->
+<footer class="footer">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-4 text-lg-start"><b>주식회사 바니</b> <br> 서울특별시 종로구 종로 69 YMCA빌딩 7층
+                <br>Copyright &copy; Barny Inc. All rights reserved.
+            </div>
+            <div class="col-lg-4 my-3 my-lg-0">
+                <a class="btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+                <a class="btn-dark btn-social mx-2" href="#!"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a class="link-dark text-decoration-none me-3" href="#!">개인정보처리방침</a>
+                <a class="link-dark text-decoration-none" href="#!">이용약관</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!--top-button-->
+<img id="myBtn" src="/static/main_page/assets/top-btn.png" onclick="topFunction()">
+
+
+<!--kakao-chat-->
+<a href="javascript:void kakaoChatStart()" class="kakaoChatPc hidden-md hidden-sm hidden-xs" id="kakao-chat">
+    <img src="/static/main_page/assets/kakao-chat.png" width="50px" height="50px">
+</a>
+
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script type='text/javascript'>
+    Kakao.init('7e53e24ce9a07956bfb5ac4930333caa');
+
+    function kakaoChatStart() {
+        Kakao.Channel.chat({
+            channelPublicId: '_WDxjSs'
+        });
+    }
+</script>
+<!-- Bootstrap core JS-->
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="/static/main_page/js/scripts.js"></script>
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
 </body>
 
