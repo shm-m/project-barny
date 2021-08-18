@@ -35,7 +35,7 @@
         }
     </style>
 
-    <title>글 작성하기</title>
+    <title>Find your own drink, Barny</title>
 </head>
 
 <body>
