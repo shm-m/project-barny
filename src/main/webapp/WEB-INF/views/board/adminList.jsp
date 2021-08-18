@@ -55,9 +55,9 @@
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
                         <li></li>
-                        <a class="dropdown-item" href="#">패키지</a></li>
-                        <li><a class="dropdown-item" href="#">술</a></li>
-                        <li><a class="dropdown-item" href="#">안주</a></li>
+                        <a class="dropdown-item" href="/product_main">패키지</a></li>
+                        <li><a class="dropdown-item" href="/product_main_liquor">술</a></li>
+                        <li><a class="dropdown-item" href="/product_main_food">안주</a></li>
                     </ul>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="#team">이벤트</a></li>
@@ -77,9 +77,6 @@
                 <sec:authorize access="isAnonymous()">
                     <li class="nav-item"><a class="nav-link" href="/loginForm">로그인</a></li>
                 </sec:authorize>
-                <sec:authorize access="isAuthenticated()">
-                    <li class="nav-item"><a class="nav-link" href="/board/my_page">마이페이지</a></li>
-                </sec:authorize>
 
                 <li class="nav-item"><a class="nav-link" href="#services">장바구니</a></li>
                 <sec:authorize access="isAuthenticated()">
@@ -95,18 +92,18 @@
     <div class="row">
         <div class="col-3" style="padding: 7rem 0;">
             <div class="list-group side-nav">
-                <a href="/admin/admin_member" class="list-group-item list-group-item-action  active" aria-current="true">회원 관리</a>
+                <a href="/admin/admin_member" class="list-group-item list-group-item-action">회원 관리</a>
                 <a href="#" class="list-group-item list-group-item-action">상품 관리</a>
-                <a href="/board/adminList" class="list-group-item list-group-item-action">
+                <a href="/board/adminList" class="list-group-item list-group-item-action" aria-current="true">
                     게시판 관리
                 </a>
-                <a href="#" class="list-group-item list-group-item-action">주문 관리</a>
+                <a href="#" class="list-group-item list-group-item-action active">주문 관리</a>
 
             </div>
         </div>
 
         <div class="col-9" style="width: 70%; padding: 7rem 0;">
-            <div class="board_name">회원 정보 관리
+            <div class="board_name">게시판 관리
                 <a class="board_name_small">관리자 모드입니다.</a>
             </div>
 
@@ -114,46 +111,28 @@
                 <table class="table custom-table" style="min-width: 500px;">
                     <thead style="border-bottom: solid 1px;">
                     <tr>
-                        <td>아이디</td>
-			            <!-- <td>비밀번호</td> -->
-			            <td>회원번호</td>
-			            <td>회원이름</td>
-			            <td>닉네임</td>
-			            <td>이메일</td>
-			            <td>결제수단</td>
-			            <td>전화번호</td>
-			            <td>주소</td>
-			            <!-- <td>생년월일</td> -->
-			            <td>포인트</td>
+                        <td>글번호</td>
+         				<td>회원번호</td>
+        			    <td>제목</td>
+         				<td>날짜</td>
+
             </tr>
             </thead>
                     
-            <tbody>
-
-            </tbody>
-
 	
-		<c:forEach items="${admin_member}" var="dto">
-		<tr style="font-weight: 400;">
-			<td style="width : 15%;">${dto.member_id}</td>
-			<!-- <td>${dto.pw}</td> -->
-			<td>${dto.member_idx}</td>
-			<td>	
-				<a href="content_view?member_idx=${dto.member_idx}">${dto.member_name}</a> 
-			</td>                             
-			<td>${dto.nickname}</td>
-			<td>${dto.email}</td>
-			<td>${dto.payment}</td>
-			<td>${dto.tel}</td>
-			<td>${dto.address}</td>
-			<!-- <td>${dto.date_of_birth}</td> -->
-			<td>${dto.point}</td>
-
-		</tr>
-		</c:forEach>
-		
-		<tr>
-         <td colspan="960"> <a href="write_view">글작성</a> </td>
+		 <c:forEach items="${adminList}" var="dto">
+      <tr>
+         <td>${dto.board_id}</td>
+         <td>${dto.member_idx}</td>
+         
+         <td>
+            <c:forEach begin="1" end="${dto.b_indent}">ㄴ</c:forEach>
+            <a href="content_view?board_id=${dto.board_id}">${dto.b_title}</a></td>
+         <td>${dto.b_date}</td>
+      </tr>
+      </c:forEach>
+      <tr>
+         <td colspan="5"> <a href="write_view">글작성</a> </td>
       </tr>
       
 	</table>
@@ -176,6 +155,7 @@
         </div>
     </div>
 </footer>
+
 <!--top-button-->
 <img id="myBtn" src="/static/main_page/assets/top-btn.png" onclick="topFunction()">
 

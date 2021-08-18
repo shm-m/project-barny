@@ -136,13 +136,14 @@
                             </c:forEach>
                         </c:when>
                     </c:choose>
-                    </tbody>
+                  
                     <c:forEach items="${purchase_list}" var="dto">
                     <tr>
                         <td>
                             <a class="order_id"
                                href="${pageContext.request.contextPath}/board/purchase_view?order_id=${dto.order_id}">${dto.order_id}</a>
                         </td>
+                        
                         <td>${dto.order_date}</td>
                         <td>${dto.total_price}</td>
                         <td>${dto.ship_status_name}</td>
@@ -151,9 +152,10 @@
                                href="${pageContext.request.contextPath}/board/ship_delete?ship_id=${dto.ship_id}"><input type="button" value="취소하기"onclick="button_event();"></a>
                         </td>
                     </tr>
+                 </c:forEach>
 
-                </table>
                 <table class="table custom-table" id="purchase_view"style="min-width: 500px;">
+                 </tbody>
                 </table>
                 <div class="line mb-3" style="border-bottom: solid 2px; border-bottom-color: #EBC24B;"></div>
 
@@ -178,7 +180,7 @@
 </c:if>
 <c:if test="${press.ship_status_id eq 2}">
 </c:if>
-</c:forEach>
+<%-- </c:forEach> --%>
 
 <script>
     $(document).ready(function () {

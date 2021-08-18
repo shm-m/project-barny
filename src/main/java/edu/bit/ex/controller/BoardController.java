@@ -4,6 +4,7 @@ import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -277,13 +278,14 @@ public class BoardController {
 
 
 	// 관리자 주문내역 리스트
-	@GetMapping("/board/list")
-	public String list(Model model) {
+	@PreAuthorize("hasRole(ROLE_'MEMBER') or hasRole(ROLE_'ADMIN')")
+	@GetMapping("/board/adminList")
+	public String adminList(Model model,Principal principal) {
 
-		log.info("list()..");
-		model.addAttribute("list", boardService.getList());
+		log.info("adminList");
+		model.addAttribute("adminList", boardService.getAdminList());
 
-		return "/board/list";
+		return "/board/adminList";
 	}
 
 	// 관리자주문내역읽기
@@ -312,7 +314,7 @@ public class BoardController {
 
 		boardService.remove(boardVO.getBoard_id());
 
-		return "redirect:/board/list";
+		return "redirect:/board/adminList";
 	}
 
 	// 관리자 주문내역 게시판 글쓰기폼
