@@ -103,8 +103,8 @@
                     문의 내역
                 </a>
                 <a href="/board/my_review" class="list-group-item list-group-item-action">후기</a>
-                <a href="#" class="list-group-item list-group-item-action">적립금</a>
-                <a href="#" class="list-group-item list-group-item-action">개인 정보 수정</a>
+                <a href="/board/point" class="list-group-item list-group-item-action">적립금</a>
+                <a href="/user/edit" class="list-group-item list-group-item-action">개인 정보 수정</a>
             </div>
         </div>
 
