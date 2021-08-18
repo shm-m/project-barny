@@ -101,9 +101,9 @@
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
                         <li></li>
-                        <a class="dropdown-item" href="product_main">패키지</a></li>
-                        <li><a class="dropdown-item" href="product_main_liquor">술</a></li>
-                        <li><a class="dropdown-item" href="product_main_food">안주</a></li>
+                        <a class="dropdown-item" href="/product_main">패키지</a></li>
+                        <li><a class="dropdown-item" href="/product_main_liquor">술</a></li>
+                        <li><a class="dropdown-item" href="/product_main_food">안주</a></li>
                     </ul>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="/event">이벤트</a></li>
@@ -309,6 +309,8 @@
 		            cache: false,
 		            contentType: 'application/json; charset=utf-8',
 		            data: JSON.stringify(update),
+		            
+		            
 		            success: function (result) {   
 		            	// console.log("수정 성공");
 		            	location.href = "/user/cart5";

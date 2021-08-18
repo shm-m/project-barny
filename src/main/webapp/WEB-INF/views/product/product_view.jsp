@@ -172,7 +172,6 @@
 				<div class="col-md-4 mt-4">
 					<h3>${product_view.product_name}</h3>
 					<hr class="my-6">
-					<!-- <label>가격&nbsp : ${product_view.price} 원</label> -->
 					<p>상품할인가&nbsp; : &nbsp;${product_view.price} 원</p>
 					<hr class="my-2">
 					<p style="text-color: #999999;">배송구분&nbsp; : &nbsp;일반배송</p>
@@ -186,10 +185,7 @@
 					<sec:authorize access="hasAnyRole('ROLE_USER')">
 						<button id="cart" type="button" class="btn btn-secondary btn-md">장바구니</button>
 					</sec:authorize>
-					<!--<input id="pro_id" name="product_id" type="hidden"
-						value="${product_view.product_id}">
-					<button id="cart" type="button" class="btn btn-secondary btn-md">장바구니</button>
-					 <button id="order2" type="button" class="btn btn-secondary btn-md">바로구매</button> -->
+
 					<button id="re" type="button" disabled
 						class="btn btn-secondary btn-md">재입고알림</button>
 				</div>

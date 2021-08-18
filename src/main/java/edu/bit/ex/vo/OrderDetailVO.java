@@ -19,4 +19,6 @@ public class OrderDetailVO {
 	private int product_qty;
 	private int order_id;
 	
+	private int money;
+	
 }
