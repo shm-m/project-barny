@@ -1,6 +1,7 @@
 package edu.bit.ex.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import edu.bit.ex.vo.account.MemberContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,8 @@ public class EventController {
 
     // 카드게임 메인 페이지
     @GetMapping("/user/event/cardbarny")
-    public String cardbarny() {
+    public String cardbarny(@AuthenticationPrincipal MemberContext ctx, Model model) {
+        model.addAttribute("participate_date", eventService.checkPart(ctx.getMemberVO().getMember_idx()));
         return "event/cardBarny";
     }
 
@@ -41,6 +43,15 @@ public class EventController {
         eventService.updatePoint(memberVO);
         eventService.participate(memberVO.getMember_idx());
         return "redirect:/user/event/roulette";
+    }
+
+    // 카드게임 포인트 적립
+    @RequestMapping(value = "/event/add_point2", method = RequestMethod.POST)
+    public String add_point2(MemberVO memberVO) {
+        log.info("event card start");
+        eventService.updatePoint2(memberVO);
+        eventService.participate2(memberVO.getMember_idx());
+        return "redirect:/user/event/cardbarny";
     }
 
 

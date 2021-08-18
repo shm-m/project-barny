@@ -105,6 +105,23 @@
         ]]>
     </update>
 
+    <!--카드 포인트 적립-->
+    <update id="updatePoint2">
+        <![CDATA[
+        update member
+        set point = point + 100
+        where member_idx = #{member_idx}
+        ]]>
+    </update>
+
+    <!--카드 이벤트 참여-->
+    <insert id="participate2">
+        <![CDATA[
+        insert into b_event(board_id, participate_date, member_idx)
+        values (1, sysdate, #{member_idx})
+        ]]>
+    </insert>
+
     <!--이벤트 참여-->
     <insert id="participate">
         <![CDATA[
