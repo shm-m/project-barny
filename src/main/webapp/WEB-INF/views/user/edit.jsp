@@ -297,7 +297,7 @@
 
         // 비밀번호 미입력시 경고창
 
-        /* function checkValue(){
+         function checkValue(){
 
             if(!document.deleteform.pwd.value){
 
@@ -307,7 +307,7 @@
 
             }
 
-        } */
+        } 
 
         
 
@@ -346,28 +346,25 @@
 
 
 <script>
-// window.addEventListener('load', () => {
-//         const forms = document.getElementsByClassName('validation-form');
-//         Array.prototype.filter.call(forms, (form) => {
-//             form.addEventListener('submit', function (event) { //이 addEventListener 가 submit 이라는 이벤트를 발생시켰을떄 function실행
-//                 if (form.checkValidity() === false) {
-//                     event.preventDefault();
-//                     event.stopPropagation();
-//                 }
-//                 form.classList.add('was-validated');
-//             }, false);
-//         });
-//     }, false); 
+window.addEventListener('load', () => {
+        const forms = document.getElementsByClassName('validation-form');
+        Array.prototype.filter.call(forms, (form) => {
+            form.addEventListener('submit', function (event) { //이 addEventListener 가 submit 이라는 이벤트를 발생시켰을떄 function실행
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    }, false); 
 
 
-
-
-
-
+</script>
 </body>
 
 
-<!—JS—>
+<!—JS->
 
 <script src="/static/join_page/js/join.js"></script>
 <script src="/static/login/js/main.js"></script>
