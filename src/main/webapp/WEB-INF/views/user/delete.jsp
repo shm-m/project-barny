@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Find your drink, Barny</title>
+    <title>Find your own drink, Barny</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon-->
@@ -148,13 +148,6 @@
                     <span class="focus-input100"></span>
                 </div>
 
-                <div class="flex-sb-m w-full p-t-3 p-b-24">
-                    <div class="contact100-form-checkbox">
-                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-                        <label class="label-checkbox100" for="ckb1">
-                            아이디 저장
-                        </label>
-                    </div>
 
                     <div>
                         <a href="/findId">

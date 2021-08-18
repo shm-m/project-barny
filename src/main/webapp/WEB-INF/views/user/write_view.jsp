@@ -43,6 +43,7 @@
                 <label for="author"> 후기 내용 </label>
                 <input type="text" class="form-control" name="b_content" placeholder="내용을 입력하세요">
             </div>
+            
             <div class="form-group">
                 <label for="inputFile" class="col-form-label">첨부 파일</label>
                     <div class="custom-file" id="inputFile">

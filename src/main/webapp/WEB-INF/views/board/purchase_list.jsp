@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>purchase_list</title>
+    <title>Find your own drink, Barny</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="/static/main_page/assets/favicon.ico"/>
     <!-- Font Awesome icons (free version)-->
@@ -50,9 +50,9 @@
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
                         <li></li>
-                        <a class="dropdown-item" href="product_main">패키지</a></li>
-                        <li><a class="dropdown-item" href="product_main_liquor">술</a></li>
-                        <li><a class="dropdown-item" href="product_main_food">안주</a></li>
+                        <a class="dropdown-item" href="/product_main">패키지</a></li>
+                        <li><a class="dropdown-item" href="/product_main_liquor">술</a></li>
+                        <li><a class="dropdown-item" href="/product_main_food">안주</a></li>
                     </ul>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="/event">이벤트</a></li>
@@ -71,10 +71,15 @@
                 <sec:authorize access="isAnonymous()">
                     <li class="nav-item"><a class="nav-link" href="/loginForm">로그인</a></li>
                 </sec:authorize>
-                <sec:authorize access="isAuthenticated()">
+                <sec:authorize access="hasAnyRole('ROLE_USER')">
                     <li class="nav-item"><a class="nav-link" href="/board/my_page">마이페이지</a></li>
                 </sec:authorize>
-                <li class="nav-item"><a class="nav-link" href="/user/cart3">장바구니</a></li>
+                <sec:authorize access="hasAnyRole('ROLE_ADMIN')">
+                    <li class="nav-item"><a class="nav-link" href="/#">관리페이지</a></li>
+                </sec:authorize>
+                <sec:authorize access="hasAnyRole('ROLE_USER')">
+                    <li class="nav-item"><a class="nav-link" href="/user/cart5">장바구니</a></li>
+                </sec:authorize>
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
                 </sec:authorize>
@@ -82,7 +87,6 @@
         </div>
     </div>
 </nav>
-
 <!--content-->
 <div class="container" style="padding-top: 2rem;">
     <div class="row">
@@ -94,8 +98,8 @@
                     문의 내역
                 </a>
                 <a href="/board/my_review" class="list-group-item list-group-item-action">후기</a>
-                <a href="#" class="list-group-item list-group-item-action">적립금</a>
-                <a href="#" class="list-group-item list-group-item-action">개인 정보 수정</a>
+                <a href="/board/point" class="list-group-item list-group-item-action">적립금</a>
+                <a href="/user/edit" class="list-group-item list-group-item-action">개인 정보 수정</a>
             </div>
         </div>
 
