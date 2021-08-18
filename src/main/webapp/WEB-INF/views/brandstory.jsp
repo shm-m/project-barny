@@ -6,7 +6,7 @@
 <html lang="en">
 
 <head>
-  <title>Barny:: 찾아가는 Bar</title>
+  <title>Find your own drink, Barny</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 

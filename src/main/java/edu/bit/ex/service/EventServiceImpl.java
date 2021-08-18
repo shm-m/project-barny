@@ -73,4 +73,16 @@ public class EventServiceImpl implements EventService {
     public String checkPart(int member_idx) {
         return eventMapper.checkPart(member_idx);
     }
+
+    @Override
+    public void updatePoint2(MemberVO memberVO) {
+        eventMapper.updatePoint2(memberVO);
+        
+    }
+
+    @Override
+    public void participate2(int member_idx) {
+        eventMapper.participate2(member_idx);
+        
+    }
 }

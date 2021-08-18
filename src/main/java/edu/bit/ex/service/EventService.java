@@ -29,4 +29,9 @@ public interface EventService {
     void participate(int member_idx);
 
     String checkPart(int member_idx);
+
+    // 카드 게임 포인트
+    void updatePoint2(MemberVO memberVO);
+
+    void participate2(int member_idx);
 }

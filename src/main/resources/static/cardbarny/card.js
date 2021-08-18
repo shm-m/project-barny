@@ -90,5 +90,5 @@ $(document).ready(function () {
 
 // 포인트 적립 버튼
 function show() {
-  $("#point").show();
+  $("#start_btn").show();
 }
