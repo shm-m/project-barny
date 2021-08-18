@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -101,7 +102,8 @@
 <body id="page-top">
 
 <!-- Navigation-->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav_2">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top"
+     id="mainNav_2">
     <div class="container">
         <a class="navbar-brand" href="/main"><img
                 src="/static/main_page/assets/img/logo.png" alt="바니 로고 1"/></a>
@@ -113,12 +115,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link" href="/subs">구독</a></li>
-                <li class="nav-item"><a class="nav-link" href="#portfolio">브랜드
+                <li class="nav-item"><a class="nav-link" href="/subscribe">구독</a></li>
+                <li class="nav-item"><a class="nav-link" href="/story">브랜드
                     스토리</a></li>
                 <li class="nav-item dropdown"><a
-                        class="nav-link dropdown-toggle" href="#"
-                        id="navbarDarkDropdownMenuLink" role="button"
+                        class="nav-link dropdown-toggle" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false"> 상품 보기 </a>
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
@@ -128,27 +129,25 @@
                         <li><a class="dropdown-item" href="/product_main_food">안주</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="#team">이벤트</a></li>
+                <li class="nav-item"><a class="nav-link" href="/event">이벤트</a></li>
                 <li class="nav-item dropdown"><a
-                        class="nav-link dropdown-toggle" href="#"
-                        id="navbarDarkDropdownMenuLink" role="button"
+                        class="nav-link dropdown-toggle" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false"> 고객센터 </a>
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
                         <li></li>
                         <a class="dropdown-item" href="/notice">공지사항</a></li>
-                        <li><a class="dropdown-item" href="/faq">자주 묻는 질문</a></li>
+                        <li><a class="dropdown-item" href="/notice/faq">자주 묻는 질문</a></li>
                     </ul>
                 </li>
             </ul>
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-<!--                 <sec:authorize access="isAnonymous()">
+                <sec:authorize access="isAnonymous()">
                     <li class="nav-item"><a class="nav-link" href="/loginForm">로그인</a></li>
-                </sec:authorize> -->
+                </sec:authorize>
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/board/my_page">마이페이지</a></li>
                 </sec:authorize>
-
                 <li class="nav-item"><a class="nav-link" href="/user/cart5">장바구니</a></li>
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
@@ -262,6 +261,25 @@
 	</nav>
 	</div>
  </div>
+
+<!-- Footer-->
+<footer class="footer">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-4 text-lg-start"><b>주식회사 바니</b> <br> 서울특별시 종로구 종로 69 YMCA빌딩 7층
+                <br>Copyright &copy; Barny Inc. All rights reserved.
+            </div>
+            <div class="col-lg-4 my-3 my-lg-0">
+                <a class="btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+                <a class="btn-dark btn-social mx-2" href="#!"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a class="link-dark text-decoration-none me-3" href="#!">개인정보처리방침</a>
+                <a class="link-dark text-decoration-none" href="#!">이용약관</a>
+            </div>
+        </div>
+    </div>
+</footer>
      
 <!--top-button-->
 <img id="myBtn" src="/static/main_page/assets/top-btn.png" onclick="topFunction()">

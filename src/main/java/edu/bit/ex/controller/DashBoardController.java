@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 @Controller
 public class DashBoardController {
@@ -19,17 +21,12 @@ public class DashBoardController {
     public String statistics(Model model) {
 
         List<OrderVO> orders = dashBoardService.getOrders();
-
+        //월별 일별 객체
         Map<Integer, Integer> monthTotalPrice = dashBoardService.extractMonthTotalPrice(orders);
         Map<Integer, Integer> dayTotalPrice = dashBoardService.extractDayTotalPrice(orders);
+        model.addAttribute("monthTotalPrice", monthTotalPrice);
+        model.addAttribute("dayTotalPrice", dayTotalPrice);
 
-        model.addAttribute("monthTotalPrice",monthTotalPrice);
-        model.addAttribute("dayTotalPrice",dayTotalPrice);
-
-
-        System.out.println("DashBoardController.statistics");
-        System.out.println("monthTotalPrice = " + monthTotalPrice);
-        System.out.println("dayTotalPrice = " + dayTotalPrice);
-        return "account/statistics";
+        return "admin/statistics";
     }
 }

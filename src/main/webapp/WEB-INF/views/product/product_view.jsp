@@ -3,21 +3,23 @@
       <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
          <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
             <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-               <!DOCTYPE html "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+               <!DOCTYPE html>
                <html>
 
                <head>
                   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
                   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
-                  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
-                  <!-- <link rel="stylesheet" href="/static/css/collstyle.css"> -->
-
+                  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
                   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
                   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
                   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+                  <meta charset="utf-8" />
+                  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+                  <meta name="description" content="" />
+                  <meta name="author" content="" />
                   <!-- Favicon-->
                   <link rel="icon" type="image/x-icon" href="/static/main_page/assets/favicon-2.ico" />
                   <!-- Font Awesome icons (free version)-->
@@ -30,10 +32,12 @@
                   <!-- naver fonts -->
                   <link rel="stylesheet" type="text/css"
                      href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
-
                   <!-- Core theme CSS (includes Bootstrap)-->
                   <link href="/static/main_page/css/styles.css" rel="stylesheet" />
-                  <!-- <link rel="stylesheet" href="/static/css/styles.css"> -->
+                  <link rel="stylesheet" href="/static/css/styles.css">
+
+                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
                   <title>product_view</title>
                   <style>
@@ -115,10 +119,10 @@
                                     data-bs-toggle="dropdown" aria-expanded="false"> 상품 보기 </a>
                                  <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
                                     <li></li>
-                                    <a class="dropdown-item" href="product_main">패키지</a>
+                                    <a class="dropdown-item" href="/product_main">패키지</a>
                               </li>
-                              <li><a class="dropdown-item" href="product_main_liquor">술</a></li>
-                              <li><a class="dropdown-item" href="product_main_food">안주</a></li>
+                              <li><a class="dropdown-item" href="/product_main_liquor">술</a></li>
+                              <li><a class="dropdown-item" href="/product_main_food">안주</a></li>
                            </ul>
                            </li>
                            <li class="nav-item"><a class="nav-link" href="/event">이벤트</a></li>
@@ -139,7 +143,7 @@
                               <sec:authorize access="isAuthenticated()">
                                  <li class="nav-item"><a class="nav-link" href="/board/my_page">마이페이지</a></li>
                               </sec:authorize>
-                              <li class="nav-item"><a class="nav-link" href="/user/cart3">장바구니</a></li>
+                              <li class="nav-item"><a class="nav-link" href="/user/cart5">장바구니</a></li>
                               <sec:authorize access="isAuthenticated()">
                                  <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
                               </sec:authorize>
@@ -148,44 +152,43 @@
                      </div>
                   </nav>
 
+                  <!-- 상품상세보기 -->
                   <div class="product_view">
                      <div class="product_view1">
-                        <div class="mt-4">
-                           <div class="row">
-                              <div class="col-md-4">
-                                 <img class="card-img" src="${product_view.image_route}" alt="상품이미지">
-                              </div>
-                              <div class="col-md-4 mt-4">
-                                 <h3>${product_view.product_name}</h3>
-                                 <hr class="my-6">
-                                 <!-- <label>가격&nbsp : ${product_view.price} 원</label> -->
-                                 <p> 상품할인가&nbsp; : &nbsp;${product_view.price} 원</p>
-                                 <hr class="my-2">
-                                 <p style="text-color:#999999;">배송구분&nbsp; : &nbsp;일반배송</p>
-                                 <hr class="my-2">
-                                 <label>구매수량&nbsp; : &nbsp;</label>
-                                 <input id="product_qty" name="amount" type="number" value="1" />
-                                 </br>
-                                 <hr class="my-2">
-
-                                 <input id="pro_id" name="product_id" type="hidden" value="${product_view.product_id}">
-                                 <button id="cart" type="button" class="btn btn-secondary btn-md">장바구니</button>
-                                 <button id="order2" type="button" class="btn btn-secondary btn-md">바로구매</button>
-                                 <button id="re" type="button" disabled class="btn btn-secondary btn-md">재입고알림</button>
-                              </div>
+                        <!-- <div class="container mt-4"> -->
+                        <div class="row">
+                           <div class="col-md-4">
+                              <img class="card-img" src="${product_view.image_route}" alt="상품이미지">
                            </div>
-                           <br>
-                        </div>
-                     </div>
+                           <div class="col-md-4 mt-4">
+                              <h3>${product_view.product_name}</h3>
+                              <hr class="my-6">
+                              <!-- <label>가격&nbsp : ${product_view.price} 원</label> -->
+                              <p>상품할인가&nbsp; : &nbsp;${product_view.price} 원</p>
+                              <hr class="my-2">
+                              <p style="text-color: #999999;">배송구분&nbsp; : &nbsp;일반배송</p>
+                              <hr class="my-2">
+                              <label>구매수량&nbsp; : &nbsp;</label> <input id="product_qty" name="amount" type="number"
+                                 value="1" /> </br>
+                              <hr class="my-2">
 
+                              <input id="pro_id" name="product_id" type="hidden" value="${product_view.product_id}">
+                              <button id="cart" type="button" class="btn btn-secondary btn-md">장바구니</button>
+                              <!-- <button id="order2" type="button" class="btn btn-secondary btn-md">바로구매</button> -->
+                              <button id="re" type="button" disabled class="btn btn-secondary btn-md">재입고알림</button>
+                           </div>
+                        </div>
+                        <br>
+                        <!-- </div> -->
+                     </div>
                      <hr class="my-6">
 
                      <!-- 상품 상세 정보 -->
                      <div class="product_detail">
                         <div class="row">
                            <div class="col-md-12">
-                              <img class="detail-img" style="width: 80%; height: auto;" src="/static/img/002.png">
-                              <img class="detail-img" style="width: 80%; height: auto;" src="/static/img/003.png">
+                              <img class="detail-img" style="width: 80%; height: auto;" src="/static/img/002.png"> <img
+                                 class="detail-img" style="width: 80%; height: auto;" src="/static/img/003.png">
                               <img class="detail-img" style="width: 80%; height: auto;" src="/static/img/004.png">
                            </div>
                         </div>
@@ -232,7 +235,7 @@
                                              <p style="text-align: center; margin: 5%;">${ff.b_content}</p>
                                              <c:forEach items="${ff.fileList}" var="image">
                                                 <div style="float: left; margin-right: 10px;"><img style=" width:
-                                                   200px; height: 200px;" src="${image.image_route}">
+                              200px; height: 200px;" src="${image.image_route}">
                                                 </div>
                                              </c:forEach>
                                           </td>
@@ -319,40 +322,30 @@
                   </div>
                   <br>
                   <br>
+
                   <!--page-->
                   <nav aria-label="Page navigation example">
                      <ul class="pagination justify-content-center">
                         <c:if test="${pageMaker.prev}">
-                           <li class="page-item">
-                              <a class="page-link"
+                           <li class="page-item"><a class="page-link"
                                  href="${pageMaker.makeNum(pageMaker.startPage - 1)}&product_id=${product_view.product_id}"
-                                 aria-label="Previous">
-                                 <span aria-hidden="true">&laquo;</span>
+                                 aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
                                  <span class="sr-only">Previous</span>
-                              </a>
-                           </li>
+                              </a></li>
                         </c:if>
                         <c:forEach var="idx" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
                            <li class="page-item "><a class="page-link"
                                  href="${pageMaker.makeNum(idx)}&product_id=${product_view.product_id}">
-                                 ${idx}
-                              </a>
-                           </li>
+                                 ${idx} </a></li>
                         </c:forEach>
                         <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-                           <li class="page-item">
-                              <a class="page-link" aria-label="Next"
+                           <li class="page-item"><a class="page-link" aria-label="Next"
                                  href="${pageMaker.makeQuery(pageMaker.endPage +1) }&product_id=${product_view.product_id}">
-                                 <span aria-hidden="true">&raquo;</span>
-                                 <span class="sr-only">Next</span>
-                              </a>
-                           </li>
+                                 <span aria-hidden="true">&raquo;</span> <span class="sr-only">Next</span>
+                              </a></li>
                         </c:if>
                      </ul>
                   </nav>
-
-
-
 
                   <script src="/static/js/popper.js"></script>
                   <script src="/static/js/reviewLike&Hit.js"></script>
@@ -368,7 +361,6 @@
 
                            var product_id = $("#pro_id").val();
                            var product_qty = $("#product_qty").val();
-
 
                            var cart = {
                               product_id: product_id,
@@ -393,65 +385,63 @@
 
                         });
 
-
-
                      });
                   </script>
 
-                  <script>
-                     // 바로구매
-                     $(document).ready(function () {
-                        $("#order2").click(function (event) {
+                  <!-- <script>
+   // 바로구매
+$(document).ready(function(){
+	$("#order2").click(function(event) {
+   		
+   		
+   		event.stopPropagation();
+   		event.preventDefault();
+   	 	  
+	 	  var product_id = $("#pro_id").val();
+	 	  var product_qty = $("#product_qty").val();
+	 	  
+	 	  
+	 	  var order = {
+	 			 product_id : product_id,    			  
+	 			 product_qty : product_qty
+	 	  };
+	 	  
+	         $.ajax({
+	            type: "GET",
+	            url: "/user/order2",
+	            cache: false,
+	            contentType: 'application/json; charset=utf-8',
+	            data: order, 
+	            success: function (result) {  
+	            	
+	            	if(result != "SUCCESS")
+	            		location.href="${pageContext.request.contextPath}/loginForm";
+	            	else
+	            		location.href="${pageContext.request.contextPath}/order2";
+	            			
+	            	
+	            },
+	            error: function (e) {
+	               alert("이동에 실패하였습니다.");
+	            }
+	         });	       
 
-
-                           event.stopPropagation();
-                           event.preventDefault();
-
-                           var product_id = $("#pro_id").val();
-                           var product_qty = $("#product_qty").val();
-
-
-                           var order = {
-                              product_id: product_id,
-                              product_qty: product_qty
-                           };
-
-                           $.ajax({
-                              type: "GET",
-                              url: "/user/order2",
-                              cache: false,
-                              contentType: 'application/json; charset=utf-8',
-                              data: order,
-                              success: function (result) {
-
-                                 if (result != "SUCCESS")
-                                    location.href = "${pageContext.request.contextPath}/loginForm";
-                                 else
-                                    location.href = "${pageContext.request.contextPath}/order2";
-
-
-                              },
-                              error: function (e) {
-                                 alert("이동에 실패하였습니다.");
-                              }
-                           });
-
-                        });
-
-                     });
-                  </script>
-
+	});
+   
+ });
+</script> -->
 
                   <!-- Footer-->
                   <footer class="footer">
                      <div class="container">
                         <div class="row align-items-center">
-                           <div class="col-lg-4 text-lg-start"><b>주식회사 바니</b> <br> 서울특별시 종로구 종로 69 YMCA빌딩 7층
-                              <br>Copyright &copy; Barny Inc. All rights reserved.
+                           <div class="col-lg-4 text-lg-start">
+                              <b>주식회사 바니</b> <br> 서울특별시 종로구 종로 69 YMCA빌딩 7층 <br>Copyright
+                              &copy; Barny Inc. All rights reserved.
                            </div>
                            <div class="col-lg-4 my-3 my-lg-0">
-                              <a class="btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-                              <a class="btn-dark btn-social mx-2" href="#!"><i class="fab fa-instagram"></i></a>
+                              <a class="btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a> <a
+                                 class="btn-dark btn-social mx-2" href="#!"><i class="fab fa-instagram"></i></a>
                            </div>
                            <div class="col-lg-4 text-lg-end">
                               <a class="link-dark text-decoration-none me-3" href="#!">개인정보처리방침</a>
@@ -488,7 +478,6 @@
                   <script src="/static/main_page/js/scripts.js"></script>
                   <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
                   <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-
                </body>
 
                </html>

@@ -106,15 +106,17 @@ public class MemberDetails implements UserDetails, OAuth2User {
     public boolean isEnabled() {// 계정이 활성화 되었나?
         // 휴면 계정 사용시 필요
         // ex) 현재 시간 - 로긴시간 -> 1년초과시 return false 설정
-        log.info("isActived");
-        boolean active = true;
+//        log.info("isActived");
+//        boolean active = true;
+//
+//        if (authVO.getActive() == '0') {
+//            System.out.println(memberVO.getMember_id() + "의 enable : " + authVO.getActive());
+//            active = false;
+//        }
+//
+//        return active;
 
-        if (authVO.getActive() == '0') {
-            System.out.println(memberVO.getMember_id() + "의 enable : " + authVO.getActive());
-            active = false;
-        }
-
-        return active;
+        return authVO.getActive() == 1;
     }
 
   
