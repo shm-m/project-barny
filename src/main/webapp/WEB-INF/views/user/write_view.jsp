@@ -40,37 +40,6 @@
 
 <body>
     <!-- <div></div> -->
-<<<<<<< .merge_file_a09292
-    <h1>상품 후기 등록</h1>
-
-<div class="col-md-12">
-    <div class="col-md-4 mx-auto">
-        <form action="/review/write" method="post" onsubmit="return confirm('게시글을 등록하시겠습니까?')" role="form" enctype="multipart/form-data">
-            <input type="hidden" name="product_id" value="${product_view.product_id}">
-            <input type="hidden" name="member_idx" value="${member_idx}"><!--접근한 회원 번호-->
-            <div class="form-group">
-                <td> 상품 이름 </td>
-				<td> ${product_view.product_name} </td>
-            </div>
-            <div class="form-group">
-                <td> 상품 번호 </td>
-				<td> ${product_view.product_id} </td>
-            </div>
-            <div class="form-group">
-                <label for="title">후기 제목</label>
-                <input type="text" class="form-control" name="b_title" placeholder="제목을 입력하세요">
-            </div>
-            <div class="form-group">
-                <label for="author"> 후기 내용 </label>
-                <input type="text" class="form-control" name="b_content" placeholder="내용을 입력하세요">
-            </div>
-            
-            <div class="form-group">
-                <label for="inputFile" class="col-form-label">첨부 파일</label>
-                    <div class="custom-file" id="inputFile">
-                        <input name="file" type="file" class="custom-file-input" id="customFile" accept="image/png, image/jpeg" multiple>
-                        <label class="custom-file-label" for="customFile">파일을 선택해 주세요.</label>
-=======
 
     <div class="container">
         <div class="custom-container2 col-sm-10">
@@ -104,7 +73,6 @@
                         <a href="/product_view?product_id=${product_view.product_id}" role="button"
                             class="btn-basic text-uppercase">취소</a>
                         <input type="submit" class="btn-basic text-uppercase" value="등록"></input>
->>>>>>> .merge_file_a10916
                     </div>
                 </form>
             </div>
@@ -113,16 +81,13 @@
     <script>
         $("input[type='file']").on("change", function (e) {
             var fileName = "";
-
             var formData = new FormData();
             var inputFile = $("input[name='file']");
             var files = inputFile[0].files;
-
             for (var i = 0; i < files.length; i++) {
                 formData.append("file", files[i]);
                 fileName = fileName + " " + files[i].name; // + $(this).val().split("\\").pop(); 
             }
-
             //fileName =fileName + ";" + $(this).val().split("\\").pop();
             $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
         });
