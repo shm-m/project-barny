@@ -311,10 +311,12 @@
 		</div>
 
 	</div>
+	<br>
+	<br>
 
 	<!--page-->
 	<nav aria-label="Page navigation example">
-		<ul class="pagination justify-content-center" style="margin-left: 13.5%;">
+		<ul class="pagination justify-content-center">
 			<c:if test="${pageMaker.prev}">
 				<li class="page-item"><a class="page-link"
 						href="${pageMaker.makeNum(pageMaker.startPage - 1)}&product_id=${product_view.product_id}"
