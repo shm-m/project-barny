@@ -104,9 +104,9 @@
                             <input type="button" value="인증하기" id="sendMail" class="btn btn-outline-primary btn-s"> <br>
                         </div>
 
-                        <div class="col-md-3 mb-4 pt-4">
-                            <button type="submit"  id="sendMail" class="btn btn-outline-primary btn-s"> 확인<br></button>
-                        </div>
+<%--                        <div class="col-md-3 mb-4 pt-4">--%>
+<%--                            <button type="submit"  id="sendMail" class="btn btn-outline-primary btn-s"> 확인<br></button>--%>
+<%--                        </div>--%>
 
                     </div>
 
