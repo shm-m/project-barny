@@ -26,9 +26,8 @@
     <link href="/static/main_page/css/styles.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/static/css/styles.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
 <%--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"--%>
@@ -131,15 +130,15 @@
 <form:form name="findMember" modelAttribute="memberVO" action="/loginForm" method="POST">
     <div class="container pt-5" style="width:60%">
         <div class="input-form-backgroud row">
-            <div class="input-form col-md-12 mx-auto">
+            <div class="input-form col-md-12 mx-auto mt-5">
 
-                <h4 class="mb-3">비밀번호 찾기</h4>
+                <h3>비밀번호 찾기</h3>
 
                 <form class="validation-form" novalidate>
                     <div class="row">
 
 
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-6 mb-3 mt-5">
                             <div class="wrap-input100 validate-input m-b-16">
                                 <label for="member_name">이름</label>
                                 <input class="form-control" type="text" id="member_name" name="member_name"
