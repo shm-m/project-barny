@@ -106,7 +106,7 @@
 <div class="container-1">
   <div class="text-center mb-5 mt-5">
       <H1 class="display-4 mb-5" >합리적인 가격으로 지금 시작해보세요</H1>
-      <button type="button" class="btn btn-outline-dark btn-lg mt-5">구독 하기</button>
+      <a class="btn btn-outline-dark btn-lg mt-5 text-uppercase" href="/product_main">구독하기</a>
   </div>
 </div>
 

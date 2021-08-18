@@ -36,6 +36,7 @@ public class CartServiceImpl implements CartService {
 	// 장바구니 수정
 	@Override
 	public void modify(CartVO cartVO) {
+		log.info("cartList()..."  + cartVO);
 		cartMapper.update(cartVO);
 		
 	}
