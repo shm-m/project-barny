@@ -49,7 +49,6 @@
           background: -o-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
           background: linear-gradient(to top right, #92b5db 0%, #1d466c 100%);
       }
-
       .input-form {
           max-width: 680px;
           margin-top: 80px;
@@ -247,7 +246,6 @@
             </div>
 
         </div>
-        
         <div class="row">
             <div class="col-md-8 mb-3">
                 <label for="tel">전화번호</label>
@@ -276,18 +274,13 @@
                    id="aggrement" required>
             <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label></div>
         <div class="mb-4"></div>
-<<<<<<< .merge_file_a13472
-        <button class="btn btn-primary btn-lg btn-block" type="submit">가입 완료</button>
-=======
         <div class="form-line"></div>
         <div style="text-align: right;">
         <button class="btn btn-primary btn-lg btn-block" style="font-family: BBTreeGB; "id="submit-btn" type="submit">가입 완료</button>
         </form>
         </div>
->>>>>>> .merge_file_a15332
     </div>
     </div>
-        </form>
 
     </div>
 
