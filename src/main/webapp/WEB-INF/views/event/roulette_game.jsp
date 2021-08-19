@@ -30,6 +30,7 @@
 
 </head>
 <body>
+<!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top"
      id="mainNav_2">
     <div class="container">
@@ -52,9 +53,9 @@
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
                         <li></li>
-                        <a class="dropdown-item" href="product_main">패키지</a></li>
-                        <li><a class="dropdown-item" href="product_main_liquor">술</a></li>
-                        <li><a class="dropdown-item" href="product_main_food">안주</a></li>
+                        <a class="dropdown-item" href="/product_main">패키지</a></li>
+                        <li><a class="dropdown-item" href="/product_main_liquor">술</a></li>
+                        <li><a class="dropdown-item" href="/product_main_food">안주</a></li>
                     </ul>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="/event">이벤트</a></li>
@@ -73,10 +74,15 @@
                 <sec:authorize access="isAnonymous()">
                     <li class="nav-item"><a class="nav-link" href="/loginForm">로그인</a></li>
                 </sec:authorize>
-                <sec:authorize access="isAuthenticated()">
+                <sec:authorize access="hasAnyRole('ROLE_USER')">
                     <li class="nav-item"><a class="nav-link" href="/board/my_page">마이페이지</a></li>
                 </sec:authorize>
-                <li class="nav-item"><a class="nav-link" href="/user/cart3">장바구니</a></li>
+                <sec:authorize access="hasAnyRole('ROLE_ADMIN')">
+                    <li class="nav-item"><a class="nav-link" href="/statistics">관리페이지</a></li>
+                </sec:authorize>
+                <sec:authorize access="hasAnyRole('ROLE_USER')">
+                    <li class="nav-item"><a class="nav-link" href="/user/cart5">장바구니</a></li>
+                </sec:authorize>
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
                 </sec:authorize>
