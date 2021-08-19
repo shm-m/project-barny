@@ -33,18 +33,17 @@
 <!-- 주문정보 넣기 -->
 	<insert id="insertOrder">
         <![CDATA[
-		INSERT INTO ORDERS(ORDER_ID, ORDER_DATE, TOTAL_PRICE, MEMBER_IDX) 
-		VALUES(ORDER_ID_SEQ.nextval, SYSDATE, #{TOTAL_PRICE}, #{MEMBER_IDX})
+		insert into orders(order_id, order_date, total_price, member_idx) 
+		values(order_id_seq.nextval, sysdate, #{total_price}, #{member_idx})
         ]]>
     </insert>
     
 <!-- 적립금 적립 -->  
-<!-- 	<insert id="insertPoint">
+    <update id="insertPoint">
         <![CDATA[
-		INSERT INTO ORDERS(ORDER_ID, ORDER_DATE, TOTAL_PRICE, MEMBER_IDX) 
-		VALUES(ORDER_ID_SEQ.nextval, SYSDATE, #{TOTAL_PRICE}, #{MEMBER_IDX})
+           update member set point = point + 100 where member_idx = #{member_idx}
         ]]>
-    </insert>   -->
+    </update>
 
     	 
 

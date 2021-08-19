@@ -99,8 +99,8 @@ public class CartController {
 		return "SUCCESS";
 	} 			
 	
-	// update
-	
+	// 수량변경
+	// update	
 	@ResponseBody
     @PostMapping("/updateCart")
     public String updateCart(@RequestBody CartVO cartVO, Principal principal, @AuthenticationPrincipal MemberContext ctx) {

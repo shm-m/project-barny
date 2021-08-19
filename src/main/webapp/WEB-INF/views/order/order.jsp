@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<!DOCTYPE html">
+<!DOCTYPE html>
 <html>
 <head>
 <!-- jQuery -->
@@ -209,7 +209,7 @@
                 <input name="member_idx" type="hidden" value="<sec:authentication property="principal.memberVO.member_idx"/>">
                 <p>적립금 :&nbsp; <sec:authentication property="principal.memberVO.point"/>&nbsp;p&nbsp;<button id="point" type="button" class="btn btn-secondary btn-md">사용하기</button></p>
                 <p>(5000p 이상 사용가능)
-                <input id="point1" name="point" type="hidden" value="<sec:authentication property="principal.memberVO.point"/>"></p>
+                <input id="point1" type="hidden" value="<sec:authentication property="principal.memberVO.point"/>"></p>
                 <hr class="my-4">
             </form>
         </div>
@@ -267,7 +267,7 @@
 <div class="text-center mb-5 mt-5">
 <input id="point2" name="point2" type="hidden" value="<sec:authentication property="principal.memberVO.point"/>">
     <!-- <a class="btn btn-secondary btn-lg text-uppercase" href="/orderPage">주문하기!</a> -->
-    <button id="insertPoint" type="button" value="<sec:authentication property="principal.memberVO.point"/>" 
+    <button id="insertPoint_1" type="button" value="<sec:authentication property="principal.memberVO.point"/>" 
     class="btn btn-secondary btn-lg text-uppercase" href="/orderPage">주문하기!</button>
 </div>
 
@@ -320,7 +320,7 @@
 </body>
 
 <!-- 아임포트 -->
- <script>
+<script>
 	$(document).ready(function(){
 			
 	    var IMP = window.IMP;
@@ -375,9 +375,9 @@
 	    });
 	    });
 	});    	    	   
-</script> 
+</script>  
 
-<!-- <script>
+<!--  <script>
 	$(document).ready(function(){
 			
 	    var IMP = window.IMP;
@@ -391,14 +391,14 @@
 	    var total_price =$("#total").val();
 
 	    
-	 	var insertOrder = {
-		    member_name = name,
-		    tel = tel,
-		    address = address,
-		    mail = mail,
-		    point = point + 100, 
-		    total_price = total_price
-		 	  };
+/* 	 	var insertOrder = {
+		    member_name : member_name,
+		    tel : tel,
+		    address : address,
+		    mail : mail,
+		    point : point + 100, 
+		    total_price : total_price
+		 	  }; */
 	    
 	    $("#payment").click(function(event) {
 	    
@@ -415,14 +415,24 @@
 	        buyer_postcode : '123-456'
 	    }, function(rsp) {
 	        if ( rsp.success ) {
+	        	
+	        var insertOrder = {
+			    member_name : member_name,
+			    tel : tel,
+			    address : address,
+			    email : email,
+			    point : point + 100, 
+			    total_price : total_price
+			 }
+			 	  
 	        	//[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
 	        	jQuery.ajax({
 	        		url: "/user/insertOrder", //cross-domain error가 발생하지 않도록 동일한 도메인으로 전송
 	        		type: 'POST',
 	        		dataType: 'json',
 	        		data: {
-	    	    		/* imp_uid : rsp.imp_uid */
-	    	    		insertOrder
+	    	    		imp_uid : rsp.imp_uid,
+	    	    		insertOrders
 	    	    		//기타 필요한 데이터가 있으면 추가 전달
 	        		}
 	        	}).done(function(data) {
@@ -442,6 +452,7 @@
 	        	});
 	        	
 	        	location.href='${pageContext.request.contextPath}/orderPage';
+	        	
 	        } else {
 	            var msg = '결제에 실패하였습니다.'; 
 	            msg += '에러내용 : ' + rsp.error_msg;
@@ -451,7 +462,7 @@
 	    });
 	    });
 	});    	    	   
-</script> -->
+</script> --> 
 
 <!-- 적립금 -->
 	<script type="text/javascript">
@@ -474,7 +485,7 @@
 	 });
 	</script>
 	
-	<script>
+<!-- 	<script>
 		// 적립금 적립
 		$(document).ready(function () {
 
@@ -484,9 +495,6 @@
 
 				var point = $("#point2").val();
 
-/* 				var point = {
-					point: point
-				}; */
 
 				//dataType: 'json',
 				$.ajax({
@@ -497,6 +505,37 @@
 					data: point,
 					success: function (result) {
 						location.href='${pageContext.request.contextPath}/orderPage';
+					},
+					error: function (e) {
+						alert("실패");
+						console.log(e);
+					}
+				});
+
+			});
+
+		});
+	</script> -->
+	
+		<script>
+		$(document).ready(function () {
+
+			$("#insertPoint_1").click(function (event) {
+
+				event.preventDefault();
+
+				var insertPoint_1 = $("#point2").val();
+
+
+				//dataType: 'json',
+				$.ajax({
+					type: "GET",
+					url: "/user/insertPoint",
+					cache: false,
+					contentType: 'application/json; charset=utf-8',
+					data: insertPoint_1,
+					success: function (result) {
+						alert("100포인트가 적립되었습니다!");
 					},
 					error: function (e) {
 						alert("실패");
