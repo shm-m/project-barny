@@ -128,48 +128,50 @@
     </div>
   </div>
 
-  <!--top-button-->
-  <img id="myBtn" src="/static/main_page/assets/top-btn.png" onclick="topFunction()">
-
-  <!--kakao-chat-->
-  <a href="javascript:void kakaoChatStart()" class="kakaoChatPc hidden-md hidden-sm hidden-xs" id="kakao-chat">
-    <img src="/static/main_page/assets/kakao-chat.png" width="50px" height="50px">
-  </a>
-
-  <!-- Footer-->
-  <footer class="footer py-4">
-    <div class="container">
+<!-- Footer-->
+<footer class="footer">
+  <div class="container">
       <div class="row align-items-center">
-        <div class="col-lg-4 text-lg-start"><b>주식회사 바니</b> <br> 서울특별시 종로구 종로 69 YMCA빌딩 7층
-          <br>Copyright &copy; Barny Inc. All rights reserved.
-        </div>
-        <div class="col-lg-4 my-3 my-lg-0">
-          <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-          <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-instagram"></i></a>
-        </div>
-        <div class="col-lg-4 text-lg-end">
-          <a class="link-dark text-decoration-none me-3" href="#!">개인정보처리방침</a>
-          <a class="link-dark text-decoration-none" href="#!">이용약관</a>
-        </div>
+          <div class="col-lg-4 text-lg-start"><b>주식회사 바니</b> <br> 서울특별시 종로구 종로 69 YMCA빌딩 7층
+              <br>Copyright &copy; Barny Inc. All rights reserved.
+          </div>
+          <div class="col-lg-4 my-3 my-lg-0">
+              <a class="btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+              <a class="btn-dark btn-social mx-2" href="#!"><i class="fab fa-instagram"></i></a>
+          </div>
+          <div class="col-lg-4 text-lg-end">
+              <a class="link-dark text-decoration-none me-3" href="#!">개인정보처리방침</a>
+              <a class="link-dark text-decoration-none" href="#!">이용약관</a>
+          </div>
       </div>
-    </div>
-  </footer>
+  </div>
+</footer>
 
-  <!-- Bootstrap core JS-->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Core theme JS-->
-  <script src="/static/main_page/js/scripts.js"></script>
-  <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-  <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-  <script type='text/javascript'>
-    Kakao.init('dab10012c7e15e9d67728cf3d50faa8a'); // 사용할 앱의 JavaScript키를 입력해 주세요.
-    function kakaoChatStart() {
+<!--top-button-->
+<img id="myBtn" src="/static/main_page/assets/top-btn.png" onclick="topFunction()">
+
+
+<!--kakao-chat-->
+<a href="javascript:void kakaoChatStart()" class="kakaoChatPc hidden-md hidden-sm hidden-xs" id="kakao-chat">
+  <img src="/static/main_page/assets/kakao-chat.png" width="50px" height="50px">
+</a>
+
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script type='text/javascript'>
+  Kakao.init('7e53e24ce9a07956bfb5ac4930333caa');
+
+  function kakaoChatStart() {
       Kakao.Channel.chat({
-        channelPublicId: '601802' // 카카오톡 채널 홈 URL에 명시된 ID를 입력합니다.
+          channelPublicId: '_WDxjSs'
       });
-    }
-  </script>
-
+  }
+</script>
+<!-- Bootstrap core JS-->
+<script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="/static/main_page/js/scripts.js"></script>
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 </body>
-
 </html>

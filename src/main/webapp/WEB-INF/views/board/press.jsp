@@ -117,8 +117,7 @@
                     <c:forEach items="${press}" var="dto">
                         <tr>
                             <td>
-                                <a style ="padding-left: 20px;" href="${pageContext.request.contextPath}/product_view?product_name=${dto.product_name}">${dto.product_name}</a>
-                            </td>
+                                <a style ="padding-left: 20px;" href="${pageContext.request.contextPath}/product_view?product_id=${dto.product_id}">${dto.product_name}</a>                            </td>
                             <td>
                                 <a class="btn-basic post mb-2" style ="margin-right: 20px;" type="button" href="${pageContext.request.contextPath}/board/update_modify?subscribe=${dto.subscribe}" onclick="button_event('${pageContext.request.contextPath}/board/update_modify?subscribe=${dto.subscribe}');">구독 취소</a>
                             </td>
