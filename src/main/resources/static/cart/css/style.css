@@ -8171,6 +8171,7 @@ h1, h2, h3, h4, h5,
   padding-bottom: 0; }
 
 .heading-section {
+  font-family: BBTreeGB;
   font-size: 28px;
   color: #000; }
 
@@ -8210,7 +8211,8 @@ h1, h2, h3, h4, h5,
     width: 10%; }
   .table tbody td .img {
     width: 100px;
-    height: 80px; }
+    /*height: 80px; */
+  }
   .table tbody td .email span {
     display: block; }
     .table tbody td .email span:last-child {

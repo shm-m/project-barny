@@ -169,3 +169,9 @@ ol {
     border-bottom-color: #F4E8DC;
     padding-left: 20px;
 }
+
+.edit-btn {
+    width : 10%;
+    font-family: BBTreeGB;
+    font-size: 15px;
+}

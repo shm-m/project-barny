@@ -143,7 +143,7 @@
 
 	<!-- 장바구니 -->
 	<section class="ftco-section">
-		<div class="container">
+		<div class="container" style="width:80%;">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-4">
 					<h2 class="heading-section">장바구니</h2>
@@ -164,7 +164,7 @@
 
 				<c:otherwise>
 
-					<div>
+					<div class ="mb-2 ml-4">
 						<label class="control control--checkbox mx-2">
 							<input type="checkbox" id="allCheck" name="allCheck" />
 							<div class="control__indicator"></div>
@@ -209,7 +209,7 @@
 													<div class="input-group1">
 														<%-- <input type="text" name="qty" class="qty form-control input-number" value="${dto.product_qty}" min="1" max="10"> --%>
 														<input id="product_qty" name="product_qty"
-															style="text-align:center; width:60px; margin-left:30%;" type="number"
+															style="text-align:center; width:60px; margin-left:30%; margin-right: 10px;" type="number"
 															value="${dto.product_qty}" />
 														<input id="product_id" name="product_id" type="hidden" value="${dto.product_id}">
 														<button id="update" type="button" class="btn-basic1 btn-sm">수량변경</button>
@@ -237,8 +237,8 @@
 					</div>
 		</div>
 		<div class="text-center mb-5 mt-5">
-			<a class="btn-basic btn-lg text-uppercase" href="/user/order">주문하기!</a>
-			<a class="btn-basic btn-lg text-uppercase" href="/product_main">더 쇼핑하기!</a>
+			<a class="btn-basic btn-lg text-uppercase" href="/user/order">주문하기</a>
+			<a class="btn-basic btn-lg text-uppercase" href="/product_main">더 쇼핑하기</a>
 		</div>
 		</c:otherwise>
 		</c:choose>

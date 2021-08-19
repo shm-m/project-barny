@@ -40,93 +40,114 @@
     <link rel="stylesheet" type="text/css" href="/static/login/css/util.css">
     <link rel="stylesheet" type="text/css" href="/static/login/css/main.css">
 </head>
-<body id="page-top" class="text-center" >
+<body id="page-top" class="text-center">
 
 <!-- Navigation-->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav_2">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top"
+     id="mainNav_2">
     <div class="container">
-        <a class="navbar-brand" href="/main"><img src="/static/main_page/assets/img/logo.png" alt="바니 로고 1"/></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            Menu
-            <i class="fas fa-bars ms-1"></i>
+        <a class="navbar-brand" href="/main"><img
+                src="/static/main_page/assets/img/logo.png" alt="바니 로고 1"/></a>
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+            Menu <i class="fas fa-bars ms-1"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link" href="#services">구독</a></li>
-                <li class="nav-item"><a class="nav-link" href="#portfolio">브랜드 스토리</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        상품 보기
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                <li class="nav-item"><a class="nav-link" href="/subscribe">구독</a></li>
+                <li class="nav-item"><a class="nav-link" href="/story">브랜드
+                    스토리</a></li>
+                <li class="nav-item dropdown"><a
+                        class="nav-link dropdown-toggle" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false"> 상품 보기 </a>
+                    <ul class="dropdown-menu"
+                        aria-labelledby="navbarDarkDropdownMenuLink">
                         <li></li>
-                        <a class="dropdown-item" href="#">패키지</a></li>
-                        <li><a class="dropdown-item" href="#">술</a></li>
-                        <li><a class="dropdown-item" href="#">안주</a></li>
+                        <a class="dropdown-item" href="/product_main">패키지</a></li>
+                        <li><a class="dropdown-item" href="/product_main_liquor">술</a></li>
+                        <li><a class="dropdown-item" href="/product_main_food">안주</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="#team">이벤트</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        고객센터
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                <li class="nav-item"><a class="nav-link" href="/event">이벤트</a></li>
+                <li class="nav-item dropdown"><a
+                        class="nav-link dropdown-toggle" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false"> 고객센터 </a>
+                    <ul class="dropdown-menu"
+                        aria-labelledby="navbarDarkDropdownMenuLink">
                         <li></li>
-                        <a class="dropdown-item" href="#">공지사항</a></li>
-                        <li><a class="dropdown-item" href="#">자주 묻는 질문</a></li>
+                        <a class="dropdown-item" href="/notice">공지사항</a></li>
+                        <li><a class="dropdown-item" href="/notice/faq">자주 묻는 질문</a></li>
                     </ul>
                 </li>
             </ul>
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link" href="#services">로그인</a></li>
-                <li class="nav-item"><a class="nav-link" href="#services">장바구니</a></li>
+                <sec:authorize access="isAnonymous()">
+                    <li class="nav-item"><a class="nav-link" href="/loginForm">로그인</a></li>
+                </sec:authorize>
+                <sec:authorize access="hasAnyRole('ROLE_USER')">
+                    <li class="nav-item"><a class="nav-link" href="/board/my_page">마이페이지</a></li>
+                </sec:authorize>
+                <sec:authorize access="hasAnyRole('ROLE_ADMIN')">
+                    <li class="nav-item"><a class="nav-link" href="/statistics">관리페이지</a></li>
+                </sec:authorize>
+                <sec:authorize access="hasAnyRole('ROLE_USER')">
+                    <li class="nav-item"><a class="nav-link" href="/user/cart5">장바구니</a></li>
+                </sec:authorize>
+                <sec:authorize access="isAuthenticated()">
+                    <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
+                </sec:authorize>
             </ul>
         </div>
     </div>
 </nav>
+
 <script type="text/javascript">
 
-        // 비밀번호 미입력시 경고창
+    // 비밀번호 미입력시 경고창
 
-        /* function checkValue(){
+    /* function checkValue(){
 
-            if(!document.deleteform.pwd.value){
+        if(!document.deleteform.pwd.value){
 
-                alert("비밀번호를 입력하지 않았습니다.");
+            alert("비밀번호를 입력하지 않았습니다.");
 
-                return false;
+            return false;
+
+        }
+
+    } */
+
+
+    $(document).ready(function () {
+
+        $("#btnDelete").click(function () {
+
+            // 확인 대화상자
+
+            if (confirm("삭제하시겠습니까?")) {
+
+                document.login100 - form
+                validate - form
+                flex - sb
+                flex - w.action = "secessionpro";
+
+                document.login100 - form
+                validate - form
+                flex - sb
+                flex - w.submit();
 
             }
 
-        } */
-
-        
-
-        $(document).ready(function(){
-
-            $("#btnDelete").click(function(){
-
-                // 확인 대화상자 
-
-                if(confirm("삭제하시겠습니까?")){
-
-                    document.login100-form validate-form flex-sb flex-w.action = "secessionpro";
-
-                    document.login100-form validate-form flex-sb flex-w.submit();
-
-                }
-
-            });
-
         });
 
-    </script>
+    });
+
+</script>
 
 <!--delete Form-->
-<div class="limiter" >
+<div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100 p-t-50 p-b-90">
             <form class="login100-form validate-form flex-sb flex-w" action="/deleteUser" method="POST">
@@ -134,9 +155,9 @@
 					<span class="login100-form-title p-b-40">
 						회원탈퇴
 					</span>
-               <span class="login100-form p-b-35"><c:if test="${param.error != null}" >
-                  <p>아이디와 비밀번호가 잘못되었습니다.</p>
-               </c:if></span>
+                <span class="login100-form p-b-35"><c:if test="${param.error != null}">
+                    <p>아이디와 비밀번호가 잘못되었습니다.</p>
+                </c:if></span>
                 <div class="wrap-input100 validate-input m-b-16" data-validate="아이디를 입력해주세요.">
                     <input class="input100" type="text" id="member_id" name="member_id" placeholder="아이디를 입력해주세요">
                     <span class="focus-input100"></span>
@@ -149,25 +170,21 @@
                 </div>
 
 
-                    <div>
-                        <a href="/findId">
-                            아이디 찾기 
-                        </a>
-                        <a href="/findPw">
-                            비밀번호 찾기
-                        </a>
-                    </div>
+                <div>
+                    <a href="/findId">
+                        아이디 찾기
+                    </a>
+                    <a href="/findPw">
+                        비밀번호 찾기
+                    </a>
                 </div>
-
+                <hr>
                 <div class="container-login100-form-btn m-t-17">
-                    <button class="login100-form-btn"  type="submit">
+                    <button class="login100-form-btn" type="submit">
                         탈퇴
                     </button>
                 </div>
-
-
             </form>
-            <hr>
         </div>
     </div>
 </div>
@@ -180,7 +197,8 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-4 text-lg-start"><b>주식회사 바니</b> <br> 서울특별시 종로구 종로 69 YMCA빌딩 7층
-                <br>Copyright &copy; Barny Inc. All rights reserved. </div>
+                <br>Copyright &copy; Barny Inc. All rights reserved.
+            </div>
             <div class="col-lg-4 my-3 my-lg-0">
                 <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
                 <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-instagram"></i></a>
