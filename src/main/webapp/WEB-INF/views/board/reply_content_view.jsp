@@ -33,6 +33,7 @@
 
 
 <body>
+
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top"
      id="mainNav_2">
@@ -81,7 +82,7 @@
                     <li class="nav-item"><a class="nav-link" href="/board/my_page">마이페이지</a></li>
                 </sec:authorize>
                 <sec:authorize access="hasAnyRole('ROLE_ADMIN')">
-                    <li class="nav-item"><a class="nav-link" href="/#">관리페이지</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/statistics">관리페이지</a></li>
                 </sec:authorize>
                 <sec:authorize access="hasAnyRole('ROLE_USER')">
                     <li class="nav-item"><a class="nav-link" href="/user/cart5">장바구니</a></li>
@@ -93,6 +94,7 @@
         </div>
     </div>
 </nav>
+
 <!--content-->
 <div class="container" style="padding-top: 2rem;">
     <div class="row">

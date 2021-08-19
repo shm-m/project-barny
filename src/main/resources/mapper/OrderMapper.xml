@@ -21,6 +21,29 @@
 			
         ]]>
     </select>  
+    
+<!-- 장바구니 총 합계 -->
+    <select id="sumMoney" resultType="int">
+	<![CDATA[
+		select nvl(sum(price*product_qty), 0) from cart c, product p
+		where c.product_id = p.product_id and member_idx = #{member_idx}
+	]]>
+	</select>
+	
+<!-- 주문정보 넣기 -->
+	<insert id="insertOrder">
+        <![CDATA[
+		insert into orders(order_id, order_date, total_price, member_idx) 
+		values(order_id_seq.nextval, sysdate, #{total_price}, #{member_idx})
+        ]]>
+    </insert>
+    
+<!-- 적립금 적립 -->  
+    <update id="insertPoint">
+        <![CDATA[
+           update member set point = point + 100 where member_idx = #{member_idx}
+        ]]>
+    </update>
 
     	 
 

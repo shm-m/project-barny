@@ -32,7 +32,6 @@
   width: 200px;
   height: 250px;
   object-fit: cover;
-
   } 
  .searchForm1 {
 	position:fixed; 
@@ -44,22 +43,17 @@
 	margin:0;
 	text-align: center;
 } 
-
  .food {
 	margin-left : 15%; 
 	margin-right : 4%;
 	margin-top : 150px; 
-
 }
-
 .pagination {
 	margin-left: 600px;
 } 
-
 .total-1 {
 	margin-left : 8%;
 }
-
 .sidebar {
 	position:fixed; 
 	width:175px; 
@@ -68,9 +62,7 @@
 	top:-5%; /* 창에서 위에서 부터의 높이 */ 
 	background-color: transparent; 
 	margin:0;
-
 }  
-
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -92,11 +84,11 @@
 	
 		});
 	});
-
 	
 </script>
 
 <body id="page-top">
+
 
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top"
@@ -121,9 +113,9 @@
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
                         <li></li>
-                        <a class="dropdown-item" href="product_main">패키지</a></li>
-                        <li><a class="dropdown-item" href="product_main_liquor">술</a></li>
-                        <li><a class="dropdown-item" href="product_main_food">안주</a></li>
+                        <a class="dropdown-item" href="/product_main">패키지</a></li>
+                        <li><a class="dropdown-item" href="/product_main_liquor">술</a></li>
+                        <li><a class="dropdown-item" href="/product_main_food">안주</a></li>
                     </ul>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="/event">이벤트</a></li>
@@ -146,7 +138,7 @@
                     <li class="nav-item"><a class="nav-link" href="/board/my_page">마이페이지</a></li>
                 </sec:authorize>
                 <sec:authorize access="hasAnyRole('ROLE_ADMIN')">
-                    <li class="nav-item"><a class="nav-link" href="/#">관리페이지</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/statistics">관리페이지</a></li>
                 </sec:authorize>
                 <sec:authorize access="hasAnyRole('ROLE_USER')">
                     <li class="nav-item"><a class="nav-link" href="/user/cart5">장바구니</a></li>
@@ -158,6 +150,7 @@
         </div>
     </div>
 </nav>
+
 
 <!-- Sidebar -->
 <div class="total-1">
@@ -279,7 +272,6 @@
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type='text/javascript'>
     Kakao.init('7e53e24ce9a07956bfb5ac4930333caa');
-
     function kakaoChatStart() {
         Kakao.Channel.chat({
             channelPublicId: '_WDxjSs'

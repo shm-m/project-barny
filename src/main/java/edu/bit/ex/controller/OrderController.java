@@ -1,7 +1,9 @@
 package edu.bit.ex.controller;
 
 import java.security.Principal;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -25,6 +27,7 @@ import edu.bit.ex.service.cart.CartService;
 import edu.bit.ex.service.cart.OrderService;
 import edu.bit.ex.service.member.MemberService;
 import edu.bit.ex.vo.MemberVO;
+import edu.bit.ex.vo.OrderVO;
 import edu.bit.ex.vo.account.MemberContext;
 import edu.bit.ex.vo.cart.CartVO;
 import edu.bit.ex.vo.cart.OrderPaymentVO;
@@ -57,41 +60,60 @@ public class OrderController {
 		log.info("List<CartVO> cartList" +  cartList);
 		log.info("List<OrderPaymentVO> orderList" +  orderList);
 		
-		
+		  Map<String, Object> map = new HashMap<>();		 		
+
+		  int sumMoney = orderService.sumMoney(ctx.getMemberVO().getMember_idx()); 
+		  int fee = sumMoney >= 30000 ? 0 :2500; 
+		  // 배송료 계산 : 3000원 넘으면 배송료가 0, 안넘으면 2500원
+		  
+		  map.put("sumMoney", sumMoney); 
+		  map.put("fee", fee); 
+		  map.put("sum",sumMoney+fee); // 전체 금액 
+		  //map.put("cartList", cartList); 
+		  map.put("count",cartList.size()); // 상품 갯수
+
+		  model.addAttribute("map", map);
+		  
 		return "order/order";
 	}	
 					
-/*		@ResponseBody
-		@RequestMapping(value="/verifyIamport/{imp_uid}")
-		public IamportResponse<Payment> paymentByImpUid(
-				Model model
-				, Locale locale
-				, HttpSession session
-				, @PathVariable(value= "imp_uid") String imp_uid) throws IamportResponseException, IOException
-		{	
-				return api.paymentByImpUid(imp_uid);
-		}
+	@ResponseBody	 
+	/* @GetMapping("/user/insertOrder") */
+	@RequestMapping(value="/user/insertOrder", method = {RequestMethod.POST})
+	public String insertOrder(OrderPaymentVO orderPaymentVO, Principal principal, @AuthenticationPrincipal MemberContext ctx) {
 		
-	}*/
-
-	// 바로구매
-	/* @ResponseBody	 
-	@GetMapping("/user/order2")	
-	public String order2(CartVO cartVO, Principal principal, @AuthenticationPrincipal MemberContext ctx) {
-		
-		log.info("order2() ..");
+		log.info("insertOrder() ..");
 		
 		log.info("principal" + principal.getName());
 		log.info("principal" + ctx.getMemberVO().getMember_idx());
 		
-		log.info("cartVO().." + cartVO);
+		log.info("orderDetailVO().." + orderPaymentVO);
 		
-		cartVO.setMember_idx(ctx.getMemberVO().getMember_idx());
+		orderPaymentVO.setMember_idx(ctx.getMemberVO().getMember_idx());
 		
-		cartService.order2(cartVO);
+		orderService.insertOrder(orderPaymentVO);
 		
 		return "SUCCESS";
-	} */
+	} 	
+	
+	// 적립금 적립
+	@ResponseBody	 
+	@GetMapping("/user/insertPoint")	
+	public String insertPoint(OrderPaymentVO orderPaymentVO, Principal principal, @AuthenticationPrincipal MemberContext ctx) {
+		
+		log.info("insertPoint() ..");
+		
+		log.info("principal" + principal.getName());
+		log.info("principal" + ctx.getMemberVO().getMember_idx());
+		
+		log.info("orderPaymentVO().." + orderPaymentVO);
+		
+		orderPaymentVO.setMember_idx(ctx.getMemberVO().getMember_idx());
+		
+		orderService.insertPoint(orderPaymentVO);
+		
+		return "SUCCESS";
+	} 	
 	
 	@GetMapping("/orderPage")
 	public String orderPage() {

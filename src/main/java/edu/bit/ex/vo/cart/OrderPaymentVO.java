@@ -20,5 +20,11 @@ public class OrderPaymentVO {
     private String email;
     private String address;
     private int point;
+    private int money;
+    
+    // 주문테이블
+    private int order_id;
+    private String order_date;   
+    private int total_price;
 
 }
