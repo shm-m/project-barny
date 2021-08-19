@@ -74,12 +74,10 @@
 		text-align: center;
 		border-width: 1px;
 	}
-
 	.btn-basic1:hover {
 		color: gray;
 		box-shadow: 0 0 0 0.25rem rgba(255, 208, 38, 0.5);
 	}
-
 	.btn-basic1:focus {
 		color: gray;
 		box-shadow: 0 0 0 0.25rem rgba(255, 208, 38, 0.5);
@@ -278,7 +276,6 @@
 	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 	<script type='text/javascript'>
 		Kakao.init('7e53e24ce9a07956bfb5ac4930333caa');
-
 		function kakaoChatStart() {
 			Kakao.Channel.chat({
 				channelPublicId: '_WDxjSs'
@@ -295,20 +292,14 @@
 	<!-- 수량 변경 -->
 	<script type="text/javascript">
 		$(document).ready(function () {
-
 			$("#update").click(function (event) {
-
 				event.preventDefault();
-
 				var product_id = $("#product_id").val();
 				var product_qty = $("#product_qty").val();
-
-
 				var update = {
 					product_id: product_id,
 					product_qty: product_qty
 				};
-
 				//dataType: 'json',
 				$.ajax({
 					type: "POST",
@@ -324,7 +315,6 @@
 						console.log("실패");
 					}
 				});
-
 			});
 		});
 	</script>
@@ -334,7 +324,6 @@
 		$(function () {
 			var chkObj = document.getElementsByName("RowCheck");
 			var rowCnt = chkObj.length;
-
 			$("input[name='allCheck']").click(function () {
 				var chk_listArr = $("input[name='RowCheck']");
 				for (var i = 0; i < chk_listArr.length; i++) {
@@ -349,21 +338,16 @@
 				}
 			});
 		});
-
 		function deleteValue() {
 			var url = "${pageContext.request.contextPath}/user/delete";
 			var valueArr = new Array();
 			var list = $("input[name='RowCheck']");
 			var trArray = new Array();
-
 			for (var i = 0; i < list.length; i++) {
-
 				if (list[i].checked) { //선택되어 있으면 배열에 값을 저장함
 					valueArr.push(list[i].value);
-
 					trArray = $(list[i]).parent().parent().parent();
 				}
-
 			}
 			if (valueArr.length == 0) {
 				alert("선택된 글이 없습니다.");
@@ -378,16 +362,12 @@
 							valueArr: valueArr
 						},
 						success: function (result) {
-
 							if (result == "SUCCESS") {
 								//alert("삭제되었습니다.");								
 								//for(var i = 0; i < trArray.length; i++){									
 								//	$(trArray[i]).remove();
 								//}
 								location.href = "/user/cart5";
-
-
-
 							} else {
 								alert("삭제가 실패하였습니다.");
 							}

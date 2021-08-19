@@ -21,5 +21,24 @@ public class OrderServiceImpl implements OrderService {
         log.info("orderList()...");
         return orderMapper.orderList(member_idx);
     }       
+    
+	// 장바구니 합계
+    @Override
+	public int sumMoney(int member_idx) {
+		return orderMapper.sumMoney(member_idx);
+	}
+    
+    // 결제정보 넣기
+	@Override
+	public void insertOrder(OrderPaymentVO orderPaymentVO) {
+		orderMapper.insertOrder(orderPaymentVO);
+		
+	}
 
+	// 적립금 적립
+	@Override
+	public void insertPoint(OrderPaymentVO orderPaymentVO) {
+		orderMapper.insertPoint(orderPaymentVO);
+		
+	}
 }

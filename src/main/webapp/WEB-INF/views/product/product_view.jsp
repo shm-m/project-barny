@@ -46,24 +46,20 @@
 			overflow: hidden;
 			transition: height ease !important;
 		}
-
 		.card-img {
 			width: 300px;
 			height: 350px;
 			object-fit: cover;
 		}
-
 		.product_view {
 			padding-top: 100px;
 			/*margin-left: 200px;
 	margin-right: 200px;*/
 		}
-
 		.product_view1 {
 			/* margin-left: 400px; */
 			margin-left: 25%;
 		}
-
 		.product_detail {
 			margin-left: 23%;
 			/*     margin-left: 25%;
@@ -416,7 +412,6 @@
 	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 	<script type='text/javascript'>
 		Kakao.init('7e53e24ce9a07956bfb5ac4930333caa');
-
 		function kakaoChatStart() {
 			Kakao.Channel.chat({
 				channelPublicId: '_WDxjSs'

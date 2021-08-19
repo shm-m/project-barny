@@ -32,9 +32,7 @@
   width: 200px;
   height: 250px;
   object-fit: cover;
-
   }   
-
  .searchForm1 {
 	position:fixed; 
 	width:175px; 
@@ -45,22 +43,17 @@
 	margin:0;
 	text-align: center;
 } 
-
  .liquor {
 	margin-left : 15%; 
 	margin-right : 4%;
 	margin-top : 150px; 
-
 }
-
 .pagination {
 	margin-left: 600px;
 } 
-
 .total-1 {
 	margin-left : 8%;
 }
-
 .sidebar {
 	position:fixed; 
 	width:175px; 
@@ -69,12 +62,7 @@
 	top:-5%; /* 창에서 위에서 부터의 높이 */ 
 	background-color: transparent; 
 	margin:0;
-
 }
-
-
-
-
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -96,7 +84,6 @@
 	
 		});
 	});
-
 	
 </script>
 <body id="page-top">
@@ -298,7 +285,6 @@
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type='text/javascript'>
     Kakao.init('7e53e24ce9a07956bfb5ac4930333caa');
-
     function kakaoChatStart() {
         Kakao.Channel.chat({
             channelPublicId: '_WDxjSs'

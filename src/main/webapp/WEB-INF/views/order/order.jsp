@@ -2,7 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<!DOCTYPE html">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<!DOCTYPE html>
 <html>
 <head>
 <!-- jQuery -->
@@ -76,9 +77,9 @@
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
                         <li></li>
-                        <a class="dropdown-item" href="product_main">패키지</a></li>
-                        <li><a class="dropdown-item" href="product_main_liquor">술</a></li>
-                        <li><a class="dropdown-item" href="product_main_food">안주</a></li>
+                        <a class="dropdown-item" href="/product_main">패키지</a></li>
+                        <li><a class="dropdown-item" href="/product_main_liquor">술</a></li>
+                        <li><a class="dropdown-item" href="/product_main_food">안주</a></li>
                     </ul>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="/event">이벤트</a></li>
@@ -101,7 +102,7 @@
                     <li class="nav-item"><a class="nav-link" href="/board/my_page">마이페이지</a></li>
                 </sec:authorize>
                 <sec:authorize access="hasAnyRole('ROLE_ADMIN')">
-                    <li class="nav-item"><a class="nav-link" href="/#">관리페이지</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/statistics">관리페이지</a></li>
                 </sec:authorize>
                 <sec:authorize access="hasAnyRole('ROLE_USER')">
                     <li class="nav-item"><a class="nav-link" href="/user/cart5">장바구니</a></li>
@@ -162,9 +163,15 @@
 										<td><a href="#"><img class="img" style="width:70px; height:70px;" src="/${dto.image_route}"></a></td>									
 										<td>${dto.product_name}</td>
 										<td>${dto.price} </td>
-										<td>${dto.product_qty}</td>	 
+										<td>${dto.product_qty}</td> 
 									</tr>														
-									</c:forEach>																																										
+									</c:forEach>
+									<td id ="total_price" colspan="5" align="right">
+									장바구니 금액 합계 : <fmt:formatNumber value="${map.sumMoney}" pattern="#,###,###" />원 <br>
+									배송료 : ${map.fee} 원<br> 
+									총 주문금액 : <fmt:formatNumber value="${map.sum}" pattern="#,###,###" />원
+									<input id="total" name="total" type="hidden" value="${map.sum}">
+									</td>																																										
 							</tbody>
 						</table>
 					</div>
@@ -181,12 +188,15 @@
     <h3>주문자 정보</h3>
     <div class="row">
         <div class="col-md-8">
-            <form action="<c:url value='/user/cart3' />" method="post">
+            <form action="<c:url value='/user/cart5' />" method="post">
                 <input name="member_idx" type="hidden" value="<sec:authentication property="principal.memberVO.member_idx"/>">
                 <p>주문아이디 : <sec:authentication property="principal.memberVO.member_id"/></p>
+                <input id="name" name="name" type="hidden" value="<sec:authentication property="principal.memberVO.member_name"/>"></p>
                 <p>주문자이름 : <sec:authentication property="principal.memberVO.member_name"/></p>
+                <input id="tel" name="tel" type="hidden" value="<sec:authentication property="principal.memberVO.tel"/>"></p>
                 <p>휴대폰 : <sec:authentication property="principal.memberVO.tel"/> </p>
-                <p>이메일 : <sec:authentication property="principal.memberVO.email"/> </p>
+                <input id="email" name="email" type="hidden" value="<sec:authentication property="principal.memberVO.email"/>"></p>
+                <p>이메일 : <sec:authentication property="principal.memberVO.email"/> </p>               
                 <hr class="my-4">
             </form>
         </div>
@@ -195,11 +205,11 @@
     <h3>적립금</h3>
     <div class="row">
         <div class="col-md-8">
-            <form action="<c:url value='/user/cart3' />" method="post">
+            <form action="<c:url value='/user/cart5' />" method="post">
                 <input name="member_idx" type="hidden" value="<sec:authentication property="principal.memberVO.member_idx"/>">
                 <p>적립금 :&nbsp; <sec:authentication property="principal.memberVO.point"/>&nbsp;p&nbsp;<button id="point" type="button" class="btn btn-secondary btn-md">사용하기</button></p>
                 <p>(5000p 이상 사용가능)
-                <input id="point1" name="point" type="hidden" value="<sec:authentication property="principal.memberVO.point"/>"></p>
+                <input id="point1" type="hidden" value="<sec:authentication property="principal.memberVO.point"/>"></p>
                 <hr class="my-4">
             </form>
         </div>
@@ -208,8 +218,9 @@
     <h3>배송 정보</h3>
     <div class="row">
         <div class="col-md-8">
-            <form action="<c:url value='/user/cart3' />" method="post">
+            <form action="<c:url value='/user/cart5' />" method="post">
                 <input name="member_idx" type="hidden" value="<sec:authentication property="principal.memberVO.member_idx"/>">
+                <input id="address" name="address" type="hidden" value="<sec:authentication property="principal.memberVO.address"/>"></p>
                 <p>배송지 : <sec:authentication property="principal.memberVO.address"/> </p>
                 <hr class="my-4">
             </form>
@@ -254,7 +265,10 @@
 </div>
 <!-- <button type="submit" class="orderPage btn-outline-dark btn-sm" href="/user/orderPage">주문하기</button> -->
 <div class="text-center mb-5 mt-5">
-    <a class="btn btn-secondary btn-lg text-uppercase" href="/orderPage">주문하기!</a>
+<input id="point2" name="point2" type="hidden" value="<sec:authentication property="principal.memberVO.point"/>">
+    <!-- <a class="btn btn-secondary btn-lg text-uppercase" href="/orderPage">주문하기!</a> -->
+    <button id="insertPoint_1" type="button" value="<sec:authentication property="principal.memberVO.point"/>" 
+    class="btn btn-secondary btn-lg text-uppercase" href="/orderPage">주문하기!</button>
 </div>
 
 <!-- Footer-->
@@ -361,7 +375,94 @@
 	    });
 	    });
 	});    	    	   
-</script>
+</script>  
+
+<!--  <script>
+	$(document).ready(function(){
+			
+	    var IMP = window.IMP;
+	    IMP.init("imp13011359");
+	    
+	    var member_name = $("#name").val();
+	    var tel = $("#tel").val();
+	    var address = $("#address").val();
+	    var email = $("#email").val();
+	    var point = $("#point1").val(); 
+	    var total_price =$("#total").val();
+
+	    
+/* 	 	var insertOrder = {
+		    member_name : member_name,
+		    tel : tel,
+		    address : address,
+		    mail : mail,
+		    point : point + 100, 
+		    total_price : total_price
+		 	  }; */
+	    
+	    $("#payment").click(function(event) {
+	    
+	    IMP.request_pay({
+	        pg : 'inicis',
+	        pay_method : 'card',
+	        merchant_uid : 'merchant_' + new Date().getTime(),
+	        name : 'A패키지',
+	        amount : /* total_price */100,
+	        buyer_email : email,
+	        buyer_name : member_name,
+	        buyer_tel : tel,
+	        buyer_addr : address,
+	        buyer_postcode : '123-456'
+	    }, function(rsp) {
+	        if ( rsp.success ) {
+	        	
+	        var insertOrder = {
+			    member_name : member_name,
+			    tel : tel,
+			    address : address,
+			    email : email,
+			    point : point + 100, 
+			    total_price : total_price
+			 }
+			 	  
+	        	//[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
+	        	jQuery.ajax({
+	        		url: "/user/insertOrder", //cross-domain error가 발생하지 않도록 동일한 도메인으로 전송
+	        		type: 'POST',
+	        		dataType: 'json',
+	        		data: {
+	    	    		imp_uid : rsp.imp_uid,
+	    	    		insertOrders
+	    	    		//기타 필요한 데이터가 있으면 추가 전달
+	        		}
+	        	}).done(function(data) {
+	        		//[2] 서버에서 REST API로 결제정보확인 및 서비스루틴이 정상적인 경우
+	        		if ( everythings_fine ) {
+	        			var msg = '결제가 완료되었습니다.';
+	        			msg += '\n고유ID : ' + rsp.imp_uid;
+	        			msg += '\n상점 거래ID : ' + rsp.merchant_uid;
+	        			msg += '\결제 금액 : ' + rsp.paid_amount;
+	        			msg += '카드 승인번호 : ' + rsp.apply_num;
+
+	        			alert(msg);
+	        		} else {
+	        			//[3] 아직 제대로 결제가 되지 않았습니다.
+	        			//[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
+	        		}
+	        	});
+	        	
+	        	location.href='${pageContext.request.contextPath}/orderPage';
+	        	
+	        } else {
+	            var msg = '결제에 실패하였습니다.'; 
+	            msg += '에러내용 : ' + rsp.error_msg;
+
+	            alert(msg);
+	        }
+	    });
+	    });
+	});    	    	   
+</script> --> 
 
 <!-- 적립금 -->
 	<script type="text/javascript">
@@ -382,5 +483,68 @@
 
 		});
 	 });
+	</script>
+	
+<!-- 	<script>
+		// 적립금 적립
+		$(document).ready(function () {
+
+			$("#insertPoint").click(function (event) {
+
+				event.preventDefault();
+
+				var point = $("#point2").val();
+
+
+				//dataType: 'json',
+				$.ajax({
+					type: "GET",
+					url: "/user/insertPoint",
+					cache: false,
+					contentType: 'application/json; charset=utf-8',
+					data: point,
+					success: function (result) {
+						location.href='${pageContext.request.contextPath}/orderPage';
+					},
+					error: function (e) {
+						alert("실패");
+						console.log(e);
+					}
+				});
+
+			});
+
+		});
+	</script> -->
+	
+		<script>
+		$(document).ready(function () {
+
+			$("#insertPoint_1").click(function (event) {
+
+				event.preventDefault();
+
+				var insertPoint_1 = $("#point2").val();
+
+
+				//dataType: 'json',
+				$.ajax({
+					type: "GET",
+					url: "/user/insertPoint",
+					cache: false,
+					contentType: 'application/json; charset=utf-8',
+					data: insertPoint_1,
+					success: function (result) {
+						alert("100포인트가 적립되었습니다!");
+					},
+					error: function (e) {
+						alert("실패");
+						console.log(e);
+					}
+				});
+
+			});
+
+		});
 	</script>
 </html>
