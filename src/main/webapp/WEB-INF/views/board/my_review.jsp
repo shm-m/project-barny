@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
-    <title>mypage</title>
+    <title>Find your own drink, Barny</title>
 
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="/static/main_page/assets/favicon.ico"/>
@@ -46,31 +48,29 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link" href="/subs">구독</a></li>
-                <li class="nav-item"><a class="nav-link" href="#portfolio">브랜드
+                <li class="nav-item"><a class="nav-link" href="/subscribe">구독</a></li>
+                <li class="nav-item"><a class="nav-link" href="/story">브랜드
                     스토리</a></li>
                 <li class="nav-item dropdown"><a
-                        class="nav-link dropdown-toggle" href="#"
-                        id="navbarDarkDropdownMenuLink" role="button"
+                        class="nav-link dropdown-toggle" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false"> 상품 보기 </a>
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
                         <li></li>
-                        <a class="dropdown-item" href="#">패키지</a></li>
-                        <li><a class="dropdown-item" href="#">술</a></li>
-                        <li><a class="dropdown-item" href="#">안주</a></li>
+                        <a class="dropdown-item" href="/product_main">패키지</a></li>
+                        <li><a class="dropdown-item" href="/product_main_liquor">술</a></li>
+                        <li><a class="dropdown-item" href="/product_main_food">안주</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="#team">이벤트</a></li>
+                <li class="nav-item"><a class="nav-link" href="/event">이벤트</a></li>
                 <li class="nav-item dropdown"><a
-                        class="nav-link dropdown-toggle" href="#"
-                        id="navbarDarkDropdownMenuLink" role="button"
+                        class="nav-link dropdown-toggle" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false"> 고객센터 </a>
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
                         <li></li>
                         <a class="dropdown-item" href="/notice">공지사항</a></li>
-                        <li><a class="dropdown-item" href="/faq">자주 묻는 질문</a></li>
+                        <li><a class="dropdown-item" href="/notice/faq">자주 묻는 질문</a></li>
                     </ul>
                 </li>
             </ul>
@@ -78,11 +78,15 @@
                 <sec:authorize access="isAnonymous()">
                     <li class="nav-item"><a class="nav-link" href="/loginForm">로그인</a></li>
                 </sec:authorize>
-                <sec:authorize access="isAuthenticated()">
+                <sec:authorize access="hasAnyRole('ROLE_USER')">
                     <li class="nav-item"><a class="nav-link" href="/board/my_page">마이페이지</a></li>
                 </sec:authorize>
-
-                <li class="nav-item"><a class="nav-link" href="#services">장바구니</a></li>
+                <sec:authorize access="hasAnyRole('ROLE_ADMIN')">
+                    <li class="nav-item"><a class="nav-link" href="/#">관리페이지</a></li>
+                </sec:authorize>
+                <sec:authorize access="hasAnyRole('ROLE_USER')">
+                    <li class="nav-item"><a class="nav-link" href="/user/cart5">장바구니</a></li>
+                </sec:authorize>
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
                 </sec:authorize>
@@ -96,17 +100,17 @@
     <div class="row">
         <div class="col-3" style="padding: 7rem 0;">
             <div class="list-group side-nav">
-                <a href="#" class="list-group-item list-group-item-action">구독 정보</a>
-                <a href="#" class="list-group-item list-group-item-action">구매 내역</a>
-                <a href="#" class="list-group-item list-group-item-action">문의 내역</a>
-                <a href="#" class="list-group-item list-group-item-action active" aria-current="true">후기</a>
-                <a href="#" class="list-group-item list-group-item-action">적립금</a>
-                <a href="#" class="list-group-item list-group-item-action">개인 정보 수정</a>
+                <a href="/board/press" class="list-group-item list-group-item-action">구독 정보</a>
+                <a href="/board/purchase_list" class="list-group-item list-group-item-action">구매 내역</a>
+                <a href="/board/my_view" class="list-group-item list-group-item-action">문의 내역</a>
+                <a href="/board/my_review" class="list-group-item list-group-item-action active" aria-current="true">후기</a>
+                <a href="/board/point" class="list-group-item list-group-item-action">적립금</a>
+                <a href="/user/edit" class="list-group-item list-group-item-action">개인 정보 수정</a>
             </div>
         </div>
 
         <div class="col-9" style="width: 70%; padding: 7rem 0;">
-            <div class="board_name">1:1 문의
+            <div class="board_name">후기
                 <a class="board_name_small">포인트 및 주문내역, 개인정보 등을 확인하거나 변경하세요.</a>
             </div>
             <div class="table-responsive outline pb-3">
@@ -159,7 +163,7 @@
 
                 
                 <div class="line mb-3" style="border-bottom: solid 2px; border-bottom-color: #EBC24B;"></div>
-<!--                 <a class="btn-basic post mb-2" type="button" title="글쓰기" onclick="location.href='/board/my_review_write'">글쓰기</a> -->
+                <a class="btn-basic post mb-2" type="button" title="글쓰기" onclick="location.href='/user/review/write_view/**'">글쓰기</a>
             </div>
         </div>
 

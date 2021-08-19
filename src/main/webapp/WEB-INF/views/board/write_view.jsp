@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>write view</title>
+<title>Find your own drink, Barny</title>
 </head>
 <body>
 	<table id="list-table" width="500" cellpadding="0" cellspacing="0" border="1">

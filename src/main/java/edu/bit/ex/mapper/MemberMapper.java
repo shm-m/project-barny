@@ -40,11 +40,10 @@ public interface MemberMapper {
     //수정
 	public int updateUser(MemberVO memberVO);
 	//탈퇴
-//	public void deleteUser(MemberVO memberVO);
+	public void deleteUser(MemberVO memberVO);
 
-//	public String getPw(MemberVO memberVO);
 
-	public int deleteUser(MemberVO memberVO);
+//	public int deleteUser(MemberVO memberVO);
 
 
 }

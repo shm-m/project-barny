@@ -43,7 +43,7 @@ public class MemberController {
 	private final MemberValidator memberValidator;
 
 	// 회원정보수정 페이지 이동
-	@GetMapping("/my/edit")
+	@GetMapping("/user/edit")
 	public String getEditForm(Model model,Principal principal) {
 		String userId = principal.getName();
 		System.out.println("유저 아이디: " + principal.getName());
@@ -51,7 +51,7 @@ public class MemberController {
 		MemberVO memberVO = new MemberVO();
 		log.info("수정페이지이동", memberVO);
 		model.addAttribute("memberVO", memberVO);
-		return "/my/edit";
+		return "/user/edit";
 	}
 	
 	  // 회원정보수정 post
@@ -67,13 +67,13 @@ public class MemberController {
 	         return "redirect:/loginForm";         
 	      }else {
 	    	  log.info("실패");
-	    	  return "/my/edit";      
+	    	  return "/user/edit";      
 	      }
 	      
 	   }
 	   
 	// 탈퇴 페이지 이동
-		@GetMapping("/my/delete")
+		@GetMapping("/user/delete")
 		public String getDeleteForm(Model model,Principal principal) {
 			String userId = principal.getName();
 			System.out.println("유저 아이디: " + principal.getName());
@@ -81,7 +81,7 @@ public class MemberController {
 			MemberVO memberVO = new MemberVO();
 			log.info("탈퇴페이지", memberVO);
 			model.addAttribute("memberVO", memberVO);
-			return "/my/delete";
+			return "/user/delete";
 		}
 	   
 	   // 회원정보탈퇴 post
