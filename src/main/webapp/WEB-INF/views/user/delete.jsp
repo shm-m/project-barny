@@ -40,7 +40,7 @@
     <link rel="stylesheet" type="text/css" href="/static/login/css/util.css">
     <link rel="stylesheet" type="text/css" href="/static/login/css/main.css">
 </head>
-<body id="page-top" class="text-center" >
+<body id="page-top" class="text-center">
 
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top"
@@ -105,44 +105,49 @@
 
 <script type="text/javascript">
 
-        // 비밀번호 미입력시 경고창
+    // 비밀번호 미입력시 경고창
 
-        /* function checkValue(){
+    /* function checkValue(){
 
-            if(!document.deleteform.pwd.value){
+        if(!document.deleteform.pwd.value){
 
-                alert("비밀번호를 입력하지 않았습니다.");
+            alert("비밀번호를 입력하지 않았습니다.");
 
-                return false;
+            return false;
+
+        }
+
+    } */
+
+
+    $(document).ready(function () {
+
+        $("#btnDelete").click(function () {
+
+            // 확인 대화상자
+
+            if (confirm("삭제하시겠습니까?")) {
+
+                document.login100 - form
+                validate - form
+                flex - sb
+                flex - w.action = "secessionpro";
+
+                document.login100 - form
+                validate - form
+                flex - sb
+                flex - w.submit();
 
             }
 
-        } */
-
-        
-
-        $(document).ready(function(){
-
-            $("#btnDelete").click(function(){
-
-                // 확인 대화상자 
-
-                if(confirm("삭제하시겠습니까?")){
-
-                    document.login100-form validate-form flex-sb flex-w.action = "secessionpro";
-
-                    document.login100-form validate-form flex-sb flex-w.submit();
-
-                }
-
-            });
-
         });
 
-    </script>
+    });
+
+</script>
 
 <!--delete Form-->
-<div class="limiter" >
+<div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100 p-t-50 p-b-90">
             <form class="login100-form validate-form flex-sb flex-w" action="/deleteUser" method="POST">
@@ -150,9 +155,9 @@
 					<span class="login100-form-title p-b-40">
 						회원탈퇴
 					</span>
-               <span class="login100-form p-b-35"><c:if test="${param.error != null}" >
-                  <p>아이디와 비밀번호가 잘못되었습니다.</p>
-               </c:if></span>
+                <span class="login100-form p-b-35"><c:if test="${param.error != null}">
+                    <p>아이디와 비밀번호가 잘못되었습니다.</p>
+                </c:if></span>
                 <div class="wrap-input100 validate-input m-b-16" data-validate="아이디를 입력해주세요.">
                     <input class="input100" type="text" id="member_id" name="member_id" placeholder="아이디를 입력해주세요">
                     <span class="focus-input100"></span>
@@ -165,25 +170,21 @@
                 </div>
 
 
-                    <div>
-                        <a href="/findId">
-                            아이디 찾기 
-                        </a>
-                        <a href="/findPw">
-                            비밀번호 찾기
-                        </a>
-                    </div>
+                <div>
+                    <a href="/findId">
+                        아이디 찾기
+                    </a>
+                    <a href="/findPw">
+                        비밀번호 찾기
+                    </a>
                 </div>
-
+                <hr>
                 <div class="container-login100-form-btn m-t-17">
-                    <button class="login100-form-btn"  type="submit">
+                    <button class="login100-form-btn" type="submit">
                         탈퇴
                     </button>
                 </div>
-
-
             </form>
-            <hr>
         </div>
     </div>
 </div>
@@ -196,7 +197,8 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-4 text-lg-start"><b>주식회사 바니</b> <br> 서울특별시 종로구 종로 69 YMCA빌딩 7층
-                <br>Copyright &copy; Barny Inc. All rights reserved. </div>
+                <br>Copyright &copy; Barny Inc. All rights reserved.
+            </div>
             <div class="col-lg-4 my-3 my-lg-0">
                 <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
                 <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-instagram"></i></a>
