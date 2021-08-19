@@ -45,12 +45,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link" href="/subs">구독</a></li>
-                <li class="nav-item"><a class="nav-link" href="#portfolio">브랜드
+                <li class="nav-item"><a class="nav-link" href="/subscribe">구독</a></li>
+                <li class="nav-item"><a class="nav-link" href="/story">브랜드
                     스토리</a></li>
                 <li class="nav-item dropdown"><a
-                        class="nav-link dropdown-toggle" href="#"
-                        id="navbarDarkDropdownMenuLink" role="button"
+                        class="nav-link dropdown-toggle" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false"> 상품 보기 </a>
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
@@ -60,16 +59,15 @@
                         <li><a class="dropdown-item" href="/product_main_food">안주</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="#team">이벤트</a></li>
+                <li class="nav-item"><a class="nav-link" href="/event">이벤트</a></li>
                 <li class="nav-item dropdown"><a
-                        class="nav-link dropdown-toggle" href="#"
-                        id="navbarDarkDropdownMenuLink" role="button"
+                        class="nav-link dropdown-toggle" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false"> 고객센터 </a>
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
                         <li></li>
                         <a class="dropdown-item" href="/notice">공지사항</a></li>
-                        <li><a class="dropdown-item" href="/faq">자주 묻는 질문</a></li>
+                        <li><a class="dropdown-item" href="/notice/faq">자주 묻는 질문</a></li>
                     </ul>
                 </li>
             </ul>
@@ -77,8 +75,15 @@
                 <sec:authorize access="isAnonymous()">
                     <li class="nav-item"><a class="nav-link" href="/loginForm">로그인</a></li>
                 </sec:authorize>
-
-                <li class="nav-item"><a class="nav-link" href="#services">장바구니</a></li>
+                <sec:authorize access="hasAnyRole('ROLE_USER')">
+                    <li class="nav-item"><a class="nav-link" href="/board/my_page">마이페이지</a></li>
+                </sec:authorize>
+                <sec:authorize access="hasAnyRole('ROLE_ADMIN')">
+                    <li class="nav-item"><a class="nav-link" href="/admin/statistics">관리페이지</a></li>
+                </sec:authorize>
+                <sec:authorize access="hasAnyRole('ROLE_USER')">
+                    <li class="nav-item"><a class="nav-link" href="/user/cart5">장바구니</a></li>
+                </sec:authorize>
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
                 </sec:authorize>
@@ -86,6 +91,7 @@
         </div>
     </div>
 </nav>
+
 
 <!--content-->
 <div class="container" style="padding-top: 2rem;">

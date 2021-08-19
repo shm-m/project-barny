@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+
 
 @Controller
 public class DashBoardController {
     @Autowired
     private DashBoardService dashBoardService;
 
-    @GetMapping("/statistics")
+    @GetMapping("admin/statistics")
     public String statistics(Model model) {
 
         List<OrderVO> orders = dashBoardService.getOrders();
