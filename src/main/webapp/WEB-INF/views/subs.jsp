@@ -85,7 +85,7 @@
             <li class="nav-item"><a class="nav-link" href="/board/my_page">마이페이지</a></li>
           </sec:authorize>
           <sec:authorize access="hasAnyRole('ROLE_ADMIN')">
-            <li class="nav-item"><a class="nav-link" href="/#">관리페이지</a></li>
+            <li class="nav-item"><a class="nav-link" href="/admin/statistics">관리페이지</a></li>
           </sec:authorize>
           <sec:authorize access="hasAnyRole('ROLE_USER')">
             <li class="nav-item"><a class="nav-link" href="/user/cart5">장바구니</a></li>
@@ -255,7 +255,7 @@
                 </tr>
               </tbody>
             </table>
-            <div class="list">
+            <div class="list" style="margin-left: 10%;">
               <div class="day-event" date-month="12" date-day="5">
                 <a class="close fontawesome-remove"></a>
                 <h2 class="title">월 초 정기배송일</h2>

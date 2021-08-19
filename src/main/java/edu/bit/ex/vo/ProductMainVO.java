@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,7 +16,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class ProductMainVO {
-    // 상품보기
+   
+	// 상품보기
     private int product_id;
     private String product_name;
     private int price;

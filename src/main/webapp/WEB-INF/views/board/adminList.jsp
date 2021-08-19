@@ -29,11 +29,8 @@
     <link rel="stylesheet" href="/static/table/css/owl.carousel.min.css"/>
 
 </head>
-<tbody>
 
 <body>
-
-
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top"
      id="mainNav_2">
@@ -101,78 +98,52 @@
     <div class="row">
         <div class="col-3" style="padding: 7rem 0;">
             <div class="list-group side-nav">
-                <a href="/board/press" class="list-group-item list-group-item-action">구독 정보</a>
-                <a href="/board/purchase_list" class="list-group-item list-group-item-action">구매 내역</a>
-                <a href="/board/my_view" class="list-group-item list-group-item-action">문의 내역</a>
-                <a href="/board/my_review" class="list-group-item list-group-item-action active" aria-current="true">후기</a>
-                <a href="/board/point" class="list-group-item list-group-item-action">적립금</a>
-                <a href="/user/edit" class="list-group-item list-group-item-action">개인 정보 수정</a>
+                <a href="/admin/admin_member" class="list-group-item list-group-item-action">회원 관리</a>
+                <a href="#" class="list-group-item list-group-item-action">상품 관리</a>
+                <a href="/board/adminList" class="list-group-item list-group-item-action" aria-current="true">
+                    게시판 관리
+                </a>
+                <a href="#" class="list-group-item list-group-item-action active">주문 관리</a>
+
             </div>
         </div>
 
         <div class="col-9" style="width: 70%; padding: 7rem 0;">
-            <div class="board_name">후기
-                <a class="board_name_small">포인트 및 주문내역, 개인정보 등을 확인하거나 변경하세요.</a>
+            <div class="board_name">게시판 관리
+                <a class="board_name_small">관리자 모드입니다.</a>
             </div>
+
             <div class="table-responsive outline pb-3">
                 <table class="table custom-table" style="min-width: 500px;">
                     <thead style="border-bottom: solid 1px;">
                     <tr>
-                        <td>번호</td>
-                        <td>제목</td>
-                        <td>날짜</td>
-                        <td>상품</td>
-                        <td>좋아요</td>
-                    </tr>
-                    </thead>
-                    <tbody>
+                        <td>글번호</td>
+         				<td>회원번호</td>
+        			    <td>제목</td>
+         				<td>날짜</td>
 
-         <c:choose>
-
-            <c:when test="${empty my_review}" >
-
-               <tr><td colspan="5" align="center">작성한 후기가 없습니다</td></tr>
-
-            </c:when> 
-
-            <c:when test="${!empty my_review}">
-
-
-            <c:forEach var="reviewList" items="${my_review}">
-
-
-                  <tr>
-                     
-                     <td><c:out value="${reviewList.board_id}"/></td>
-                     <td><a href="review_content_view?board_id=${reviewList.board_id}">${reviewList.b_title}</a></td>
-                     <td><c:out value="${reviewList.b_date}"/></td>
-                     <td><a href="${pageContext.request.contextPath}/product_view?product_id=${reviewList.product_id}">${reviewList.product_name}</a></td>
-                     <td><c:out value="${reviewList.like_count}"/></td>
-
-                  </tr>
-
-               </c:forEach>
-
-            </c:when>
-
-         </c:choose>
+            </tr>
+            </thead>
+                    
+	
+		 <c:forEach items="${adminList}" var="dto">
+      <tr>
+         <td>${dto.board_id}</td>
+         <td>${dto.member_idx}</td>
          
+         <td>
+            <c:forEach begin="1" end="${dto.b_indent}">ㄴ</c:forEach>
+            <a href="content_view?board_id=${dto.board_id}">${dto.b_title}</a></td>
+         <td>${dto.b_date}</td>
+      </tr>
+      </c:forEach>
+      <tr>
+         <td colspan="5"> <a href="write_view">글작성</a> </td>
+      </tr>
+      
+	</table>
 
-      </tbody>
-
-   </table>
-
-                
-                <div class="line mb-3" style="border-bottom: solid 2px; border-bottom-color: #EBC24B;"></div>
-                <a class="btn-basic post mb-2" type="button" title="글쓰기" onclick="location.href='/user/review/write_view/**'">글쓰기</a>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-
-<!-- Footer-->
+    <!-- Footer-->
 <footer class="footer">
     <div class="container">
         <div class="row align-items-center">
@@ -190,7 +161,6 @@
         </div>
     </div>
 </footer>
-
 
 <!--top-button-->
 <img id="myBtn" src="/static/main_page/assets/top-btn.png" onclick="topFunction()">

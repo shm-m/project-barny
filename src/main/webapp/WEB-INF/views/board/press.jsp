@@ -1,6 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
@@ -10,7 +7,7 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>press</title>
+    <title>Find your own drink, Barny</title>
 
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="/static/main_page/assets/favicon.ico"/>
@@ -29,60 +26,7 @@
 </head>
 
 <body>
-	<table width="500" cellpadding="0" cellspacing="0" border="1">
-		<tr>
 
-			<td>구독 : <sec:authentication
-					property="principal.productMainVO.subscribe" /></td>
-
-
-		</tr>
-		<tbody>
-
-
-			<c:forEach items="${press}" var="dto">
-				<tr>
-					<td>${dto.subscribe}</td>
-				<tr>
-					<td colspan="5"><a
-						href="${pageContext.request.contextPath}/board/update_modify?subscribe=${dto.subscribe}">
-						 <input type="submit" value="수정"class="btn-basic text-uppercase" onclick="button_event();">
-							<input type="button" value="취소하기" onclick="button_event();">
-					</a></td>
-				<tr>
-					<td>구독상품</td>
-				</tr>
-				<td><a
-					href="${pageContext.request.contextPath}/product_view?product_name=${dto.product_name}">${dto.product_name}</a></td>
-
-
-
-<!-- 				</tr> -->
-			</c:forEach>
-
-			<c:choose>
-
-				<c:when test="${empty press}">
-
-					<tr>
-						<td colspan="5" align="center">구독정보가 없습니다</td>
-					</tr>
-
-				</c:when>
-
-				<c:when test="${!empty press}">
-
-
-					<c:forEach var="pressList" items="${press}">
-
-					</c:forEach>
-				</c:when>
-			</c:choose>
-
-
-		</tbody>
-
-	</table>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top"
      id="mainNav_2">
@@ -106,9 +50,9 @@
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDarkDropdownMenuLink">
                         <li></li>
-                        <a class="dropdown-item" href="product_main">패키지</a></li>
-                        <li><a class="dropdown-item" href="product_main_liquor">술</a></li>
-                        <li><a class="dropdown-item" href="product_main_food">안주</a></li>
+                        <a class="dropdown-item" href="/product_main">패키지</a></li>
+                        <li><a class="dropdown-item" href="/product_main_liquor">술</a></li>
+                        <li><a class="dropdown-item" href="/product_main_food">안주</a></li>
                     </ul>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="/event">이벤트</a></li>
@@ -127,10 +71,15 @@
                 <sec:authorize access="isAnonymous()">
                     <li class="nav-item"><a class="nav-link" href="/loginForm">로그인</a></li>
                 </sec:authorize>
-                <sec:authorize access="isAuthenticated()">
+                <sec:authorize access="hasAnyRole('ROLE_USER')">
                     <li class="nav-item"><a class="nav-link" href="/board/my_page">마이페이지</a></li>
                 </sec:authorize>
-                <li class="nav-item"><a class="nav-link" href="/user/cart3">장바구니</a></li>
+                <sec:authorize access="hasAnyRole('ROLE_ADMIN')">
+                    <li class="nav-item"><a class="nav-link" href="/admin/statistics">관리페이지</a></li>
+                </sec:authorize>
+                <sec:authorize access="hasAnyRole('ROLE_USER')">
+                    <li class="nav-item"><a class="nav-link" href="/user/cart5">장바구니</a></li>
+                </sec:authorize>
                 <sec:authorize access="isAuthenticated()">
                     <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
                 </sec:authorize>
@@ -138,6 +87,8 @@
         </div>
     </div>
 </nav>
+
+
 <div class="container" style="padding-top: 2rem;">
     <div class="row">
         <div class="col-3" style="padding: 7rem 0;">
@@ -148,8 +99,8 @@
                     문의 내역
                 </a>
                 <a href="/board/my_review" class="list-group-item list-group-item-action">후기</a>
-                <a href="#" class="list-group-item list-group-item-action">적립금</a>
-                <a href="#" class="list-group-item list-group-item-action">개인 정보 수정</a>
+                <a href="/board/point" class="list-group-item list-group-item-action">적립금</a>
+                <a href="/user/edit" class="list-group-item list-group-item-action">개인 정보 수정</a>
             </div>
         </div>
 
@@ -168,17 +119,20 @@
                     <c:forEach items="${press}" var="dto">
                         <tr>
                             <td>
-                                <a style ="padding-left: 20px;" href="${pageContext.request.contextPath}/product_view?product_name=${dto.product_name}">${dto.product_name}</a>
-                            </td>
+                                <a style ="padding-left: 20px;" href="${pageContext.request.contextPath}/product_view?product_id=${dto.product_id}">${dto.product_name}</a>                            </td>
                             <td>
-                                <a class="btn-basic post mb-2" style ="margin-right: 20px;" type="button" href="${pageContext.request.contextPath}/board/update_modify?subscribe=${dto.subscribe}" onclick="button_event();">구독 취소</a>
+                                <a class="btn-basic post mb-2" style ="margin-right: 20px;" type="button" href="${pageContext.request.contextPath}/board/update_modify?subscribe=${dto.subscribe}" onclick="button_event('${pageContext.request.contextPath}/board/update_modify?subscribe=${dto.subscribe}');">구독 취소</a>
                             </td>
                         <tr>
 
                             <script>
-                                function button_event() {
+                                function button_event(url) {
+                                	 console.log(url);
                                     if (confirm("지정된 다음 달 결제일까지는 구독이 유효합니다") == true) {
-                                        document.form.submit();
+                                        //document.form.submit();
+                                        console.log(url);
+                                        $(location).attr(href,url);
+                                        //location.href = url;
                                     } else {   //취소
                                         return;
                                     }
@@ -264,16 +218,4 @@
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 </body>
-
-<script>
-					function button_event() {
-
-						if (!confirm("삭제 하시겠습니까?")) {
-
-							return false
-						}
-
-					}
-				</script>
-				
 </html>

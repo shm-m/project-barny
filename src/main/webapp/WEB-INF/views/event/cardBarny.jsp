@@ -121,7 +121,8 @@
                 alert('해당 이벤트는 하루에 한번만 참여 가능합니다.')
                 return false
             }
-            setTimeout("document.addPoint.submit()", 5500);
+            alert("적립되었습니다.");
+            document.addPoint.submit();
         });
 
     };

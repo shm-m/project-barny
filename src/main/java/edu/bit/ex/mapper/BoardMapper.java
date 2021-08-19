@@ -13,7 +13,7 @@ import edu.bit.ex.vo.ProductMainVO;
 @Mapper
 public interface BoardMapper {
 	// 관리자
-	public List<BoardVO> getList();
+	public List<BoardVO> getAdminList();
 
 	public BoardVO read(int board_id);
 
@@ -76,5 +76,6 @@ public interface BoardMapper {
 	
 	//포인트
 	public List<MemberVO> getPointList(int member_idx);
+
 
 }
