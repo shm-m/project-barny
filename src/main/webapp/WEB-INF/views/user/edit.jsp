@@ -221,7 +221,7 @@
                                          style="background-color: transparent;">
                                         <label for="email">이메일</label>
                                         <input type="email"
-                                               placeholder="E-Mail" name="email" id="email" disabled
+                                               placeholder="E-Mail" name="email" id="email"
                                                value="<sec:authentication property="principal.memberVO.email"/>"
                                                class="form-control">
                                         <form:errors path="email" cssStyle="color: #e80f25"/>
