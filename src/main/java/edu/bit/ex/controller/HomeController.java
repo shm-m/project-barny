@@ -30,12 +30,6 @@ public class HomeController {
 		return "main_page";
 	}
 
-	// 헤더 테스트, 모두 확인 시 삭제
-	@GetMapping("/test")
-	public String test() {
-		return "header_test";
-	}
-
 	// 취향 테스트
 	@GetMapping("/drink_test")
 	public String drink_test() {
