@@ -37,6 +37,6 @@
 <br>
 <br>
 
-> 자세한 내용은 https://shm-m.github.io/project에서 보실 수 있습니다.
+> 자세한 내용은 https://shm-m.github.io/project 에서 보실 수 있습니다.
 > <br>
 <br>
